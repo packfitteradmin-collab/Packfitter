@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PackFitter — Packing Calculator &amp; Carry-On Fit Tool</title>
+<meta name="description" content="Check if your packing setup fits your bag and your airline's carry-on limits. Packing guides by trip length, bag size comparisons, and airline-specific fit calculators.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does PackFitter do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PackFitter helps travelers check whether their packing setup fits their bag and their airline's carry-on limits. It includes packing guides by trip length, bag size comparisons from 25L to 45L, and airline-specific fit calculators for six major airlines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the packing calculator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator estimates packed volume based on trip length, climate, packing style, and gear choices. It compares your estimated volume against your bag's capacity and your airline's published carry-on dimensions to determine whether your setup fits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which airlines does PackFitter cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PackFitter currently covers Delta, United, American, Southwest, Ryanair, and EasyJet — with airline-specific fit pages for 25L, 30L, 35L, 40L, and 45L backpacks on each airline."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  .hero { background: #fff; border-radius: 12px; padding: 32px 28px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #3b82f6; margin-bottom: 10px; }
+  .hero h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 18px; color: #1a1a1a; }
+  .hero-intro { font-size: 0.95rem; color: #444; line-height: 1.65; margin-bottom: 0; }
+  .section-card { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 8px; }
+  .section-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; }
+  .section-card p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 14px; }
+  .section-card p:last-child { margin-bottom: 0; }
+
+  .hub-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .hub-card { background: #f9fafb; border-radius: 10px; padding: 20px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+  .hub-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
+  .hub-card-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
+  .hub-card-title { font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+  .hub-card-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin-bottom: 14px; flex-grow: 1; }
+  .hub-card-link { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; align-self: flex-start; }
+  .hub-card-link:hover { color: #1d4ed8; border-color: #1d4ed8; }
+
+  .bottom-line { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+  .bottom-line h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .bottom-line ul { list-style: none; padding: 0; }
+  .bottom-line li { font-size: 0.9rem; color: #d1d5db; padding: 7px 0; border-bottom: 1px solid #333; line-height: 1.5; }
+  .bottom-line li:last-child { border-bottom: none; }
+  .bottom-line li::before { content: "→  "; color: #60a5fa; font-weight: 700; }
+</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<div style="max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;align-items:center;gap:8px;">
+  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+    <img src="/logo-icon.png" alt="PackFitter" style="height:44px;width:auto;">
+    <div style="line-height:1.15;">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-0.01em;"><span style="color:#1a2540;">Pack</span><span style="color:#b8943e;">Fitter</span></div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.58rem;font-weight:600;color:#1a2540;letter-spacing:0.02em;">Packing Calculator &amp; Fit Tool</div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.6rem;font-weight:600;color:#b8943e;letter-spacing:0.04em;font-style:italic;">Plan. Pack. Fly.</div>
+      <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
+    </div>
+  </a>
+  <div style="margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;">
+    <a href="/" style="font-size:0.82rem;font-weight:700;color:#1a1a1a;text-decoration:none;">Home</a>
+    <a href="/packing-guides.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Packing Guides</a>
+    <a href="/carry-on-bag-sizes.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Bag Sizes</a>
+    <a href="/airline-carry-on-rules.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Airline Rules</a>
+  </div>
+</div>
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-eyebrow">PackFitter</div>
+    <h1>Packing Calculator &amp; Carry-On Fit Tool</h1>
+    <p style="font-size:0.72rem; color:#9ca3af; margin-top:8px; letter-spacing:0.02em;">Last updated: April 2026</p>
+    <p class="hero-intro">Check if your packing setup fits your bag — and whether your bag fits your airline's carry-on limits. Guides by trip length, bag size comparisons, and airline-specific fit calculators for six major airlines.</p>
+  </div>
+
+  <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
+
+  <!-- ══════════════════════════════════════
+       HUB CARDS
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Start here</div>
+    <h2>Explore the Tools</h2>
+
+    <div class="hub-grid">
+      <div class="hub-card">
+        <div class="hub-card-eyebrow">Packing Guides</div>
+        <div class="hub-card-title">What to Pack by Trip Length</div>
+        <div class="hub-card-desc">Packing lists and volume estimates for 3-day, 5-day, 7-day, and 10-day trips — with calculators to check if your setup fits your bag and airline limits.</div>
+        <a href="/packing-guides.html" class="hub-card-link">View packing guides →</a>
+      </div>
+
+      <div class="hub-card">
+        <div class="hub-card-eyebrow">Bag Sizes</div>
+        <div class="hub-card-title">Carry-On Bag Sizes (25L–45L)</div>
+        <div class="hub-card-desc">Compare real-world use for carry-on bags from 25L to 45L. See what each size fits, which trips it works for, and where it falls on the airline-fit spectrum.</div>
+        <a href="/carry-on-bag-sizes.html" class="hub-card-link">View bag sizes guide →</a>
+      </div>
+
+      <div class="hub-card">
+        <div class="hub-card-eyebrow">Airline Rules</div>
+        <div class="hub-card-title">Airline Carry-On Rules by Airline</div>
+        <div class="hub-card-desc">Carry-on dimensions, weight limits, personal item rules, and booking-based restrictions for Delta, United, American, Southwest, Ryanair, and EasyJet.</div>
+        <a href="/airline-carry-on-rules.html" class="hub-card-link">View airline rules →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       BOTTOM LINE
+  ══════════════════════════════════════ -->
+  <div class="bottom-line">
+    <h2>How It Works</h2>
+    <ul>
+      <li>Pick a trip length or airline to get started</li>
+      <li>Each page has a calculator — enter your trip details and gear to get a volume estimate</li>
+      <li>The calculator compares your packed volume against your bag's capacity and your airline's carry-on limits</li>
+      <li>Results update instantly as you change inputs — no page reload needed</li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NOTES
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Notes</div>
+    <h2>About PackFitter</h2>
+    <p>Volume estimates are based on real clothing measurements, standard packing behavior, and a 15% gap factor for dead space inside the bag. Airline carry-on limits are based on published dimensions as of early 2026.</p>
+    <p>This is a general guide. Final bag acceptance depends on airline discretion and your bag's packed external dimensions.</p>
+    <p>This content reflects real-world packing scenarios and typical airline policies. Airline enforcement may vary based on aircraft, route, and boarding conditions.</p>
+  </div>
+
+</div><!-- /page-wrap -->
+</body>
+</html>
