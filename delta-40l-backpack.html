@@ -490,7 +490,7 @@
   <!-- ══════════════════════════════════════
        5. BAG RECOMMENDATIONS
   ══════════════════════════════════════ -->
-  <div class="section-card">
+  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
     <div class="section-label">Gear</div>
     <h2>Example Bags for This Setup</h2>
     <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">Example bags that match this setup based on real packing capacity and airline limits.</p>
@@ -554,11 +554,7 @@
 <script>
 
 // Products to show on this page — IDs must match entries in recommendations.js
-window.PAGE_RECOMMENDATION_IDS = [
-  "osprey-farpoint-40",
-  "peak-design-travel-backpack",
-  "tortuga-setout-35"
-];
+window.PAGE_RECOMMENDATION_IDS = [];
 window.PAGE_RECOMMENDATION_TYPE = "bag";
 window.PAGE_RECOMMENDATION_CONTAINER_ID = "bagRecommendations";
 
