@@ -3,117 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will a 45L Backpack Fit on EasyJet? (At the Carry-On Limit)</title>
-<meta name="description" content="A 45L backpack pushes EasyJet's large cabin bag limit of 56 × 45 × 25 cm. Some slim 45L bags fit — many won't. Paid upgrade required. Use the calculator to check your specific setup.">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Will a 45L backpack fit on EasyJet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends on the bag. A 45L backpack is at or beyond EasyJet's large cabin bag limit of 56 × 45 × 25 cm. Slim, compressible 45L travel packs may fit. But many 45L bags — especially when fully packed — will exceed the dimensions and risk being gate-checked."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is a 45L backpack too big for EasyJet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It's right at the limit. EasyJet's large cabin bag must fit within 56 × 45 × 25 cm. Some slim 45L travel backpacks fit these dimensions, but many standard 45L bags exceed them. Check your specific bag's measurements and pack conservatively."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you need to pay for a 45L backpack on EasyJet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — and even with the paid large cabin bag upgrade, your bag must fit within 56 × 45 × 25 cm. A 45L bag is well beyond the free small cabin bag limit. If the bag exceeds large cabin bag dimensions, it may need to be checked."
-      }
-    }
-  ]
-}
-</script>
+<title>Will It Fit — Travel Packing Calculator</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; }
-  .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
-  .hero { background: #fff; border-radius: 12px; padding: 32px 28px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #3b82f6; margin-bottom: 10px; }
-  .hero h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 18px; color: #1a1a1a; }
-  .answer-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; }
-  .answer-box .answer-yes { font-size: 1.05rem; font-weight: 700; color: #15803d; margin-bottom: 6px; }
-  .answer-box .answer-caveat { font-size: 0.88rem; color: #166534; line-height: 1.5; }
-  .answer-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
-  .meta-chip { font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: #f3f4f6; color: #374151; }
-  .meta-chip.blue { background: #dbeafe; color: #1e40af; }
-  .meta-chip.green { background: #dcfce7; color: #166534; }
-  .meta-chip.yellow { background: #fef9c3; color: #854d0e; }
-  .hero-note { font-size: 0.88rem; color: #555; line-height: 1.6; margin-bottom: 20px; }
-  .cta-primary { display: inline-block; font-size: 0.9rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; }
-  .cta-primary:hover { color: #1d4ed8; border-color: #1d4ed8; }
-  .section-card { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 8px; }
-  .section-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; }
-  .section-card p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 14px; }
-  .section-card p:last-child { margin-bottom: 0; }
-  #scenario:empty { display: none; }
-  .tool-intro { text-align: center; margin-bottom: 24px; }
-  .tool-intro h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
-  .tool-intro p { font-size: 0.88rem; color: #666; }
-  .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 560px) { .breakdown-grid { grid-template-columns: 1fr; } }
-  .breakdown-col { background: #f9fafb; border-radius: 10px; padding: 18px 20px; }
-  .breakdown-col h3 { font-size: 0.88rem; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
-  .breakdown-col.green h3 { color: #15803d; }
-  .breakdown-col.yellow h3 { color: #b45309; }
-  .breakdown-col ul { list-style: none; padding: 0; }
-  .breakdown-col li { font-size: 0.85rem; color: #444; padding: 5px 0; border-bottom: 1px solid #e5e7eb; line-height: 1.4; }
-  .breakdown-col li:last-child { border-bottom: none; }
-  .breakdown-col li::before { content: ""; }
-  .breakdown-col.green li::before { content: "✓  "; color: #16a34a; font-weight: 700; }
-  .breakdown-col.yellow li::before { content: "↑  "; color: #b45309; font-weight: 700; }
-  .spec-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
-  .spec-table tr { border-bottom: 1px solid #f3f4f6; }
-  .spec-table tr:last-child { border-bottom: none; }
-  .spec-table td { padding: 10px 0; font-size: 0.88rem; color: #444; vertical-align: top; }
-  .spec-table td:first-child { font-weight: 600; color: #1a1a1a; width: 46%; padding-right: 12px; }
-  .airline-footnote { font-size: 0.82rem; color: #888; margin-top: 14px; line-height: 1.5; font-style: italic; }
-  .bag-rec { padding: 16px 0; border-bottom: 1px solid #f3f4f6; transition: background 0.15s ease; }
-  .bag-rec:last-child { border-bottom: none; }
-  .bag-rec:hover { background: #fafafa; }
-  .bag-rec-name { font-size: 0.95rem; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
-  .bag-rec-size { display: inline-block; font-size: 0.75rem; font-weight: 600; background: #dbeafe; color: #1e40af; padding: 2px 9px; border-radius: 12px; margin-left: 6px; vertical-align: middle; }
-  .bag-rec-why { font-size: 0.85rem; color: #555; line-height: 1.5; margin-top: 4px; }
-  .bag-rec-link { text-decoration: none; color: inherit; display: block; }
-  .bag-rec-link:hover .bag-rec-name { text-decoration: underline; }
-  .bottom-line { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
-  .bottom-line h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
-  .bottom-line ul { list-style: none; padding: 0; }
-  .bottom-line li { font-size: 0.9rem; color: #d1d5db; padding: 7px 0; border-bottom: 1px solid #333; line-height: 1.5; }
-  .bottom-line li:last-child { border-bottom: none; }
-  .bottom-line li::before { content: "→  "; color: #60a5fa; font-weight: 700; }
-  .calc-wrap { margin-top: 4px; }
-  .form-card, .result-card { background: #f9fafb; border-radius: 10px; padding: 20px; margin-bottom: 14px; border: 1px solid #e5e7eb; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 24px 16px; }
+  h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { font-size: 0.85rem; color: #666; margin-bottom: 24px; }
+  .form-card, .result-card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
   .field { display: flex; flex-direction: column; gap: 4px; }
   .field.full { grid-column: 1 / -1; }
-  label.field-label { font-size: 0.75rem; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.03em; }
-  select, input[type=number] { padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.92rem; color: #1a1a1a; background: #fff; appearance: none; -webkit-appearance: none; }
+  label { font-size: 0.78rem; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.03em; }
+  select, input[type=number] {
+    padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px;
+    font-size: 0.92rem; color: #1a1a1a; background: #fafafa;
+    appearance: none; -webkit-appearance: none;
+  }
   select:focus, input:focus { outline: 2px solid #3b82f6; border-color: transparent; }
-  .calc-btn { width: 100%; padding: 12px; background: #1a1a1a; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 18px; letter-spacing: 0.02em; }
+  .calc-btn {
+    width: 100%; padding: 12px; background: #1a1a1a; color: #fff;
+    border: none; border-radius: 8px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; margin-top: 18px; letter-spacing: 0.02em;
+  }
   .calc-btn:hover { background: #333; }
   .toggle-row { display: flex; gap: 20px; padding: 6px 0; flex-wrap: wrap; }
   .toggle-label { font-size: 0.88rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: #333; display: flex; align-items: center; gap: 6px; cursor: pointer; }
   .toggle-label input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
   .pi-helper { font-size: 0.75rem; color: #9ca3af; line-height: 1.4; margin-top: 2px; }
-  .result-card { min-height: 60px; }
+  .result-card { min-height: 80px; }
   .result-card.hidden { opacity: 0; pointer-events: none; }
-  .result-headline { font-size: 1.4rem; font-weight: 800; margin-bottom: 2px; }
+  .result-headline { font-size: 1.5rem; font-weight: 800; margin-bottom: 2px; }
   .result-sub { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
   .state-green .result-headline { color: #16a34a; }
   .state-yellow .result-headline { color: #b45309; }
@@ -126,7 +46,7 @@
   .badge-gray   { background: #f3f4f6; color: #374151; }
   .badge-blue   { background: #dbeafe; color: #1e40af; }
   .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .metric { background: #fff; border-radius: 8px; padding: 10px 12px; border: 1px solid #e5e7eb; }
+  .metric { background: #f9f9f9; border-radius: 8px; padding: 10px 12px; }
   .metric-label { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
   .metric-value { font-size: 0.95rem; font-weight: 600; color: #1a1a1a; }
   .progress-bar-wrap { margin-bottom: 14px; }
@@ -149,9 +69,6 @@
   .pack-list ul { list-style: none; padding: 0; columns: 2; gap: 8px; }
   .pack-list li { font-size: 0.85rem; color: #333; margin-bottom: 4px; line-height: 1.4; padding-left: 12px; position: relative; }
   .pack-list li::before { content: "–"; position: absolute; left: 0; color: #999; }
-  .result-meaning { font-size: 0.9rem; color: #444; margin-bottom: 10px; }
-  .result-decision { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
-  .result-reason { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
   /* ── Packing Planner UI ──────────────────────────────────────────────── */
   .form-section-head { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin: 16px 0 8px; padding-top: 14px; border-top: 1px solid #f0f0f0; }
   .form-section-head:first-child { margin-top: 0; padding-top: 0; border-top: none; }
@@ -197,72 +114,17 @@
   .bag-range-desc { font-size: 0.78rem; color: #9ca3af; font-weight: 400; margin-left: 6px; }
   .calc-context-label { font-size: 0.82rem; color: #6b7280; font-weight: 500; margin-bottom: 12px; padding: 6px 10px; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb; }
 </style>
-<link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
-<div style="max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;align-items:center;gap:8px;">
-  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
-    <img src="/logo-icon.png" alt="PackFitter" style="height:44px;width:auto;">
-    <div style="line-height:1.15;">
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-0.01em;"><span style="color:#1a2540;">Pack</span><span style="color:#b8943e;">Fitter</span></div>
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.58rem;font-weight:600;color:#1a2540;letter-spacing:0.02em;">Packing Calculator &amp; Fit Tool</div>
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.6rem;font-weight:600;color:#b8943e;letter-spacing:0.04em;font-style:italic;">Plan. Pack. Fly.</div>
-      <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
-    </div>
-  </a>
-  <div style="margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;">
-    <a href="/" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Home</a>
-    <a href="/packing-guides.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Packing Guides</a>
-    <a href="/carry-on-bag-sizes.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Bag Sizes</a>
-    <a href="/airline-carry-on-rules.html" style="font-size:0.82rem;font-weight:700;color:#1a1a1a;text-decoration:none;">Airline Rules</a>
-  </div>
-</div>
-<div class="page-wrap">
 
-  <!-- ══════════════════════════════════════
-       1. ABOVE THE FOLD
-  ══════════════════════════════════════ -->
-  <div class="hero">
-    <div class="hero-eyebrow">EasyJet Cabin Bag Maximum — At the Overhead Limit</div>
-    <h1>Will a 45L Backpack Fit on EasyJet?</h1>
-
-    <div class="answer-box">
-      <div class="answer-yes">A 45L backpack is at EasyJet's large cabin bag limit (56 × 45 × 25 cm) — slim travel packs may fit, but many standard 45L bags will exceed it.</div>
-      <div class="answer-caveat">Even with the paid large cabin bag upgrade, your bag must fit within 56 × 45 × 25 cm. Many 45L backpacks push or exceed this limit when packed. Check your bag's actual dimensions.</div>
-    </div>
-
-    <div class="answer-meta">
-      <span class="meta-chip yellow">Placement: Large Cabin Bag (At Limit)</span>
-      <span class="meta-chip blue">Paid: Upgrade Required</span>
-      <span class="meta-chip green">Confidence: Moderate</span>
-    </div>
-    <p style="font-size:0.72rem; color:#9ca3af; margin-top:8px; letter-spacing:0.02em;">Last updated: March 2026</p>
-
-    <p class="hero-note">A 45L backpack pushes against EasyJet's large cabin bag limit of 56 × 45 × 25 cm. Some slim travel backpacks designed for carry-on compliance fit within these dimensions. But many standard 45L packs — especially when fully loaded — will exceed the width or depth limit. EasyJet measures bags at the gate, and oversized large cabin bags may be gate-checked. The large cabin bag tier requires a paid upgrade or eligible fare. Without it, you're limited to the free small cabin bag (45 × 36 × 20 cm), which a 45L bag is far too large for.</p>
-
-    <a href="#calculator" class="cta-primary">Check if this will actually fit your trip →</a>
-  </div>
-
-  <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
+<h1>Will It Fit?</h1>
+<p class="subtitle">Find out if your bag works for your trip</p>
 
 
-  <!-- ══════════════════════════════════════
-       TYPICAL SCENARIO (SEO ANCHOR BLOCK)
-  ══════════════════════════════════════ -->
-  <section class="section-card" id="scenario"></section>
 
-  <!-- ══════════════════════════════════════
-       2. CALCULATOR
-  ══════════════════════════════════════ -->
-  <section id="calculator" class="section-card">
-    <div class="tool-intro">
-      <h2>Will This Bag Actually Work for Your Trip?</h2>
-      <p>Your result depends on what you pack, not just the bag size.</p>
-    </div>
-
-    <div class="calc-wrap">
-      <div class="form-card">
-        <div class="form-section-head">Trip Setup</div>
+<div id="scenario" style="background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,0.08);"></div><style>#scenario:empty{display:none;}</style>
+<div class="form-card">
+  <div class="form-section-head">Trip Setup</div>
         <div class="form-grid">
           <div class="field">
             <label class="field-label" for="tripDays">Trip Length</label>
@@ -386,12 +248,11 @@
             </select>
           </div>
         </div>
-        <button class="calc-btn" onclick="runCalculation()">Calculate</button>
-        <p style="font-size:0.78rem;color:#777;margin-top:8px;">Based on real clothing volumes and packing behavior</p>
-      </div>
+  <button class="calc-btn" onclick="runCalculation()">Calculate</button>
+</div>
 
-      <!-- Result card pre-allocated -->
-      <div class="result-card hidden" id="resultCard">
+<!-- Result card pre-allocated -->
+<div class="result-card hidden" id="resultCard">
         <div id="finalDecision" class="final-decision"></div>
         <div id="calcContextLabel" class="calc-context-label" style="display:none"></div>
         <div class="req-volume-wrap">
@@ -413,146 +274,8 @@
         </div>
         <div class="airline-note" id="airlineNote"></div>
       </div>
-  </div>
-  </section>
 
-  <!-- ══════════════════════════════════════
-       3. QUICK BREAKDOWN
-  ══════════════════════════════════════ -->
-  <div class="section-card">
-    <div class="section-label">Packing Reality Check</div>
-    <h2>When Does a 45L Bag Work on EasyJet?</h2>
-    <div class="breakdown-grid">
-      <div class="breakdown-col green">
-        <h3>Works Well</h3>
-        <ul>
-          
-          <li>Shorter trips (1–5 days) with light or standard packing</li>
-          <li>Warm or mild climate</li>
-          <li>Slim carry-on-compliant designs built for 56 × 45 × 25 cm</li>
-          <li>Large cabin bag upgrade purchased</li>
-          <li>Compressible soft bags</li>
-          <li>No bulky extras (laptop, shoes, heavy layers)</li>
-        </ul>
-      </div>
-      <div class="breakdown-col yellow">
-        <h3>Becomes a Tight Fit</h3>
-        <ul>
-          
-          <li>7-day trips with heavy packing — volume exceeds usable capacity</li>
-          <li>Mild or cold weather with full gear</li>
-          <li>Laptop + shoes + bulky layers</li>
-          <li>Standard hiking-style 45L packs</li>
-          <li>Overpacked or rigid-frame bags</li>
-          <li>Bag exceeds 56 × 45 × 25 cm when loaded</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       4. AIRLINE DETAILS
-  ══════════════════════════════════════ -->
-  <div class="section-card">
-    <div class="section-label">EasyJet Bag Policy</div>
-    <h2>EasyJet Cabin Bag Rules</h2>
-    <table class="spec-table">
-      
-      <tr>
-        <td>Small cabin bag (free)</td>
-        <td>45 × 36 × 20 cm — must fit under the seat</td>
-      </tr>
-      <tr>
-        <td>Large cabin bag (paid)</td>
-        <td>56 × 45 × 25 cm (22 × 17.7 × 9.8 in) — requires paid upgrade or eligible fare</td>
-      </tr>
-      <tr>
-        <td>Weight limit</td>
-        <td>No strict weight limit — must be self-liftable into overhead bin</td>
-      </tr>
-      <tr>
-        <td>Enforcement</td>
-        <td>Bags measured at the gate — oversized large cabin bags will be gate-checked</td>
-      </tr>
-      <tr>
-        <td>Fit at 45L</td>
-        <td>At the limit — slim carry-on travel packs may fit; many standard 45L bags exceed it</td>
-      </tr>
-    </table>
-    <p class="airline-footnote">A 45L backpack is at the boundary of EasyJet's large cabin bag limit (56 × 45 × 25 cm). Slim, carry-on-compliant travel packs — especially those designed to maximize volume within airline dimensions — may fit. Standard hiking or travel 45L bags often exceed the width or depth limit when fully loaded. EasyJet measures bags at the gate. If yours doesn't fit, it will be gate-checked. Pre-purchase the large cabin bag add-on online — it's required regardless, and cheaper online.</p>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       5. BAG RECOMMENDATIONS
-  ══════════════════════════════════════ -->
-  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
-    <div class="section-label">Gear</div>
-    <h2>Example Bags for This Setup</h2>
-    <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">Example bags that match this setup based on real packing capacity and airline limits.</p>
-    <div id="bagRecommendations"></div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       6. BOTTOM LINE
-  ══════════════════════════════════════ -->
-  <div class="bottom-line">
-    <h2>Bottom Line</h2>
-    <ul>
-      
-      <li>A 45L bag is at or beyond EasyJet's large cabin bag limit — fit depends on specific bag design</li>
-      <li>Slim carry-on travel packs designed for airline compliance have the best chance</li>
-      <li>Standard hiking or fully loaded 45L bags will likely exceed 56 × 45 × 25 cm</li>
-      <li>Paid large cabin bag upgrade is required — and the bag must still fit the dimensions</li>
-      <li>Use the calculator to check whether your packed volume works for this setup</li>
-    </ul>
-  </div>
-
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Other bag sizes on EasyJet</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/easyjet-30l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 30L backpack fit on EasyJet? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/easyjet-35l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 35L backpack fit on EasyJet? →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/easyjet-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on EasyJet? →</a></p>
-  </div>
-
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Same size on other airlines</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/delta-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on Delta? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/united-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on United? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/american-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on American? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/southwest-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on Southwest? →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/ryanair-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on Ryanair? →</a></p>
-  </div>
-
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Packing guides</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-3-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 3-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-5-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 5-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-7-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 7-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
-  </div>
-
-  <div class="section-card" style="padding: 18px 28px; text-align:center;">
-    <p style="font-size:0.95rem; color:#374151; margin:0;">Not sure if it'll all fit? <a href="#calculator" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Try the packing calculator →</a></p>
-  </div>
-
-
-  <div class="section-card">
-    <div class="section-label">Notes</div>
-    <h2>How Accurate Is This?</h2>
-    <p>This tool reflects real-world packing conditions, not just theoretical bag sizes. Results are based on typical clothing volumes, packing efficiency, and common travel setups.</p>
-    <p>EasyJet's large cabin bag limit is 56 × 45 × 25 cm. A 45L backpack is right at this boundary. Some slim travel packs designed for carry-on compliance fit — many standard 45L bags don't. Final acceptance depends on packed external dimensions, and enforcement varies by airport.</p>
-    <p>This is a planning tool, not a guarantee. Airline staff make the final call — packed shape, bag rigidity, and gate-day enforcement all play a role.</p>
-  </div>
-
-</div><!-- /page-wrap -->
-
-<script src="/recommendations.js"></script>
 <script>
-
-window.PAGE_RECOMMENDATION_IDS = [];
-window.PAGE_RECOMMENDATION_TYPE = "bag";
-window.PAGE_RECOMMENDATION_CONTAINER_ID = "bagRecommendations";
-
 const BAGS = [
   // ── Carry-on backpack ────────────────────────────────────────────────────
   { name:"Carry-On Backpack",  category:"backpack",         capacity:25,  efficiency:0.85, effectiveCapacity:21.25, bagWeight:0.70, weightLimit:10, type:"topload"   },
@@ -852,17 +575,17 @@ function runEngine(bag, airline, personalItem, profile, tripDays, climate, laund
 
 
 
-const AIRLINE_NOTE_TEXT = "Packed external dimensions set fit, not the bag's listed capacity. Bag structure sets whether dimensions stay within the carry-on box.";
+const AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when the bag is packed. Packed geometry is the carry-on constraint at the gate.";
 
-const PAGE_CLUSTER          = "DOES_NOT_FIT";
+const PAGE_CLUSTER          = "COMPRESSION_REQUIRED";
 const PAGE_DEFAULT_BAG_TYPE = "backpack";
-const PAGE_DEFAULT_BAG_SIZE = 45;
-const PAGE_DEFAULT_AIRLINE  = "EasyJet";
+const PAGE_DEFAULT_BAG_SIZE = 35;
+const PAGE_DEFAULT_AIRLINE  = "Delta Air Lines";
 const PAGE_DEFAULT_TRIP_DAYS       = 7;
-const PAGE_DEFAULT_CLIMATE         = "MILD";
+const PAGE_DEFAULT_CLIMATE         = "COLD";
 const PAGE_DEFAULT_PROFILE         = "heavy";
 const PAGE_DEFAULT_LAUNDRY         = "NO";
-const PAGE_DEFAULT_INCLUDE_LAPTOP  = false;
+const PAGE_DEFAULT_INCLUDE_LAPTOP  = true;
 const PAGE_DEFAULT_INCLUDE_BULKY_LAYER = false;
 const PAGE_DEFAULT_EXTRA_SHOES     = 0;
 const PAGE_DEFAULT_SHOE_TYPE       = "standard";
@@ -1561,9 +1284,15 @@ function runCalculation() {
 populateSelects();
 applyPageDefaults();
 (function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
-renderRecommendations();
 renderScenarioBlock();
 runCalculation();
 </script>
+
+<div style="max-width:640px;margin:24px auto 0;padding:0 16px 40px;">
+  <p style="font-size:0.82rem;color:#888;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Airline-specific guides</p>
+  <p style="font-size:0.88rem;color:#555;margin-bottom:8px;">Delta carry-on: <a href="delta-35l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">35L on Delta →</a></p>
+  <p style="font-size:0.88rem;color:#555;margin-bottom:8px;">Delta carry-on: <a href="delta-40l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">40L on Delta →</a></p>
+  <p style="font-size:0.88rem;color:#555;">United carry-on: <a href="united-35l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">35L on United →</a></p>
+</div>
 </body>
 </html>

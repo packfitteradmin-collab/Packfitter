@@ -88,6 +88,7 @@
   .toggle-row { display: flex; gap: 20px; padding: 6px 0; flex-wrap: wrap; }
   .toggle-label { font-size: 0.88rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: #333; display: flex; align-items: center; gap: 6px; cursor: pointer; }
   .toggle-label input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
+  .pi-helper { font-size: 0.75rem; color: #9ca3af; line-height: 1.4; margin-top: 2px; }
   .result-card { min-height: 60px; }
   .result-card.hidden { opacity: 0; pointer-events: none; }
   .result-headline { font-size: 1.4rem; font-weight: 800; margin-bottom: 2px; }
@@ -159,7 +160,7 @@
   .opt-suggestions li { font-size: 0.88rem; color: #431407; padding: 4px 0; border-bottom: 1px solid #fed7aa; line-height: 1.4; }
   .opt-suggestions li:last-child { border-bottom: none; }
   .opt-suggestions li::before { content: "\2192  "; color: #ea580c; font-weight: 700; }
-  .pack-categories { border-top: 1px solid #eee; padding-top: 14px; margin-top: 2px; }
+  .pack-categories { border-top: 1px solid #eee; padding-top: 14px; margin-top: 14px; }
   .pack-categories-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 10px; }
   .pack-cat-row { display: flex; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; align-items: baseline; }
   .pack-cat-row:last-child { border-bottom: none; }
@@ -183,6 +184,18 @@
   .step-number { font-size: 1.5rem; font-weight: 800; color: #3b82f6; margin-bottom: 8px; }
   .step-title { font-size: 0.9rem; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
   .step-desc { font-size: 0.82rem; color: #666; line-height: 1.5; }
+
+  /* ── Size guide helper ── */
+  .size-guide-details { margin-top: 12px; margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; }
+  .size-guide-summary { font-size: 0.82rem; font-weight: 600; color: #555; padding: 9px 14px; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px; user-select: none; }
+  .size-guide-summary::-webkit-details-marker { display: none; }
+  .size-guide-summary::before { content: "\25B6"; font-size: 0.6rem; color: #9ca3af; transition: transform 0.15s ease; }
+  .size-guide-details[open] .size-guide-summary::before { transform: rotate(90deg); }
+  .size-guide-body { padding: 0 14px 12px; }
+  .size-guide-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid #e5e7eb; padding-top: 10px; }
+  .size-guide-list li { font-size: 0.83rem; color: #444; padding: 4px 0; border-bottom: 1px solid #f3f4f6; line-height: 1.4; }
+  .size-guide-list li:last-child { border-bottom: none; }
+  .size-guide-list li strong { color: #1a1a1a; font-weight: 600; }
 
   /* ── Bottom line ── */
   .bottom-line { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
@@ -321,24 +334,8 @@
             </select>
           </div>
         </div>
-        <div class="form-section-head">Traveler &amp; Bag</div>
+        <div class="form-section-head">Bag &amp; Airline</div>
         <div class="form-grid">
-          <div class="field">
-            <label class="field-label" for="clothingSize">Body Size</label>
-            <select id="clothingSize" onchange="runCalculation();">
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M" selected>M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label class="field-label">Personal Item</label>
-            <div class="toggle-row">
-              <label class="toggle-label"><input type="checkbox" id="personalItem" onchange="runCalculation();"> Use an additional personal item (adds ~25L of combined packing capacity)</label>
-            </div>
-          </div>
           <div class="field">
             <label class="field-label" for="bagType">Bag Type</label>
             <select id="bagType" onchange="populateBagSizes(); runCalculation();">
@@ -351,9 +348,41 @@
             <label class="field-label" for="bagSize">Bag Size</label>
             <select id="bagSize" onchange="runCalculation();"></select>
           </div>
+          <div class="field full">
+            <details class="size-guide-details" style="margin-top:0; margin-bottom:0;">
+              <summary class="size-guide-summary">What do these sizes mean?</summary>
+              <div class="size-guide-body">
+                <ul class="size-guide-list">
+                  <li><strong>Under 25L</strong> — Small personal item / daypack</li>
+                  <li><strong>30–35L</strong> — Light travel, short trips</li>
+                  <li><strong>35–45L</strong> — Standard carry-on range</li>
+                  <li><strong>45L+</strong> — Large carry-on or checked territory</li>
+                </ul>
+              </div>
+            </details>
+          </div>
           <div class="field">
             <label class="field-label" for="airline">Airline</label>
             <select id="airline" onchange="runCalculation();"></select>
+          </div>
+          <div class="field full">
+            <div class="toggle-row" style="padding-top:2px;">
+              <label class="toggle-label"><input type="checkbox" id="personalItem" onchange="runCalculation();"> Add personal item (up to ~25L)</label>
+            </div>
+            <div class="pi-helper">Use this if you plan to bring a second under-seat item like a daypack, tote, or laptop bag.</div>
+          </div>
+        </div>
+        <div class="form-section-head">Traveler</div>
+        <div class="form-grid">
+          <div class="field">
+            <label class="field-label" for="clothingSize">Clothing Size</label>
+            <select id="clothingSize" onchange="runCalculation();">
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
           </div>
         </div>
         <button class="calc-btn" onclick="runCalculation()">Calculate</button>
@@ -381,6 +410,18 @@
           <div class="pack-categories-title">What you are packing</div>
           <div id="packCategoryRows"></div>
         </div>
+        <details class="size-guide-details">
+          <summary class="size-guide-summary">What do these sizes mean?</summary>
+          <div class="size-guide-body">
+            <ul class="size-guide-list">
+              <li><strong>Under 25L</strong> — Small backpack / personal item range</li>
+              <li><strong>30–40L</strong> — Medium to large backpack (common for travel)</li>
+              <li><strong>40–45L</strong> — Typical carry-on size for most airlines</li>
+              <li><strong>45–50L</strong> — Large carry-on (borderline for some airlines)</li>
+              <li><strong>60L+</strong> — Checked bag range</li>
+            </ul>
+          </div>
+        </details>
         <div class="airline-note" id="airlineNote"></div>
       </div>
     </div>
@@ -437,7 +478,7 @@
     <div class="use-cases-grid">
       <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Will this bag fit my trip?</div>
       <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Do I need a personal item too?</div>
-      <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Is 40L enough for a 5-day trip?</div>
+      <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Is a 40L bag (typical carry-on size) enough for a 5-day trip?</div>
       <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Will this setup work on my airline?</div>
       <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">How much do extra shoes affect space?</div>
       <div style="font-size:0.88rem; color:#374151; padding:8px 0; border-bottom:1px solid #f3f4f6; line-height:1.4;">Will cold-weather gear push me to a checked bag?</div>
@@ -770,11 +811,11 @@ function runEngine(bag, airline, personalItem, profile, tripDays, climate, laund
   const suggestions = [];
   if (fitResult !== "FITS") {
     if (vtotal > adjustedCapacity) suggestions.push("Reduce packed clothing volume — this is the main constraint");
-    if (geometryConflict) suggestions.push("Too many rigid items — move tech or shoes to a personal item");
+    if (geometryConflict) suggestions.push(bag.category === "suitcase-checked" ? "Too many rigid items — consider reducing rigid gear or using packing cubes" : "Too many rigid items — move tech or shoes to a personal item");
     if (weightLimit > 0 && wTotal > weightLimit) suggestions.push("Weight exceeds airline limits — reduce heavy items");
     suggestions.push("Wear your bulkiest items during transit");
-    if (practicality === "VERY_LOW") suggestions.push("Consider shifting items to a personal item or stepping up to a larger carry-on");
-    if (bag.capacity < 50) suggestions.push("A larger carry-on bag could resolve the volume shortfall within " + airline.name + "'s carry-on limit");
+    if (practicality === "VERY_LOW") suggestions.push(bag.category === "suitcase-checked" ? "Consider a larger checked bag for this setup" : "Consider shifting items to a personal item or stepping up to a larger carry-on");
+    if (bag.capacity < 50 && bag.category !== "suitcase-checked") suggestions.push("A larger carry-on bag could resolve the volume shortfall within " + airline.name + "'s carry-on limit");
   }
 
   return {
@@ -853,41 +894,96 @@ function populateSelects() {
   });
 }
 
-function computeVolumeInterpretation(vtotal, carryOnSystemCapacity) {
-  if (vtotal <= carryOnSystemCapacity * 0.85) {
-    return { cls: "green", text: "Carry-on viable — this setup comfortably fits within your carry-on system." };
-  } else if (vtotal <= carryOnSystemCapacity) {
-    return { cls: "yellow", text: "Tight fit — this setup fits your carry-on system, but with very little extra room." };
+function computeVolumeInterpretation(vtotal, effectiveSystemCapacity, statedSystemCapacity, hasPersonalItem, bagType) {
+  var isChecked = bagType === "suitcase-checked";
+  if (vtotal <= effectiveSystemCapacity) {
+    return { cls: "green", text: isChecked ? "Fits this checked bag \u2014 plenty of room for this setup." : "Carry-on viable \u2014 this setup fits within your carry-on system." };
+  } else if (vtotal <= statedSystemCapacity) {
+    return { cls: "yellow", text: isChecked ? "Tight fit \u2014 this setup should fit with efficient packing." : "Tight fit \u2014 this setup should fit your carry-on system with efficient packing." };
+  } else if (vtotal <= statedSystemCapacity * 1.10) {
+    var tip = isChecked ? "Consider a larger checked bag." : (hasPersonalItem ? "Consider a larger carry-on." : "A personal item or larger carry-on may help.");
+    return { cls: "yellow", text: isChecked ? "Very tight \u2014 at the edge of this checked bag. " + tip : "Very tight \u2014 at the edge of your carry-on system. " + tip };
   } else {
-    return { cls: "red", text: "Checked bag recommended — this setup exceeds your carry-on system capacity and will require a larger checked bag." };
+    var rec = isChecked ? "A larger checked bag is recommended." : (hasPersonalItem ? "A larger carry-on or checked bag is recommended." : "A personal item, larger carry-on, or checked bag is recommended.");
+    return { cls: "red", text: isChecked ? "Exceeds this checked bag \u2014 " + rec : "Exceeds carry-on system \u2014 " + rec };
   }
 }
 
-function computeBagRanges(vtotal, personalItem) {
-  const PERSONAL_ITEM_CAPACITY = personalItem ? 25 : 0;
-  const carryOnOptions = [
+function computeBagRanges(vtotal, personalItem, bagType, selectedBagSize) {
+  var isChecked = bagType === "suitcase-checked";
+  var PI_CAP = personalItem ? 25 : 0;
+
+  var carryOnOptions = [
     { size: 25, ec: 21.25 }, { size: 30, ec: 25.50 }, { size: 35, ec: 29.75 },
     { size: 40, ec: 34.00 }, { size: 45, ec: 38.25 }
   ];
-  const checkedOptions = [
+  var checkedOptions = [
     { size: 60, ec: 54.00 }, { size: 70, ec: 63.00 },
     { size: 80, ec: 72.00 }, { size: 100, ec: 90.00 }
   ];
-  const minCarryOn    = carryOnOptions.find(function(b) { return (b.ec + PERSONAL_ITEM_CAPACITY) >= vtotal; });
-  const comfortCarryOn = carryOnOptions.find(function(b) { return (vtotal / (b.ec + PERSONAL_ITEM_CAPACITY)) <= 0.78; });
-  const minChecked    = checkedOptions.find(function(b) { return b.ec >= vtotal; });
 
-  if (minCarryOn) {
-    const bestFit = minCarryOn.size + "L";
-    var comfortSize = comfortCarryOn ? comfortCarryOn.size : null;
-    var comfortable = (comfortSize && comfortSize > minCarryOn.size) ? comfortSize + "L" : null;
-    var maxCarryOnSystem = 38.25 + PERSONAL_ITEM_CAPACITY;
-    var checked = (vtotal > maxCarryOnSystem * 0.73) ? (minChecked ? minChecked.size + "L" : "60L+") : null;
-    return { bestFit: bestFit, comfortable: comfortable, checked: checked };
-  } else {
-    var checkedSize = minChecked ? minChecked.size + "L" : "60L+";
-    return { bestFit: null, comfortable: null, checked: checkedSize };
+  // For checked suitcases, recommend within checked sizes only
+  if (isChecked) {
+    var minChecked = checkedOptions.find(function(b) { return b.ec >= vtotal; });
+    var comfortChecked = checkedOptions.find(function(b) { return (vtotal / b.ec) <= 0.78; });
+    var bestSize = minChecked ? minChecked.size + "L" : null;
+    var comfortSize = comfortChecked && minChecked && comfortChecked.size > minChecked.size ? comfortChecked.size + "L" : null;
+    return { bestFit: bestSize, bestFitNote: null, comfortable: comfortSize, checked: bestSize ? null : "100L+" };
   }
+
+  // Look up the selected bag's effective capacity
+  var selectedBag = carryOnOptions.find(function(b) { return b.size === selectedBagSize; });
+  var selectedEC = selectedBag ? selectedBag.ec : 0;
+
+  // Check if the selected bag works on its own
+  var selectedFitsBagOnly = selectedEC >= vtotal;
+  // Check if the selected bag works with a personal item
+  var selectedFitsWithPI = (selectedEC + 25) >= vtotal;
+
+  // Find smallest carry-on that works bag-only
+  var minBagOnly = carryOnOptions.find(function(b) { return b.ec >= vtotal; });
+  // Comfortable: usage <= 78% of system capacity
+  var comfortBagOnly = carryOnOptions.find(function(b) { return (vtotal / (b.ec + PI_CAP)) <= 0.78; });
+
+  // CASE A: Selected bag works on its own
+  if (selectedFitsBagOnly) {
+    var best = selectedBagSize + "L";
+    var comfort = comfortBagOnly && comfortBagOnly.size > selectedBagSize ? comfortBagOnly.size + "L" : null;
+    return { bestFit: best, bestFitNote: null, comfortable: comfort, checked: null };
+  }
+
+  // CASE B: Selected bag does NOT work alone, but a carry-on works bag-only
+  // Recommend the smallest carry-on that works (which is larger than selected)
+  if (minBagOnly) {
+    var best = minBagOnly.size + "L";
+    var comfort = comfortBagOnly && comfortBagOnly.size > minBagOnly.size ? comfortBagOnly.size + "L" : null;
+    return { bestFit: best, bestFitNote: null, comfortable: comfort, checked: null };
+  }
+
+  // CASE C: No carry-on works bag-only, but selected bag + PI works
+  // Recommend the selected bag with PI note — do not downgrade to a smaller bag
+  if (selectedFitsWithPI) {
+    var best = selectedBagSize + "L";
+    var note = personalItem ? null : "with a personal item";
+    var comfortWithPI = carryOnOptions.find(function(b) { return b.size >= selectedBagSize && (vtotal / (b.ec + 25)) <= 0.78; });
+    var comfort = comfortWithPI && comfortWithPI.size > selectedBagSize ? comfortWithPI.size + "L" : null;
+    return { bestFit: best, bestFitNote: note, comfortable: comfort, checked: null };
+  }
+
+  // CASE D: Selected bag + PI does not work, but a larger carry-on + PI does
+  var largerWithPI = carryOnOptions.find(function(b) { return b.size > selectedBagSize && (b.ec + 25) >= vtotal; });
+  if (largerWithPI) {
+    var best = largerWithPI.size + "L";
+    var note = personalItem ? null : "with a personal item";
+    var comfortWithPI = carryOnOptions.find(function(b) { return b.size > largerWithPI.size && (vtotal / (b.ec + 25)) <= 0.78; });
+    var comfort = comfortWithPI ? comfortWithPI.size + "L" : null;
+    return { bestFit: best, bestFitNote: note, comfortable: comfort, checked: null };
+  }
+
+  // CASE E: No carry-on solution works — checked bag required
+  var minChecked = checkedOptions.find(function(b) { return b.ec >= vtotal; });
+  var checkedSize = minChecked ? minChecked.size + "L" : "100L+";
+  return { bestFit: null, bestFitNote: null, comfortable: null, checked: checkedSize };
 }
 
 function buildOptimizationSuggestions(vtotal, inputs) {
@@ -1048,6 +1144,10 @@ function runCalculation() {
   const carryOnOnlyCapacity = r.adjustedCapacity - PERSONAL_ITEM_CAPACITY;
   const carryOnSystemCapacity = r.adjustedCapacity;
   const isFlexibleSize = bag.capacity <= 25;
+  const statedBagCapacity = bag.capacity;
+  const statedSystemCap = statedBagCapacity + PERSONAL_ITEM_CAPACITY;
+  const overflowBeyondEffective = Math.max(0, r.vtotal - carryOnOnlyCapacity);
+  const overflowBeyondStated = Math.max(0, r.vtotal - statedBagCapacity);
 
   const card = document.getElementById("resultCard");
   card.className = "result-card";
@@ -1061,38 +1161,122 @@ function runCalculation() {
     carryOnSystemCapacity: carryOnSystemCapacity
   };
 
-  // 0. Final Decision
+  // 0. Final Decision — new nuanced hierarchy
   var decisionEl = document.getElementById("finalDecision");
   var decisionClass = "";
   var decisionMain  = "";
   var decisionSub   = "";
-  if (isFlexibleSize) {
+
+  if (r.weightConflict) {
+    decisionClass = "red";
+    decisionMain  = "Weight limit exceeded";
+    decisionSub   = "Reduce heavy items to meet " + airline.name + " weight restrictions";
+  } else if (r.geometryConflict) {
+    decisionClass = "yellow";
+    decisionMain  = "Rigid items may cause fit issues";
+    decisionSub   = bagType === "suitcase-checked"
+      ? "Rigid gear takes up disproportionate space — consider reducing rigid items"
+      : "Consider moving rigid gear to a personal item";
+  } else if (bagType === "suitcase-checked") {
+    // Checked suitcase selected
+    if (r.vtotal <= carryOnOnlyCapacity) {
+      decisionClass = "green";
+      decisionMain  = "Fits this checked bag";
+      decisionSub   = "Plenty of room for this setup";
+    } else if (r.vtotal <= statedBagCapacity) {
+      decisionClass = "yellow";
+      decisionMain  = "Tight fit for this checked bag";
+      decisionSub   = "Should work with efficient packing";
+    } else {
+      decisionClass = "red";
+      decisionMain  = "Larger checked bag recommended";
+      decisionSub   = "This setup exceeds this bag\u2019s capacity";
+    }
+  } else if (isFlexibleSize && !personalItem) {
+    // 25L flexible classification (no PI)
     if (r.vtotal <= carryOnOnlyCapacity * 0.70) {
       decisionClass = "green";
       decisionMain  = "Typically works as a personal item";
       decisionSub   = "Light setup \u2014 should fit under most seats";
     } else if (r.vtotal <= carryOnOnlyCapacity) {
+      decisionClass = "green";
+      decisionMain  = "Should work as a personal item";
+      decisionSub   = "Fits within typical personal item range";
+    } else if (r.vtotal <= statedBagCapacity) {
       decisionClass = "yellow";
-      decisionMain  = "Personal item or compact carry-on";
+      decisionMain  = "Tight fit \u2014 personal item or compact carry-on";
       decisionSub   = "Depends on packed shape and airline enforcement";
     } else {
-      decisionClass = "red";
+      decisionClass = "yellow";
       decisionMain  = "May need overhead bin space";
-      decisionSub   = "Packed volume exceeds typical personal item range";
+      decisionSub   = "A slightly larger bag or personal item would help";
     }
-  } else if (r.vtotal <= carryOnOnlyCapacity) {
-    decisionClass = "green";
-    decisionMain  = "Should fit in carry-on";
-    decisionSub   = "Based on typical packing volume";
-  } else if (r.vtotal <= carryOnSystemCapacity) {
-    decisionClass = "yellow";
-    decisionMain  = "Should work with a personal item";
-    decisionSub   = "Carry-on + personal item likely needed";
+  } else if (personalItem) {
+    // Personal item already selected \u2014 evaluate the carry-on system
+    var piOverflow = Math.ceil(overflowBeyondEffective);
+    if (r.vtotal <= carryOnOnlyCapacity) {
+      decisionClass = "green";
+      decisionMain  = "Fits in carry-on alone";
+      decisionSub   = "Personal item provides extra overflow space";
+    } else if (r.vtotal <= carryOnOnlyCapacity + 25) {
+      decisionClass = "green";
+      decisionMain  = "Carry-on + personal item should work";
+      decisionSub   = "About " + piOverflow + "L of overflow to your personal item";
+    } else if (r.vtotal <= statedSystemCap) {
+      decisionClass = "yellow";
+      decisionMain  = "Carry-on + personal item \u2014 tight fit";
+      decisionSub   = "About " + piOverflow + "L to your personal item \u2014 tight but workable";
+    } else if (r.vtotal <= statedSystemCap * 1.08) {
+      decisionClass = "yellow";
+      decisionMain  = "Carry-on + personal item \u2014 very tight";
+      decisionSub   = "At the limit of this carry-on system";
+    } else if (statedBagCapacity < 45) {
+      decisionClass = "red";
+      decisionMain  = "Larger carry-on recommended";
+      decisionSub   = "Even with a personal item, this bag is too small for this setup";
+    } else {
+      decisionClass = "red";
+      decisionMain  = "Checked bag likely required";
+      decisionSub   = "This setup exceeds practical carry-on capacity";
+    }
   } else {
-    decisionClass = "red";
-    decisionMain  = "Checked bag likely required";
-    decisionSub   = "Exceeds typical carry-on capacity";
+    // No personal item selected \u2014 evaluate bag alone, then suggest alternatives
+    var piWouldSolve = r.vtotal <= statedBagCapacity + 25;
+    if (r.vtotal <= carryOnOnlyCapacity) {
+      decisionClass = "green";
+      decisionMain  = "Should fit in carry-on";
+      decisionSub   = "Based on typical packing volume";
+    } else if (r.vtotal <= carryOnOnlyCapacity * 1.15) {
+      decisionClass = "yellow";
+      decisionMain  = "Tight fit";
+      decisionSub   = "Should work with efficient packing";
+    } else if (r.vtotal <= statedBagCapacity) {
+      decisionClass = "yellow";
+      decisionMain  = "Very tight fit";
+      decisionSub   = "Requires careful packing \u2014 at the limit of this bag";
+    } else if (r.vtotal <= statedBagCapacity * 1.08) {
+      decisionClass = "yellow";
+      decisionMain  = "At the edge of this bag";
+      decisionSub   = "A personal item or slightly larger bag would help";
+    } else if (piWouldSolve) {
+      decisionClass = "yellow";
+      decisionMain  = "Better with a personal item";
+      decisionSub   = "You need about " + Math.ceil(overflowBeyondStated) + "L beyond this bag";
+    } else if (r.vtotal <= 45) {
+      decisionClass = "red";
+      decisionMain  = "Larger carry-on recommended";
+      decisionSub   = "This bag is too small for this packing setup";
+    } else if (r.vtotal <= 70) {
+      decisionClass = "red";
+      decisionMain  = "Larger carry-on + personal item recommended";
+      decisionSub   = "This setup needs more space than a single carry-on provides";
+    } else {
+      decisionClass = "red";
+      decisionMain  = "Checked bag likely required";
+      decisionSub   = "Exceeds practical carry-on system capacity";
+    }
   }
+
   if (decisionEl) {
     decisionEl.className = "final-decision " + decisionClass;
     decisionEl.innerHTML = "<div><div class=\"decision-main\">" + decisionMain + "</div><div class=\"decision-sub\">" + decisionSub + "</div></div>";
@@ -1114,41 +1298,67 @@ function runCalculation() {
   driversEl.style.display = "";
 
   // 4. Interpretation
-  const interp   = computeVolumeInterpretation(r.vtotal, carryOnSystemCapacity);
+  const interp   = computeVolumeInterpretation(r.vtotal, carryOnSystemCapacity, statedSystemCap, personalItem, bagType);
   const interpEl = document.getElementById("volInterp");
   interpEl.className   = "vol-interp " + interp.cls;
   interpEl.textContent = interp.text;
 
-  // 5. Personal Item Note + 25L Flexible Classification
+  // 5. Personal Item Note — dynamic overflow messaging
   const piNoteEl = document.getElementById("personalItemNote");
-  if (isFlexibleSize) {
-    var flexMsg = "";
+  var piMsg = "";
+
+  if (bagType === "suitcase-checked") {
+    // No personal item messaging for checked suitcases
+    piMsg = "";
+  } else if (isFlexibleSize && !personalItem) {
+    // 25L flexible placement guidance
     if (r.placement === "FLEX_PERSONAL") {
-      flexMsg = "<strong>Placement: Typically a personal item.</strong> This setup is light enough that a " + bag.capacity + "L bag should fit under most airline seats. Final acceptance depends on packed shape and airline discretion.";
+      piMsg = "<strong>Placement: Typically a personal item.</strong> This setup is light enough that a " + statedBagCapacity + "L bag should fit under most airline seats.";
     } else {
-      flexMsg = "<strong>Placement: Personal item or small carry-on.</strong> This " + bag.capacity + "L bag is packed to a point where it may not fit under all seats. It could work as either a personal item or a compact carry-on, depending on bag structure and airline enforcement.";
+      piMsg = "<strong>Placement: Personal item or small carry-on.</strong> This " + statedBagCapacity + "L bag is packed to a point where it may not fit under all seats. It could work as either a personal item or a compact carry-on.";
     }
-    piNoteEl.innerHTML = flexMsg;
-    piNoteEl.style.display = "";
-  } else if (personalItem && r.vtotal > carryOnOnlyCapacity && r.vtotal <= carryOnSystemCapacity) {
-    piNoteEl.innerHTML     = "<strong>This setup works with a carry-on + personal item.</strong> Your packing volume exceeds the carry-on bag alone, but fits when using the personal item for overflow. Without a personal item, this setup would require a checked bag.";
-    piNoteEl.style.display = "";
-  } else if (personalItem && r.vtotal > carryOnSystemCapacity) {
-    piNoteEl.innerHTML     = "<strong>This setup requires a checked bag.</strong> Even with a personal item, this packing setup exceeds carry-on capacity.";
-    piNoteEl.style.display = "";
   } else if (personalItem) {
-    piNoteEl.innerHTML     = "<strong>Using carry-on + personal item.</strong> This setup fits in the carry-on alone \u2014 the personal item provides extra overflow space.";
+    // PI selected — evaluate the system
+    var piOverflowNote = Math.ceil(overflowBeyondEffective);
+    if (r.vtotal <= carryOnOnlyCapacity) {
+      piMsg = "<strong>Using carry-on + personal item.</strong> This setup fits in the carry-on alone \u2014 the personal item provides extra overflow space.";
+    } else if (r.vtotal <= statedSystemCap) {
+      if (piOverflowNote <= 10) {
+        piMsg = "<strong>Your carry-on + personal item setup should work.</strong> About " + piOverflowNote + "L of overflow goes to your personal item \u2014 a small personal item should be enough.";
+      } else {
+        piMsg = "<strong>Your carry-on + personal item setup should work.</strong> About " + piOverflowNote + "L of overflow goes to your personal item.";
+      }
+    } else if (statedBagCapacity < 45) {
+      piMsg = "<strong>Even with a personal item, this setup needs more space.</strong> Consider a larger carry-on to bring the overflow down to a manageable level.";
+    } else {
+      piMsg = "<strong>Even with a personal item, this setup exceeds practical carry-on capacity.</strong> A checked bag is the more realistic option for this trip.";
+    }
+  } else if (r.vtotal > statedBagCapacity) {
+    // No PI, bag alone doesn't fit — suggest PI if it would help
+    var overflowNote = Math.ceil(overflowBeyondStated);
+    if (r.vtotal <= statedBagCapacity + 25) {
+      if (overflowNote <= 8) {
+        piMsg = "<strong>A personal item would help.</strong> You need about " + overflowNote + "L beyond this bag \u2014 a small personal item should handle it.";
+      } else {
+        piMsg = "<strong>A personal item would help.</strong> You need about " + overflowNote + "L beyond this bag.";
+      }
+    }
+  }
+
+  if (piMsg) {
+    piNoteEl.innerHTML = piMsg;
     piNoteEl.style.display = "";
   } else {
     piNoteEl.style.display = "none";
   }
 
   // 6. Bag Recommendations
-  const ranges   = computeBagRanges(r.vtotal, personalItem);
+  const ranges   = computeBagRanges(r.vtotal, personalItem, bagType, bagSize);
   const rangesEl = document.getElementById("bagRanges");
   let rangesHTML = '<div class="bag-ranges-title">Bag Size Recommendations</div>';
   if (ranges.bestFit) {
-    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Best Fit</span><span class="bag-range-value green">' + ranges.bestFit + '<span class="bag-range-desc">(fits comfortably without overpacking)</span></span></div>';
+    var bestDesc = ranges.bestFitNote ? "(fits " + ranges.bestFitNote + ")" : "(fits comfortably without overpacking)";
+    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Best Fit</span><span class="bag-range-value green">' + ranges.bestFit + '<span class="bag-range-desc">' + bestDesc + '</span></span></div>';
   }
   if (ranges.comfortable) {
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Comfortable</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
@@ -1180,10 +1390,26 @@ function runCalculation() {
     packBox.style.display = "";
   } else { packBox.style.display = "none"; }
 
-  // 9. Airline Note
+  // 9. Airline Note — softened to match nuanced decision hierarchy
   const airlineNoteEl = document.getElementById("airlineNote");
-  if (r.vtotal > carryOnSystemCapacity || bagType === "suitcase-checked") {
-    airlineNoteEl.innerHTML = "<strong>Checked bag required.</strong> This setup exceeds standard carry-on capacity. A checked bag (60L+) is the realistic option.";
+  if (bagType === "suitcase-checked") {
+    airlineNoteEl.innerHTML = "<strong>Checked suitcase selected.</strong> Check your airline\u2019s checked bag size and weight limits before travel.";
+  } else if (r.vtotal > statedSystemCap * 1.10) {
+    var aName = airline ? airline.name : "your airline";
+    var exceedNote = "<strong>This setup likely exceeds carry-on capacity for " + aName + ".</strong> A checked bag or larger carry-on system is recommended.";
+    if (airline) {
+      exceedNote += "<br>" + airline.name + " carry-on limit: " + airline.coL + " \u00d7 " + airline.coW + " \u00d7 " + airline.coH + " in (" + airline.coLcm + " \u00d7 " + airline.coWcm + " \u00d7 " + airline.coHcm + " cm).";
+      if (airline.weightKg > 0) { exceedNote += " Weight limit: " + airline.weightKg + " kg (" + airline.weightLbs + " lbs)."; }
+    }
+    airlineNoteEl.innerHTML = exceedNote;
+  } else if (r.vtotal > statedSystemCap) {
+    var tightAirline = airline ? airline.name : "your airline";
+    var tightNote = "<strong>At the limit of carry-on capacity.</strong> This is a very tight fit for " + tightAirline + "\u2019s carry-on system.";
+    if (airline) {
+      tightNote += "<br>" + airline.name + " carry-on limit: " + airline.coL + " \u00d7 " + airline.coW + " \u00d7 " + airline.coH + " in (" + airline.coLcm + " \u00d7 " + airline.coWcm + " \u00d7 " + airline.coHcm + " cm).";
+      if (airline.weightKg > 0) { tightNote += " Weight limit: " + airline.weightKg + " kg (" + airline.weightLbs + " lbs)."; }
+    }
+    airlineNoteEl.innerHTML = tightNote;
   } else if (isFlexibleSize && airline) {
     const a = airline;
     let flexNote = "<strong>" + a.name + "</strong>: A " + bag.capacity + "L bag is at the boundary between personal item and carry-on. ";
