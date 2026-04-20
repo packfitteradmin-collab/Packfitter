@@ -59,6 +59,7 @@
   .meta-chip { font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: #f3f4f6; color: #374151; }
   .meta-chip.blue { background: #dbeafe; color: #1e40af; }
   .meta-chip.green { background: #dcfce7; color: #166534; }
+  .meta-chip.red { background: #fee2e2; color: #991b1b; }
   .meta-chip.yellow { background: #fef9c3; color: #854d0e; }
   .hero-note { font-size: 0.88rem; color: #555; line-height: 1.6; margin-bottom: 20px; }
   .cta-primary { display: inline-block; font-size: 0.9rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; }
@@ -235,17 +236,18 @@
     <h1>Will a 25L Backpack Fit on EasyJet?</h1>
 
     <div class="answer-box">
-      <div class="answer-yes">A 25L backpack typically qualifies as EasyJet's free small cabin bag — but bulkier or fully packed designs may push the depth limit.</div>
+      <div class="answer-yes">At 25L, this backpack fits comfortably inside EasyJet’s 56 × 45 × 25 cm (22 × 17.7 × 9.8 in) cabin bag allowance, with room to spare on every dimension.</div>
       <div class="answer-caveat">EasyJet's small cabin bag must fit within 45 × 36 × 20 cm, including handles and wheels. At 25L, most soft-structured bags pass. Rigid or overpacked bags may not.</div>
     </div>
 
     <div class="answer-meta">
-      <span class="meta-chip blue">Placement: Small Cabin Bag (Free)</span>
-      <span class="meta-chip green">Confidence: High</span>
+      <span class="meta-chip blue">Placement: Carry-On (Overhead Bin)</span>
+      <span class="meta-chip yellow">Confidence: High</span>
+      <span class="meta-chip green">Best For: 1–3 Day Trips</span>
     </div>
     <p style="font-size:0.72rem; color:#9ca3af; margin-top:8px; letter-spacing:0.02em;">Last updated: March 2026</p>
 
-    <p class="hero-note">EasyJet includes one free small cabin bag on all fares — it must fit within 45 × 36 × 20 cm and go under the seat in front of you. A 25L backpack is well within this size range for most designs. Slim, soft-structured bags pass easily. Overpacked or rigid 25L bags — especially those with external pockets that increase depth beyond 20 cm — may be flagged at the gate. If your bag doesn't qualify as a small cabin bag, you'll need to purchase a large cabin bag add-on for overhead bin access (56 × 45 × 25 cm).</p>
+    <p class="hero-note">EasyJet includes one free small cabin bag on all fares — it must fit within 45 × 36 × 20 cm and go under the seat in front of you. A 25L backpack is well within this size range for most designs. Slim, soft-structured bags pass easily. Overpacked or rigid 25L bags — especially those with external pockets that increase depth beyond 20 cm — may be flagged at the gate. If your bag doesn't qualify as a small cabin bag, you'll need to purchase a large cabin bag add-on for overhead bin access (56 × 45 × 25 cm (22 × 17.7 × 9.8 in)). Carry-on allowances vary by ticket type — stricter size limits are commonly enforced.</p>
 
     <a href="#calculator" class="cta-primary">Check if this will actually fit your trip →</a>
   </div>
@@ -358,14 +360,16 @@
           </div>
           <div class="field full">
             <details class="size-guide-details" style="margin-top:0; margin-bottom:0;">
-              <summary class="size-guide-summary">What do these sizes mean?</summary>
+              <summary class="size-guide-summary">What do these bag sizes mean? (in liters)</summary>
               <div class="size-guide-body">
                 <ul class="size-guide-list">
-                  <li><strong>Under 25L</strong> — Small personal item / daypack</li>
-                  <li><strong>30–35L</strong> — Light travel, short trips</li>
-                  <li><strong>35–45L</strong> — Standard carry-on range</li>
-                  <li><strong>45L+</strong> — Large carry-on or checked territory</li>
+                  <li><strong>Under 25L</strong> — Personal item range (fits under the seat)</li>
+                  <li><strong>30–35L</strong> — Small carry-on for short trips</li>
+                  <li><strong>35–40L</strong> — Standard carry-on range (most common)</li>
+                  <li><strong>40–45L</strong> — Borderline carry-on (packing-dependent)</li>
+                  <li><strong>45L+</strong> — Exceeds carry-on limits in most cases</li>
                 </ul>
+                <p style="font-size:0.85rem; color:#555; margin-top:10px; line-height:1.6;">See full guide: <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters</a></p>
               </div>
             </details>
           </div>
@@ -422,6 +426,24 @@
       </div>
   </div>
   </section>
+
+  <!-- PERSONAL ITEM SUGGESTION (dynamic: shown when r.vtotal > 45L) -->
+  <div class="personal-item-suggestion" style="display:none;">
+    <h3>Stay Carry-On Only</h3>
+    <p>This setup exceeds typical carry-on capacity. Add a personal item or check a bag.</p>
+    <div id="personalItemRecommendations"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       5. BAG RECOMMENDATIONS
+  ══════════════════════════════════════ -->
+  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
+    <div class="section-label">Gear</div>
+    <h2>Recommended Bags for This Trip</h2>
+    <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">These recommendations are based on real bag dimensions compared to EasyJet carry-on limits, plus how well each bag fits a 25-liter packing load.</p>
+    <div id="bagRecommendations"></div>
+  </div>
+
 
   <!-- ══════════════════════════════════════
        3. QUICK BREAKDOWN
@@ -489,17 +511,6 @@
     <p class="airline-footnote">EasyJet's small cabin bag limit of 45 × 36 × 20 cm is relatively generous among European budget carriers but still has a strict 20 cm depth requirement. At 25L, the depth dimension is the most common failure point — a slim bag at 18–20 cm depth passes, while an overpacked bag at 22+ cm depth may not. EasyJet uses sizing frames at the gate and enforcement varies by airport.</p>
     <p style="font-size:0.88rem; margin-top:12px;">For a full breakdown of size limits, boarding rules, and exceptions, see our <a href="/airline-carry-on-rules.html" style="color:#3b82f6; font-weight:600;">airline carry-on rules guide →</a></p>
   </div>
-
-  <!-- ══════════════════════════════════════
-       5. BAG RECOMMENDATIONS
-  ══════════════════════════════════════ -->
-  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
-    <div class="section-label">Gear</div>
-    <h2>Example Bags for This Setup</h2>
-    <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">Example bags that match this setup based on real packing capacity and airline limits.</p>
-    <div id="bagRecommendations"></div>
-  </div>
-
   <!-- ══════════════════════════════════════
        6. BOTTOM LINE
   ══════════════════════════════════════ -->
@@ -536,7 +547,8 @@
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-3-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 3-day trip →</a></p>
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-5-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 5-day trip →</a></p>
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-7-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 7-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
+    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-14-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 14-day trip →</a></p>
   </div>
 
   <div class="section-card" style="padding: 18px 28px; text-align:center;">
@@ -555,7 +567,8 @@
 
 </div><!-- /page-wrap -->
 
-<script src="/recommendations.js"></script>
+<script src="recommendations.js"></script>
+<script src="bag-recommendation.js"></script>
 <script>
 
 window.PAGE_RECOMMENDATION_IDS = [];
@@ -1248,11 +1261,15 @@ function updateLaundryDefault() {
   // No-op: laundry is set only by PAGE_DEFAULT_LAUNDRY or user interaction.
 }
 
-function updateCalcContext(bagSize, airlineName) {
+function updateCalcContext(bagType, bagSize, airlineName) {
   var el = document.getElementById("calcContextLabel");
   if (!el) return;
   var cleanName = airlineName.replace(" Airlines", "").replace(" Air Lines", "");
-  el.textContent = "Current setup: " + bagSize + "L backpack on " + cleanName;
+  var bagLabel = "bag";
+  if (bagType === "backpack") bagLabel = "backpack";
+  else if (bagType === "suitcase-carryon") bagLabel = "carry-on suitcase";
+  else if (bagType === "suitcase-checked") bagLabel = "checked suitcase";
+  el.textContent = "Current setup: " + bagSize + "L " + bagLabel + " on " + cleanName;
   el.style.display = "";
 }
 
@@ -1263,7 +1280,7 @@ function runCalculation() {
   const airlineEl         = document.getElementById("airline");
   const airline           = AIRLINES[airlineEl ? airlineEl.value : 1] || AIRLINES[1];
   const personalItem      = document.getElementById("personalItem").checked;
-  updateCalcContext(bagSize, airline ? airline.name : "Your Airline");
+  updateCalcContext(bagType, bagSize, airline ? airline.name : "Your Airline");
   const profile           = document.getElementById("profile").value;
   const tripDays          = parseInt(document.getElementById("tripDays").value) || 5;
   const climate           = document.getElementById("climate").value;
@@ -1498,7 +1515,7 @@ function runCalculation() {
   let rangesHTML = '<div class="bag-ranges-title">Bag Size Recommendations</div>';
   if (ranges.bestFit) {
     var bestMatchesSelected = (ranges.bestFit === bagSize + "L");
-    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : "Best Fit";
+    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : "Smallest Bag That Should Work";
     var bestDesc = ranges.bestFitNote ? "(fits " + ranges.bestFitNote + ")" : "(fits comfortably without overpacking)";
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">' + bestLabel + '</span><span class="bag-range-value green">' + ranges.bestFit + '<span class="bag-range-desc">' + bestDesc + '</span></span></div>';
     // Smaller Option row — only on bag-specific pages when a smaller carry-on also works
@@ -1515,7 +1532,7 @@ function runCalculation() {
     }
   }
   if (ranges.comfortable) {
-    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Comfortable</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
+    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">More Comfortable Option</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
   }
   if (!ranges.bestFit) {
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Minimum Carry-On</span><span class="bag-range-value orange">Exceeds 45L<span class="bag-range-desc">(no standard carry-on fits)</span></span></div>';
@@ -1583,6 +1600,26 @@ function runCalculation() {
     noteHTML += "<br>" + a.note + ". " + AIRLINE_NOTE_TEXT;
     airlineNoteEl.innerHTML = noteHTML;
   }
+
+  // Dynamic personal-item suggestion — triggered when packing load exceeds ~45L
+  window.AIRLINES = AIRLINES;
+  var __piBlock = document.querySelector(".personal-item-suggestion");
+  if (__piBlock) {
+    if (r.vtotal > 45) {
+      __piBlock.style.display = "";
+      if (!__piBlock.dataset.rendered) {
+        window.recommendBags({
+          airlineName: airline ? airline.name : "Your Airline",
+          requiredCapacity: 20,
+          bagFamily: "personal_item_backpack",
+          containerId: "personalItemRecommendations"
+        });
+        __piBlock.dataset.rendered = "1";
+      }
+    } else {
+      __piBlock.style.display = "none";
+    }
+  }
 }
 
 populateSelects();
@@ -1591,6 +1628,15 @@ applyPageDefaults();
 renderRecommendations();
 renderScenarioBlock();
 runCalculation();
+
+// Bag recommendations engine — page-locked to this airline + capacity for SEO consistency
+window.AIRLINES = AIRLINES;
+window.recommendBags({
+  airlineName: "EasyJet",
+  requiredCapacity: 25,
+  bagFamily: "carry_on_backpack",
+  containerId: "bagRecommendations"
+});
 </script>
 
 <div style="text-align:center; font-size:0.75rem; color:#9ca3af; margin-top:40px; padding-bottom:20px;">

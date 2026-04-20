@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will a 40L Backpack Fit on United? (Carry-On Guide + Calculator)</title>
-<meta name="description" content="A 40L backpack typically fits within United's carry-on size limits, provided it stays within 22 × 14 × 9 inches. Run the calculator to check your specific packing setup.">
+<meta name="description" content="A 40L backpack fits as carry-on on United in most cases — designed for 22 × 14 × 9 inches, but overpacking or rigid bags can exceed limits. Use the calculator.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,6 +59,8 @@
   .meta-chip { font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: #f3f4f6; color: #374151; }
   .meta-chip.blue { background: #dbeafe; color: #1e40af; }
   .meta-chip.yellow { background: #fef9c3; color: #854d0e; }
+  .meta-chip.green { background: #dcfce7; color: #166534; }
+  .meta-chip.red { background: #fee2e2; color: #991b1b; }
   .hero-note { font-size: 0.88rem; color: #555; line-height: 1.6; margin-bottom: 20px; }
   .cta-primary { display: inline-block; font-size: 0.9rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; }
   .cta-primary:hover { color: #1d4ed8; border-color: #1d4ed8; }
@@ -231,18 +233,19 @@
     <h1>Will a 40L Backpack Fit on United?</h1>
 
     <div class="answer-box">
-      <div class="answer-yes">United's carry-on limit is 22 × 14 × 9 inches; a 40L backpack fits within that range for most packing setups.</div>
+      <div class="answer-yes">United Airlines enforces a 22 × 14 × 9 inch carry-on limit — a 40L backpack typically fits, but it’s right at the edge on all three dimensions.</div>
       <div class="answer-caveat">Whether it stays within the limit comes down to what's inside — a full tech kit, extra shoes, and bulky layers are the real variables.</div>
     </div>
 
     <div class="answer-meta">
       <span class="meta-chip blue">Placement: Carry-On (Overhead Bin)</span>
       <span class="meta-chip yellow">Confidence: Medium–High</span>
+      <span class="meta-chip green">Best For: 3–7 Day Trips</span>
     </div>
 
     <p style="font-size:0.72rem; color:#9ca3af; margin-top:8px; letter-spacing:0.02em;">Last updated: March 2026</p>
 
-    <p class="hero-note">United's published carry-on limit is 22 × 14 × 9 inches. Whether a 40L backpack stays within that range comes down to the bag's external dimensions when fully packed — stated volume alone doesn't tell you whether it fits.</p>
+    <p class="hero-note">United's published carry-on limit is 22 × 14 × 9 inches. Whether a 40L backpack stays within that range comes down to the bag's external dimensions when fully packed — stated volume alone doesn't tell you whether it fits. Overpacking or rigid bags can exceed the depth limit, but carry-on-specific 40L travel backpacks handle it well.</p>
 
     <a href="#calculator" class="cta-primary">Check if this will actually fit your trip →</a>
   </div>
@@ -352,14 +355,16 @@
           </div>
           <div class="field full">
             <details class="size-guide-details" style="margin-top:0; margin-bottom:0;">
-              <summary class="size-guide-summary">What do these sizes mean?</summary>
+              <summary class="size-guide-summary">What do these bag sizes mean? (in liters)</summary>
               <div class="size-guide-body">
                 <ul class="size-guide-list">
-                  <li><strong>Under 25L</strong> — Small personal item / daypack</li>
-                  <li><strong>30–35L</strong> — Light travel, short trips</li>
-                  <li><strong>35–45L</strong> — Standard carry-on range</li>
-                  <li><strong>45L+</strong> — Large carry-on or checked territory</li>
+                  <li><strong>Under 25L</strong> — Personal item range (fits under the seat)</li>
+                  <li><strong>30–35L</strong> — Small carry-on for short trips</li>
+                  <li><strong>35–40L</strong> — Standard carry-on range (most common)</li>
+                  <li><strong>40–45L</strong> — Borderline carry-on (packing-dependent)</li>
+                  <li><strong>45L+</strong> — Exceeds carry-on limits in most cases</li>
                 </ul>
+                <p style="font-size:0.85rem; color:#555; margin-top:10px; line-height:1.6;">See full guide: <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters</a></p>
               </div>
             </details>
           </div>
@@ -415,6 +420,52 @@
   </div>
   </section>
 
+  <!-- PERSONAL ITEM SUGGESTION (dynamic: shown when r.vtotal > 45L) -->
+  <div class="personal-item-suggestion" style="display:none;">
+    <h3>Stay Carry-On Only</h3>
+    <p>This setup exceeds typical carry-on capacity. Add a personal item or check a bag.</p>
+    <div id="personalItemRecommendations"></div>
+  </div>
+
+  <!-- 5. RECOMMENDATIONS -->
+  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
+    <div class="section-label">Gear</div>
+    <h2>Recommended Bags for This Trip</h2>
+    <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">These recommendations are based on real bag dimensions compared to United carry-on limits, plus how well each bag fits a 40-liter packing load.</p>
+    <div id="bagRecommendations"></div>
+  </div>
+
+
+  <!-- 3. QUICK BREAKDOWN -->
+  <div class="section-card">
+    <div class="section-label">Packing Reality Check</div>
+    <h2>When Does a 40L Bag Work Well on United?</h2>
+    <div class="breakdown-grid">
+      <div class="breakdown-col green">
+        <h3>Works Well</h3>
+        <ul>
+          <li>3–7 day trips</li>
+          <li>Light to standard packing</li>
+          <li>Mild or warm climate</li>
+          <li>No bulky winter gear</li>
+          <li>No extra shoes packed</li>
+          <li>Laundry available</li>
+        </ul>
+      </div>
+      <div class="breakdown-col yellow">
+        <h3>Becomes a Tight Fit</h3>
+        <ul>
+          <li>Cold weather packing</li>
+          <li>Heavy packing style</li>
+          <li>Extra shoes in the bag</li>
+          <li>Laptop and full tech kit</li>
+          <li>No laundry, longer trip</li>
+          <li>Larger clothing sizes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- 4. AIRLINE RULES -->
   <div class="section-card">
     <div class="section-label">Published Carry-On Limits</div>
@@ -429,15 +480,6 @@
     <p class="airline-footnote">A 40L backpack typically fits within United's published carry-on dimensions of 22 × 14 × 9 inches, provided it is not packed beyond the point where the bag's external measurements change. Overpacking changes the bag's external shape on soft-sided bags — nominal dimensions no longer reflect actual packed size. On some fares, overhead bin access may not be included; the personal item must fit under the seat, and under-seat depth varies by aircraft and row.</p>
     <p style="font-size:0.88rem; margin-top:12px;">For a full breakdown of size limits, boarding rules, and exceptions, see our <a href="/airline-carry-on-rules.html" style="color:#3b82f6; font-weight:600;">airline carry-on rules guide →</a></p>
   </div>
-
-  <!-- 5. RECOMMENDATIONS -->
-  <div class="section-card" id="bagRecommendationsCard" style="display:none;">
-    <div class="section-label">Gear</div>
-    <h2>Example Bags for This Setup</h2>
-    <p style="font-size:0.85rem;color:#888;margin-bottom:16px;margin-top:-6px;">Example bags that match this setup based on real packing capacity and airline limits.</p>
-    <div id="bagRecommendations"></div>
-  </div>
-
   <!-- 6. BOTTOM LINE -->
   <div class="bottom-line">
     <h2>Bottom Line</h2>
@@ -471,7 +513,8 @@
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-3-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 3-day trip →</a></p>
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-5-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 5-day trip →</a></p>
     <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-7-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 7-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
+    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-14-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 14-day trip →</a></p>
   </div>
 
   <div class="section-card" style="padding: 18px 28px; text-align:center;">
@@ -490,7 +533,8 @@
 
 </div><!-- /page-wrap -->
 
-<script src="/recommendations.js"></script>
+<script src="recommendations.js"></script>
+<script src="bag-recommendation.js"></script>
 <script>
 
 window.PAGE_RECOMMENDATION_IDS = [];
@@ -1166,11 +1210,15 @@ function updateLaundryDefault() {
   // No-op: laundry is set only by PAGE_DEFAULT_LAUNDRY or user interaction.
 }
 
-function updateCalcContext(bagSize, airlineName) {
+function updateCalcContext(bagType, bagSize, airlineName) {
   var el = document.getElementById("calcContextLabel");
   if (!el) return;
   var cleanName = airlineName.replace(" Airlines", "").replace(" Air Lines", "");
-  el.textContent = "Current setup: " + bagSize + "L backpack on " + cleanName;
+  var bagLabel = "bag";
+  if (bagType === "backpack") bagLabel = "backpack";
+  else if (bagType === "suitcase-carryon") bagLabel = "carry-on suitcase";
+  else if (bagType === "suitcase-checked") bagLabel = "checked suitcase";
+  el.textContent = "Current setup: " + bagSize + "L " + bagLabel + " on " + cleanName;
   el.style.display = "";
 }
 
@@ -1181,7 +1229,7 @@ function runCalculation() {
   const airlineEl         = document.getElementById("airline");
   const airline           = AIRLINES[airlineEl ? airlineEl.value : 1] || AIRLINES[1];
   const personalItem      = document.getElementById("personalItem").checked;
-  updateCalcContext(bagSize, airline ? airline.name : "Your Airline");
+  updateCalcContext(bagType, bagSize, airline ? airline.name : "Your Airline");
   const profile           = document.getElementById("profile").value;
   const tripDays          = parseInt(document.getElementById("tripDays").value) || 5;
   const climate           = document.getElementById("climate").value;
@@ -1416,7 +1464,7 @@ function runCalculation() {
   let rangesHTML = '<div class="bag-ranges-title">Bag Size Recommendations</div>';
   if (ranges.bestFit) {
     var bestMatchesSelected = (ranges.bestFit === bagSize + "L");
-    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : "Best Fit";
+    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : "Smallest Bag That Should Work";
     var bestDesc = ranges.bestFitNote ? "(fits " + ranges.bestFitNote + ")" : "(fits comfortably without overpacking)";
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">' + bestLabel + '</span><span class="bag-range-value green">' + ranges.bestFit + '<span class="bag-range-desc">' + bestDesc + '</span></span></div>';
     // Smaller Option row — only on bag-specific pages when a smaller carry-on also works
@@ -1433,7 +1481,7 @@ function runCalculation() {
     }
   }
   if (ranges.comfortable) {
-    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Comfortable</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
+    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">More Comfortable Option</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
   }
   if (!ranges.bestFit) {
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Minimum Carry-On</span><span class="bag-range-value orange">Exceeds 45L<span class="bag-range-desc">(no standard carry-on fits)</span></span></div>';
@@ -1501,6 +1549,26 @@ function runCalculation() {
     noteHTML += "<br>" + a.note + ". " + AIRLINE_NOTE_TEXT;
     airlineNoteEl.innerHTML = noteHTML;
   }
+
+  // Dynamic personal-item suggestion — triggered when packing load exceeds ~45L
+  window.AIRLINES = AIRLINES;
+  var __piBlock = document.querySelector(".personal-item-suggestion");
+  if (__piBlock) {
+    if (r.vtotal > 45) {
+      __piBlock.style.display = "";
+      if (!__piBlock.dataset.rendered) {
+        window.recommendBags({
+          airlineName: airline ? airline.name : "Your Airline",
+          requiredCapacity: 20,
+          bagFamily: "personal_item_backpack",
+          containerId: "personalItemRecommendations"
+        });
+        __piBlock.dataset.rendered = "1";
+      }
+    } else {
+      __piBlock.style.display = "none";
+    }
+  }
 }
 
 populateSelects();
@@ -1509,6 +1577,15 @@ applyPageDefaults();
 renderRecommendations();
 renderScenarioBlock();
 runCalculation();
+
+// Bag recommendations engine — page-locked to this airline + capacity for SEO consistency
+window.AIRLINES = AIRLINES;
+window.recommendBags({
+  airlineName: "United Airlines",
+  requiredCapacity: 40,
+  bagFamily: "carry_on_backpack",
+  containerId: "bagRecommendations"
+});
 </script>
 
 <div style="text-align:center; font-size:0.75rem; color:#9ca3af; margin-top:40px; padding-bottom:20px;">
