@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airline Carry-On Size Rules (2026 Guide)</title>
+<meta name="description" content="Compare airline carry-on size limits, dimensions, and weight rules. See what bags actually fit across major airlines.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the standard carry-on size limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most U.S. airlines allow carry-ons up to 22 × 14 × 9 inches (56 × 36 × 23 cm). Southwest is more generous at 24 × 16 × 10 inches. European budget airlines like Ryanair and EasyJet have smaller limits and often charge for overhead bin access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do airlines enforce carry-on weight limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most U.S. airlines (Delta, United, American, Southwest) do not enforce weight limits on carry-ons. European and international airlines are stricter — Ryanair enforces 10 kg, EasyJet enforces 15 kg, and some Asian carriers enforce 7 kg limits at the gate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a personal item and a carry-on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A personal item fits under the seat in front of you (typically up to about 25L). A carry-on goes in the overhead bin (typically 25–45L). Most airlines allow one of each, but budget carriers often charge extra for overhead bin carry-ons."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  .hero { background: #fff; border-radius: 12px; padding: 32px 28px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #3b82f6; margin-bottom: 10px; }
+  .hero h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 18px; color: #1a1a1a; }
+  .hero-intro { font-size: 0.95rem; color: #444; line-height: 1.65; margin-bottom: 0; }
+  .section-card { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 8px; }
+  .section-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; }
+  .section-card p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 14px; }
+  .section-card p:last-child { margin-bottom: 0; }
+
+  /* Guide grid */
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .guide-grid { grid-template-columns: 1fr; } }
+  .guide-card { background: #f9fafb; border-radius: 10px; padding: 20px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+  .guide-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
+  .guide-card-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
+  .guide-card-title { font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+  .guide-card-range { font-size: 0.95rem; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+  .guide-card-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin-bottom: 14px; flex-grow: 1; }
+  .guide-card-link { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; align-self: flex-start; }
+  .guide-card-link:hover { color: #1d4ed8; border-color: #1d4ed8; }
+  .guide-card-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .guide-card-links a { font-size: 0.78rem; font-weight: 600; color: #3b82f6; text-decoration: none; background: #eff6ff; padding: 4px 10px; border-radius: 6px; border: 1px solid #bfdbfe; transition: background 0.15s ease; }
+  .guide-card-links a:hover { background: #dbeafe; }
+
+  /* Scaling list */
+  .scaling-list { list-style: none; padding: 0; }
+  .scaling-list li { font-size: 0.9rem; color: #444; padding: 7px 0; border-bottom: 1px solid #f3f4f6; line-height: 1.5; }
+  .scaling-list li:last-child { border-bottom: none; }
+  .scaling-list li::before { content: "↑  "; color: #b45309; font-weight: 700; }
+
+  /* Specs table */
+  .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .specs-table th { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; text-align: left; padding: 8px 10px; border-bottom: 2px solid #e5e7eb; }
+  .specs-table td { font-size: 0.88rem; color: #333; padding: 10px; border-bottom: 1px solid #f3f4f6; }
+  .specs-table tr:last-child td { border-bottom: none; }
+  .specs-table .airline-name { font-weight: 700; color: #1a1a1a; }
+  .specs-table .weight-none { color: #9ca3af; }
+
+  /* Placement tiers */
+  .placement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .placement-grid { grid-template-columns: 1fr; } }
+  .placement-card { background: #f9fafb; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; }
+  .placement-card-label { font-size: 0.78rem; font-weight: 600; color: #6b7280; margin-bottom: 4px; }
+  .placement-card-value { font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+  .placement-card-desc { font-size: 0.8rem; color: #888; }
+
+  /* Bottom line */
+  .bottom-line { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+  .bottom-line h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .bottom-line ul { list-style: none; padding: 0; }
+  .bottom-line li { font-size: 0.9rem; color: #d1d5db; padding: 7px 0; border-bottom: 1px solid #333; line-height: 1.5; }
+  .bottom-line li:last-child { border-bottom: none; }
+  .bottom-line li::before { content: "→  "; color: #60a5fa; font-weight: 700; }
+</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<div style="max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;align-items:center;gap:8px;">
+  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+    <img src="/logo-icon.png" alt="PackFitter" style="height:44px;width:auto;">
+    <div style="line-height:1.15;">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-0.01em;"><span style="color:#1a2540;">Pack</span><span style="color:#b8943e;">Fitter</span></div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.58rem;font-weight:600;color:#1a2540;letter-spacing:0.02em;">Packing Calculator &amp; Fit Tool</div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.6rem;font-weight:600;color:#b8943e;letter-spacing:0.04em;font-style:italic;">Plan. Pack. Fly.</div>
+      <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
+    </div>
+  </a>
+  <div style="margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;">
+    <a href="/" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Home</a>
+    <a href="/packing-guides.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Packing Guides</a>
+    <a href="/carry-on-bag-sizes.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Bag Sizes</a>
+    <a href="/airline-carry-on-rules.html" style="font-size:0.82rem;font-weight:700;color:#1a1a1a;text-decoration:none;">Airline Rules</a>
+  </div>
+</div>
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════════
+       1. HERO
+  ══════════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-eyebrow">Airline Carry-On Rules</div>
+    <h1>Airline Carry-On Size Rules</h1>
+    <p style="font-size:0.72rem; color:#9ca3af; margin-top:8px; letter-spacing:0.02em;">Last updated: April 2026</p>
+    <p class="hero-intro">Carry-on size limits vary by airline — and enforcement is inconsistent. This page compares airline rules for dimensions, weight, and personal items so you can choose the right bag and avoid surprises at the gate.</p>
+  </div>
+
+  <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
+
+
+  <!-- ══════════════════════════════════════
+       2. HOW TO USE THIS PAGE
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Overview</div>
+    <h2>Why Airline Rules Matter — and How They Differ</h2>
+    <p>A bag that fits on Southwest might not fit on Ryanair. Airlines differ on four things that determine whether your bag boards with you: carry-on dimensions, personal item rules, weight limits, and booking-based restrictions. Some airlines include overhead bin access in every booking; others charge extra for it or restrict carry-ons to priority boarding.</p>
+    <p>Each airline below links to bag-specific fit pages that answer one question: will this bag actually fit on this airline? Every page includes a calculator that checks your exact packing setup against that airline's published limits.</p>
+    <p>Not sure how liters translate to airline size? See our <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters guide</a>.</p>
+    <p>Want to check if your bag will actually fit? Use the <a href="/" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">packing calculator</a> to test your setup.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       3. QUICK REFERENCE TABLE
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Quick reference</div>
+    <h2>Carry-On Dimensions at a Glance</h2>
+
+    <table class="specs-table">
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Carry-on limit</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="airline-name">Delta Air Lines</td><td>22 × 14 × 9 in</td><td class="weight-none">No limit</td></tr>
+        <tr><td class="airline-name">United Airlines</td><td>22 × 14 × 9 in</td><td class="weight-none">No limit</td></tr>
+        <tr><td class="airline-name">American Airlines</td><td>22 × 14 × 9 in</td><td class="weight-none">No limit</td></tr>
+        <tr><td class="airline-name">Southwest Airlines</td><td>24 × 16 × 10 in</td><td class="weight-none">No limit</td></tr>
+        <tr><td class="airline-name">Ryanair</td><td>21.7 × 15.7 × 7.9 in</td><td>10 kg (22 lbs)</td></tr>
+        <tr><td class="airline-name">EasyJet</td><td>22 × 17.7 × 9.8 in</td><td>15 kg (33 lbs)</td></tr>
+      </tbody>
+    </table>
+
+    <p>Major U.S. airlines typically do not publish or enforce standard carry-on weight limits on most domestic routes. European budget airlines are more likely to enforce both dimensions and weight, including at the gate.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       4. AIRLINE GRID
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Major U.S. airlines</div>
+    <h2>Choose Your Airline</h2>
+
+    <div class="guide-grid">
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">U.S. domestic</div>
+        <div class="guide-card-title">Delta Air Lines</div>
+        <div class="guide-card-range">22 × 14 × 9 in — no weight limit</div>
+        <div class="guide-card-desc">Standard U.S. carry-on box. No published weight limit on most domestic routes. Works for many travel bags up to about 40L, with some 45L bags also fitting depending on shape and packing. Enforcement is generally less strict on many domestic routes.</div>
+        <div class="guide-card-links">
+          <a href="/delta-25l-backpack.html">25L</a>
+          <a href="/delta-30l-backpack.html">30L</a>
+          <a href="/delta-35l-backpack.html">35L</a>
+          <a href="/delta-40l-backpack.html">40L</a>
+          <a href="/delta-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">U.S. domestic</div>
+        <div class="guide-card-title">United Airlines</div>
+        <div class="guide-card-range">22 × 14 × 9 in — no weight limit</div>
+        <div class="guide-card-desc">Same dimensions as Delta. No published weight limit on most domestic routes. Enforcement is often less strict on domestic routes, though international travel can be less forgiving.</div>
+        <div class="guide-card-links">
+          <a href="/united-25l-backpack.html">25L</a>
+          <a href="/united-30l-backpack.html">30L</a>
+          <a href="/united-35l-backpack.html">35L</a>
+          <a href="/united-40l-backpack.html">40L</a>
+          <a href="/united-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">U.S. domestic</div>
+        <div class="guide-card-title">American Airlines</div>
+        <div class="guide-card-range">22 × 14 × 9 in — no weight limit</div>
+        <div class="guide-card-desc">Standard U.S. dimensions. No weight limit. Same carry-on box as Delta and United.</div>
+        <div class="guide-card-links">
+          <a href="/american-25l-backpack.html">25L</a>
+          <a href="/american-30l-backpack.html">30L</a>
+          <a href="/american-35l-backpack.html">35L</a>
+          <a href="/american-40l-backpack.html">40L</a>
+          <a href="/american-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">U.S. domestic</div>
+        <div class="guide-card-title">Southwest Airlines</div>
+        <div class="guide-card-range">24 × 16 × 10 in — no weight limit</div>
+        <div class="guide-card-desc">One of the most generous carry-on boxes among major U.S. airlines — 2 inches wider and 1 inch taller than the standard U.S. limit. No published weight limit. Two checked bags fly free.</div>
+        <div class="guide-card-links">
+          <a href="/southwest-25l-backpack.html">25L</a>
+          <a href="/southwest-30l-backpack.html">30L</a>
+          <a href="/southwest-35l-backpack.html">35L</a>
+          <a href="/southwest-40l-backpack.html">40L</a>
+          <a href="/southwest-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">Budget / stricter airlines</div>
+    <h2>European Budget Carriers</h2>
+
+    <div class="guide-grid">
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">European budget</div>
+        <div class="guide-card-title">Ryanair</div>
+        <div class="guide-card-range">21.7 × 15.7 × 7.9 in — 10 kg</div>
+        <div class="guide-card-desc">Strict dimensions and weight limit. Priority boarding required for overhead bin access. Without priority, only a small personal item (40 × 20 × 25 cm) is free.</div>
+        <div class="guide-card-links">
+          <a href="/ryanair-25l-backpack.html">25L</a>
+          <a href="/ryanair-30l-backpack.html">30L</a>
+          <a href="/ryanair-35l-backpack.html">35L</a>
+          <a href="/ryanair-40l-backpack.html">40L</a>
+          <a href="/ryanair-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card-eyebrow">European budget</div>
+        <div class="guide-card-title">EasyJet</div>
+        <div class="guide-card-range">22 × 17.7 × 9.8 in — 15 kg</div>
+        <div class="guide-card-desc">Wider box than Ryanair with a more generous 15 kg weight limit. Large cabin bag requires a reserved overhead bin fee. Free personal item fits under the seat.</div>
+        <div class="guide-card-links">
+          <a href="/easyjet-25l-backpack.html">25L</a>
+          <a href="/easyjet-30l-backpack.html">30L</a>
+          <a href="/easyjet-35l-backpack.html">35L</a>
+          <a href="/easyjet-40l-backpack.html">40L</a>
+          <a href="/easyjet-45l-backpack.html">45L</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       5. WHAT ACTUALLY DECIDES IF A BAG FITS
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Key factors</div>
+    <h2>What Actually Decides if a Bag Fits</h2>
+
+    <ul class="scaling-list">
+      <li>Listed liters are not enough — a 40L bag with slim dimensions can fit where a bulky 35L won't</li>
+      <li>Packed shape matters more than empty shape — a half-full bag is smaller than its rated capacity, and rigid items like laptops prevent compression</li>
+      <li>Rigid items change fit — shoes, water bottles, and hard-shell cases create fixed-volume zones that don't compress into a sizer</li>
+      <li>Personal item and carry-on are different things — most airlines allow one of each, but the size and placement rules are not the same</li>
+      <li>Your booking type can affect what's allowed — some airlines may restrict overhead bin access unless you've purchased priority boarding or an upgrade, even if your bag fits the dimension limit</li>
+    </ul>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       6. PERSONAL ITEM VS CARRY-ON
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Bag placement</div>
+    <h2>Personal Item vs Carry-On</h2>
+
+    <div class="placement-grid">
+      <div class="placement-card">
+        <div class="placement-card-label">Personal item</div>
+        <div class="placement-card-value">Under-seat</div>
+        <div class="placement-card-desc">Free on most airlines, ~15–25L</div>
+      </div>
+      <div class="placement-card">
+        <div class="placement-card-label">Carry-on</div>
+        <div class="placement-card-value">Overhead bin</div>
+        <div class="placement-card-desc">Free or paid, ~25–45L</div>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;">On U.S. carriers, most fares include both a personal item and an overhead bin carry-on at no extra charge. On European budget airlines, the overhead bin is often a paid add-on — your included cabin bag may only be a small under-seat personal item. This means a 25L bag can go either way: it fits under most seats, but on budget airlines it may be the only bag you're allowed without paying extra.</p>
+    <p>The distinction matters because a bag that technically fits the carry-on sizer doesn't help if your booking doesn't include overhead access. Check both dimensions and your booking details before you fly.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       7. HOW TO USE THE AIRLINE PAGES
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">How to use</div>
+    <h2>How to Use the Airline Fit Pages</h2>
+    <p>Pick your airline from the cards above, then choose the bag size closest to yours. Each airline page includes a calculator that lets you set your exact trip length, climate, packing style, and extras like a laptop or extra shoes. It'll tell you how much of the bag your setup uses and whether it fits that airline's carry-on limits.</p>
+    <p>If you're not sure what bag size you need yet, start with a packing guide for your trip length — then come back here to check airline fit.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       8. INTERNAL LINKS
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Related guides</div>
+    <h2>Start Here if You Need Help Choosing</h2>
+    <p><a href="/packing-guides.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Packing guides by trip length →</a></p>
+    <p><a href="/carry-on-bag-sizes.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Carry-on bag sizes guide (25L–45L) →</a></p>
+
+    <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#9ca3af; margin-bottom:6px; margin-top:18px;">Popular airline pages</p>
+    <p><a href="/delta-35l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 35L backpack fit on Delta? →</a></p>
+    <p><a href="/ryanair-25l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 25L backpack fit on Ryanair? →</a></p>
+    <p><a href="/united-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on United? →</a></p>
+    <p><a href="/southwest-45l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 45L backpack fit on Southwest? →</a></p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       BOTTOM LINE
+  ══════════════════════════════════════ -->
+  <div class="bottom-line">
+    <h2>Bottom Line</h2>
+    <ul>
+      <li>Airline rules vary — the same bag can pass on one airline and get gate-checked on another</li>
+      <li>Dimensions and packed shape matter more than listed liters</li>
+      <li>U.S. carriers rarely enforce weight; budget European airlines enforce everything</li>
+      <li>Budget airline fares may not include overhead bin access — check before you fly</li>
+      <li>Use the airline-specific pages above to check your exact bag and packing setup</li>
+    </ul>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       NOTES
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Notes</div>
+    <h2>About These Pages</h2>
+    <p>Carry-on dimensions are based on published airline policies as of early 2026. Airlines update their policies periodically — always verify with your airline's website before traveling. Weight limits listed are for the carry-on bag only and may not include personal items.</p>
+    <p>The fit calculator on each airline page uses real bag measurements, a 15% dead-space factor, and airline-specific dimension limits. Packed external dimensions determine final fit — not the bag's liter rating. Final acceptance depends on gate agent discretion.</p>
+    <h3>How This Information Is Built</h3>
+    <p>This page is based on aggregated airline policies, real-world packing constraints, and typical travel scenarios.</p>
+    <p>This content reflects real-world packing scenarios and typical airline policies. Airline enforcement may vary based on aircraft, route, and boarding conditions.</p>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<div style="text-align:center; font-size:0.75rem; color:#9ca3af; margin-top:40px; padding-bottom:20px;">
+  <a href="/privacy-policy.html" style="color:#9ca3af; text-decoration:none; margin:0 6px;">Privacy Policy</a> ·
+  <a href="/terms-of-service.html" style="color:#9ca3af; text-decoration:none; margin:0 6px;">Terms</a> ·
+  <a href="/affiliate-disclosure.html" style="color:#9ca3af; text-decoration:none; margin:0 6px;">Affiliate Disclosure</a>
+</div>
+</body>
+</html>
