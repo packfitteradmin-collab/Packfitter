@@ -95,6 +95,46 @@
   .bottom-line li { font-size: 0.9rem; color: #d1d5db; padding: 7px 0; border-bottom: 1px solid #333; line-height: 1.5; }
   .bottom-line li:last-child { border-bottom: none; }
   .bottom-line li::before { content: "→  "; color: #60a5fa; font-weight: 700; }
+
+  /* ── Global Nav ── */
+  .pf-nav-bar { display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px; }
+  .pf-nav-bar > a { font-size:0.82rem; font-weight:600; color:#555; text-decoration:none; white-space:nowrap; }
+  .pf-nav-bar > a.pf-nav-active { font-weight:700; color:#1a1a1a; }
+  .pf-nav-dd { position:relative; }
+  .pf-nav-dd > button {
+    font-family:inherit; font-size:0.82rem; font-weight:600; color:#555;
+    background:none; border:none; cursor:pointer; padding:0; white-space:nowrap;
+  }
+  .pf-nav-dd > button.pf-nav-active { font-weight:700; color:#1a1a1a; }
+  .pf-nav-dd > button::after { content:" ▾"; font-size:0.65rem; }
+  .pf-nav-dd .pf-dd-menu {
+    display:none; position:absolute; top:100%; left:0; z-index:100;
+    background:#fff; border:1px solid #e5e7eb; border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:6px 0; min-width:180px; margin-top:6px;
+  }
+  .pf-nav-dd.pf-dd-open .pf-dd-menu { display:block; }
+  .pf-dd-menu a {
+    display:block; padding:8px 16px; font-size:0.82rem; color:#555;
+    text-decoration:none; white-space:nowrap;
+  }
+  .pf-dd-menu a:hover { background:#f3f4f6; color:#1a1a1a; }
+  .pf-dd-menu a.pf-dd-active { font-weight:700; color:#1a1a1a; }
+  .pf-hamburger {
+    display:none; background:none; border:none; cursor:pointer;
+    font-size:1.4rem; color:#1a2540; padding:0; line-height:1;
+  }
+  @media (max-width: 640px) {
+    .pf-hamburger { display:block; }
+    .pf-nav-bar { display:none; flex-direction:column; align-items:flex-start; width:100%;
+      gap:0; background:#fff; border:1px solid #e5e7eb; border-radius:8px;
+      padding:8px 0; margin-top:8px; }
+    .pf-nav-bar.pf-nav-open { display:flex; }
+    .pf-nav-bar > a, .pf-nav-dd > button { padding:10px 18px; width:100%; text-align:left; }
+    .pf-nav-dd { width:100%; }
+    .pf-dd-menu { position:static; box-shadow:none; border:none; border-radius:0;
+      padding:0 0 0 18px; margin-top:0; }
+    .pf-dd-menu a { padding:8px 18px; }
+  }
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
 </head>
@@ -109,11 +149,30 @@
       <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
     </div>
   </a>
-  <div style="margin-left:auto;display:flex;gap:14px;flex-wrap:wrap;">
-    <a href="/" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Home</a>
-    <a href="/packing-guides.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Packing Guides</a>
-    <a href="/carry-on-bag-sizes.html" style="font-size:0.82rem;font-weight:600;color:#555;text-decoration:none;">Bag Sizes</a>
-    <a href="/airline-carry-on-rules.html" style="font-size:0.82rem;font-weight:700;color:#1a1a1a;text-decoration:none;">Airline Rules</a>
+  <button class="pf-hamburger" aria-label="Menu">&#9776;</button>
+  <div class="pf-nav-bar">
+    <a href="/">Home</a>
+    <a href="/packing-guides.html">Packing Guides</a>
+    <div class="pf-nav-dd">
+      <button>Trip Length</button>
+      <div class="pf-dd-menu">
+        <a href="/what-to-pack-3-day-trip.html">3-Day Trip</a>
+        <a href="/what-to-pack-5-day-trip.html">5-Day Trip</a>
+        <a href="/what-to-pack-7-day-trip.html">7-Day Trip</a>
+        <a href="/what-to-pack-10-day-trip.html">10-Day Trip</a>
+        <a href="/what-to-pack-14-day-trip.html">14-Day Trip</a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Destinations</button>
+      <div class="pf-dd-menu">
+        <a href="/what-to-pack-for-europe.html">Europe</a>
+        <a href="/what-to-pack-for-cruise.html">Cruise</a>
+        <a href="/what-to-pack-for-alaska-cruise.html">Alaska Cruise</a>
+      </div>
+    </div>
+    <a href="/airline-carry-on-rules.html" class="pf-nav-active">Airline Rules</a>
+    <a href="/carry-on-bag-sizes.html">Bag Sizes</a>
   </div>
 </div>
 <div class="page-wrap">
