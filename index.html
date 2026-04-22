@@ -206,6 +206,34 @@
   .bottom-line li:last-child { border-bottom: none; }
   .bottom-line li::before { content: "\2192  "; color: #60a5fa; font-weight: 700; }
 
+  /* ── Homepage guide grids ── */
+  .hp-link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 6px; }
+  @media (max-width: 560px) { .hp-link-grid { grid-template-columns: 1fr; } }
+  .hp-link-card { background: #f9fafb; border-radius: 10px; padding: 16px 18px; border: 1px solid #e5e7eb; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+  .hp-link-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
+  .hp-link-card-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 4px; }
+  .hp-link-card a { font-size: 0.92rem; font-weight: 700; color: #1a1a1a; text-decoration: none; display: block; margin-bottom: 4px; }
+  .hp-link-card a:hover { color: #3b82f6; }
+  .hp-link-card-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.45; }
+  .hp-airline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .hp-airline-grid { grid-template-columns: 1fr; } }
+  .hp-airline-card { background: #f9fafb; border-radius: 10px; padding: 14px 16px; border: 1px solid #e5e7eb; transition: border-color 0.15s ease; }
+  .hp-airline-card:hover { border-color: #93c5fd; }
+  .hp-airline-type { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
+  .hp-airline-card a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; display: block; padding: 3px 0; border-bottom: 1px solid #f3f4f6; }
+  .hp-airline-card a:last-child { border-bottom: none; }
+  .hp-airline-card a:hover { color: #1d4ed8; }
+  .hp-tool-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .hp-tool-grid { grid-template-columns: 1fr; } }
+  .hp-tool-card { background: #f9fafb; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; transition: border-color 0.15s ease; }
+  .hp-tool-card:hover { border-color: #93c5fd; }
+  .hp-tool-card a { font-size: 0.92rem; font-weight: 700; color: #1a1a1a; text-decoration: none; display: block; margin-bottom: 4px; }
+  .hp-tool-card a:hover { color: #3b82f6; }
+  .hp-tool-card-desc { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+  .hp-popular-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hp-popular-row a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; transition: background 0.15s ease, border-color 0.15s ease; }
+  .hp-popular-row a:hover { background: #dbeafe; border-color: #93c5fd; }
+
   /* ── Bag recs (hidden until affiliate activation) ── */
   .bag-rec { padding: 16px 0; border-bottom: 1px solid #f3f4f6; transition: background 0.15s ease; }
   .bag-rec:last-child { border-bottom: none; }
@@ -357,7 +385,7 @@
                   <li><strong>Under 25L</strong> — Personal item range (fits under the seat)</li>
                   <li><strong>30–35L</strong> — Small carry-on for short trips</li>
                   <li><strong>35–40L</strong> — Standard carry-on range (most common)</li>
-                  <li><strong>40–45L</strong> — Borderline carry-on (packing-dependent)</li>
+                  <li><strong>40–45L</strong> — Near the carry-on ceiling — depth often exceeds airline limits when fully packed</li>
                   <li><strong>45L+</strong> — Exceeds carry-on limits in most cases</li>
                 </ul>
                 <p style="font-size:0.85rem; color:#555; margin-top:10px; line-height:1.6;">See full guide: <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters</a></p>
@@ -491,35 +519,138 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       6. INTERNAL LINKING
+       6. START WITH YOUR TRIP
   ══════════════════════════════════════ -->
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Packing Guides by Trip Length</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-3-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 3-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-5-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 5-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/what-to-pack-7-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 7-day trip →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/what-to-pack-10-day-trip.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">What to pack for a 10-day trip →</a></p>
+  <div class="section-card">
+    <div class="section-label">Start with your trip</div>
+    <h2>Packing Guides by Trip Length &amp; Destination</h2>
+    <p>Start with your trip type or destination to get a tailored packing list.</p>
+
+    <div class="hp-link-grid">
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Weekend</div>
+        <a href="/what-to-pack-3-day-trip.html">What to Pack for a 3-Day Trip</a>
+        <div class="hp-link-card-desc">~15–25L — personal item or small carry-on</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Short trip</div>
+        <a href="/what-to-pack-5-day-trip.html">What to Pack for a 5-Day Trip</a>
+        <div class="hp-link-card-desc">~20–35L — carry-on friendly</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">One week</div>
+        <a href="/what-to-pack-7-day-trip.html">What to Pack for a 7-Day Trip</a>
+        <div class="hp-link-card-desc">~30–45L — near carry-on limits</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Extended</div>
+        <a href="/what-to-pack-10-day-trip.html">What to Pack for a 10-Day Trip</a>
+        <div class="hp-link-card-desc">~35–50L+ — laundry changes everything</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Long trip</div>
+        <a href="/what-to-pack-14-day-trip.html">What to Pack for a 14-Day Trip</a>
+        <div class="hp-link-card-desc">~40–60L+ — often needs a checked bag</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Destination</div>
+        <a href="/what-to-pack-for-europe.html">What to Pack for Europe</a>
+        <div class="hp-link-card-desc">Budget airlines, cobblestones, variable weather</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Cruise</div>
+        <a href="/what-to-pack-for-cruise.html">What to Pack for a Cruise</a>
+        <div class="hp-link-card-desc">Formal nights, port days, embarkation logistics</div>
+      </div>
+      <div class="hp-link-card">
+        <div class="hp-link-card-eyebrow">Cold-weather cruise</div>
+        <a href="/what-to-pack-for-alaska-cruise.html">What to Pack for an Alaska Cruise</a>
+        <div class="hp-link-card-desc">Layering, rain, wind, glacier and wildlife gear</div>
+      </div>
+    </div>
+
+    <p style="margin-top:12px;"><a href="/packing-guides.html" style="font-size:0.88rem; font-weight:600; color:#3b82f6; text-decoration:none; border-bottom:1px solid #93c5fd;">Browse all packing guides &rarr;</a></p>
   </div>
 
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Airline Carry-On Fit Guides</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/delta-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on Delta? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/united-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on United? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/american-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on American? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/southwest-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on Southwest? →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/ryanair-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on Ryanair? →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/easyjet-40l-backpack.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Will a 40L backpack fit on EasyJet? →</a></p>
+  <!-- ══════════════════════════════════════
+       7. AIRLINE CARRY-ON & BACKPACK FIT GUIDES
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Airline guides</div>
+    <h2>Airline Carry-On &amp; Backpack Fit Guides</h2>
+    <p>Compare carry-on limits and see what size backpack actually fits for your airline.</p>
+
+    <div class="hp-airline-grid">
+      <div class="hp-airline-card">
+        <div class="hp-airline-type">Major airlines</div>
+        <a href="/delta-40l-backpack.html">Delta carry-on fit guide</a>
+        <a href="/united-40l-backpack.html">United carry-on fit guide</a>
+        <a href="/american-40l-backpack.html">American carry-on fit guide</a>
+        <a href="/southwest-40l-backpack.html">Southwest carry-on fit guide</a>
+      </div>
+      <div class="hp-airline-card">
+        <div class="hp-airline-type">Budget airlines</div>
+        <a href="/ryanair-40l-backpack.html">Ryanair carry-on fit guide</a>
+        <a href="/easyjet-40l-backpack.html">EasyJet carry-on fit guide</a>
+        <a href="/spirit-40l-backpack.html">Spirit carry-on fit guide</a>
+        <a href="/frontier-40l-backpack.html">Frontier carry-on fit guide</a>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;"><a href="/airline-carry-on-rules.html" style="font-size:0.88rem; font-weight:600; color:#3b82f6; text-decoration:none; border-bottom:1px solid #93c5fd;">See all airline carry-on rules &rarr;</a></p>
   </div>
 
-  <div class="section-card" style="padding: 18px 28px;">
-    <div class="section-label" style="margin-bottom:12px;">Browse by Category</div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/packing-guides.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">All packing guides →</a></p>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/carry-on-bag-sizes.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Carry-on bag sizes compared →</a></p>
-    <p style="font-size:0.88rem; color:#555;"><a href="/airline-carry-on-rules.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Airline carry-on rules →</a></p>
+  <!-- ══════════════════════════════════════
+       8. BAG SIZE & PACKING TOOLS
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Tools</div>
+    <h2>Bag Size &amp; Packing Tools</h2>
+    <p>Understand bag sizes, airline rules, and how to maximize your space.</p>
+
+    <div class="hp-tool-grid">
+      <div class="hp-tool-card">
+        <a href="/carry-on-bag-sizes.html">Carry-On Bag Sizes</a>
+        <div class="hp-tool-card-desc">Compare bag capacity in liters from 25L to 50L+</div>
+      </div>
+      <div class="hp-tool-card">
+        <a href="/airline-carry-on-rules.html">Airline Carry-On Rules</a>
+        <div class="hp-tool-card-desc">Size and weight limits by airline</div>
+      </div>
+      <div class="hp-tool-card">
+        <a href="/will-it-fit.html">Will It Fit Tool</a>
+        <div class="hp-tool-card-desc">Check if a specific bag fits your airline</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       9. HOW THIS SITE WORKS
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">About PackFitter</div>
+    <h2>How This Site Works</h2>
+    <p>This site helps you pack smarter by combining trip length, airline rules, and real bag capacity. Instead of generic packing lists, everything is tailored to what actually fits in your bag.</p>
+    <p>With 50+ pages covering trip lengths, destinations, airline-specific fit guides, and packing tools, PackFitter gives you the specifics — not the usual "roll your clothes and hope for the best" advice.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       10. POPULAR GUIDES
+  ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Popular guides</div>
+    <h2>Most Visited Guides</h2>
+    <div class="hp-popular-row">
+      <a href="/what-to-pack-for-europe.html">Europe</a>
+      <a href="/what-to-pack-for-cruise.html">Cruise</a>
+      <a href="/what-to-pack-for-alaska-cruise.html">Alaska Cruise</a>
+      <a href="/what-to-pack-7-day-trip.html">7-Day Trip</a>
+      <a href="/delta-40l-backpack.html">Delta 40L Backpack</a>
+    </div>
   </div>
 
   <div class="section-card" style="padding: 18px 28px; text-align:center;">
-    <p style="font-size:0.95rem; color:#374151; margin:0;">Not sure if it'll all fit? <a href="#calculator" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Try the packing calculator →</a></p>
+    <p style="font-size:0.95rem; color:#374151; margin:0;">Not sure if it'll all fit? <a href="#calculator" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Try the packing calculator &rarr;</a></p>
   </div>
 
   <div class="section-card">

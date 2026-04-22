@@ -65,7 +65,13 @@
     // --- PERSONAL ITEM (3) ---
     { name:"Matein Travel Laptop Backpack",                  brand:"Matein",      cat:"Personal Item",     family:"personal_item_backpack", cap:28, h:18,    w:12,    d:7.8,  price:"$",   structure:"Soft",            amazon:true, url:"https://amzn.to/4tgPOo5",     _legacy_class:"personal_item" },
     { name:"Samsonite Xenon 3.0 Slim Backpack",              brand:"Samsonite",   cat:"Personal Item",     family:"personal_item_backpack", cap:20, h:16.5,  w:12,    d:6,    price:"$$",  structure:"Soft/ballistic",  amazon:true, url:"https://amzn.to/42issm8",     _legacy_class:"personal_item" },
-    { name:"Osprey Daylite",                                 brand:"Osprey",      cat:"Personal Item",     family:"personal_item_backpack", cap:13, h:17.5,  w:10,    d:8,    price:"$$",  structure:"Soft/frameless",  amazon:true, url:"https://amzn.to/42a2kKi",     _legacy_class:"personal_item" }
+    { name:"Osprey Daylite",                                 brand:"Osprey",      cat:"Personal Item",     family:"personal_item_backpack", cap:13, h:17.5,  w:10,    d:8,    price:"$$",  structure:"Soft/frameless",  amazon:true, url:"https://amzn.to/42a2kKi",     _legacy_class:"personal_item" },
+
+    // --- CHECKED SUITCASE (2) ---
+    // Only shown on trip-intent / destination-intent pages, never on airline bag-fit pages.
+    // Gated by PAGE_ALLOWS_CHECKED_BAG_RECS flag (set per page).
+    { name:"SWISSGEAR Sion Softside 25\" Spinner",           brand:"SwissGear",   cat:"Checked Suitcase",  family:"checked_suitcase",       cap:68, h:25,    w:16,    d:11,   price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/4e6OTlL",     _legacy_class:null },
+    { name:"Samsonite Omni PC Hardside 28\" Spinner",        brand:"Samsonite",   cat:"Checked Suitcase",  family:"checked_suitcase",       cap:85, h:28,    w:20.5,  d:13.5, price:"$$",  structure:"Hardside",        amazon:true, url:"https://amzn.to/4mGfKY5",     _legacy_class:null }
   ];
 
 
@@ -710,10 +716,10 @@
       '    <div class="bag-rec-card-name">' + bag.name + '</div>',
       '    <div class="bag-rec-card-meta">' + bag.cap + 'L \u00b7 ' + classLabel + ' \u00b7 ' + dimsStr + ' \u00b7 ' + bag.price + '</div>',
       '    <div class="' + reasonCls + '">' + reason + '</div>',
-      (bag.name === "Osprey Farpoint 40" ? '    <div style="font-size:0.75rem; color:#6b7280; margin-top:4px;">Also available in a women\u2019s-specific fit: <a href="https://amzn.to/3Q7zPdE" target="_blank" rel="nofollow noopener" style="color:#3b82f6; text-decoration:none;">Osprey Fairview 40</a></div>' : ''),
+      (bag.name === "Osprey Farpoint 40" ? '    <div style="font-size:0.75rem; color:#6b7280; margin-top:4px;">Also available in a women\u2019s-specific fit: <a href="https://amzn.to/3Q7zPdE" target="_blank" rel="nofollow sponsored noopener" style="color:#3b82f6; text-decoration:none;">Osprey Fairview 40</a></div>' : ''),
       '  </div>',
       '  <div class="bag-rec-card-cta">',
-      '    <a href="' + href + '" target="_blank" rel="nofollow noopener">Check Price \u2192</a>',
+      '    <a href="' + href + '" target="_blank" rel="nofollow sponsored noopener">Check Price \u2192</a>',
       '  </div>',
       '</div>'
     ].join("");
@@ -804,7 +810,237 @@
 
 
   /* ==========================================================================
-     SECTION 9 — EXPORTS
+     SECTION 9 — CHECKED-BAG RECOMMENDATION SYSTEM (PAGE-TYPE GATED)
+     ========================================================================== */
+
+  /**
+   * PAGE-TYPE GATING RULES:
+   *
+   * Checked-bag product cards are ONLY allowed on trip-intent or
+   * destination-intent pages. They are NEVER shown on airline bag-fit
+   * pages (including airline-specific backpack or personal-item pages).
+   *
+   * Eligible pages must set:
+   *   window.PAGE_ALLOWS_CHECKED_BAG_RECS = true;
+   *
+   * Airline pages set PAGE_IS_BAG_SPECIFIC = true and do NOT set
+   * PAGE_ALLOWS_CHECKED_BAG_RECS, so they are automatically excluded.
+   *
+   * OVERFLOW CONDITIONS (at least one must be true):
+   *   - requiredVolume > 45 (exceeds practical carry-on range)
+   *   - recommendedBagSize > 45L
+   *   - user selected "suitcase-checked" as bag type
+   *   - page intent flag indicates bulky packing (cruise, winter, Alaska)
+   *
+   * FRAMING:
+   *   Carry-on recommendations remain primary. Checked-bag recs appear
+   *   BELOW carry-on recs as a conditional fallback with softer framing.
+   */
+
+  /**
+   * shouldShowCheckedBagRecs(opts)
+   *
+   * Returns true if ALL gating conditions are met:
+   *   1. Page has opted in (PAGE_ALLOWS_CHECKED_BAG_RECS === true)
+   *   2. Page is NOT an airline bag-fit page (PAGE_IS_BAG_SPECIFIC !== true)
+   *   3. At least one overflow condition is met
+   *
+   * @param {object} opts
+   * @param {number} opts.requiredVolume  — liters needed from calculator
+   * @param {string} opts.bagType         — "backpack" | "suitcase-carryon" | "suitcase-checked"
+   * @param {number} opts.recommendedSize — recommended bag size in liters
+   * @param {boolean} opts.bulkyIntent    — true for cruise, Alaska, winter pages
+   */
+  function shouldShowCheckedBagRecs(opts) {
+    // Gate 1: page must opt in
+    if (typeof window.PAGE_ALLOWS_CHECKED_BAG_RECS === "undefined" ||
+        !window.PAGE_ALLOWS_CHECKED_BAG_RECS) {
+      return false;
+    }
+
+    // Gate 2: airline bag-fit pages are always excluded
+    if (typeof window.PAGE_IS_BAG_SPECIFIC !== "undefined" &&
+        window.PAGE_IS_BAG_SPECIFIC) {
+      return false;
+    }
+
+    // Gate 3: at least one overflow condition
+    var vol    = opts.requiredVolume || 0;
+    var bag    = opts.bagType || "backpack";
+    var recSize = opts.recommendedSize || 0;
+    var bulky  = opts.bulkyIntent || false;
+
+    if (vol > 45)                      return true;
+    if (recSize > 45)                  return true;
+    if (bag === "suitcase-checked")    return true;
+    if (bulky)                         return true;
+
+    return false;
+  }
+
+
+  /**
+   * getCheckedBagRecommendations(opts)
+   *
+   * Returns up to 2 checked suitcases ranked by capacity match.
+   *
+   * @param {number} opts.requiredCapacity — liters needed
+   * @returns { primary: bag|null, alternate: bag|null }
+   */
+  function getCheckedBagRecommendations(opts) {
+    var required = opts.requiredCapacity || 60;
+
+    var checkedBags = BAG_DB.filter(function (b) {
+      return b.family === "checked_suitcase";
+    });
+
+    if (checkedBags.length === 0) {
+      return { primary: null, alternate: null };
+    }
+
+    // Score by capacity match — prefer bag closest to (but >= ) required
+    checkedBags.sort(function (a, b) {
+      var aFits = a.cap >= required ? 1 : 0;
+      var bFits = b.cap >= required ? 1 : 0;
+      if (aFits !== bFits) return bFits - aFits; // bags that fit first
+
+      // Among bags that fit: prefer closest capacity
+      var aDist = Math.abs(a.cap - required);
+      var bDist = Math.abs(b.cap - required);
+      if (aDist !== bDist) return aDist - bDist;
+
+      // Tiebreaker: brand trust
+      var aBrand = BRAND_TRUST[a.brand] || 0.5;
+      var bBrand = BRAND_TRUST[b.brand] || 0.5;
+      return bBrand - aBrand;
+    });
+
+    return {
+      primary: checkedBags[0] || null,
+      alternate: checkedBags.length > 1 ? checkedBags[1] : null
+    };
+  }
+
+
+  /**
+   * renderCheckedBagCard(bag)
+   *
+   * Returns HTML for a single checked-bag recommendation card.
+   * Uses the same card styling as carry-on recs but with a distinct
+   * amber/orange left border to visually distinguish checked-bag fallbacks.
+   */
+  function renderCheckedBagCard(bag) {
+    var href = bag.url || "#";
+    var dimsStr = bag.h + ' \u00d7 ' + bag.w + ' \u00d7 ' + bag.d + '"';
+
+    // Shell-type-specific descriptions
+    var reasonText = "Good option for setups that exceed carry-on capacity";
+    var descText = "";
+    var isHardside = (bag.structure || "").toLowerCase().indexOf("hard") !== -1;
+
+    if (isHardside) {
+      reasonText = "Better protection for fully packed bags \u2014 maintains structure at high capacity";
+      descText = "Hard-shell construction helps protect contents and maintain structure when the bag is packed near capacity. Ideal for heavy packing or bulky items.";
+    } else {
+      reasonText = "Lightweight and flexible \u2014 ideal for most travelers";
+      descText = "Soft-sided design is lighter, allows flexible packing, and works well for standard checked-bag setups without bulky or fragile items.";
+    }
+
+    return [
+      '<div class="bag-rec-card checked-bag">',
+      '  <div class="bag-rec-card-info">',
+      '    <div class="bag-rec-card-name">' + bag.name + '</div>',
+      '    <div class="bag-rec-card-meta">' + bag.cap + 'L \u00b7 ' + bag.structure + ' \u00b7 ' + dimsStr + ' \u00b7 ' + bag.price + '</div>',
+      '    <div class="bag-rec-card-reason checked-bag">' + reasonText + '</div>',
+      '    <div style="font-size:0.78rem; color:#6b7280; margin-top:4px; line-height:1.45;">' + descText + '</div>',
+      '  </div>',
+      '  <div class="bag-rec-card-cta">',
+      '    <a href="' + href + '" target="_blank" rel="nofollow sponsored noopener">Check Price \u2192</a>',
+      '  </div>',
+      '</div>'
+    ].join("");
+  }
+
+
+  /**
+   * renderCheckedBagSection(opts)
+   *
+   * Renders the full checked-bag recommendation section into a container.
+   * Includes contextual framing text, 1–2 product cards, and trust line.
+   *
+   * @param {object}  opts
+   * @param {number}  opts.requiredCapacity — liters needed
+   * @param {string}  [opts.containerId]    — DOM id (default "checkedBagRecs")
+   * @param {string}  [opts.pageContext]    — "cruise" | "trip" | "destination" (affects framing text)
+   * @returns {object} { primary, alternate }
+   */
+  function renderCheckedBagSection(opts) {
+    opts = opts || {};
+    var containerId = opts.containerId || "checkedBagRecs";
+    var pageContext = opts.pageContext || "trip";
+
+    var result = getCheckedBagRecommendations({
+      requiredCapacity: opts.requiredCapacity || 60
+    });
+
+    var container = document.getElementById(containerId);
+    if (!container) return result;
+
+    if (!result.primary) {
+      container.innerHTML = "";
+      container.style.display = "none";
+      return result;
+    }
+
+    // Inject checked-bag-specific styles (once)
+    injectCheckedBagStyles();
+
+    // Framing text varies by page context
+    var framingText = "";
+    if (pageContext === "cruise") {
+      framingText = "If your setup includes formalwear, extra shoes, bulky layers, or full toiletries, a checked bag becomes the more practical option.";
+    } else {
+      framingText = "If your packing setup exceeds carry-on capacity, a checked bag is the more practical option for this trip.";
+    }
+
+    var html = "";
+    html += '<div class="checked-bag-section">';
+    html += '<div class="checked-bag-section-title">Checked Bag Option</div>';
+    html += '<p class="checked-bag-framing">' + framingText + '</p>';
+    html += renderCheckedBagCard(result.primary);
+    if (result.alternate) {
+      html += renderCheckedBagCard(result.alternate);
+    }
+    html += '<div class="bag-rec-trust">Checked bag recommendations shown because this setup exceeds practical carry-on range.</div>';
+    html += '</div>';
+
+    container.innerHTML = html;
+    container.style.display = "";
+
+    return result;
+  }
+
+
+  /**
+   * injectCheckedBagStyles() — adds checked-bag-specific CSS (once).
+   */
+  function injectCheckedBagStyles() {
+    if (document.getElementById("checked-bag-rec-styles")) return;
+    var style = document.createElement("style");
+    style.id = "checked-bag-rec-styles";
+    style.textContent = [
+      ".checked-bag-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb; }",
+      ".checked-bag-section-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #92400e; }",
+      ".checked-bag-framing { font-size: 13px; color: #6b7280; line-height: 1.5; margin-bottom: 14px; }",
+      ".bag-rec-card.checked-bag { border-left: 5px solid #f59e0b; }",
+      ".bag-rec-card-reason.checked-bag { color: #92400e; }"
+    ].join("\n");
+    document.head.appendChild(style);
+  }
+
+
+  /* ==========================================================================
+     SECTION 10 — EXPORTS
      ========================================================================== */
   window.BAG_DB              = BAG_DB;
   window.AIRLINE_TYPES       = AIRLINE_TYPES;
@@ -813,5 +1049,10 @@
   window.scoreBagFit         = scoreBagFit;
   window.recommendBags       = recommendBags;
   window.getRecommendations  = getRecommendations;
+
+  // Checked-bag system (page-type gated)
+  window.shouldShowCheckedBagRecs    = shouldShowCheckedBagRecs;
+  window.renderCheckedBagSection     = renderCheckedBagSection;
+  window.getCheckedBagRecommendations = getCheckedBagRecommendations;
 
 })();
