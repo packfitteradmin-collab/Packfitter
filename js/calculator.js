@@ -1,7 +1,3 @@
-// Page-level recommendation config (shared across all backpack pages)
-window.PAGE_RECOMMENDATION_IDS = window.PAGE_RECOMMENDATION_IDS || [];
-window.PAGE_RECOMMENDATION_TYPE = window.PAGE_RECOMMENDATION_TYPE || "bag";
-window.PAGE_RECOMMENDATION_CONTAINER_ID = window.PAGE_RECOMMENDATION_CONTAINER_ID || "bagRecommendations";
 
 const BAGS = [
   // ── Carry-on backpack ────────────────────────────────────────────────────
@@ -302,23 +298,24 @@ function runEngine(bag, airline, personalItem, profile, tripDays, climate, laund
 
 
 
-const AIRLINE_NOTE_TEXT = "Packed external dimensions set fit, not the bag's listed capacity. Bag structure sets whether dimensions stay within the carry-on box.";
+var AIRLINE_NOTE_TEXT = (typeof window.AIRLINE_NOTE_TEXT !== "undefined") ? window.AIRLINE_NOTE_TEXT : "Packed external dimensions set fit, not the bag's listed capacity. Bag structure sets whether dimensions stay within the carry-on box.";
 
-const PAGE_CLUSTER          = "FIT_EASY";
-const PAGE_DEFAULT_BAG_TYPE = "backpack";
-const PAGE_DEFAULT_BAG_SIZE = 30;
-const PAGE_DEFAULT_AIRLINE  = "Delta Air Lines";
-const PAGE_DEFAULT_TRIP_DAYS       = 3;
-const PAGE_DEFAULT_CLIMATE         = "WARM";
-const PAGE_DEFAULT_PROFILE         = "light";
-const PAGE_DEFAULT_LAUNDRY         = "NO";
-const PAGE_DEFAULT_INCLUDE_LAPTOP  = false;
-const PAGE_DEFAULT_INCLUDE_BULKY_LAYER = false;
-const PAGE_DEFAULT_EXTRA_SHOES     = 0;
-const PAGE_DEFAULT_SHOE_TYPE       = "standard";
-const PAGE_DEFAULT_CLOTHING_SIZE   = "M";
-const PAGE_DEFAULT_PERSONAL_ITEM   = false;
-const PAGE_IS_BAG_SPECIFIC = true;
+var PAGE_CLUSTER                    = (typeof window.PAGE_CLUSTER !== "undefined") ? window.PAGE_CLUSTER : "FIT_EASY";
+var PAGE_DEFAULT_BAG_TYPE           = (typeof window.PAGE_DEFAULT_BAG_TYPE !== "undefined") ? window.PAGE_DEFAULT_BAG_TYPE : "backpack";
+var PAGE_DEFAULT_BAG_SIZE           = (typeof window.PAGE_DEFAULT_BAG_SIZE !== "undefined") ? window.PAGE_DEFAULT_BAG_SIZE : 30;
+var PAGE_DEFAULT_AIRLINE            = (typeof window.PAGE_DEFAULT_AIRLINE !== "undefined") ? window.PAGE_DEFAULT_AIRLINE : "Delta Air Lines";
+var PAGE_DEFAULT_TRIP_DAYS          = (typeof window.PAGE_DEFAULT_TRIP_DAYS !== "undefined") ? window.PAGE_DEFAULT_TRIP_DAYS : 3;
+var PAGE_DEFAULT_CLIMATE            = (typeof window.PAGE_DEFAULT_CLIMATE !== "undefined") ? window.PAGE_DEFAULT_CLIMATE : "WARM";
+var PAGE_DEFAULT_PROFILE            = (typeof window.PAGE_DEFAULT_PROFILE !== "undefined") ? window.PAGE_DEFAULT_PROFILE : "light";
+var PAGE_DEFAULT_LAUNDRY            = (typeof window.PAGE_DEFAULT_LAUNDRY !== "undefined") ? window.PAGE_DEFAULT_LAUNDRY : "NO";
+var PAGE_DEFAULT_INCLUDE_LAPTOP     = (typeof window.PAGE_DEFAULT_INCLUDE_LAPTOP !== "undefined") ? window.PAGE_DEFAULT_INCLUDE_LAPTOP : false;
+var PAGE_DEFAULT_INCLUDE_BULKY_LAYER = (typeof window.PAGE_DEFAULT_INCLUDE_BULKY_LAYER !== "undefined") ? window.PAGE_DEFAULT_INCLUDE_BULKY_LAYER : false;
+var PAGE_DEFAULT_EXTRA_SHOES        = (typeof window.PAGE_DEFAULT_EXTRA_SHOES !== "undefined") ? window.PAGE_DEFAULT_EXTRA_SHOES : 0;
+var PAGE_DEFAULT_SHOE_TYPE          = (typeof window.PAGE_DEFAULT_SHOE_TYPE !== "undefined") ? window.PAGE_DEFAULT_SHOE_TYPE : "standard";
+var PAGE_DEFAULT_CLOTHING_SIZE      = (typeof window.PAGE_DEFAULT_CLOTHING_SIZE !== "undefined") ? window.PAGE_DEFAULT_CLOTHING_SIZE : "M";
+var PAGE_DEFAULT_PERSONAL_ITEM      = (typeof window.PAGE_DEFAULT_PERSONAL_ITEM !== "undefined") ? window.PAGE_DEFAULT_PERSONAL_ITEM : false;
+var PAGE_IS_BAG_SPECIFIC            = (typeof window.PAGE_IS_BAG_SPECIFIC !== "undefined") ? window.PAGE_IS_BAG_SPECIFIC : true;
+var PAGE_CHECKED_BAG_CONTEXT        = (typeof window.PAGE_CHECKED_BAG_CONTEXT !== "undefined") ? window.PAGE_CHECKED_BAG_CONTEXT : "";
 
 // ── Cluster scenario system ─────────────────────────────────────────────────
 const CLUSTER_SCENARIOS = {
@@ -943,7 +940,7 @@ function runCalculation() {
   let rangesHTML = '<div class="bag-ranges-title">Bag Size Recommendations</div>';
   if (ranges.bestFit) {
     var bestMatchesSelected = (ranges.bestFit === bagSize + "L");
-    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : "Smallest Bag That Should Work";
+    var bestLabel = (isBagPage && bestMatchesSelected) ? "Selected Bag" : (isBagPage ? "Smallest Bag That Should Work" : "Best Fit");
     var bestDesc = ranges.bestFitNote ? "(fits " + ranges.bestFitNote + ")" : "(fits comfortably without overpacking)";
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">' + bestLabel + '</span><span class="bag-range-value green">' + ranges.bestFit + '<span class="bag-range-desc">' + bestDesc + '</span></span></div>';
     // Smaller Option row — only on bag-specific pages when a smaller carry-on also works
@@ -960,7 +957,8 @@ function runCalculation() {
     }
   }
   if (ranges.comfortable) {
-    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">More Comfortable Option</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
+    var comfortLabel = isBagPage ? "More Comfortable Option" : "Comfortable";
+    rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">' + comfortLabel + '</span><span class="bag-range-value blue">' + ranges.comfortable + '<span class="bag-range-desc">(extra room and easier packing)</span></span></div>';
   }
   if (!ranges.bestFit) {
     rangesHTML += '<div class="bag-range-row"><span class="bag-range-label">Minimum Carry-On</span><span class="bag-range-value orange">Exceeds 45L<span class="bag-range-desc">(no standard carry-on fits)</span></span></div>';
@@ -1048,11 +1046,47 @@ function runCalculation() {
       __piBlock.style.display = "none";
     }
   }
+
+  // Dynamic Bag Recommendations — trip/destination pages (guarded by element existence)
+  if (typeof window.recommendBags === "function" && r.vtotal > 0 && bagType !== "suitcase-checked") {
+    var tripRecContainer = document.getElementById("tripRecContainer");
+    if (tripRecContainer) {
+      var recCap = Math.ceil(r.vtotal);
+      var recAirlineName = airline ? airline.name : "Delta Air Lines";
+      var recFamily = (bagType === "backpack") ? "carry_on_backpack" : "rolling_carry_on";
+      var recResult = window.recommendBags({
+        airlineName: recAirlineName,
+        requiredCapacity: recCap,
+        bagFamily: recFamily,
+        containerId: "tripRecContainer"
+      });
+      var recsWrap = document.getElementById("tripBagRecs");
+      var introEl = document.getElementById("tripBagRecsIntro");
+      if (recsWrap && recResult.safest) {
+        var recLabel = (recFamily === "carry_on_backpack") ? "carry-on backpack" : "rolling carry-on";
+        introEl.textContent = "Recommended " + recLabel + " for a " + tripDays + "-day, " + Math.ceil(r.vtotal) + "L setup:";
+        recsWrap.style.display = "";
+      } else if (recsWrap) {
+        recsWrap.style.display = "none";
+      }
+    }
+  }
+
+  // Checked-bag recommendation — trip/destination pages (page-type gated)
+  var checkedBagContainer = document.getElementById("checkedBagRecs");
+  if (checkedBagContainer && typeof window.shouldShowCheckedBagRecs === "function" && typeof window.renderCheckedBagSection === "function") {
+    var showChecked = window.shouldShowCheckedBagRecs({requiredVolume: r.vtotal, bagType: bagType, recommendedSize: bagSize, bulkyIntent: false});
+    if (showChecked) {
+      window.renderCheckedBagSection({requiredCapacity: Math.ceil(r.vtotal), containerId: "checkedBagRecs", pageContext: PAGE_CHECKED_BAG_CONTEXT});
+    } else {
+      checkedBagContainer.innerHTML = "";
+      checkedBagContainer.style.display = "none";
+    }
+  }
 }
 
 populateSelects();
 applyPageDefaults();
 (function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
-renderRecommendations();
 renderScenarioBlock();
-runCalculation();
+if (!window.PAGE_SUPPRESS_AUTO_CALC) runCalculation();

@@ -46,133 +46,7 @@
   ]
 }
 </script>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; }
-  .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
-  .hero { background: #fff; border-radius: 12px; padding: 32px 28px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #3b82f6; margin-bottom: 10px; }
-  .hero h1 { font-size: 1.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 18px; color: #1a1a1a; }
-  .hero-intro { font-size: 0.95rem; color: #444; line-height: 1.65; margin-bottom: 0; }
-  .section-card { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; margin-bottom: 8px; }
-  .section-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; }
-  .section-card h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 20px 0 8px 0; }
-  .section-card h3:first-of-type { margin-top: 0; }
-  .section-card p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 14px; }
-  .section-card p:last-child { margin-bottom: 0; }
-  .section-card ul { list-style: none; padding: 0; margin-bottom: 14px; }
-  .section-card ul:last-child { margin-bottom: 0; }
-  .section-card li { font-size: 0.9rem; color: #555; padding: 7px 0; border-bottom: 1px solid #f3f4f6; line-height: 1.5; }
-  .section-card li:last-child { border-bottom: none; }
-  .section-card li::before { content: "→  "; color: #3b82f6; font-weight: 700; }
-
-  /* Summary table */
-  .summary-table { width: 100%; border-collapse: collapse; }
-  .summary-table th { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; text-align: left; padding: 10px 12px; border-bottom: 2px solid #e5e7eb; }
-  .summary-table td { font-size: 0.88rem; color: #444; padding: 10px 12px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
-  .summary-table tr:last-child td { border-bottom: none; }
-  .summary-table .bag-type { font-weight: 700; color: #1a1a1a; }
-
-  /* Fit tier cards */
-  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 560px) { .fit-grid { grid-template-columns: 1fr; } }
-  .fit-card { background: #f9fafb; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; }
-  .fit-card-size { font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
-  .fit-card-verdict { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
-  .fit-card-verdict.green { color: #166534; }
-  .fit-card-verdict.yellow { color: #92400e; }
-  .fit-card-verdict.red { color: #991b1b; }
-  .fit-card-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.5; }
-
-  /* Guide cards */
-  .guide-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  .guide-card { background: #f9fafb; border-radius: 10px; padding: 20px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
-  .guide-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
-  .guide-card-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
-  .guide-card-title { font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
-  .guide-card-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin-bottom: 14px; }
-  .guide-card-link { font-size: 0.85rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; align-self: flex-start; }
-  .guide-card-link:hover { color: #1d4ed8; border-color: #1d4ed8; }
-
-  /* FAQ */
-  .faq-item { margin-bottom: 18px; }
-  .faq-item:last-child { margin-bottom: 0; }
-  .faq-item h3 { font-size: 0.95rem; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-  .faq-item p { font-size: 0.88rem; color: #555; line-height: 1.6; }
-
-  /* Link list */
-  .link-list { list-style: none; padding: 0; }
-  .link-list li { padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
-  .link-list li:last-child { border-bottom: none; }
-  .link-list li::before { content: none; }
-  .link-list a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; }
-  .link-list a:hover { text-decoration: underline; }
-
-  /* CTA */
-  .cta-primary { display: inline-block; font-size: 0.9rem; font-weight: 600; color: #3b82f6; text-decoration: none; border-bottom: 1px solid #93c5fd; padding-bottom: 1px; }
-  .cta-primary:hover { color: #1d4ed8; border-color: #1d4ed8; }
-
-  /* Bottom line */
-  .bottom-line { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
-  .bottom-line h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
-  .bottom-line ul { list-style: none; padding: 0; }
-  .bottom-line li { font-size: 0.9rem; color: #d1d5db; padding: 7px 0; border-bottom: 1px solid #333; line-height: 1.5; }
-  .bottom-line li:last-child { border-bottom: none; }
-  .bottom-line li::before { content: "→  "; color: #60a5fa; font-weight: 700; }
-
-  /* Affiliate buttons */
-  .affiliate-btn { display: inline-block; background: #f97316; color: #fff; font-size: 0.85rem; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: background 0.15s ease; }
-  .affiliate-btn:hover { background: #ea580c; }
-
-  /* Product cards */
-  .product-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; margin-bottom: 14px; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
-  .product-card:last-child { margin-bottom: 0; }
-  .product-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
-  .product-card-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
-  .product-card-title { font-size: 1rem; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
-  .product-card-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin-bottom: 12px; }
-
-  /* ── Global Nav ── */
-  .pf-nav-bar { display:flex; align-items:center; flex-wrap:wrap; gap:6px 14px; }
-  .pf-nav-bar > a { font-size:0.82rem; font-weight:600; color:#555; text-decoration:none; white-space:nowrap; }
-  .pf-nav-bar > a.pf-nav-active { font-weight:700; color:#1a1a1a; }
-  .pf-nav-dd { position:relative; }
-  .pf-nav-dd > button {
-    font-family:inherit; font-size:0.82rem; font-weight:600; color:#555;
-    background:none; border:none; cursor:pointer; padding:0; white-space:nowrap;
-  }
-  .pf-nav-dd > button.pf-nav-active { font-weight:700; color:#1a1a1a; }
-  .pf-nav-dd > button::after { content:" ▾"; font-size:0.65rem; }
-  .pf-nav-dd .pf-dd-menu {
-    display:none; position:absolute; top:100%; left:0; z-index:100;
-    background:#fff; border:1px solid #e5e7eb; border-radius:8px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:6px 0; min-width:180px; margin-top:6px;
-  }
-  .pf-nav-dd.pf-dd-open .pf-dd-menu { display:block; }
-  .pf-dd-menu a {
-    display:block; padding:8px 16px; font-size:0.82rem; color:#555;
-    text-decoration:none; white-space:nowrap;
-  }
-  .pf-dd-menu a:hover { background:#f3f4f6; color:#1a1a1a; }
-  .pf-dd-menu a.pf-dd-active { font-weight:700; color:#1a1a1a; }
-  .pf-hamburger {
-    display:none; background:none; border:none; cursor:pointer;
-    font-size:1.4rem; color:#1a2540; padding:0; line-height:1;
-  }
-  @media (max-width: 640px) {
-    .pf-hamburger { display:block; }
-    .pf-nav-bar { display:none; flex-direction:column; align-items:flex-start; width:100%;
-      gap:0; background:#fff; border:1px solid #e5e7eb; border-radius:8px;
-      padding:8px 0; margin-top:8px; }
-    .pf-nav-bar.pf-nav-open { display:flex; }
-    .pf-nav-bar > a, .pf-nav-dd > button { padding:10px 18px; width:100%; text-align:left; }
-    .pf-nav-dd { width:100%; }
-    .pf-dd-menu { position:static; box-shadow:none; border:none; border-radius:0;
-      padding:0 0 0 18px; margin-top:0; }
-    .pf-dd-menu a { padding:8px 18px; }
-  }
-</style>
+<link rel="stylesheet" href="/css/site.css">
 <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
@@ -214,8 +88,26 @@
         <a href="/what-to-pack-for-alaska-cruise-in-september.html">September</a>
       </div>
     </div>
-    <a href="/airline-carry-on-rules.html">Airline Rules</a>
-    <a href="/carry-on-bag-sizes.html">Bag Sizes</a>
+    <div class="pf-nav-dd">
+      <button>Airlines</button>
+      <div class="pf-dd-menu">
+        <a href="/delta-carry-on-guides.html">Delta</a>
+        <a href="/united-carry-on-guides.html">United</a>
+        <a href="/american-carry-on-guides.html">American</a>
+        <a href="/southwest-carry-on-guides.html">Southwest</a>
+        <a href="/ryanair-carry-on-guides.html">Ryanair</a>
+        <a href="/easyjet-carry-on-guides.html">EasyJet</a>
+        <a href="/airline-carry-on-rules.html">All Airline Rules</a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Bag Sizes</button>
+      <div class="pf-dd-menu">
+        <a href="/carry-on-bag-sizes.html">Carry-On Bag Sizes</a>
+        <a href="/will-it-fit.html">Will It Fit? Tool</a>
+        <a href="/packing-optimization/compression-packing-cubes.html">Compression Cubes</a>
+      </div>
+    </div>
   </div>
 </div>
 <div class="page-wrap">
@@ -251,13 +143,13 @@
       <tbody>
         <tr>
           <td class="bag-type">Personal Item</td>
-          <td>18 × 14 × 8 in<br><span style="font-size:0.78rem; color:#888;">(45 × 35 × 20 cm)</span></td>
+          <td>18 × 14 × 8 in<br><span style="font-size:0.78rem; color:#888;">(45 × 35 × 20 cm (17.7 × 13.8 × 7.9 in))</span></td>
           <td>No official limit</td>
           <td>Free (all fares)</td>
         </tr>
         <tr>
           <td class="bag-type">Carry-On Bag</td>
-          <td>22 × 18 × 10 in<br><span style="font-size:0.78rem; color:#888;">(56 × 46 × 25 cm)</span></td>
+          <td>22 × 18 × 10 in<br><span style="font-size:0.78rem; color:#888;">(56 × 46 × 25 cm (22.0 × 18.1 × 9.8 in))</span></td>
           <td>No official limit</td>
           <td>Paid add-on (may be included in bundles)</td>
         </tr>
@@ -279,8 +171,8 @@
   <div class="section-card">
     <div class="section-label">Free Bag</div>
     <h2>Personal Item Rules</h2>
-    <p>Every Spirit fare includes one free personal item that must fit under the seat in front of you. The size limit is <strong>18 × 14 × 8 in</strong> (45 × 35 × 20 cm). There is no official weight limit for the personal item.</p>
-    <p>This is the same personal item size as Frontier and more generous than ultra-low-cost European carriers like Ryanair (40 × 30 × 20 cm). In practice, many slim backpacks, laptop bags, and purses can fit within this limit, depending on shape and packing. The 8-inch (20 cm) depth is usually the dimension that catches overpacked bags.</p>
+    <p>Every Spirit fare includes one free personal item that must fit under the seat in front of you. The size limit is <strong>18 × 14 × 8 in</strong> (45 × 35 × 20 cm (17.7 × 13.8 × 7.9 in)). There is no official weight limit for the personal item.</p>
+    <p>This is the same personal item size as Frontier and more generous than ultra-low-cost European carriers like Ryanair (40 × 30 × 20 cm (15.7 × 11.8 × 7.9 in)). In practice, many slim backpacks, laptop bags, and purses can fit within this limit, depending on shape and packing. The 8-inch (20 cm (7.9 in)) depth is usually the dimension that catches overpacked bags.</p>
     <p>If your bag doesn't fit under the seat, it will be reclassified as a carry-on — which requires a paid add-on on most fares. Without the add-on, you'll be charged a gate fee that is significantly higher than pre-purchasing online.</p>
   </div>
 
@@ -291,7 +183,7 @@
   <div class="section-card">
     <div class="section-label">Paid Carry-On</div>
     <h2>Carry-On Bag Rules</h2>
-    <p>To bring a larger bag into the overhead bin, you must purchase a <strong>carry-on add-on</strong> or have a fare bundle that includes it (such as Spirit First or certain promotional bundles). The carry-on limit is <strong>22 × 18 × 10 in</strong> (56 × 46 × 25 cm).</p>
+    <p>To bring a larger bag into the overhead bin, you must purchase a <strong>carry-on add-on</strong> or have a fare bundle that includes it (such as Spirit First or certain promotional bundles). The carry-on limit is <strong>22 × 18 × 10 in</strong> (56 × 46 × 25 cm (22.0 × 18.1 × 9.8 in)).</p>
     <p>Spirit's carry-on width (18 in) is more generous than many legacy U.S. carriers, which typically allow 14 inches of width. The extra width accommodates many standard rolling suitcases and travel backpacks. However, the height limit (22 in) is the same as legacy carriers — some larger rollers marketed as "carry-on size" may exceed it once wheels and handle housing are included.</p>
     <p>The carry-on fee varies by route and when you buy it. Adding it during initial booking is cheapest, adding it later online costs more, and paying at the gate is the most expensive option. If you know you need overhead bin space, buy the add-on during booking.</p>
   </div>
@@ -494,21 +386,21 @@
     <div class="product-card">
       <div class="product-card-eyebrow">Free personal item option</div>
       <div class="product-card-title">Matein Travel Laptop Backpack</div>
-      <div class="product-card-desc">External dimensions of 18 × 12 × 7.8 in (45.7 × 30.5 × 19.8 cm) — sits within Spirit's 18 × 14 × 8 in personal item limit on paper. Height matches the published limit, while width and depth are comfortably under. A 28L laptop backpack that uses most of the allowed personal item space. Avoid overstuffing — packing beyond the bag's natural shape can push the height or depth past the limit.</div>
+      <div class="product-card-desc">External dimensions of 18 × 12 × 7.8 in (45.7 × 30.5 × 19.8 cm (18.0 × 12.0 × 7.8 in)) — sits within Spirit's 18 × 14 × 8 in personal item limit on paper. Height matches the published limit, while width and depth are comfortably under. A 28L laptop backpack that uses most of the allowed personal item space. Avoid overstuffing — packing beyond the bag's natural shape can push the height or depth past the limit.</div>
       <a href="https://amzn.to/4tgPOo5" target="_blank" rel="nofollow sponsored noopener" class="affiliate-btn">Check price on Amazon →</a>
     </div>
 
     <div class="product-card">
       <div class="product-card-eyebrow">Safe-fit roller (paid add-on)</div>
       <div class="product-card-title">Travelpro Maxlite 5 Compact Carry-On Spinner</div>
-      <div class="product-card-desc">External dimensions of 22 × 14 × 9 in (55.9 × 35.6 × 22.9 cm) including wheels — matches Spirit's 22 × 18 × 10 in carry-on limit on paper. Height sits at the published 22-inch limit, while width and depth are comfortably under. A compact roller designed to stay within strict size limits. Requires carry-on add-on or a bundle fare for overhead bin access.</div>
+      <div class="product-card-desc">External dimensions of 22 × 14 × 9 in (55.9 × 35.6 × 22.9 cm (22.0 × 14.0 × 9.0 in)) including wheels — matches Spirit's 22 × 18 × 10 in carry-on limit on paper. Height sits at the published 22-inch limit, while width and depth are comfortably under. A compact roller designed to stay within strict size limits. Requires carry-on add-on or a bundle fare for overhead bin access.</div>
       <a href="https://amzn.to/489bYQP" target="_blank" rel="nofollow sponsored noopener" class="affiliate-btn">Check price on Amazon →</a>
     </div>
 
     <div class="product-card">
       <div class="product-card-eyebrow">Alternative safe roller (paid add-on)</div>
       <div class="product-card-title">Samsonite Omni 2 Global Carry-On Spinner</div>
-      <div class="product-card-desc">External dimensions of 22 × 14 × 9 in (55.9 × 35.6 × 22.9 cm) including wheels — matches Spirit's carry-on limit on paper. Height sits at the 22-inch limit, while width and depth are comfortably under. A hard-shell option if you prefer a rigid case over a soft-sided bag. Requires carry-on add-on or a bundle fare.</div>
+      <div class="product-card-desc">External dimensions of 22 × 14 × 9 in (55.9 × 35.6 × 22.9 cm (22.0 × 14.0 × 9.0 in)) including wheels — matches Spirit's carry-on limit on paper. Height sits at the 22-inch limit, while width and depth are comfortably under. A hard-shell option if you prefer a rigid case over a soft-sided bag. Requires carry-on add-on or a bundle fare.</div>
       <a href="https://amzn.to/4cBsvyu" target="_blank" rel="nofollow sponsored noopener" class="affiliate-btn">Check price on Amazon →</a>
     </div>
 
@@ -530,12 +422,12 @@
 
     <div class="faq-item">
       <h3>What size personal item is free on Spirit?</h3>
-      <p>Spirit includes one free personal item on all fares. It must fit within 18 × 14 × 8 inches (45 × 35 × 20 cm) and go under the seat in front of you. There is no official weight limit for the personal item. This is typically a standard backpack, laptop bag, or purse. Anything larger is classified as a carry-on and usually requires a paid add-on.</p>
+      <p>Spirit includes one free personal item on all fares. It must fit within 18 × 14 × 8 inches (45 × 35 × 20 cm (17.7 × 13.8 × 7.9 in)) and go under the seat in front of you. There is no official weight limit for the personal item. This is typically a standard backpack, laptop bag, or purse. Anything larger is classified as a carry-on and usually requires a paid add-on.</p>
     </div>
 
     <div class="faq-item">
       <h3>Does Spirit charge for carry-on bags?</h3>
-      <p>Yes. On most Spirit fares, the carry-on bag is a paid add-on. It is not included on basic or value fares. Some higher fare bundles and Spirit First may include carry-on access. The carry-on limit is 22 × 18 × 10 inches (56 × 46 × 25 cm). Purchasing the carry-on add-on online is significantly cheaper than paying at the gate.</p>
+      <p>Yes. On most Spirit fares, the carry-on bag is a paid add-on. It is not included on basic or value fares. Some higher fare bundles and Spirit First may include carry-on access. The carry-on limit is 22 × 18 × 10 inches (56 × 46 × 25 cm (22.0 × 18.1 × 9.8 in)). Purchasing the carry-on add-on online is significantly cheaper than paying at the gate.</p>
     </div>
 
     <div class="faq-item">
