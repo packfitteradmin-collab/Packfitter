@@ -381,38 +381,56 @@
   .size-guide-list li:last-child { border-bottom: none; }
   .size-guide-list li strong { color: #1a1a1a; font-weight: 600; }
   .hp-link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 6px; }
-  .hp-link-card { background: #f9fafb; border-radius: 10px; padding: 16px 18px; border: 1px solid #e5e7eb; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
-  .hp-link-card:hover { border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.10); }
-  .hp-link-card-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 4px; }
-  .hp-link-card a { font-size: 0.92rem; font-weight: 700; color: #1a1a1a; text-decoration: none; display: block; margin-bottom: 4px; }
-  .hp-link-card a:hover { color: #3b82f6; }
-  .hp-link-card-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.45; }
+  a.hp-link-card { display: block; background: #fff; border-radius: 10px; padding: 16px 18px; border: 1px solid #e5e7eb; text-decoration: none !important; color: #1a1a1a !important; -webkit-text-decoration: none !important; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-link-card:visited { color: #1a1a1a !important; text-decoration: none !important; }
+  a.hp-link-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
+  a.hp-link-card:active { transform: translateY(0); box-shadow: 0 1px 4px rgba(59,130,246,0.10); }
+  .hp-link-card-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af !important; margin-bottom: 4px; }
+  .hp-link-card-title { font-size: 0.92rem; font-weight: 800; color: #1a1a1a !important; margin-bottom: 4px; }
+  a.hp-link-card:hover .hp-link-card-title { color: #3b82f6 !important; }
+  .hp-link-card-desc { font-size: 0.82rem; color: #6b7280 !important; line-height: 1.45; margin-bottom: 8px; }
+  .hp-link-card-cue { font-size: 0.78rem; font-weight: 600; color: #3b82f6 !important; }
   .hp-airline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .hp-airline-card { background: #f9fafb; border-radius: 10px; padding: 14px 16px; border: 1px solid #e5e7eb; transition: border-color 0.15s ease; }
-  .hp-airline-card:hover { border-color: #93c5fd; }
+  .hp-airline-card { background: #fff; border-radius: 10px; padding: 14px 16px; border: 1px solid #e5e7eb; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+  .hp-airline-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
   .hp-airline-type { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 6px; }
-  .hp-airline-card a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; display: block; padding: 3px 0; border-bottom: 1px solid #f3f4f6; }
+  .hp-airline-card a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; display: block; padding: 4px 0; border-bottom: 1px solid #f3f4f6; }
   .hp-airline-card a:last-child { border-bottom: none; }
   .hp-airline-card a:hover { color: #1d4ed8; }
   .hp-tool-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .hp-tool-card { background: #f9fafb; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; transition: border-color 0.15s ease; }
-  .hp-tool-card:hover { border-color: #93c5fd; }
-  .hp-tool-card a { font-size: 0.92rem; font-weight: 700; color: #1a1a1a; text-decoration: none; display: block; margin-bottom: 4px; }
-  .hp-tool-card a:hover { color: #3b82f6; }
-  .hp-tool-card-desc { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+  a.hp-tool-card { display: block; background: #fff; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; text-decoration: none !important; color: #1a1a1a !important; -webkit-text-decoration: none !important; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-tool-card:visited { color: #1a1a1a !important; text-decoration: none !important; }
+  a.hp-tool-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
+  a.hp-tool-card:active { transform: translateY(0); box-shadow: 0 1px 4px rgba(59,130,246,0.10); }
+  .hp-tool-card-title { font-size: 0.92rem; font-weight: 800; color: #1a1a1a !important; margin-bottom: 4px; }
+  a.hp-tool-card:hover .hp-tool-card-title { color: #3b82f6 !important; }
+  .hp-tool-card-desc { font-size: 0.8rem; color: #6b7280 !important; line-height: 1.4; margin-bottom: 6px; }
+  .hp-tool-card-cue { font-size: 0.75rem; font-weight: 600; color: #3b82f6 !important; }
   .hp-popular-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .hp-popular-row a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; transition: background 0.15s ease, border-color 0.15s ease; }
   .hp-popular-row a:hover { background: #dbeafe; border-color: #93c5fd; }
   @media (max-width: 560px) {
-    .hp-link-grid { grid-template-columns: 1fr; }
-    .hp-airline-grid { grid-template-columns: 1fr; }
-    .hp-tool-grid { grid-template-columns: 1fr; }
+    .page-wrap { padding: 28px 12px 60px; }
+    .section-card { padding: 20px 16px; }
+    .hp-link-grid { grid-template-columns: 1fr; gap: 8px; }
+    .hp-airline-grid { grid-template-columns: 1fr; gap: 8px; }
+    .hp-tool-grid { grid-template-columns: 1fr; gap: 8px; }
     .steps-grid { grid-template-columns: 1fr; }
     .use-cases-grid { grid-template-columns: 1fr; }
     .volume-grid { grid-template-columns: 1fr; }
     .bag-size-grid { grid-template-columns: 1fr; }
     .fit-grid { grid-template-columns: 1fr; }
     .metrics { grid-template-columns: 1fr; }
+    a.hp-link-card { padding: 16px 18px; border-radius: 10px; border-color: #d1d5db; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    a.hp-link-card:hover, a.hp-link-card:active { transform: none; border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.12); }
+    .hp-link-card-title { font-size: 0.9rem; }
+    .hp-link-card-desc { font-size: 0.8rem; margin-bottom: 6px; }
+    a.hp-tool-card { padding: 16px 18px; border-radius: 10px; border-color: #d1d5db; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    a.hp-tool-card:hover, a.hp-tool-card:active { transform: none; border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.12); }
+    .hp-tool-card-title { font-size: 0.9rem; }
+    .hp-tool-card-desc { font-size: 0.78rem; }
+    .hp-airline-card { padding: 14px 16px; border-radius: 10px; border-color: #d1d5db; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .hp-airline-card:hover { transform: none; border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.12); }
   }
 
   /* ── Quick Answer Snapshot ── */
