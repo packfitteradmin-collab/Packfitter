@@ -406,6 +406,22 @@
   a.hp-tool-card:hover .hp-tool-card-title { color: #3b82f6 !important; }
   .hp-tool-card-desc { font-size: 0.8rem; color: #6b7280 !important; line-height: 1.4; margin-bottom: 6px; }
   .hp-tool-card-cue { font-size: 0.75rem; font-weight: 600; color: #3b82f6 !important; }
+  /* ── Capability cards (homepage "What You Can Do") ── */
+  .hp-capability-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 8px; }
+  a.hp-capability-card { display: block; background: #f9fafb; border-radius: 10px; padding: 18px 16px; border: 1px solid #e5e7eb; text-decoration: none !important; color: #1a1a1a !important; -webkit-text-decoration: none !important; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-capability-card:visited { color: #1a1a1a !important; text-decoration: none !important; }
+  a.hp-capability-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
+  a.hp-capability-card:active { transform: translateY(0); }
+  .hp-capability-title { font-size: 0.88rem; font-weight: 800; color: #1a1a1a !important; margin-bottom: 4px; }
+  a.hp-capability-card:hover .hp-capability-title { color: #3b82f6 !important; }
+  .hp-capability-desc { font-size: 0.78rem; color: #6b7280 !important; line-height: 1.45; margin-bottom: 8px; }
+  .hp-capability-cue { font-size: 0.75rem; font-weight: 600; color: #3b82f6 !important; }
+
+  /* ── Dropdown section labels ── */
+  .pf-dd-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; padding: 10px 16px 4px; display: block; }
+  .pf-dd-label:first-child { padding-top: 6px; }
+  .pf-dd-divider { height: 1px; background: #e5e7eb; margin: 6px 12px; }
+
   .hp-popular-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .hp-popular-row a { font-size: 0.88rem; font-weight: 600; color: #3b82f6; text-decoration: none; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; transition: background 0.15s ease, border-color 0.15s ease; }
   .hp-popular-row a:hover { background: #dbeafe; border-color: #93c5fd; }
@@ -415,6 +431,11 @@
     .hp-link-grid { grid-template-columns: 1fr; gap: 8px; }
     .hp-airline-grid { grid-template-columns: 1fr; gap: 8px; }
     .hp-tool-grid { grid-template-columns: 1fr; gap: 8px; }
+    .hp-capability-grid { grid-template-columns: 1fr; gap: 8px; }
+    a.hp-capability-card { padding: 14px 16px; border-color: #d1d5db; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    a.hp-capability-card:hover, a.hp-capability-card:active { transform: none; border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.12); }
+    .hp-capability-title { font-size: 0.86rem; }
+    .hp-capability-desc { font-size: 0.76rem; }
     .steps-grid { grid-template-columns: 1fr; }
     .use-cases-grid { grid-template-columns: 1fr; }
     .volume-grid { grid-template-columns: 1fr; }
