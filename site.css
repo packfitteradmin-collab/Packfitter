@@ -381,7 +381,8 @@
   .size-guide-list li:last-child { border-bottom: none; }
   .size-guide-list li strong { color: #1a1a1a; font-weight: 600; }
   .hp-link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 6px; }
-  a.hp-link-card, a.hp-link-card:visited, a.hp-link-card:active { display: block; background: #fff; border-radius: 10px; padding: 16px 18px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-link-card { display: block; background: #fff; border-radius: 10px; padding: 16px 18px; border: 1px solid #e5e7eb; text-decoration: none !important; color: #1a1a1a !important; -webkit-text-decoration: none !important; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-link-card:visited { color: #1a1a1a !important; text-decoration: none !important; }
   a.hp-link-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
   a.hp-link-card:active { transform: translateY(0); box-shadow: 0 1px 4px rgba(59,130,246,0.10); }
   .hp-link-card-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af !important; margin-bottom: 4px; }
@@ -397,7 +398,8 @@
   .hp-airline-card a:last-child { border-bottom: none; }
   .hp-airline-card a:hover { color: #1d4ed8; }
   .hp-tool-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  a.hp-tool-card, a.hp-tool-card:visited, a.hp-tool-card:active { display: block; background: #fff; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; text-decoration: none; color: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-tool-card { display: block; background: #fff; border-radius: 10px; padding: 16px; border: 1px solid #e5e7eb; text-align: center; text-decoration: none !important; color: #1a1a1a !important; -webkit-text-decoration: none !important; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; cursor: pointer; }
+  a.hp-tool-card:visited { color: #1a1a1a !important; text-decoration: none !important; }
   a.hp-tool-card:hover { border-color: #93c5fd; box-shadow: 0 3px 12px rgba(59,130,246,0.12); transform: translateY(-2px); }
   a.hp-tool-card:active { transform: translateY(0); box-shadow: 0 1px 4px rgba(59,130,246,0.10); }
   .hp-tool-card-title { font-size: 0.92rem; font-weight: 800; color: #1a1a1a !important; margin-bottom: 4px; }
