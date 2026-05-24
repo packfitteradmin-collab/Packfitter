@@ -74,6 +74,12 @@ const ITEMS = {
   "Reusable Water Bottle":{ baseVolume:1.00, weight:0.20, cFactor:1.00, gTax:1.15, rigid:true, waterBottle:true },
   "Camera Bag":           { baseVolume:6.00, weight:1.20, cFactor:1.00, gTax:1.20, rigid:true },
   "Lens Case":            { baseVolume:2.50, weight:0.60, cFactor:1.00, gTax:1.15, rigid:true },
+  // ── Formalwear ───────────────────────────────────────────────────────────
+  // Blazer/sport coat: structure-sensitive, does not compress well in cubes,
+  // not subject to packing-profile multiplier (you bring 1 regardless).
+  // cFactor 0.90 = slight compression possible in garment folder.
+  // gTax 1.15 = does not tetris-pack well (shape-sensitive).
+  "Blazer":               { baseVolume:4.50, weight:0.55, cFactor:0.90, gTax:1.15, rigid:false, formalwear:true },
 };
 
 const SIZE_MULTIPLIER = { XS:0.85, S:0.90, M:1.00, L:1.10, XL:1.20, XXL:1.30 };
@@ -110,7 +116,7 @@ function isCubeEligible(entry) {
   return false;
 }
 
-function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop, shoeList, includeBulkyLayer) {
+function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop, shoeList, includeBulkyLayer, blazerMode) {
   const entries = [];
   const packMult = PROFILE_MULTIPLIERS[profile] !== undefined ? PROFILE_MULTIPLIERS[profile] : 1.05;
 
@@ -172,12 +178,16 @@ function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop
   const SHOE_ITEM_MAP = { "compact": "Sandals", "standard": "Sneakers", "bulky": "Boots" };
   for (let i = 0; i < shoeList.length; i++) { add(SHOE_ITEM_MAP[shoeList[i]] || "Sneakers", 1); }
 
+  // Blazer / sport coat — "packed" adds full volume, "worn" adds weight only
+  if (blazerMode === "packed") { add("Blazer", 1, false); }
+  if (blazerMode === "worn")  { add("Blazer", 1, true); }
+
   return entries;
 }
 
-function runEngine(bag, airline, personalItem, profile, tripDays, climate, laundry, clothingSize, includeLaptop, shoeList, includeBulkyLayer) {
+function runEngine(bag, airline, personalItem, profile, tripDays, climate, laundry, clothingSize, includeLaptop, shoeList, includeBulkyLayer, blazerMode) {
   const mSize = SIZE_MULTIPLIER[clothingSize] || 1.0;
-  const entries = buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop, shoeList, includeBulkyLayer);
+  const entries = buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop, shoeList, includeBulkyLayer, blazerMode || "none");
 
   let vtotal = 0, wTotal = bag.bagWeight, vRigid = 0;
   for (const e of entries) {
@@ -316,6 +326,7 @@ var PAGE_DEFAULT_CLOTHING_SIZE      = (typeof window.PAGE_DEFAULT_CLOTHING_SIZE 
 var PAGE_DEFAULT_PERSONAL_ITEM      = (typeof window.PAGE_DEFAULT_PERSONAL_ITEM !== "undefined") ? window.PAGE_DEFAULT_PERSONAL_ITEM : false;
 var PAGE_IS_BAG_SPECIFIC            = (typeof window.PAGE_IS_BAG_SPECIFIC !== "undefined") ? window.PAGE_IS_BAG_SPECIFIC : true;
 var PAGE_CHECKED_BAG_CONTEXT        = (typeof window.PAGE_CHECKED_BAG_CONTEXT !== "undefined") ? window.PAGE_CHECKED_BAG_CONTEXT : "";
+var PAGE_DEFAULT_BLAZER_MODE        = (typeof window.PAGE_DEFAULT_BLAZER_MODE !== "undefined") ? window.PAGE_DEFAULT_BLAZER_MODE : "none";
 
 // ── Cluster scenario system ─────────────────────────────────────────────────
 const CLUSTER_SCENARIOS = {
@@ -440,19 +451,24 @@ function populateBagSizes() {
 }
 
 function applyPageDefaults() {
-  document.getElementById("tripDays").value = String(PAGE_DEFAULT_TRIP_DAYS);
-  document.getElementById("climate").value = PAGE_DEFAULT_CLIMATE;
-  document.getElementById("profile").value = PAGE_DEFAULT_PROFILE;
-  document.getElementById("laundry").value = PAGE_DEFAULT_LAUNDRY;
-  document.getElementById("clothingSize").value = PAGE_DEFAULT_CLOTHING_SIZE;
-  document.getElementById("includeLaptop").checked = PAGE_DEFAULT_INCLUDE_LAPTOP;
-  document.getElementById("includeBulkyLayer").checked = PAGE_DEFAULT_INCLUDE_BULKY_LAYER;
-  document.getElementById("extraShoes").value = String(PAGE_DEFAULT_EXTRA_SHOES);
+  // Helper: safely set a form element's value/checked if it exists
+  function setVal(id, val) { var el = document.getElementById(id); if (el) el.value = val; }
+  function setChk(id, val) { var el = document.getElementById(id); if (el) el.checked = val; }
+
+  setVal("tripDays", String(PAGE_DEFAULT_TRIP_DAYS));
+  setVal("climate", PAGE_DEFAULT_CLIMATE);
+  setVal("profile", PAGE_DEFAULT_PROFILE);
+  setVal("laundry", PAGE_DEFAULT_LAUNDRY);
+  setVal("clothingSize", PAGE_DEFAULT_CLOTHING_SIZE);
+  setChk("includeLaptop", PAGE_DEFAULT_INCLUDE_LAPTOP);
+  setChk("includeBulkyLayer", PAGE_DEFAULT_INCLUDE_BULKY_LAYER);
+  setVal("extraShoes", String(PAGE_DEFAULT_EXTRA_SHOES));
   updateShoeType();
   if (PAGE_DEFAULT_EXTRA_SHOES > 0) {
     var st1d = document.getElementById("shoeType1"); if (st1d) st1d.value = PAGE_DEFAULT_SHOE_TYPE;
   }
-  document.getElementById("personalItem").checked = PAGE_DEFAULT_PERSONAL_ITEM;
+  setChk("personalItem", PAGE_DEFAULT_PERSONAL_ITEM);
+  setVal("blazerMode", PAGE_DEFAULT_BLAZER_MODE);
 }
 
 function populateSelects() {
@@ -573,6 +589,9 @@ function buildOptimizationSuggestions(vtotal, inputs) {
   if (inputs.includeBulkyLayer) {
     suggestions.push("Wearing your bulky layer at the airport (not packing it) saves ~3–5L");
   }
+  if (inputs.blazerMode === "packed") {
+    suggestions.push("Wearing your blazer during travel instead of packing it saves ~4–5L and avoids wrinkles");
+  }
   if (inputs.laundry === "NO" && inputs.tripDays >= 5) {
     suggestions.push("Adding laundry access mid-trip reduces clothing by 30–40% — the single biggest lever for longer trips");
   }
@@ -591,8 +610,9 @@ function buildHumanSummary(inputs, vtotal) {
   var days = inputs.tripDays, profile = inputs.profile, climate = inputs.climate;
   var shoeCount = inputs.shoeCount, laptop = inputs.includeLaptop;
   var bulky = inputs.includeBulkyLayer, laundry = inputs.laundry;
+  var blazer = inputs.blazerMode || "none";
 
-  var isLight  = profile === "light"  && shoeCount === 0 && !laptop && !bulky && days <= 5;
+  var isLight  = profile === "light"  && shoeCount === 0 && !laptop && !bulky && blazer === "none" && days <= 5;
   var isHeavy  = profile === "heavy"  || (laptop && shoeCount > 0) || (climate === "COLD" && days >= 7);
 
   var drivers = [];
@@ -601,6 +621,7 @@ function buildHumanSummary(inputs, vtotal) {
   if (shoeCount > 1)                    drivers.push("extra shoes");
   else if (shoeCount === 1)             drivers.push("an extra pair of shoes");
   if (bulky)                            drivers.push("a packed bulky layer");
+  if (blazer === "packed")              drivers.push("a packed blazer");
   if (laundry === "NO" && days >= 7)    drivers.push("full clothing for " + days + " days (no laundry)");
   else if (days >= 10)                  drivers.push("extended trip length");
 
@@ -629,6 +650,7 @@ function buildVolumeDrivers(inputs, vtotal) {
   var days = inputs.tripDays, profile = inputs.profile, climate = inputs.climate;
   var shoeCount = inputs.shoeCount, laptop = inputs.includeLaptop;
   var bulky = inputs.includeBulkyLayer, laundry = inputs.laundry;
+  var blazer = inputs.blazerMode || "none";
 
   var drivers = [];
   if (laundry === "NO" && days >= 5)         drivers.push(days + "-day clothing, no laundry");
@@ -638,6 +660,7 @@ function buildVolumeDrivers(inputs, vtotal) {
   if (laptop)                                drivers.push("laptop and tech");
   if (shoeCount > 0)                         drivers.push(shoeCount > 1 ? shoeCount + " extra pairs of shoes" : "extra shoes");
   if (bulky)                                 drivers.push("bulky layer");
+  if (blazer === "packed")                   drivers.push("packed blazer");
   if (profile === "heavy")                   drivers.push("heavy packing style");
 
   if (drivers.length === 0) return "Main volume drivers: minimal clothing and no bulky items";
@@ -718,8 +741,10 @@ function runCalculation() {
   const shoeList          = [];
   if (shoeCount >= 1) { var st1 = document.getElementById("shoeType1"); shoeList.push(st1 ? st1.value : "standard"); }
   if (shoeCount >= 2) { var st2 = document.getElementById("shoeType2"); shoeList.push(st2 ? st2.value : "standard"); }
+  const blazerEl          = document.getElementById("blazerMode");
+  const blazerMode        = blazerEl ? blazerEl.value : "none";
 
-  const r = runEngine(bag, airline, personalItem, profile, tripDays, climate, laundry, size, includeLaptop, shoeList, includeBulkyLayer);
+  const r = runEngine(bag, airline, personalItem, profile, tripDays, climate, laundry, size, includeLaptop, shoeList, includeBulkyLayer, blazerMode);
 
   const PERSONAL_ITEM_CAPACITY = personalItem ? 25 : 0;
   const carryOnOnlyCapacity = r.adjustedCapacity - PERSONAL_ITEM_CAPACITY;
@@ -737,6 +762,7 @@ function runCalculation() {
     tripDays: tripDays, profile: profile, climate: climate, laundry: laundry,
     shoeCount: shoeCount, shoeList: shoeList,
     includeLaptop: includeLaptop, includeBulkyLayer: includeBulkyLayer,
+    blazerMode: blazerMode,
     personalItem: personalItem,
     carryOnOnlyCapacity: carryOnOnlyCapacity,
     carryOnSystemCapacity: carryOnSystemCapacity
@@ -1070,6 +1096,12 @@ function runCalculation() {
         recsWrap.style.display = "none";
       }
     }
+  }
+
+  // Garment bag suggestion — business/formalwear pages only (gated by DOM existence)
+  var garmentBlock = document.getElementById("garmentBagRecs");
+  if (garmentBlock) {
+    garmentBlock.style.display = (blazerMode === "packed") ? "" : "none";
   }
 
   // Checked-bag recommendation — trip/destination pages (page-type gated)
