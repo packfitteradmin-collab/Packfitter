@@ -1,5 +1,12 @@
 
 const BAGS = [
+  // ── Personal item bag ───────────────────────────────────────────────────
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:12,  efficiency:0.80, effectiveCapacity:9.60,   bagWeight:0.25, weightLimit:5,  type:"softpack"  },
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:15,  efficiency:0.80, effectiveCapacity:12.00,  bagWeight:0.35, weightLimit:7,  type:"softpack"  },
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:18,  efficiency:0.80, effectiveCapacity:14.40,  bagWeight:0.45, weightLimit:7,  type:"softpack"  },
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:20,  efficiency:0.80, effectiveCapacity:16.00,  bagWeight:0.50, weightLimit:7,  type:"softpack"  },
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:22,  efficiency:0.80, effectiveCapacity:17.60,  bagWeight:0.55, weightLimit:7,  type:"softpack"  },
+  { name:"Personal Item Bag",  category:"personal-item",    capacity:25,  efficiency:0.80, effectiveCapacity:20.00,  bagWeight:0.60, weightLimit:10, type:"softpack"  },
   // ── Carry-on backpack ────────────────────────────────────────────────────
   { name:"Carry-On Backpack",  category:"backpack",         capacity:25,  efficiency:0.85, effectiveCapacity:21.25, bagWeight:0.70, weightLimit:10, type:"topload"   },
   { name:"Carry-On Backpack",  category:"backpack",         capacity:30,  efficiency:0.85, effectiveCapacity:25.50, bagWeight:0.80, weightLimit:12, type:"topload"   },
@@ -18,33 +25,34 @@ const BAGS = [
 ];
 
 const AIRLINES = [
-  { name:"American Airlines",   coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"Delta Air Lines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"United Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"Southwest Airlines",  coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit; two bags fly free" },
-  { name:"JetBlue",             coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
-  { name:"Alaska Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
-  { name:"Spirit Airlines",     coL:22.0, coW:18.0, coH:10.0,coLcm:55.9, coWcm:45.7, coHcm:25.4, weightKg:10, weightLbs:22,  personalItem:true, note:"Carry-on fee applies; personal item included free" },
-  { name:"Frontier Airlines",   coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, weightKg:10, weightLbs:22,  personalItem:true, note:"Carry-on fee applies unless bundled fare" },
-  { name:"Air Canada",          coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Weight limit applies on international routes" },
-  { name:"British Airways",     coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, weightKg:23, weightLbs:50.7,personalItem:true, note:"Generous weight limit; dimensions strictly enforced" },
-  { name:"Lufthansa",           coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Weight limit strictly enforced at gate" },
-  { name:"Air France",          coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"One additional personal item permitted" },
-  { name:"Emirates",            coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Strictly enforced; all cabin bags combined under 7kg" },
-  { name:"Singapore Airlines",  coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Combined weight of all cabin bags must not exceed 7kg" },
-  { name:"Cathay Pacific",      coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Weight limit strictly enforced at boarding" },
-  { name:"Ryanair",             coL:21.7, coW:15.7, coH:7.9, coLcm:55.0, coWcm:40.0, coHcm:20.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Priority boarding required for full-size cabin bag" },
-  { name:"Qantas",              coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Personal item included within total weight allowance" },
-  { name:"KLM",                 coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"Hand luggage and personal item combined under 12kg" },
-  { name:"Turkish Airlines",    coL:21.7, coW:15.7, coH:7.9, coLcm:55.0, coWcm:40.0, coHcm:20.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Economy class standard; enforced at check-in" },
-  { name:"EasyJet",             coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, weightKg:15, weightLbs:33.1,personalItem:true, note:"Large cabin bag requires reserved overhead bin fee" },
+  // piL/piW/piH = personal-item max dimensions (inches); piLcm/piWcm/piHcm = same in cm
+  { name:"American Airlines",   coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:35.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
+  { name:"Delta Air Lines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:35.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
+  { name:"United Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:12.0, piH:6.0,  piLcm:43.0, piWcm:30.0, piHcm:15.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
+  { name:"Southwest Airlines",  coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, piL:18.5,piW:13.5,piH:8.5,  piLcm:47.0, piWcm:34.0, piHcm:22.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit; two bags fly free" },
+  { name:"JetBlue",             coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:13.0, piH:8.0,  piLcm:43.0, piWcm:33.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
+  { name:"Alaska Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:13.0, piH:8.0,  piLcm:43.0, piWcm:33.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
+  { name:"Spirit Airlines",     coL:22.0, coW:18.0, coH:10.0,coLcm:55.9, coWcm:45.7, coHcm:25.4, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:35.0, piHcm:20.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Carry-on fee applies; personal item included free" },
+  { name:"Frontier Airlines",   coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, piL:18.0, piW:14.0, piH:8.0,  piLcm:46.0, piWcm:35.0, piHcm:20.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Carry-on fee applies unless bundled fare" },
+  { name:"Air Canada",          coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, piL:13.0, piW:10.0, piH:6.0,  piLcm:33.0, piWcm:25.0, piHcm:16.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Weight limit applies on international routes" },
+  { name:"British Airways",     coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:23, weightLbs:50.7,personalItem:true, note:"Generous weight limit; dimensions strictly enforced" },
+  { name:"Lufthansa",           coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, piL:16.0, piW:12.0, piH:4.0,  piLcm:40.0, piWcm:30.0, piHcm:10.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Weight limit strictly enforced at gate" },
+  { name:"Air France",          coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"One additional personal item permitted" },
+  { name:"Emirates",            coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, piL:15.0, piW:12.0, piH:6.0,  piLcm:38.0, piWcm:30.0, piHcm:15.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Strictly enforced; all cabin bags combined under 7kg" },
+  { name:"Singapore Airlines",  coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Combined weight of all cabin bags must not exceed 7kg" },
+  { name:"Cathay Pacific",      coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Weight limit strictly enforced at boarding" },
+  { name:"Ryanair",             coL:21.7, coW:15.7, coH:7.9, coLcm:55.0, coWcm:40.0, coHcm:20.0, piL:16.5, piW:13.0, piH:8.0,  piLcm:42.0, piWcm:30.0, piHcm:20.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Priority boarding required for full-size cabin bag" },
+  { name:"Qantas",              coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Personal item included within total weight allowance" },
+  { name:"KLM",                 coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"Hand luggage and personal item combined under 12kg" },
+  { name:"Turkish Airlines",    coL:21.7, coW:15.7, coH:7.9, coLcm:55.0, coWcm:40.0, coHcm:20.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Economy class standard; enforced at check-in" },
+  { name:"EasyJet",             coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, piL:17.7, piW:14.2, piH:7.9,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:15, weightLbs:33.1,personalItem:true, note:"Large cabin bag requires reserved overhead bin fee" },
 ];
 
 const ITEMS = {
-  "T-Shirt":              { baseVolume:1.10, weight:0.15, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
+  "Tops":              { baseVolume:1.10, weight:0.15, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
   "Underwear":            { baseVolume:0.25, weight:0.05, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
   "Socks":                { baseVolume:0.40, weight:0.08, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
-  "Casual Pants":         { baseVolume:2.20, weight:0.40, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
+  "Bottoms":         { baseVolume:2.20, weight:0.40, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
   "Jeans":                { baseVolume:3.80, weight:0.70, cFactor:0.90, gTax:1.05, rigid:false, clothing:true },
   "Shorts":               { baseVolume:1.20, weight:0.25, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
   "Dress Shirt":          { baseVolume:0.40, weight:0.20, cFactor:0.90, gTax:1.05, rigid:false, clothing:true },
@@ -54,11 +62,11 @@ const ITEMS = {
   "Fleece Jacket":        { baseVolume:1.80, weight:0.50, cFactor:0.75, gTax:1.00, rigid:false, outerwear:true, softOuterwear:true },
   "Light Layer":          { baseVolume:2.00, weight:0.40, cFactor:0.75, gTax:1.00, rigid:false, outerwear:true, softOuterwear:true },
   "Mid Layer":            { baseVolume:4.50, weight:0.50, cFactor:0.80, gTax:1.00, rigid:false, outerwear:true, softOuterwear:true },
-  "Sneakers":             { baseVolume:6.50, weight:0.70, cFactor:1.00, gTax:1.15, rigid:false, shoe:true },
+  "Shoes":             { baseVolume:6.50, weight:0.70, cFactor:1.00, gTax:1.15, rigid:false, shoe:true },
   "Sandals":              { baseVolume:1.20, weight:0.40, cFactor:1.00, gTax:1.10, rigid:false, shoe:true },
   "Boots":                { baseVolume:7.50, weight:1.20, cFactor:1.00, gTax:1.25, rigid:true,  shoe:true },
   "Dress Shoes":          { baseVolume:6.50, weight:0.90, cFactor:1.00, gTax:1.20, rigid:true,  shoe:true },
-  "Soft Toiletry Kit":    { baseVolume:2.00, weight:0.80, cFactor:0.95, gTax:1.05, rigid:false },
+  "Toiletry Kit":    { baseVolume:2.00, weight:0.80, cFactor:0.95, gTax:1.05, rigid:false },
   "Hard Toiletry Kit":    { baseVolume:2.80, weight:0.90, cFactor:1.00, gTax:1.15, rigid:true },
   "Laptop 13in":          { baseVolume:2.00, weight:1.40, cFactor:1.00, gTax:1.20, rigid:true,  electronics:true },
   "Laptop Charger":       { baseVolume:0.40, weight:0.30, cFactor:1.00, gTax:1.05, rigid:false, electronics:true },
@@ -92,7 +100,7 @@ const PROFILE_MULTIPLIERS = {
 };
 
 const CLOTHING_MULTIPLIER_TARGETS = new Set([
-  "T-Shirt", "Casual Pants", "Shorts", "Mid Layer", "Underwear", "Socks"
+  "Tops", "Bottoms", "Shorts", "Mid Layer", "Underwear", "Socks"
 ]);
 
 const CUBE_FACTOR = 0.85;
@@ -143,14 +151,14 @@ function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop
     pants = (climate === "COLD") ? 3 : 2;
   }
 
-  add("T-Shirt",   shirts);
+  add("Tops",   shirts);
   add("Underwear", underwear);
   add("Socks",     socks);
   if (climate === "WARM") {
     add("Shorts", pants);
-    add("Casual Pants", 1);
+    add("Bottoms", 1);
   } else {
-    add("Casual Pants", pants);
+    add("Bottoms", pants);
   }
 
   if (climate === "WARM") {
@@ -162,8 +170,8 @@ function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop
     add("Insulated Jacket", 1, true);
   }
 
-  add("Sneakers", 1, true);
-  add("Soft Toiletry Kit", 1);
+  add("Shoes", 1, true);
+  add("Toiletry Kit", 1);
   add("Phone Charger", 1);
 
   if (includeLaptop) {
@@ -175,8 +183,8 @@ function buildItemList(profile, tripDays, climate, laundry, mSize, includeLaptop
 
   if (includeBulkyLayer) { add("Insulated Jacket", 1); }
 
-  const SHOE_ITEM_MAP = { "compact": "Sandals", "standard": "Sneakers", "bulky": "Boots" };
-  for (let i = 0; i < shoeList.length; i++) { add(SHOE_ITEM_MAP[shoeList[i]] || "Sneakers", 1); }
+  const SHOE_ITEM_MAP = { "compact": "Sandals", "standard": "Shoes", "bulky": "Boots" };
+  for (let i = 0; i < shoeList.length; i++) { add(SHOE_ITEM_MAP[shoeList[i]] || "Shoes", 1); }
 
   // Blazer / sport coat — "packed" adds full volume, "worn" adds weight only
   if (blazerMode === "packed") { add("Blazer", 1, false); }
@@ -265,17 +273,21 @@ function runEngine(bag, airline, personalItem, profile, tripDays, climate, laund
   }
 
   let placement;
-  const isFlexibleSize = bag.capacity <= 25;
-  if (isFlexibleSize) {
-    // 25L bags can function as personal item OR compact carry-on depending on packing
-    if (rigidRatio > 0.40 || vtotal > bag.effectiveCapacity * 0.85) {
-      placement = "FLEX_CARRY_ON";   // packed bulky/rigid — more like a small carry-on
-    } else {
-      placement = "FLEX_PERSONAL";   // light/soft — typically works as a personal item
+  if (bag.category === "personal-item") {
+    placement = "PERSONAL_ITEM";     // PI bags are always personal items — skip flex logic
+  } else {
+    const isFlexibleSize = bag.capacity <= 25;
+    if (isFlexibleSize) {
+      // 25L bags can function as personal item OR compact carry-on depending on packing
+      if (rigidRatio > 0.40 || vtotal > bag.effectiveCapacity * 0.85) {
+        placement = "FLEX_CARRY_ON";   // packed bulky/rigid — more like a small carry-on
+      } else {
+        placement = "FLEX_PERSONAL";   // light/soft — typically works as a personal item
+      }
     }
+    else if (bag.capacity <= 50) placement = "CARRY_ON";
+    else placement = "TOO_LARGE";
   }
-  else if (bag.capacity <= 50) placement = "CARRY_ON";
-  else placement = "TOO_LARGE";
 
   const showWarning = vtotal > adjustedCapacity || weightConflict || geometryConflict ||
     (tripDays >= 10 && climate === "COLD" && laundry === "NO" && adjustedCapacity <= 40);
@@ -283,11 +295,11 @@ function runEngine(bag, airline, personalItem, profile, tripDays, climate, laund
   const suggestions = [];
   if (fitResult !== "FITS") {
     if (vtotal > adjustedCapacity) suggestions.push("Reduce packed clothing volume — this is the main constraint");
-    if (geometryConflict) suggestions.push("Too many rigid items — move tech or shoes to a personal item");
+    if (geometryConflict) suggestions.push(bag.category === "personal-item" ? "Rigid items take up disproportionate space in a personal item — reduce rigid gear or consider a carry-on" : "Too many rigid items — move tech or shoes to a personal item");
     if (weightLimit > 0 && wTotal > weightLimit) suggestions.push("Weight exceeds airline limits — reduce heavy items");
     suggestions.push("Wear your bulkiest items during transit");
-    if (practicality === "VERY_LOW") suggestions.push(bag.category === "suitcase-checked" ? "Consider a larger checked bag for this setup" : "Consider shifting items to a personal item or stepping up to a larger carry-on");
-    if (bag.capacity < 50 && bag.category !== "suitcase-checked") suggestions.push("A larger carry-on bag could resolve the volume shortfall within " + airline.name + "'s carry-on limit");
+    if (practicality === "VERY_LOW") suggestions.push(bag.category === "suitcase-checked" ? "Consider a larger checked bag for this setup" : (bag.category === "personal-item" ? "Consider a larger personal item or stepping up to a carry-on backpack" : "Consider shifting items to a personal item or stepping up to a larger carry-on"));
+    if (bag.capacity < 50 && bag.category !== "suitcase-checked" && bag.category !== "personal-item") suggestions.push("A larger carry-on bag could resolve the volume shortfall within " + airline.name + "'s carry-on limit");
   }
 
   return {
@@ -438,6 +450,7 @@ function populateBagSizes() {
   var sizeSel = document.getElementById("bagSize");
   sizeSel.innerHTML = "";
   var SIZE_MAP = {
+    "personal-item":     [12, 15, 18, 20, 22, 25],
     "backpack":          [25, 30, 35, 40, 45],
     "suitcase-carryon":  [35, 40, 45],
     "suitcase-checked":  [60, 70, 80, 100]
@@ -487,14 +500,19 @@ function populateSelects() {
 
 function computeVolumeInterpretation(vtotal, effectiveSystemCapacity, statedSystemCapacity, hasPersonalItem, bagType) {
   var isChecked = bagType === "suitcase-checked";
+  var isPI = bagType === "personal-item";
   if (vtotal <= effectiveSystemCapacity) {
+    if (isPI) return { cls: "green", text: "Fits this personal item \u2014 should fit under the seat." };
     return { cls: "green", text: isChecked ? "Fits this checked bag \u2014 plenty of room for this setup." : "Carry-on viable \u2014 this setup fits within your carry-on system." };
   } else if (vtotal <= statedSystemCapacity) {
+    if (isPI) return { cls: "yellow", text: "Tight personal-item fit \u2014 should work with efficient packing." };
     return { cls: "yellow", text: isChecked ? "Tight fit \u2014 this setup should fit with efficient packing." : "Tight fit \u2014 this setup should fit your carry-on system with efficient packing." };
   } else if (vtotal <= statedSystemCapacity * 1.10) {
+    if (isPI) return { cls: "yellow", text: "Very tight \u2014 at the edge of this personal item. A larger bag or carry-on may help." };
     var tip = isChecked ? "Consider a larger checked bag." : (hasPersonalItem ? "Consider a larger carry-on." : "A personal item or larger carry-on may help.");
     return { cls: "yellow", text: isChecked ? "Very tight \u2014 at the edge of this checked bag. " + tip : "Very tight \u2014 at the edge of your carry-on system. " + tip };
   } else {
+    if (isPI) return { cls: "red", text: "Exceeds this personal item \u2014 a carry-on backpack (25\u201335L) is recommended for this setup." };
     var rec = isChecked ? "A larger checked bag is recommended." : (hasPersonalItem ? "A larger carry-on or checked bag is recommended." : "A personal item, larger carry-on, or checked bag is recommended.");
     return { cls: "red", text: isChecked ? "Exceeds this checked bag \u2014 " + rec : "Exceeds carry-on system \u2014 " + rec };
   }
@@ -502,7 +520,26 @@ function computeVolumeInterpretation(vtotal, effectiveSystemCapacity, statedSyst
 
 function computeBagRanges(vtotal, personalItem, bagType, selectedBagSize) {
   var isChecked = bagType === "suitcase-checked";
+  var isPI = bagType === "personal-item";
   var PI_CAP = personalItem ? 25 : 0;
+
+  // Personal item primary: recommend within PI sizes, then suggest carry-on upgrade
+  if (isPI) {
+    var piOptions = [
+      { size: 12, ec: 9.60 }, { size: 15, ec: 12.00 }, { size: 18, ec: 14.40 },
+      { size: 20, ec: 16.00 }, { size: 22, ec: 17.60 }, { size: 25, ec: 20.00 }
+    ];
+    var piCap = personalItem ? 25 : 0;
+    var minPI = piOptions.find(function(b) { return (b.ec + piCap) >= vtotal; });
+    if (minPI) {
+      var comfortPI = piOptions.find(function(b) { return (vtotal / (b.ec + piCap)) <= 0.78; });
+      var best = minPI.size + "L";
+      var comfort = comfortPI && comfortPI.size > minPI.size ? comfortPI.size + "L" : null;
+      return { bestFit: best, bestFitNote: null, comfortable: comfort, checked: null };
+    }
+    // No PI size works — suggest carry-on
+    return { bestFit: null, bestFitNote: null, comfortable: null, checked: "25–35L carry-on" };
+  }
 
   var carryOnOptions = [
     { size: 25, ec: 21.25 }, { size: 30, ec: 25.50 }, { size: 35, ec: 29.75 },
@@ -684,10 +721,11 @@ function buildCategorizedPackingList(entries) {
     var e = entries[i];
     if (!e.name || !e.item) continue;
     var qty = e.worn ? "(worn)" : "×" + e.qty;
-    var label = e.name + " " + qty;
+    var displayName = (window.PAGE_ITEM_LABEL_OVERRIDES && window.PAGE_ITEM_LABEL_OVERRIDES[e.name]) || e.name;
+    var label = displayName + " " + qty;
     var item = e.item;
-    if (e.name === "T-Shirt" || e.name === "Dress Shirt")                      cats.tops.items.push(label);
-    else if (e.name === "Casual Pants" || e.name === "Jeans" || e.name === "Shorts") cats.bottoms.items.push(label);
+    if (e.name === "Tops" || e.name === "Dress Shirt")                      cats.tops.items.push(label);
+    else if (e.name === "Bottoms" || e.name === "Jeans" || e.name === "Shorts") cats.bottoms.items.push(label);
     else if (item.outerwear)                                                    cats.layers.items.push(label);
     else if (e.name === "Underwear")                                            cats.underwear.items.push(label);
     else if (e.name === "Socks")                                                cats.socks.items.push(label);
@@ -714,11 +752,40 @@ function updateCalcContext(bagType, bagSize, airlineName) {
   if (!el) return;
   var cleanName = airlineName.replace(" Airlines", "").replace(" Air Lines", "");
   var bagLabel = "bag";
-  if (bagType === "backpack") bagLabel = "backpack";
+  if (bagType === "personal-item") bagLabel = "personal item bag";
+  else if (bagType === "backpack") bagLabel = "backpack";
   else if (bagType === "suitcase-carryon") bagLabel = "carry-on suitcase";
   else if (bagType === "suitcase-checked") bagLabel = "checked suitcase";
   el.textContent = "Current setup: " + bagSize + "L " + bagLabel + " on " + cleanName;
   el.style.display = "";
+}
+
+// ── Personal Item Dimension Advisory ────────────────────────────────────────
+// Typical external dimensions (inches) for personal-item bags by capacity.
+// These are approximate — soft bags compress, structured bags don't.
+var PI_TYPICAL_DIMS = {
+  12: { l:15.0, w:10.0, h:5.5 },
+  15: { l:16.0, w:11.0, h:6.0 },
+  18: { l:17.0, w:12.0, h:7.0 },
+  20: { l:18.0, w:12.5, h:7.5 },
+  22: { l:18.5, w:13.0, h:8.0 },
+  25: { l:19.5, w:13.5, h:8.5 }
+};
+
+function computePIDimensionAdvisory(bag, airline) {
+  if (bag.category !== "personal-item") return "";
+  var dims = PI_TYPICAL_DIMS[bag.capacity];
+  if (!dims || !airline.piL) return "";
+
+  var exceeds = (dims.l > airline.piL) || (dims.w > airline.piW) || (dims.h > airline.piH);
+  var close = !exceeds && ((airline.piL - dims.l) < 1.5 || (airline.piW - dims.w) < 1.0 || (airline.piH - dims.h) < 0.5);
+
+  if (exceeds) {
+    return "<strong>Dimension note:</strong> A typical " + bag.capacity + "L bag (~" + dims.l + " × " + dims.w + " × " + dims.h + " in) may exceed " + airline.name + "’s personal item limits (" + airline.piL + " × " + airline.piW + " × " + airline.piH + " in). Soft bags often compress to fit, but check before flying.";
+  } else if (close) {
+    return "<strong>Dimension note:</strong> A typical " + bag.capacity + "L bag is close to " + airline.name + "’s personal item limits. Should fit if the bag is soft-sided or compressible.";
+  }
+  return "";
 }
 
 function runCalculation() {
@@ -749,7 +816,8 @@ function runCalculation() {
   const PERSONAL_ITEM_CAPACITY = personalItem ? 25 : 0;
   const carryOnOnlyCapacity = r.adjustedCapacity - PERSONAL_ITEM_CAPACITY;
   const carryOnSystemCapacity = r.adjustedCapacity;
-  const isFlexibleSize = bag.capacity <= 25;
+  const isFlexibleSize = bag.capacity <= 25 && bag.category !== "personal-item";
+  const isPIprimary = bag.category === "personal-item";
   const statedBagCapacity = bag.capacity;
   const statedSystemCap = statedBagCapacity + PERSONAL_ITEM_CAPACITY;
   const overflowBeyondEffective = Math.max(0, r.vtotal - carryOnOnlyCapacity);
@@ -783,7 +851,34 @@ function runCalculation() {
     decisionMain  = "Rigid items may cause fit issues";
     decisionSub   = bagType === "suitcase-checked"
       ? "Rigid gear takes up disproportionate space \u2014 consider reducing rigid items"
-      : "Consider moving rigid gear to a personal item";
+      : (bagType === "personal-item" ? "Rigid items take up disproportionate space in a personal item bag" : "Consider moving rigid gear to a personal item");
+  } else if (bagType === "personal-item") {
+    // Personal item bag selected as primary
+    if (r.vtotal <= carryOnOnlyCapacity * 0.80) {
+      decisionClass = "green";
+      decisionMain  = "Fits as a personal item";
+      decisionSub   = "Should fit under the seat with room to spare";
+    } else if (r.vtotal <= carryOnOnlyCapacity) {
+      decisionClass = "green";
+      decisionMain  = "Fits as a personal item";
+      decisionSub   = "Should fit under the seat";
+    } else if (r.vtotal <= statedBagCapacity) {
+      decisionClass = "yellow";
+      decisionMain  = "Tight personal-item setup";
+      decisionSub   = "Fits with efficient packing \u2014 a structured bag helps";
+    } else if (r.vtotal <= statedBagCapacity * 1.10) {
+      decisionClass = "yellow";
+      decisionMain  = "Very tight for this personal item";
+      decisionSub   = "At the edge of this bag \u2014 consider a larger personal item or a carry-on backpack";
+    } else if (r.vtotal <= 25) {
+      decisionClass = "red";
+      decisionMain  = "Larger personal item or carry-on recommended";
+      decisionSub   = "This setup needs more space than a " + statedBagCapacity + "L personal item provides";
+    } else {
+      decisionClass = "red";
+      decisionMain  = "Consider a carry-on backpack";
+      decisionSub   = "This setup exceeds personal-item capacity \u2014 a 30\u201335L carry-on would give more flexibility";
+    }
   } else if (bagType === "suitcase-checked") {
     // Checked suitcase selected
     if (r.vtotal <= carryOnOnlyCapacity) {
@@ -917,6 +1012,21 @@ function runCalculation() {
   if (bagType === "suitcase-checked") {
     // No personal item messaging for checked suitcases
     piMsg = "";
+  } else if (bagType === "personal-item") {
+    // Personal item is the primary bag — show dimension advisory
+    var piDimAdvisory = computePIDimensionAdvisory(bag, airline);
+    if (piDimAdvisory) {
+      piMsg = piDimAdvisory;
+    }
+    if (personalItem) {
+      // User also checked "add personal item" — show dual-bag note
+      var piOverflowPI = Math.ceil(Math.max(0, r.vtotal - carryOnOnlyCapacity));
+      if (r.vtotal <= carryOnOnlyCapacity) {
+        piMsg += (piMsg ? "<br>" : "") + "<strong>Two-bag setup:</strong> This setup fits in the primary bag alone — the secondary bag provides extra overflow space.";
+      } else {
+        piMsg += (piMsg ? "<br>" : "") + "<strong>Two-bag setup:</strong> About " + piOverflowPI + "L of overflow to your secondary bag.";
+      }
+    }
   } else if (isFlexibleSize && !personalItem) {
     // 25L flexible placement guidance
     if (r.placement === "FLEX_PERSONAL") {
@@ -1033,6 +1143,16 @@ function runCalculation() {
       if (airline.weightKg > 0) { tightNote += " Weight limit: " + airline.weightKg + " kg (" + airline.weightLbs + " lbs)."; }
     }
     airlineNoteEl.innerHTML = tightNote;
+  } else if (isPIprimary && airline) {
+    const a = airline;
+    let piAirlineNote = "<strong>" + a.name + " personal item limit:</strong> ";
+    if (a.piL) {
+      piAirlineNote += a.piL + " × " + a.piW + " × " + a.piH + " in (" + a.piLcm + " × " + a.piWcm + " × " + a.piHcm + " cm).";
+    } else {
+      piAirlineNote += "No specific dimensions published — generally must fit under the seat in front of you.";
+    }
+    if (a.note) { piAirlineNote += " " + a.note + "."; }
+    airlineNoteEl.innerHTML = piAirlineNote;
   } else if (isFlexibleSize && airline) {
     const a = airline;
     let flexNote = "<strong>" + a.name + "</strong>: A " + bag.capacity + "L bag is at the boundary between personal item and carry-on. ";

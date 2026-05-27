@@ -454,14 +454,12 @@
     .hp-airline-card:hover { transform: none; border-color: #93c5fd; box-shadow: 0 2px 8px rgba(59,130,246,0.12); }
   }
 
-  /* ── Quick Answer Snapshot ── */
-  .qa-snapshot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 32px; margin: 18px 0 16px; }
-  @media (max-width: 520px) { .qa-snapshot { grid-template-columns: 1fr; gap: 2px; } }
-  .qa-snap-group { padding: 10px 0 10px 14px; border-left: 3px solid #3b82f6; }
-  .qa-snap-cat { font-size: 0.82rem; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
-  .qa-snap-items { list-style: none; padding: 0; margin: 0; }
-  .qa-snap-items li { font-size: 0.85rem; color: #555; line-height: 1.5; padding: 1.5px 0; }
-  .qa-snap-items li::before { content: "\2022 "; color: #3b82f6; font-weight: 700; }
+  /* ── Quick Answer Snapshot (clean rows) ── */
+  .qa-snapshot { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin: 18px 0 14px; }
+  @media (max-width: 520px) { .qa-snapshot { grid-template-columns: 1fr; gap: 0; } }
+  .qa-snap-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
+  .qa-snap-item { color: #333; }
+  .qa-snap-qty { color: #888; font-weight: 600; white-space: nowrap; margin-left: 12px; }
   .qa-bridge { font-size: 0.85rem; color: #3b82f6; font-weight: 600; margin: 0; }
 
   /* ── Inline product mention (lighter than product-card) ── */
@@ -488,3 +486,8 @@
   .metric { background: #f9f9f9; border-radius: 8px; padding: 10px 12px; }
 
   #scenario:empty { display: none; }
+
+  /* ── Dimension display (stacked primary + secondary) ── */
+  .dim-main { display: block; font-weight: 600; }
+  .dim-secondary { display: block; font-size: 0.78rem; color: #888; font-weight: 400; margin-top: 2px; line-height: 1.35; }
+  .dim-inline { white-space: nowrap; }

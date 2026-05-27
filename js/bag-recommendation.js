@@ -47,8 +47,8 @@
   var BAG_DB = [
     // --- ROLLING CARRY-ON (5) ---
     { name:"Maxlite\u00ae 5 Carry-On Spinner",              brand:"Travelpro",    cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:46, h:23,    w:14.5,  d:9,    price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/3Ou1OU8",     _legacy_class:"compact_carry_on" },
-    { name:"Maxlite\u00ae 5 International Carry-On Spinner", brand:"Travelpro",   cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:39, h:21.75, w:15.75, d:7.75, price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/489bYQP",     _legacy_class:"international_carry_on" },
-    { name:"Maxlite\u00ae 5 Compact Carry-On Spinner",       brand:"Travelpro",   cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:38, h:22,    w:14,    d:9,    price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/489bYQP",     _legacy_class:null },
+    { name:"Maxlite\u00ae 5 International Carry-On Spinner", brand:"Travelpro",   cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:39, h:21.75, w:15.75, d:7.75, price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/3RpJooV",     _legacy_class:"international_carry_on" },
+    { name:"Maxlite\u00ae 5 Compact Carry-On Spinner",       brand:"Travelpro",   cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:38, h:22,    w:14,    d:9,    price:"$$",  structure:"Softside",        amazon:true, url:"https://amzn.to/4f35ZBm",     _legacy_class:null },
     { name:"Samsonite Freeform Carry-On Spinner",            brand:"Samsonite",   cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:41, h:23,    w:15,    d:10,   price:"$$",  structure:"Hardside",        amazon:true, url:"https://amzn.to/486n7lo",     _legacy_class:"standard_carry_on" },
     { name:"Amazon Basics Hardside Carry-On Spinner",        brand:"Amazon Basics",cat:"Rolling Carry-On",  family:"rolling_carry_on",      cap:38, h:21.7,  w:14.8,  d:10,   price:"$",   structure:"Hardside",        amazon:true, url:"https://amzn.to/4eobGte",     _legacy_class:"standard_carry_on" },
 
@@ -60,7 +60,7 @@
     { name:"Thule Subterra Backpack 34L",                    brand:"Thule",       cat:"Carry-On Backpack", family:"carry_on_backpack",     cap:34, h:20.5,  w:12,    d:9,    price:"$$",  structure:"Soft/structured", amazon:true, url:"https://amzn.to/4sLW5Hv",     _legacy_class:null },
     { name:"Cotopaxi Allpa 35L Travel Pack",                 brand:"Cotopaxi",    cat:"Carry-On Backpack", family:"carry_on_backpack",     cap:35, h:22,    w:12,    d:10,   price:"$$$", structure:"Soft/structured", amazon:true, url:"https://amzn.to/41EIM0A",     _legacy_class:"standard_carry_on" },
     { name:"Coowoz Travel Backpack 45L",                     brand:"Coowoz",      cat:"Carry-On Backpack", family:"carry_on_backpack",     cap:45, h:18.5,  w:12.6,  d:8.7,  price:"$",   structure:"Soft",            amazon:true, url:"https://amzn.to/41J1ofN",     _legacy_class:"compact_carry_on" },
-    { name:"Tortuga Expandable Travel Backpack, 27-32.5L",   brand:"Tortuga",     cat:"Carry-On Backpack", family:"carry_on_backpack",     cap:27, h:19.2,  w:12.5,  d:6.9,  price:"$$",  structure:"Soft/structured", amazon:true, url:"https://amzn.to/41J1ofN",     _legacy_class:null },
+    { name:"Tortuga Expandable Travel Backpack, 27-32.5L",   brand:"Tortuga",     cat:"Carry-On Backpack", family:"carry_on_backpack",     cap:27, h:19.2,  w:12.5,  d:6.9,  price:"$$",  structure:"Soft/structured", amazon:true, url:"https://amzn.to/4ufgO7v",     _legacy_class:null },
 
     // --- PERSONAL ITEM (3) ---
     { name:"Matein Travel Laptop Backpack",                  brand:"Matein",      cat:"Personal Item",     family:"personal_item_backpack", cap:28, h:18,    w:12,    d:7.8,  price:"$",   structure:"Soft",            amazon:true, url:"https://amzn.to/4tgPOo5",     _legacy_class:"personal_item" },

@@ -3,11 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will It Fit — Travel Packing Calculator</title>
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="stylesheet" href="/css/site.css">
-    <link rel="canonical" href="https://packfitter.com/will-it-fit.html">
-    <meta name="description" content="Check if your backpack meets carry-on size limits for any airline. Enter your bag dimensions and get an instant fit verdict with packing tips.">
+<title>Airline Bag Size Checker: Carry-On &amp; Personal Item Fit</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="css/site.css">
+<link rel="canonical" href="https://packfitter.com/will-it-fit.html">
+<meta name="description" content="Check your bag dimensions against airline carry-on and personal item limits. Estimate liters, compare inches and cm, and see if your bag is likely to fit.">
+<meta property="og:title" content="Airline Bag Size Checker: Carry-On &amp; Personal Item Fit">
+<meta property="og:description" content="Check your bag dimensions against airline carry-on and personal item limits. Estimate liters, compare inches and cm, and see if your bag is likely to fit.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://packfitter.com/will-it-fit.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Airline Bag Size Checker: Carry-On &amp; Personal Item Fit">
+<meta name="twitter:description" content="Check your bag dimensions against airline carry-on and personal item limits. Estimate liters, compare inches and cm, and see if your bag fits.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size bag is allowed as a carry-on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most major US airlines allow carry-on bags up to 22 x 14 x 9 inches (56 x 36 x 23 cm). Southwest is more generous at 24 x 16 x 10 inches. Budget airlines like Ryanair and EasyJet have tighter limits, especially on depth. Always check your specific airline — the critical dimension is usually depth (front-to-back), which is the first to fail when a bag is fully packed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the personal item size limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Personal item limits vary more than carry-on limits. Most US airlines allow roughly 18 x 14 x 8 inches (45 x 35 x 20 cm). United is stricter at 17 x 12 x 6 inches. Budget airlines like Spirit and Frontier allow 18 x 14 x 8 inches as the free included bag. The personal item must fit under the seat in front of you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many liters is a 22 x 14 x 9 inch bag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A bag with maximum dimensions of 22 x 14 x 9 inches has a raw volume of about 45 liters. Actual usable capacity is typically 35-40 liters due to bag shape, internal structure, and dead space. Manufacturers rate bags differently, so a bag labeled 40L may have external dimensions well within or slightly over this limit depending on design."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -45,6 +84,11 @@
         <a href="/what-to-pack-for-alaska-cruise-in-august.html">August</a>
         <a href="/what-to-pack-for-alaska-cruise-in-september.html">September</a>
         <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Business Travel</span>
+        <a href="/what-to-pack-for-business-trip.html">Business Trip Packing</a>
+        <a href="/one-bag-business-travel.html">Carry-On-Only Business</a>
+        <a href="/best-business-travel-backpack.html">Business Travel Backpacks</a>
+        <div class="pf-dd-divider"></div>
         <a href="/packing-guides.html"><strong>All Packing Guides</strong></a>
       </div>
     </div>
@@ -72,196 +116,280 @@
       </div>
     </div>
     <div class="pf-nav-dd">
-      <button class="pf-nav-active">Bag Size &amp; Fit</button>
+      <button class="pf-nav-active">Bags &amp; Airline Fit</button>
       <div class="pf-dd-menu">
-        <a href="/carry-on-bag-sizes.html">Carry-On Bag Sizes</a>
-        <a href="/bag-sizes/carry-on-luggage-size-in-liters.html">Carry-On Size in Liters</a>
-        <a href="/will-it-fit.html" class="pf-dd-active">Will It Fit? Tool</a>
-        <a href="/packing-optimization/compression-packing-cubes.html">Compression Cubes</a>
+        <a href="/carry-on-bag-sizes.html">Bag Size Guide</a>
+        <a href="/will-it-fit.html" class="pf-dd-active">Airline Bag Size Checker</a>
+        <a href="/bag-sizes/carry-on-luggage-size-in-liters.html">Bag Volume in Liters</a>
+        <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
       </div>
     </div>
     <a href="/#calculator">Calculator</a>
   </div>
 </div>
 
-<h1>Will It Fit?</h1>
-<p class="subtitle">Find out if your bag works for your trip</p>
+<div class="page-wrap">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <div class="hero-eyebrow">Dimension &amp; Compliance Tool</div>
+    <h1>Airline Bag Size Checker</h1>
+    <p class="hero-intro">Enter your bag dimensions, pick your airline, and see instantly whether it qualifies as a carry-on, a personal item, or neither. The tool converts between inches and centimeters, estimates volume in liters and cubic inches, and compares each dimension against your airline's limits.</p>
+  </div>
+
+  <div style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:0.85rem;color:#555;line-height:1.6;">
+    <strong style="color:#1a2540;">Use this tool</strong> if you already know your bag's dimensions and want to check airline compliance or estimate bag volume.<br>
+    <strong style="color:#1a2540;">Use the <a href="/#calculator" style="color:#3b82f6;text-decoration:none;font-weight:600;">Packing Calculator</a></strong> if you want to know what size bag your trip requires or get packing recommendations.
+  </div>
 
 
+  <!-- ═══ DIMENSION FIT CHECKER ═══ -->
+  <div id="fitCheckerWrap" style="background:#fff;border-radius:12px;padding:28px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+    <div class="section-label">Dimension Fit Checker</div>
+    <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:16px;">Check Your Bag Against Any Airline</h2>
 
-<div id="scenario" style="background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,0.08);"></div><div class="form-card">
-  <div class="form-section-head">Trip Setup</div>
-        <div class="form-grid">
-          <div class="field">
-            <label class="field-label" for="tripDays">Trip Length</label>
-            <select id="tripDays" onchange="runCalculation();">
-              <option value="2">2 days</option>
-              <option value="3">3 days</option>
-              <option value="4">4 days</option>
-              <option value="5" selected>5 days</option>
-              <option value="7">7 days</option>
-              <option value="10">10 days</option>
-              <option value="14">14 days</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="climate">Climate</label>
-            <select id="climate" onchange="runCalculation();">
-              <option value="WARM">Warm</option>
-              <option value="MILD" selected>Mild</option>
-              <option value="COLD">Cold</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="profile">Packing Profile</label>
-            <select id="profile" onchange="runCalculation();">
-              <option value="ultralight">Ultralight</option>
-              <option value="light">Light</option>
-              <option value="standard" selected>Standard</option>
-              <option value="heavy">Heavy</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="laundry">Laundry Access</label>
-            <select id="laundry" onchange="runCalculation();">
-              <option value="NO" selected>No</option>
-              <option value="YES">Yes</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-section-head">Gear &amp; Footwear</div>
-        <div class="form-grid">
-          <div class="field full">
-            <label class="field-label">Gear</label>
-            <div class="toggle-row">
-              <label class="toggle-label"><input type="checkbox" id="includeLaptop" onchange="runCalculation();"> Laptop</label>
-              <label class="toggle-label"><input type="checkbox" id="includeBulkyLayer" onchange="runCalculation();"> Bulky Layer</label>
-            </div>
-          </div>
-          <div class="field">
-            <label class="field-label" for="extraShoes">Extra Packed Shoes</label>
-            <select id="extraShoes" onchange="updateShoeType(); runCalculation();">
-              <option value="0" selected>0</option>
-              <option value="1">1 pair</option>
-              <option value="2">2 pairs</option>
-            </select>
-          </div>
-          <div class="field" id="shoeType1Field" style="display:none;">
-            <label class="field-label" for="shoeType1">Extra Pair 1 Type</label>
-            <select id="shoeType1" onchange="runCalculation();">
-              <option value="compact">Sandals / compact shoes</option>
-              <option value="standard" selected>Sneakers / standard shoes</option>
-              <option value="bulky">Boots / bulky footwear</option>
-            </select>
-          </div>
-          <div class="field" id="shoeType2Field" style="display:none;">
-            <label class="field-label" for="shoeType2">Extra Pair 2 Type</label>
-            <select id="shoeType2" onchange="runCalculation();">
-              <option value="compact">Sandals / compact shoes</option>
-              <option value="standard" selected>Sneakers / standard shoes</option>
-              <option value="bulky">Boots / bulky footwear</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-section-head">Bag &amp; Airline</div>
-        <div class="form-grid">
-          <div class="field">
-            <label class="field-label" for="bagType">Bag Type</label>
-            <select id="bagType" onchange="populateBagSizes(); runCalculation();">
-              <option value="backpack">Carry-on backpack</option>
-              <option value="suitcase-carryon">Carry-on suitcase</option>
-              <option value="suitcase-checked">Checked suitcase</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="bagSize">Bag Size</label>
-            <select id="bagSize" onchange="runCalculation();"></select>
-          </div>
-          <div class="field full">
-            <details class="size-guide-details" style="margin-top:0; margin-bottom:0;">
-              <summary class="size-guide-summary">What do these bag sizes mean? (in liters)</summary>
-              <div class="size-guide-body">
-                <ul class="size-guide-list">
-                  <li><strong>Under 25L</strong> — Personal item range (fits under the seat)</li>
-                  <li><strong>30–35L</strong> — Small carry-on for short trips</li>
-                  <li><strong>35–40L</strong> — Standard carry-on range (most common)</li>
-                  <li><strong>40–45L</strong> — Near the carry-on ceiling — depth often exceeds airline limits when fully packed</li>
-                  <li><strong>45L+</strong> — Exceeds carry-on limits in most cases</li>
-                </ul>
-                <p style="font-size:0.85rem; color:#555; margin-top:10px; line-height:1.6;">See full guide: <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters</a></p>
-              </div>
-            </details>
-          </div>
-          <div class="field">
-            <label class="field-label" for="airline">Airline</label>
-            <select id="airline" onchange="runCalculation();"></select>
-          </div>
-          <div class="field full">
-            <div class="toggle-row" style="padding-top:2px;">
-              <label class="toggle-label"><input type="checkbox" id="personalItem" onchange="runCalculation();"> Add personal item (up to ~25L)</label>
-            </div>
-            <div class="pi-helper">Use this if you plan to bring a second under-seat item like a daypack, tote, or laptop bag.</div>
-          </div>
-        </div>
-        <div class="form-section-head">Traveler</div>
-        <div class="form-grid">
-          <div class="field">
-            <label class="field-label" for="clothingSize">Clothing Size</label>
-            <select id="clothingSize" onchange="runCalculation();">
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M" selected>M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
-          </div>
-        </div>
-  <button class="calc-btn" onclick="runCalculation()">Calculate</button>
-</div>
+    <!-- Unit toggle -->
+    <div style="display:flex;gap:0;margin-bottom:18px;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;width:fit-content;">
+      <button id="unitIn" onclick="setUnit('in')" style="padding:8px 18px;font-size:0.85rem;font-weight:600;border:none;cursor:pointer;background:#1a2540;color:#fff;font-family:inherit;">Inches</button>
+      <button id="unitCm" onclick="setUnit('cm')" style="padding:8px 18px;font-size:0.85rem;font-weight:600;border:none;cursor:pointer;background:#f9fafb;color:#555;font-family:inherit;">Centimeters</button>
+    </div>
 
-<!-- Result card pre-allocated -->
-<div class="result-card hidden" id="resultCard">
-        <div id="finalDecision" class="final-decision"></div>
-        <div id="calcContextLabel" class="calc-context-label" style="display:none"></div>
-        <div class="req-volume-wrap">
-          <div class="req-volume-number" id="reqVolumeNumber"></div>
-          <div class="req-volume-label" id="reqVolumeLabel"></div>
-        </div>
-        <div class="human-summary" id="humanSummary" style="display:none"></div>
-        <div class="volume-drivers" id="volumeDrivers" style="display:none"></div>
-        <div class="vol-interp" id="volInterp"></div>
-        <div class="personal-item-note" id="personalItemNote" style="display:none"></div>
-        <div class="bag-ranges" id="bagRanges" style="display:none"></div>
-        <div class="opt-suggestions" id="suggestionsBox" style="display:none">
-          <div class="opt-suggestions-title">How to reduce volume</div>
-          <ul id="suggestionsList"></ul>
-        </div>
-        <div class="pack-categories" id="packListBox" style="display:none">
-          <div class="pack-categories-title">What you are packing</div>
-          <div id="packCategoryRows"></div>
-        </div>
-        <div class="airline-note" id="airlineNote"></div>
+    <!-- Dimension inputs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;">
+      <div class="field">
+        <label class="field-label" for="fitHeight">Height <span id="fitHeightUnit">(in)</span></label>
+        <input type="number" id="fitHeight" step="0.1" min="0" placeholder="22" style="width:100%;">
       </div>
+      <div class="field">
+        <label class="field-label" for="fitWidth">Width <span id="fitWidthUnit">(in)</span></label>
+        <input type="number" id="fitWidth" step="0.1" min="0" placeholder="14" style="width:100%;">
+      </div>
+      <div class="field">
+        <label class="field-label" for="fitDepth">Depth <span id="fitDepthUnit">(in)</span></label>
+        <input type="number" id="fitDepth" step="0.1" min="0" placeholder="9" style="width:100%;">
+      </div>
+    </div>
 
-<script>
-window.PAGE_DEFAULT_BAG_SIZE = 35;
-window.PAGE_DEFAULT_TRIP_DAYS = 7;
-window.PAGE_DEFAULT_CLIMATE = "COLD";
-window.PAGE_DEFAULT_PROFILE = "heavy";
-window.PAGE_DEFAULT_INCLUDE_LAPTOP = true;
-window.PAGE_CLUSTER = "COMPRESSION_REQUIRED";
-window.PAGE_IS_BAG_SPECIFIC = false;
-window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when the bag is packed. Packed geometry is the carry-on constraint at the gate.";
-</script>
-<script src="/js/calculator.js"></script>
+    <!-- Airline selector -->
+    <div class="field" style="margin-bottom:18px;">
+      <label class="field-label" for="fitAirline">Airline</label>
+      <select id="fitAirline" style="width:100%;"></select>
+    </div>
 
-<div style="max-width:640px;margin:24px auto 0;padding:0 16px 40px;">
-  <p style="font-size:0.82rem;color:#888;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Airline-specific guides</p>
-  <p style="font-size:0.88rem;color:#555;margin-bottom:8px;">Delta carry-on: <a href="delta-35l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">35L on Delta →</a></p>
-  <p style="font-size:0.88rem;color:#555;margin-bottom:8px;">Delta carry-on: <a href="delta-40l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">40L on Delta →</a></p>
-  <p style="font-size:0.88rem;color:#555;">United carry-on: <a href="united-35l-backpack.html" style="color:#3b82f6;text-decoration:none;font-weight:600;border-bottom:1px solid #93c5fd;">35L on United →</a></p>
-</div>
+    <!-- Check button -->
+    <button onclick="runFitCheck()" style="width:100%;padding:13px;background:#1a2540;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.02em;font-family:inherit;transition:background 0.15s ease;">Check Fit</button>
 
+    <!-- Result area -->
+    <div id="fitResult" style="display:none;margin-top:20px;"></div>
+  </div>
+
+
+  <!-- ═══ BORDERLINE? COMPRESSION CUBES ═══ -->
+  <div class="section-card">
+    <div class="section-label">Borderline Fit?</div>
+    <h2>Compression Cubes Reduce Volume — Not Bag Size</h2>
+    <p>Compression cubes reduce the volume of what's packed inside them by 20–30%, which means your clothing takes up less space in the bag. If your bag is borderline because it bulges when overpacked, that volume reduction can bring it back within dimension limits. But cubes compress contents, not the bag itself — if your bag's empty frame already exceeds the airline limit, cubes won't shrink it to fit.</p>
+    <div class="product-inline">
+      <div class="product-inline-name">Bagsmart Compression Packing Cubes</div>
+      <div class="product-inline-desc">Double-zip design squeezes clothing flat. Best for tops, underwear, and layers. Won't help with rigid items, shoes, or toiletry kits.</div>
+      <div class="product-inline-links">
+        <a href="https://amzn.to/3OrdqYe" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon &rarr;</a>
+        <a href="/packing-optimization/compression-packing-cubes.html">Full compression cubes guide &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ HOW TO MEASURE ═══ -->
+  <div class="section-card">
+    <div class="section-label">Measuring Tips</div>
+    <h2>How to Measure Your Bag</h2>
+    <p><strong>Height</strong> — Top to bottom, including any handles, wheels, or external pockets that stick out.</p>
+    <p><strong>Width</strong> — Side to side at the widest point.</p>
+    <p><strong>Depth</strong> — Front to back. This is the dimension most likely to fail when your bag is fully packed. Measure with the bag loaded, not empty.</p>
+    <p style="font-size:0.85rem;color:#888;margin-top:6px;">Soft bags expand when packed. If your bag is borderline, pack it first and re-measure depth.</p>
+  </div>
+
+
+  <!-- ═══ PACKING VOLUME CALCULATOR (existing, secondary) ═══ -->
+  <div class="section-card" style="padding-bottom:8px;">
+    <div class="section-label">Packing Volume Estimator</div>
+    <h2 style="margin-bottom:6px;">How Much Will I Pack?</h2>
+    <p style="margin-bottom:16px;">Already know your bag fits? Use the packing calculator to estimate how much volume your trip setup actually needs.</p>
+  </div>
+
+  <div id="scenario" style="background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,0.08);"></div>
+  <div class="form-card">
+    <div class="form-section-head">Trip Setup</div>
+    <div class="form-grid">
+      <div class="field">
+        <label class="field-label" for="tripDays">Trip Length</label>
+        <select id="tripDays" onchange="runCalculation();">
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5" selected>5 days</option>
+          <option value="7">7 days</option>
+          <option value="10">10 days</option>
+          <option value="14">14 days</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="climate">Climate</label>
+        <select id="climate" onchange="runCalculation();">
+          <option value="WARM">Warm</option>
+          <option value="MILD" selected>Mild</option>
+          <option value="COLD">Cold</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="profile">Packing Profile</label>
+        <select id="profile" onchange="runCalculation();">
+          <option value="ultralight">Ultralight</option>
+          <option value="light">Light</option>
+          <option value="standard" selected>Standard</option>
+          <option value="heavy">Heavy</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="laundry">Laundry Access</label>
+        <select id="laundry" onchange="runCalculation();">
+          <option value="NO" selected>No</option>
+          <option value="YES">Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-section-head">Gear &amp; Footwear</div>
+    <div class="form-grid">
+      <div class="field full">
+        <label class="field-label">Gear</label>
+        <div class="toggle-row">
+          <label class="toggle-label"><input type="checkbox" id="includeLaptop" onchange="runCalculation();"> Laptop</label>
+          <label class="toggle-label"><input type="checkbox" id="includeBulkyLayer" onchange="runCalculation();"> Bulky Layer</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="extraShoes">Extra Packed Shoes</label>
+        <select id="extraShoes" onchange="updateShoeType(); runCalculation();">
+          <option value="0" selected>0</option>
+          <option value="1">1 pair</option>
+          <option value="2">2 pairs</option>
+        </select>
+      </div>
+      <div class="field" id="shoeType1Field" style="display:none;">
+        <label class="field-label" for="shoeType1">Extra Pair 1 Type</label>
+        <select id="shoeType1" onchange="runCalculation();">
+          <option value="compact">Sandals / compact shoes</option>
+          <option value="standard" selected>Sneakers / standard shoes</option>
+          <option value="bulky">Boots / bulky footwear</option>
+        </select>
+      </div>
+      <div class="field" id="shoeType2Field" style="display:none;">
+        <label class="field-label" for="shoeType2">Extra Pair 2 Type</label>
+        <select id="shoeType2" onchange="runCalculation();">
+          <option value="compact">Sandals / compact shoes</option>
+          <option value="standard" selected>Sneakers / standard shoes</option>
+          <option value="bulky">Boots / bulky footwear</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-section-head">Bag &amp; Airline</div>
+    <div class="form-grid">
+      <div class="field">
+        <label class="field-label" for="bagType">Bag Type</label>
+        <select id="bagType" onchange="populateBagSizes(); runCalculation();">
+          <option value="backpack">Carry-on backpack</option>
+          <option value="suitcase-carryon">Carry-on suitcase</option>
+          <option value="suitcase-checked">Checked suitcase</option>
+              <option value="personal-item">Personal item bag</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="bagSize">Bag Size</label>
+        <select id="bagSize" onchange="runCalculation();"></select>
+      </div>
+      <div class="field full">
+        <details class="size-guide-details" style="margin-top:0; margin-bottom:0;">
+          <summary class="size-guide-summary">What do these bag sizes mean? (in liters)</summary>
+          <div class="size-guide-body">
+            <ul class="size-guide-list">
+              <li><strong>Under 25L</strong> — Personal item range (fits under the seat)</li>
+              <li><strong>30–35L</strong> — Small carry-on for short trips</li>
+              <li><strong>35–40L</strong> — Standard carry-on range (most common)</li>
+              <li><strong>40–45L</strong> — Near the carry-on ceiling — depth often exceeds airline limits when fully packed</li>
+              <li><strong>45L+</strong> — Exceeds carry-on limits in most cases</li>
+            </ul>
+            <p style="font-size:0.85rem; color:#555; margin-top:10px; line-height:1.6;">See full guide: <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600;">carry-on size in liters</a></p>
+          </div>
+        </details>
+      </div>
+      <div class="field">
+        <label class="field-label" for="airline">Airline</label>
+        <select id="airline" onchange="runCalculation();"></select>
+      </div>
+      <div class="field full">
+        <div class="toggle-row" style="padding-top:2px;">
+          <label class="toggle-label"><input type="checkbox" id="personalItem" onchange="runCalculation();"> Add personal item (up to ~25L)</label>
+        </div>
+        <div class="pi-helper">Use this if you plan to bring a second under-seat item like a daypack, tote, or laptop bag.</div>
+      </div>
+    </div>
+    <div class="form-section-head">Traveler</div>
+    <div class="form-grid">
+      <div class="field">
+        <label class="field-label" for="clothingSize">Clothing Size</label>
+        <select id="clothingSize" onchange="runCalculation();">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M" selected>M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="runCalculation()">Calculate</button>
+  </div>
+
+  <!-- Result card pre-allocated -->
+  <div class="result-card hidden" id="resultCard">
+    <div id="finalDecision" class="final-decision"></div>
+    <div id="calcContextLabel" class="calc-context-label" style="display:none"></div>
+    <div class="req-volume-wrap">
+      <div class="req-volume-number" id="reqVolumeNumber"></div>
+      <div class="req-volume-label" id="reqVolumeLabel"></div>
+    </div>
+    <div class="human-summary" id="humanSummary" style="display:none"></div>
+    <div class="volume-drivers" id="volumeDrivers" style="display:none"></div>
+    <div class="vol-interp" id="volInterp"></div>
+    <div class="personal-item-note" id="personalItemNote" style="display:none"></div>
+    <div class="bag-ranges" id="bagRanges" style="display:none"></div>
+    <div class="opt-suggestions" id="suggestionsBox" style="display:none">
+      <div class="opt-suggestions-title">How to reduce volume</div>
+      <ul id="suggestionsList"></ul>
+    </div>
+    <div class="pack-categories" id="packListBox" style="display:none">
+      <div class="pack-categories-title">What you are packing</div>
+      <div id="packCategoryRows"></div>
+    </div>
+    <div class="airline-note" id="airlineNote"></div>
+  </div>
+
+
+  <!-- ═══ RELATED GUIDES ═══ -->
+  <div class="section-card">
+    <div class="section-label">Related Guides</div>
+    <h2>Explore Bag Sizing &amp; Airline Rules</h2>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/carry-on-bag-sizes.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Carry-on bag sizes explained (25L–45L) &rarr;</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Carry-on size in liters &rarr;</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/airline-carry-on-rules.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">All airline carry-on rules &rarr;</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/delta-carry-on-guides.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Delta carry-on guides &rarr;</a></p>
+    <p style="font-size:0.88rem; color:#555; margin-bottom:8px;"><a href="/ryanair-carry-on-guides.html" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Ryanair carry-on guides &rarr;</a></p>
+    <p style="font-size:0.88rem; color:#555;"><a href="/#calculator" style="color:#3b82f6; text-decoration:none; font-weight:600; border-bottom:1px solid #93c5fd;">Packing Calculator — estimate what size bag your trip needs &rarr;</a></p>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<p style="font-size:0.75rem;color:#9ca3af;margin-top:12px;text-align:center;">As an Amazon Associate I earn from qualifying purchases.</p>
 <footer style="max-width:720px;margin:48px auto 0;padding:0 20px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.78rem;color:#6b7280;line-height:1.7;">
   <div style="border-top:1px solid #e5e7eb;padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px 24px;">
     <div>
@@ -274,6 +402,7 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
       <a href="/what-to-pack-for-europe.html" style="display:block;color:#6b7280;text-decoration:none;">Europe</a>
       <a href="/what-to-pack-for-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Cruise</a>
       <a href="/what-to-pack-for-alaska-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Alaska Cruise</a>
+      <a href="/what-to-pack-for-business-trip.html" style="display:block;color:#6b7280;text-decoration:none;">Business Trip</a>
     </div>
     <div>
       <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Airline Guides</div>
@@ -289,7 +418,7 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     </div>
     <div>
       <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Tools &amp; Resources</div>
-      <a href="/will-it-fit.html" style="display:block;color:#6b7280;text-decoration:none;">Will It Fit?</a>
+      <a href="/will-it-fit.html" style="display:block;color:#6b7280;text-decoration:none;">Airline Bag Size Checker</a>
       <a href="/carry-on-bag-sizes.html" style="display:block;color:#6b7280;text-decoration:none;">Bag Size Comparison</a>
       <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="display:block;color:#6b7280;text-decoration:none;">Size in Liters</a>
       <a href="/packing-optimization/compression-packing-cubes.html" style="display:block;color:#6b7280;text-decoration:none;">Compression Cubes</a>
@@ -303,6 +432,294 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
   </div>
 </footer>
 
+<!-- ═══ EXISTING PACKING CALCULATOR ENGINE ═══ -->
+<script>
+window.PAGE_DEFAULT_BAG_SIZE = 35;
+window.PAGE_DEFAULT_TRIP_DAYS = 7;
+window.PAGE_DEFAULT_CLIMATE = "COLD";
+window.PAGE_DEFAULT_PROFILE = "heavy";
+window.PAGE_DEFAULT_INCLUDE_LAPTOP = true;
+window.PAGE_CLUSTER = "COMPRESSION_REQUIRED";
+window.PAGE_IS_BAG_SPECIFIC = false;
+window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when the bag is packed. Packed geometry is the carry-on constraint at the gate.";
+</script>
+<script src="js/calculator.js"></script>
+
+<!-- ═══ DIMENSION FIT CHECKER ENGINE ═══ -->
+<script>
+(function(){
+  "use strict";
+
+  /* ── State ── */
+  var currentUnit = "in"; // "in" or "cm"
+
+  /* ── Populate airline dropdown ── */
+  var fitSel = document.getElementById("fitAirline");
+  if (typeof AIRLINES !== "undefined" && fitSel) {
+    AIRLINES.forEach(function(a, i){
+      var opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = a.name;
+      fitSel.appendChild(opt);
+    });
+  }
+
+  /* ── Unit toggle ── */
+  window.setUnit = function(unit) {
+    currentUnit = unit;
+    var inBtn = document.getElementById("unitIn");
+    var cmBtn = document.getElementById("unitCm");
+    var label = unit === "cm" ? "(cm)" : "(in)";
+    document.getElementById("fitHeightUnit").textContent = label;
+    document.getElementById("fitWidthUnit").textContent = label;
+    document.getElementById("fitDepthUnit").textContent = label;
+
+    if (unit === "cm") {
+      inBtn.style.background = "#f9fafb"; inBtn.style.color = "#555";
+      cmBtn.style.background = "#1a2540"; cmBtn.style.color = "#fff";
+      document.getElementById("fitHeight").placeholder = "56";
+      document.getElementById("fitWidth").placeholder = "36";
+      document.getElementById("fitDepth").placeholder = "23";
+    } else {
+      inBtn.style.background = "#1a2540"; inBtn.style.color = "#fff";
+      cmBtn.style.background = "#f9fafb"; cmBtn.style.color = "#555";
+      document.getElementById("fitHeight").placeholder = "22";
+      document.getElementById("fitWidth").placeholder = "14";
+      document.getElementById("fitDepth").placeholder = "9";
+    }
+  };
+
+  /* ── Helpers ── */
+  function inToCm(v){ return v * 2.54; }
+  function cmToIn(v){ return v / 2.54; }
+  function r1(v){ return Math.round(v * 10) / 10; }
+
+  function dimStatus(userVal, limit) {
+    if (userVal <= limit) return "pass";
+    if (userVal <= limit * 1.05) return "borderline";
+    return "fail";
+  }
+
+  function statusColor(s) {
+    if (s === "pass") return "#16a34a";
+    if (s === "borderline") return "#b45309";
+    return "#dc2626";
+  }
+  function statusBg(s) {
+    if (s === "pass") return "#f0fdf4";
+    if (s === "borderline") return "#fffbeb";
+    return "#fef2f2";
+  }
+  function statusBorder(s) {
+    if (s === "pass") return "#86efac";
+    if (s === "borderline") return "#fcd34d";
+    return "#fca5a5";
+  }
+  function statusIcon(s) {
+    if (s === "pass") return "&#10003;";
+    if (s === "borderline") return "&#9888;";
+    return "&#10007;";
+  }
+  function statusLabel(s) {
+    if (s === "pass") return "Fits";
+    if (s === "borderline") return "Borderline";
+    return "Too large";
+  }
+
+  function overallVerdict(hS, wS, dS) {
+    if (hS === "fail" || wS === "fail" || dS === "fail") return "fail";
+    if (hS === "borderline" || wS === "borderline" || dS === "borderline") return "borderline";
+    return "pass";
+  }
+
+  function verdictTitle(v, category) {
+    var cat = category === "pi" ? "personal item" : "carry-on";
+    if (v === "pass") return "Fits as " + cat;
+    if (v === "borderline") return "Borderline " + cat;
+    return "Too large for " + cat;
+  }
+
+  function estimateLiters(hCm, wCm, dCm) {
+    // Raw rectangular volume in liters, then apply 0.80 shape factor
+    var rawL = (hCm * wCm * dCm) / 1000;
+    return Math.round(rawL * 0.80);
+  }
+
+  function typicalUseCase(liters) {
+    if (liters <= 15) return "Slim personal item — laptop and essentials only";
+    if (liters <= 25) return "Full personal item — fits under most airline seats";
+    if (liters <= 35) return "Small carry-on — good for 2–5 day trips";
+    if (liters <= 42) return "Standard carry-on — fits most airline overhead bins";
+    if (liters <= 50) return "Large carry-on — may exceed depth limits on strict airlines";
+    return "Oversized — likely requires checking on most airlines";
+  }
+
+  /* ── Build dimension comparison row ── */
+  function dimRow(label, userVal, limit, unitLabel, status) {
+    var diff = r1(userVal - limit);
+    var diffText = "";
+    if (status === "fail") diffText = " (+" + Math.abs(diff) + " " + unitLabel + " over)";
+    else if (status === "borderline") diffText = " (+" + Math.abs(diff) + " " + unitLabel + " over)";
+    else if (diff < 0) diffText = " (" + Math.abs(diff) + " " + unitLabel + " under)";
+
+    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0;">'
+      + '<div style="font-size:0.88rem;font-weight:600;color:#555;">' + label + '</div>'
+      + '<div style="display:flex;align-items:center;gap:10px;">'
+        + '<span style="font-size:0.88rem;color:#333;">' + r1(userVal) + ' vs ' + r1(limit) + ' ' + unitLabel + '</span>'
+        + '<span style="font-size:0.78rem;font-weight:700;color:' + statusColor(status) + ';">' + statusIcon(status) + ' ' + statusLabel(status) + '</span>'
+      + '</div>'
+    + '</div>'
+    + (diffText ? '<div style="font-size:0.78rem;color:' + statusColor(status) + ';padding:0 0 4px;margin-top:-2px;">' + diffText + '</div>' : '');
+  }
+
+  /* ── Build a category result block ── */
+  function categoryBlock(catLabel, hUser, wUser, dUser, hLimit, wLimit, dLimit, unitLabel) {
+    var hS = dimStatus(hUser, hLimit);
+    var wS = dimStatus(wUser, wLimit);
+    var dS = dimStatus(dUser, dLimit);
+    var overall = overallVerdict(hS, wS, dS);
+    var title = verdictTitle(overall, catLabel === "Personal Item" ? "pi" : "co");
+
+    var catIcon = catLabel === "Personal Item (Under Seat)" ? "&#128188;" : "&#9992;&#65039;";
+    var catBg = catLabel === "Personal Item (Under Seat)" ? "#1e40af" : "#1a2540";
+
+    var html = '<div style="background:' + statusBg(overall) + ';border:1px solid ' + statusBorder(overall) + ';border-radius:10px;overflow:hidden;margin-bottom:12px;">'
+      + '<div style="background:' + catBg + ';padding:10px 18px;display:flex;justify-content:space-between;align-items:center;">'
+        + '<div style="font-size:0.92rem;font-weight:800;color:#fff;letter-spacing:0.02em;">' + catIcon + '  ' + catLabel + '</div>'
+        + '<div style="font-size:0.78rem;font-weight:700;padding:3px 10px;border-radius:20px;background:' + statusBg(overall) + ';color:' + statusColor(overall) + ';">' + statusIcon(overall) + ' ' + statusLabel(overall) + '</div>'
+      + '</div>'
+      + '<div style="padding:16px 18px;">'
+      + '<div style="font-size:1.05rem;font-weight:800;color:' + statusColor(overall) + ';margin-bottom:10px;">' + statusIcon(overall) + ' ' + title + '</div>'
+      + dimRow("Height", hUser, hLimit, unitLabel, hS)
+      + dimRow("Width", wUser, wLimit, unitLabel, wS)
+      + '<div style="border-bottom:none;">' + dimRow("Depth", dUser, dLimit, unitLabel, dS) + '</div>'
+    + '</div></div>';
+
+    return { html: html, verdict: overall };
+  }
+
+  /* ── Main check function ── */
+  window.runFitCheck = function() {
+    var hEl = document.getElementById("fitHeight");
+    var wEl = document.getElementById("fitWidth");
+    var dEl = document.getElementById("fitDepth");
+    var hRaw = parseFloat(hEl.value || hEl.placeholder);
+    var wRaw = parseFloat(wEl.value || wEl.placeholder);
+    var dRaw = parseFloat(dEl.value || dEl.placeholder);
+
+    if (isNaN(hRaw) || isNaN(wRaw) || isNaN(dRaw) || hRaw <= 0 || wRaw <= 0 || dRaw <= 0) {
+      document.getElementById("fitResult").style.display = "block";
+      document.getElementById("fitResult").innerHTML = '<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:14px;color:#991b1b;font-weight:600;font-size:0.9rem;">Please enter all three dimensions.</div>';
+      return;
+    }
+
+    var idx = parseInt(document.getElementById("fitAirline").value);
+    var air = AIRLINES[idx];
+
+    // Convert to both units for comparison and display
+    var hIn, wIn, dIn, hCm, wCm, dCm;
+    if (currentUnit === "cm") {
+      hCm = hRaw; wCm = wRaw; dCm = dRaw;
+      hIn = cmToIn(hRaw); wIn = cmToIn(wRaw); dIn = cmToIn(dRaw);
+    } else {
+      hIn = hRaw; wIn = wRaw; dIn = dRaw;
+      hCm = inToCm(hRaw); wCm = inToCm(wRaw); dCm = inToCm(dRaw);
+    }
+
+    // Estimate volume
+    var estLiters = estimateLiters(hCm, wCm, dCm);
+    var cubicIn = Math.round(hIn * wIn * dIn);
+
+    // Build carry-on comparison
+    var coH, coW, coD, coUnit;
+    if (currentUnit === "cm") {
+      coH = air.coLcm; coW = air.coWcm; coD = air.coHcm; coUnit = "cm";
+      var coResult = categoryBlock("Carry-On (Overhead Bin)", hCm, wCm, dCm, coH, coW, coD, "cm");
+    } else {
+      coH = air.coL; coW = air.coW; coD = air.coH; coUnit = "in";
+      var coResult = categoryBlock("Carry-On (Overhead Bin)", hIn, wIn, dIn, coH, coW, coD, "in");
+    }
+
+    // Build personal-item comparison
+    var piResult = null;
+    if (air.personalItem && air.piL) {
+      var piH, piW, piD;
+      if (currentUnit === "cm") {
+        piH = air.piLcm; piW = air.piWcm; piD = air.piHcm;
+        piResult = categoryBlock("Personal Item (Under Seat)", hCm, wCm, dCm, piH, piW, piD, "cm");
+      } else {
+        piH = air.piL; piW = air.piW; piD = air.piH;
+        piResult = categoryBlock("Personal Item (Under Seat)", hIn, wIn, dIn, piH, piW, piD, "in");
+      }
+    }
+
+    // Build output
+    var out = '';
+
+    // Liter estimate + use case
+    out += '<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:14px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">'
+        + '<div>'
+          + '<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#9ca3af;margin-bottom:4px;">Estimated Bag Volume</div>'
+          + '<div style="font-size:1.4rem;font-weight:800;color:#1a1a1a;">~' + estLiters + ' L</div>'
+          + '<div style="font-size:0.82rem;color:#6b7280;">' + cubicIn.toLocaleString() + ' cu in</div>'
+        + '</div>'
+        + '<div style="text-align:right;">'
+          + '<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#9ca3af;margin-bottom:4px;">Your Dimensions</div>'
+          + '<div style="font-size:0.88rem;font-weight:600;color:#333;">' + r1(hIn) + ' × ' + r1(wIn) + ' × ' + r1(dIn) + ' in</div>'
+          + '<div style="font-size:0.82rem;color:#888;">' + r1(hCm) + ' × ' + r1(wCm) + ' × ' + r1(dCm) + ' cm</div>'
+        + '</div>'
+      + '</div>'
+      + '<div style="font-size:0.82rem;color:#6b7280;margin-top:8px;line-height:1.5;">' + typicalUseCase(estLiters) + '</div>'
+      + '<div style="font-size:0.75rem;color:#9ca3af;margin-top:4px;">Actual usable volume varies by bag shape and manufacturer.</div>'
+    + '</div>';
+
+    // Carry-on result
+    out += coResult.html;
+
+    // Personal-item result
+    if (piResult) {
+      out += piResult.html;
+    }
+
+    // Soft bag note
+    out += '<div style="font-size:0.82rem;color:#6b7280;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;margin-bottom:12px;line-height:1.5;">'
+      + '<strong style="color:#555;">Soft bags:</strong> Backpacks and duffels may compress into airline sizers if not overpacked. Measure your bag when fully loaded for the most accurate result.'
+    + '</div>';
+
+    // Airline note
+    if (air.note) {
+      out += '<div style="font-size:0.82rem;color:#888;font-style:italic;line-height:1.5;">' + air.name + ': ' + air.note + '</div>';
+    }
+
+    // Weight note if airline has weight limit
+    if (air.weightKg > 0) {
+      out += '<div style="font-size:0.82rem;color:#b45309;margin-top:6px;line-height:1.5;">'
+        + '<strong>Weight limit:</strong> ' + air.weightKg + ' kg (' + air.weightLbs + ' lbs) for carry-on.'
+      + '</div>';
+    }
+
+    document.getElementById("fitResult").style.display = "block";
+    document.getElementById("fitResult").innerHTML = out;
+
+    // Smooth scroll to result
+    document.getElementById("fitResult").scrollIntoView({ behavior:"smooth", block:"nearest" });
+  };
+
+  /* ── Enter key triggers check ── */
+  ["fitHeight","fitWidth","fitDepth"].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("keydown", function(e){
+        if (e.key === "Enter") { e.preventDefault(); window.runFitCheck(); }
+      });
+    }
+  });
+
+})();
+</script>
+
+<!-- ═══ NAV JS ═══ -->
 <script>
 (function(){
   document.querySelectorAll('.pf-nav-dd > button').forEach(function(btn){
