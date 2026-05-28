@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Item vs Carry-On: When Is Overhead Worth Paying For? | PackFitter</title>
+<meta name="description" content="Decision framework for choosing between personal-item-only, overhead carry-on, or checked luggage. Fee math, trip-type analysis, and realistic tradeoffs — not minimalist ideology.">
+<link rel="canonical" href="https://packfitter.com/personal-item-vs-carry-on.html">
+<meta property="og:title" content="Personal Item vs Carry-On: When Is Overhead Worth Paying For?">
+<meta property="og:description" content="Decision framework for choosing between personal-item-only, overhead carry-on, or checked luggage. Fee math, trip-type analysis, and realistic tradeoffs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://packfitter.com/personal-item-vs-carry-on.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Personal Item vs Carry-On: When Is Overhead Worth Paying For?">
+<meta name="twitter:description" content="Decision framework for choosing between personal-item-only, overhead carry-on, or checked luggage. Fee math, trip-type analysis, and realistic tradeoffs.">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<!-- NAV -->
+<div style="max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;align-items:center;gap:8px;">
+  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+    <img src="/logo-icon.png" alt="PackFitter" style="height:44px;width:auto;">
+    <div style="line-height:1.15;">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-0.01em;"><span style="color:#1a2540;">Pack</span><span style="color:#b8943e;">Fitter</span></div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.58rem;font-weight:600;color:#1a2540;letter-spacing:0.02em;">Packing Calculator &amp; Fit Tool</div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.6rem;font-weight:600;color:#b8943e;letter-spacing:0.04em;font-style:italic;">Plan. Pack. Fly.</div>
+      <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
+    </div>
+  </a>
+  <button class="pf-hamburger" aria-label="Menu">&#9776;</button>
+  <div class="pf-nav-bar">
+    <a href="/">Home</a>
+    <div class="pf-nav-dd">
+      <button>What to Pack</button>
+      <div class="pf-dd-menu">
+        <span class="pf-dd-label">By Trip Length</span>
+        <a href="/what-to-pack-3-day-trip.html">3-Day Trip</a>
+        <a href="/what-to-pack-5-day-trip.html">5-Day Trip</a>
+        <a href="/what-to-pack-7-day-trip.html">7-Day Trip</a>
+        <a href="/what-to-pack-10-day-trip.html">10-Day Trip</a>
+        <a href="/what-to-pack-14-day-trip.html">14-Day Trip</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Destinations</span>
+        <a href="/what-to-pack-for-europe.html">Europe</a>
+        <a href="/what-to-pack-for-cruise.html">Cruise</a>
+        <a href="/what-to-pack-for-alaska-cruise.html">Alaska Cruise</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Alaska Cruise by Month</span>
+        <a href="/what-to-pack-for-alaska-cruise-in-may.html">May</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-june.html">June</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-july.html">July</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-august.html">August</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-september.html">September</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Business Travel</span>
+        <a href="/what-to-pack-for-business-trip.html">Business Trip Packing</a>
+        <a href="/one-bag-business-travel.html">Carry-On-Only Business</a>
+        <a href="/best-business-travel-backpack.html">Business Travel Backpacks</a>
+        <a href="/best-business-carry-on-luggage.html">Business Carry-On Luggage</a>
+        <div class="pf-dd-divider"></div>
+        <a href="/packing-guides.html"><strong>All Packing Guides</strong></a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Airlines</button>
+      <div class="pf-dd-menu">
+        <span class="pf-dd-label">Major Airlines</span>
+        <a href="/delta-carry-on-guides.html">Delta</a>
+        <a href="/united-carry-on-guides.html">United</a>
+        <a href="/american-carry-on-guides.html">American</a>
+        <a href="/southwest-carry-on-guides.html">Southwest</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Budget Airlines</span>
+        <a href="/ryanair-carry-on-guides.html">Ryanair</a>
+        <a href="/easyjet-carry-on-guides.html">EasyJet</a>
+        <a href="/frontier-carry-on-rules.html">Frontier</a>
+        <a href="/spirit-carry-on-rules.html">Spirit</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">More Airlines</span>
+        <a href="/aircanada-30l-backpack.html">Air Canada</a>
+        <a href="/alaska-30l-backpack.html">Alaska Airlines</a>
+        <a href="/jetblue-30l-backpack.html">JetBlue</a>
+        <div class="pf-dd-divider"></div>
+        <a href="/airline-carry-on-rules.html"><strong>All Airline Rules</strong></a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Bags &amp; Airline Fit</button>
+      <div class="pf-dd-menu">
+        <a href="/carry-on-bag-sizes.html">Bag Size Guide</a>
+        <a href="/bag-sizes/carry-on-luggage-size-in-liters.html">Bag Volume in Liters</a>
+        <a href="/will-it-fit.html">Airline Bag Size Checker</a>
+        <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
+      </div>
+    </div>
+    <a href="/#calculator">Calculator</a>
+  </div>
+</div>
+
+<div id="page-wrap" style="max-width:720px;margin:0 auto;padding:24px 20px 0;">
+
+<!-- HERO -->
+<div style="margin-bottom:8px;">
+  <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#b8943e;margin-bottom:8px;">Travel Decision Guide — Bag Strategy</div>
+  <h1 style="font-size:1.5rem;font-weight:800;color:#1a2540;line-height:1.25;margin-bottom:12px;">Personal Item vs Carry-On: When Is Overhead Actually Worth Paying For?</h1>
+  <p style="font-size:0.95rem;color:#555;line-height:1.6;margin-bottom:20px;">Budget airlines charge $25&ndash;65 for overhead bin access. That&rsquo;s a real cost. But so is squeezing a week of clothing into a tiny underseat bag, stressing about sizer enforcement, and arriving with wrinkled, compressed everything. This page helps you figure out which tradeoff actually makes sense for your trip &mdash; not which one sounds best in theory.</p>
+</div>
+
+<!-- QUICK ANSWER SNAPSHOT -->
+<div class="section-card">
+  <h2>Quick Answer: Which Strategy Fits Your Trip?</h2>
+  <div style="display:grid;gap:8px;">
+    <div style="background:#f0f7f0;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Weekend trip, warm weather</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Personal-item-only can work well. Minimal clothing, one pair of shoes, no heavy layers.</div>
+    </div>
+    <div style="background:#f0f4f8;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">5&ndash;7 days, mixed weather</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Overhead carry-on is often worth the fee. More room for layers, shoes, and less packing stress.</div>
+    </div>
+    <div style="background:#fdf8f0;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Business trip with meetings</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Overhead carry-on. Laptops, chargers, dress shoes, and wrinkle-sensitive clothing need the space.</div>
+    </div>
+    <div style="background:#f5f0f8;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Family travel or 10+ days</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Checked luggage is often the most rational option. Less stress, more flexibility, less packing pressure.</div>
+    </div>
+    <div style="background:#fff5f5;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Europe with trains and stairs</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Depends on mobility needs. A carry-on backpack handles cobblestones and platforms better than a roller.</div>
+    </div>
+    <div style="background:#eff6ff;border-radius:8px;padding:12px 14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Frequent budget airline flyer</div>
+      <div style="color:#374151;font-size:0.88rem;margin-top:4px;">Personal-item-only saves real money over many trips &mdash; if you&rsquo;re comfortable with the constraints.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY THIS DECISION MATTERS -->
+<div class="section-card">
+  <h2>Why This Decision Matters More Than Most Travel Advice</h2>
+  <p>Most travel content treats bag strategy as a packing optimization problem: roll tighter, use cubes, wear your heaviest shoes. That advice has limits. The real decision is about how much friction you&rsquo;re willing to accept &mdash; at the airport, during the trip, and in the days before you leave.</p>
+
+  <h3>The fee question is straightforward</h3>
+  <p>Budget airlines charge $25&ndash;65 for overhead bin access, depending on the carrier and route. That&rsquo;s the visible cost. <a href="/best-bag-setup-for-budget-airlines.html">Budget airline bag strategy</a> covers the specific fee structures in more detail. But the fee is only part of the calculation.</p>
+
+  <h3>The stress question is harder to quantify</h3>
+  <p>Travelers who pack personal-item-only on budget airlines sometimes describe real anxiety: will the bag pass the sizer? Did I pack too much? Will I get flagged at the gate? That stress has a cost &mdash; even if it doesn&rsquo;t show up on a receipt. For some travelers, paying $35 to eliminate sizer anxiety is worth it. For others, the savings matter more.</p>
+
+  <h3>Packing pressure compounds over longer trips</h3>
+  <p>A 3-day warm-weather trip in a personal item is a manageable constraint. A 7-day trip with variable weather in the same bag requires real discipline &mdash; limited shoes, strategic laundry, fewer outfit options. That discipline isn&rsquo;t right or wrong. It&rsquo;s a preference.</p>
+
+  <h3>Baggage claim is a real factor</h3>
+  <p>Skipping baggage claim saves 15&ndash;40 minutes and eliminates the (small) risk of lost luggage. For short trips and tight connections, that matters. For a two-week vacation where you&rsquo;re in no rush, it may not.</p>
+</div>
+
+<!-- WHEN PERSONAL-ITEM-ONLY MAKES SENSE -->
+<div class="section-card">
+  <h2>When Personal-Item-Only Actually Makes Sense</h2>
+  <p>Personal-item-only travel works well in specific conditions. It&rsquo;s not a universal strategy, and treating it as one leads to overpacking a tiny bag or leaving behind things you genuinely need.</p>
+
+  <p><strong>Short trips (1&ndash;3 days) in warm weather.</strong> Two or three outfits, one pair of shoes, minimal toiletries. This is the cleanest use case for personal-item-only. A slim 18&ndash;25L bag fits underseat on most airlines. The constraint barely feels like a constraint.</p>
+
+  <p><strong>Experienced light packers who know their limits.</strong> If you&rsquo;ve done carry-on-only travel before and understand what you actually wear versus what you think you&rsquo;ll wear, personal-item-only can work for trips up to 4&ndash;5 days. But this takes practice &mdash; it&rsquo;s not where most travelers start.</p>
+
+  <p><strong>Frequent budget airline flyers optimizing costs over many trips.</strong> If you fly Spirit or Frontier 10+ times a year, personal-item-only saves $250&ndash;650 annually in overhead fees. That math is real. The tradeoff is packing discipline on every single trip.</p>
+
+  <h3>Realistic tradeoffs to acknowledge</h3>
+  <p>Personal-item-only means limited shoes (usually one pair, worn), limited layers, limited toiletries, and often laundry mid-trip for anything beyond a weekend. Many travelers find sink laundry tedious and hotel laundry expensive. If you&rsquo;re not comfortable rewearing clothes or packing only what fits in a 20L bag, personal-item-only will feel restrictive &mdash; not liberating.</p>
+
+  <p><a href="/packing-optimization/compression-packing-cubes.html">Compression packing cubes</a> help organize a small bag, but they don&rsquo;t create space that isn&rsquo;t there. A bulky sweater compressed is still a bulky sweater &mdash; just flatter.</p>
+</div>
+
+<!-- WHEN OVERHEAD CARRY-ON IS WORTH PAYING FOR -->
+<div class="section-card">
+  <h2>When Paying for Overhead Carry-On Is Worth It</h2>
+  <p>This is where most travelers land most of the time &mdash; and for good reason. The overhead bin gives you meaningfully more capacity, more flexibility, and less packing pressure. The fee buys comfort, not just space.</p>
+
+  <p><strong>Trips of 5+ days.</strong> Five days of clothing, toiletries, and potentially a light jacket or sweater simply don&rsquo;t fit comfortably in a personal-item bag for most people. A 30&ndash;40L carry-on makes a week-long trip manageable without laundry or extreme compression. The $30&ndash;50 overhead fee is often less than what you&rsquo;d spend on laundry services during the trip.</p>
+
+  <p><strong>Cold or variable weather.</strong> A fleece, rain shell, or extra layers take up volume that a personal item can&rsquo;t absorb. Fall in London, spring in northern Europe, shoulder-season Mediterranean &mdash; all require more clothing flexibility than a small bag allows.</p>
+
+  <p><strong>Work trips with laptops and professional clothing.</strong> A laptop, charger, notebook, dress shoes, and a blazer or structured clothing don&rsquo;t compress well. Personal-item-only business travel is possible for experienced packers on short trips, but most business travelers need the carry-on bin for practical reasons. <a href="/what-to-pack-for-business-trip.html">Business trip packing</a> covers this in more detail.</p>
+
+  <p><strong>Travelers who value simplicity over savings.</strong> Paying $40 to pack normally &mdash; without agonizing over every item, without worrying about sizer enforcement, without compression-cube Tetris &mdash; is a rational choice. Not every traveler wants or needs to optimize to the edge.</p>
+
+  <p><strong>Multi-shoe trips.</strong> A second pair of shoes is often what pushes travelers past personal-item limits. Dress shoes plus walking shoes, sandals plus sneakers, hiking shoes plus casual shoes &mdash; any two-shoe setup usually requires overhead space.</p>
+
+  <p><strong>Family travel.</strong> Parents carrying kid-related gear (snacks, entertainment, changes of clothes, medications) on top of their own packing rarely fit into personal-item-only. Overhead access for at least one adult bag is usually the minimum.</p>
+
+  <p style="font-size:0.82rem;color:#6b7280;font-weight:600;margin-top:20px;margin-bottom:8px;">Example: compact overhead-friendly backpack</p>
+  <div class="product-card">
+    <div class="product-card-label">Organized carry-on backpack</div>
+    <div class="product-card-title">Peak Design Travel Backpack (30L)</div>
+    <p>21.5 &times; 13 &times; 7.5 in &middot; Soft-sided &middot; Side-access &middot; Dedicated laptop compartment</p>
+    <p><strong>Best for:</strong> Travelers paying for overhead who want internal structure over maximum volume.</p>
+    <p>
+      <a href="https://amzn.to/4stFzM0" class="affiliate-btn" target="_blank" rel="nofollow sponsored noopener">Check price &rarr;</a>
+    </p>
+  </div>
+</div>
+
+<!-- WHEN CHECKED BAGS ARE SMARTER -->
+<div class="section-card">
+  <h2>When Checked Luggage Is Actually the Smarter Option</h2>
+  <p>Checked bags get framed as failure in some travel content. They&rsquo;re not. Checked luggage is the normal, rational choice for many trip types &mdash; and most of the traveling world uses it without apology.</p>
+
+  <p><strong>Trips over 10 days without laundry access.</strong> Two weeks of clothing, even with outfit repeating, exceeds what most carry-on bags hold comfortably. Carry-on-only is achievable with laundry access and disciplined packing, but many travelers &mdash; reasonably &mdash; prefer not to spend vacation time in a laundromat.</p>
+
+  <p><strong>Winter and cold-weather travel.</strong> Bulky layers, boots, thermal base layers, heavy jackets &mdash; cold-weather packing takes real volume. A carry-on can work for mild cold, but genuinely cold destinations (Scandinavia, ski trips, winter NYC) usually justify a larger bag.</p>
+
+  <p><strong>Formal clothing and multiple shoe types.</strong> Dress shoes, heels, a blazer, structured garments &mdash; formalwear doesn&rsquo;t compress. Cruise formal nights, wedding trips, conference travel, and interview trips all create packing demands that exceed carry-on capacity for most travelers.</p>
+
+  <p><strong>Family and group travel.</strong> A family of four doing personal-item-only on Spirit Airlines is theoretically possible and practically miserable. Shared checked luggage is usually cheaper per person than four individual overhead fees, and dramatically less stressful to manage with children.</p>
+
+  <p><strong>Travelers who prefer less packing pressure.</strong> Some travelers simply don&rsquo;t want to optimize. They want to pack what they want, bring backup options, and not think about bag dimensions. That&rsquo;s a legitimate preference, and checked luggage serves it well.</p>
+
+  <p>On full-service US airlines (Delta, United, American), carry-on overhead is typically included in the ticket. <a href="/airline-carry-on-rules.html">Airline carry-on rules</a> vary significantly between budget and full-service carriers, so the checked-bag tradeoff depends heavily on which airline you&rsquo;re flying.</p>
+</div>
+
+<!-- COST VS STRESS ANALYSIS -->
+<div class="section-card">
+  <h2>The Real Cost vs Stress Calculation</h2>
+  <p>The visible cost of bag strategy is the fee. The invisible cost is everything else. Here&rsquo;s how the math actually plays out beyond the price tag.</p>
+
+  <h3>Overhead vs checked: the direct fee comparison</h3>
+  <p>On most US budget airlines, overhead carry-on runs $30&ndash;55 per segment. A first checked bag runs $35&ndash;45 per segment. The gap is often smaller than travelers assume &mdash; sometimes $5&ndash;10 per flight. On some routes and fare classes, checked is actually cheaper than overhead.</p>
+
+  <h3>The hidden costs of extreme minimalism</h3>
+  <p>Travelers who pack personal-item-only sometimes end up spending money they didn&rsquo;t plan on: hotel laundry ($5&ndash;15 per load), replacing forgotten toiletries or chargers ($10&ndash;30), buying a light jacket they didn&rsquo;t pack ($30&ndash;80), or paying the gate-check fee anyway when a bag fails the sizer ($50&ndash;65 &mdash; typically more than the pre-paid overhead fee). None of these are guaranteed costs, but they&rsquo;re common enough to factor into the decision.</p>
+
+  <h3>Sizer anxiety has a real cost</h3>
+  <p>Budget airlines use physical sizer boxes at the gate. If your bag doesn&rsquo;t fit, you pay the gate-check fee &mdash; which is usually more expensive than pre-paying for overhead. For travelers who pack close to the limit, this creates genuine stress at every boarding. Some travelers find this stress negligible. Others find it trip-defining. Know which type you are before committing to personal-item-only.</p>
+
+  <h3>Time and mobility tradeoffs</h3>
+  <p>Personal-item-only saves baggage claim time (15&ndash;40 minutes). Checked luggage saves packing time (potentially hours of agonizing over what fits). Overhead carry-on is the middle ground &mdash; no claim wait, more packing flexibility, moderate cost. For most trip types, this middle ground is why experienced travelers often pay the overhead fee.</p>
+</div>
+
+<!-- WHAT EXPERIENCED TRAVELERS ACTUALLY DO -->
+<div class="section-card">
+  <h2>What Experienced Travelers Actually Do</h2>
+  <p>There&rsquo;s no single &ldquo;correct&rdquo; bag strategy. Experienced travelers tend to adapt by trip rather than commit to a single system.</p>
+
+  <p>Many frequent travelers who fly budget airlines pay for overhead carry-on on longer trips and go personal-item-only on short hops. The strategy shifts with trip length, destination weather, and whether they need work gear. Rigidly applying one approach to every trip is less common among experienced travelers than travel content suggests.</p>
+
+  <p>Some experienced travelers check a bag intentionally &mdash; especially on full-service airlines where the first checked bag is included or cheap. Avoiding checked luggage isn&rsquo;t a badge of skill. Choosing the right luggage tier for each trip is.</p>
+
+  <p>The travelers who are most comfortable with personal-item-only tend to have specific habits: they own well-fitted small bags, they know exactly what clothing they need, they&rsquo;re comfortable with limited options, and they&rsquo;ve done it enough times that packing is nearly automatic. This doesn&rsquo;t happen on a first trip.</p>
+
+  <p>One useful mental test: if you spend more than 30 minutes agonizing over what to leave out, the bag tier might be too small for your trip. The fee you&rsquo;d pay for more space often costs less than the time and stress of extreme packing optimization.</p>
+</div>
+
+<!-- PRODUCT PICKS -->
+<div class="section-card">
+  <h2>Bags That Support Different Strategies</h2>
+  <p>These are practical options for travelers deciding between bag tiers. Each suits a different strategy from the framework above. For detailed <a href="/backpack-vs-suitcase-for-carry-on.html">backpack vs suitcase comparison</a>, see the dedicated guide.</p>
+
+  <div class="product-card">
+    <div class="product-card-label">Versatile carry-on backpack</div>
+    <div class="product-card-title">Tortuga Expandable Travel Backpack (27&ndash;32.5L)</div>
+    <p>19.2 &times; 12.5 &times; 6.9 in (48.8 &times; 31.8 &times; 17.5 cm) &middot; Soft-sided &middot; Expandable</p>
+    <p>Expands from 27L to 32.5L, which means it can work as a tight personal item when compressed flat or as a proper carry-on when expanded. Useful for travelers who shift between budget and full-service airlines and want one bag that adapts. Soft sides compress for stricter sizers, but depth matters when fully packed.</p>
+    <p><strong>Best for:</strong> Travelers who vary between personal-item-only and overhead carry-on depending on the trip.</p>
+    <p>
+      <a href="https://amzn.to/4ufgO7v" class="affiliate-btn" target="_blank" rel="nofollow sponsored noopener">Check price &rarr;</a>
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-label">Compact organized carry-on</div>
+    <div class="product-card-title">Peak Design Travel Backpack (30L)</div>
+    <p>21.5 &times; 13 &times; 7.5 in (54.6 &times; 33 &times; 19.1 cm) &middot; Soft-sided &middot; Side-access</p>
+    <p>Structured internal organization with dedicated laptop compartment. Fits standard US carry-on dimensions on most full-service airlines. On budget carriers, check depth against airline-specific limits &mdash; 19.1 cm depth is tight for Ryanair&rsquo;s 20 cm overhead limit when fully packed.</p>
+    <p><strong>Best for:</strong> Business and organized travelers who pay for overhead access and want internal structure over maximum volume.</p>
+    <p>
+      <a href="https://amzn.to/4stFzM0" class="affiliate-btn" target="_blank" rel="nofollow sponsored noopener">Check price &rarr;</a>
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-label">Maximum carry-on capacity</div>
+    <div class="product-card-title">Thule Subterra 2 Travel Backpack (34L)</div>
+    <p>21.7 &times; 13.8 &times; 9.4 in (55 &times; 35 &times; 24 cm) &middot; Soft-sided &middot; Wide-access</p>
+    <p>For travelers who know they want overhead carry-on and want to maximize what they bring. 34L handles 5&ndash;7 day trips with layers and multiple shoes. Dimensions work for most US full-service carriers. On European budget airlines, depth exceeds strict personal-item limits &mdash; this is an overhead-only bag on those carriers. <a href="/will-it-fit.html">Check your airline&rsquo;s limits</a> before flying.</p>
+    <p><strong>Best for:</strong> Travelers who pay for overhead access on longer trips and want maximum carry-on capacity without checking a bag.</p>
+    <p>
+      <a href="https://amzn.to/4sLW5Hv" class="affiliate-btn" target="_blank" rel="nofollow sponsored noopener">Check price &rarr;</a>
+    </p>
+  </div>
+</div>
+
+<!-- CALCULATOR CTA -->
+<div class="section-card" style="text-align:center; padding:28px;">
+  <h2 style="font-size:1.1rem;">See How Much Space Your Trip Actually Needs</h2>
+  <p style="font-size:0.9rem; color:#555; margin-bottom:16px;">Enter your trip details and clothing plan to estimate packing volume &mdash; then compare against personal-item limits, carry-on sizes, and <a href="/carry-on-bag-sizes.html" style="color:#2563eb;">bag capacity in liters</a>.</p>
+  <a href="/#calculator" class="cta-primary">Try the packing calculator &rarr;</a>
+  <p style="font-size:0.78rem; color:#9ca3af; margin-top:10px;">Set your airline to see dimension-specific results.</p>
+</div>
+
+<!-- RELATED GUIDES -->
+<div class="section-card" style="margin-top:28px;">
+  <h2 style="font-size:1.05rem;font-weight:700;margin-bottom:12px;">Related Guides</h2>
+  <div style="display:grid;gap:8px;">
+    <a href="/best-bag-setup-for-budget-airlines.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Best Bag Setup for Budget Airlines &mdash; Fee strategy and sizer survival for Ryanair, Spirit, Frontier, EasyJet</a>
+    <a href="/backpack-vs-suitcase-for-carry-on.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Backpack vs Suitcase for Carry-On &mdash; Mobility, organization, and airline flexibility compared</a>
+    <a href="/backpack-vs-roller-for-europe.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Backpack vs Roller for Europe &mdash; Cobblestones, trains, stairs, and terrain realities</a>
+    <a href="/airline-carry-on-rules.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Airline Carry-On Rules &mdash; Dimensions, weight limits, and enforcement across major carriers</a>
+    <a href="/will-it-fit.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Airline Bag Size Checker &mdash; Test your specific bag against airline limits</a>
+    <a href="/packing-optimization/compression-packing-cubes.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Compression Packing Cubes &mdash; What they actually do and where they help most</a>
+    <a href="/best-personal-item-bag-for-budget-airlines.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Best Personal Item Bags for Budget Airlines &mdash; Bags that actually pass sizer checks</a>
+    <a href="/carry-on-vs-checked-bag-costs.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Carry-On vs Checked Bag &mdash; The real cost and logistics comparison</a>
+    <a href="/carry-on-vs-checked-bag-calculator.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Luggage Strategy Calculator &mdash; Get a personalized carry-on vs checked recommendation</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-card">
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>Is personal-item-only travel realistic for most people?</h3>
+  <p>For short warm-weather trips, yes. For trips beyond 3&ndash;4 days, variable weather, or travelers who want outfit flexibility, personal-item-only requires real packing discipline that many travelers find more stressful than the fee it saves. It works best for experienced light packers on specific trip types.</p>
+
+  <h3>How much does overhead carry-on actually cost on budget airlines?</h3>
+  <p>Typically $25&ndash;55 per segment on US budget airlines (Spirit, Frontier) and &euro;6&ndash;40 per segment on European budget airlines (Ryanair, EasyJet), depending on route, fare class, and when you add it. Pre-booking is almost always cheaper than paying at the gate.</p>
+
+  <h3>When is checking a bag cheaper than carry-on overhead?</h3>
+  <p>On some routes and fare classes, checked and overhead fees are within $5&ndash;10 of each other. For families, one shared checked bag can be cheaper than multiple individual overhead fees. On full-service US airlines, overhead carry-on is usually included free, making checked bags the only additional cost.</p>
+
+  <h3>Do compression cubes solve the personal-item space problem?</h3>
+  <p>They help with organization and reduce some bulk, but they don&rsquo;t create space that doesn&rsquo;t exist. A 20L bag holds a 20L volume of clothing whether it&rsquo;s compressed or not &mdash; cubes just make it flatter and more organized. They&rsquo;re useful tools, not space multipliers.</p>
+
+  <h3>What do frequent travelers actually recommend?</h3>
+  <p>Most experienced travelers don&rsquo;t commit to a single strategy. They match bag tier to trip type: personal-item for short hops, overhead carry-on for standard trips, checked for longer or gear-heavy travel. The goal is minimizing total travel friction, not minimizing bag fees at all costs.</p>
+</div>
+
+<!-- BOTTOM LINE -->
+<div class="section-card">
+  <h2>Bottom Line</h2>
+  <p>The right bag tier depends on the trip, not on a philosophy. Personal-item-only saves money on short, warm-weather trips. Overhead carry-on reduces stress and packing pressure on anything longer or more complex. Checked luggage is the rational choice for long trips, cold weather, families, and anyone who values packing simplicity over fee avoidance. The experienced-traveler move isn&rsquo;t always the cheapest option &mdash; it&rsquo;s the one that creates the least total friction for that specific trip.</p>
+</div>
+
+<!-- NOTES -->
+<div class="section-card">
+  <h2 style="font-size:0.88rem;">About This Guide</h2>
+  <p style="font-size:0.82rem;color:#6b7280;">Fees and policies referenced are based on publicly available airline data as of 2026 and can change. Verify current fees on your airline&rsquo;s website before booking. Bag dimensions and enforcement vary by airport, gate staff, and aircraft type. This guide provides a decision framework &mdash; not a guarantee of acceptance or fee structure on any specific flight.</p>
+</div>
+
+</div><!-- /page-wrap -->
+
+<p style="font-size:0.75rem;color:#9ca3af;margin-top:12px;text-align:center;">As an Amazon Associate I earn from qualifying purchases.</p>
+
+<footer style="max-width:720px;margin:48px auto 0;padding:0 20px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.78rem;color:#6b7280;line-height:1.7;">
+  <div style="border-top:1px solid #e5e7eb;padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px 24px;">
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Packing Guides</div>
+      <a href="/what-to-pack-3-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">3-Day Trip</a>
+      <a href="/what-to-pack-5-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">5-Day Trip</a>
+      <a href="/what-to-pack-7-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">7-Day Trip</a>
+      <a href="/what-to-pack-10-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">10-Day Trip</a>
+      <a href="/what-to-pack-14-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">14-Day Trip</a>
+      <a href="/what-to-pack-for-europe.html" style="display:block;color:#6b7280;text-decoration:none;">Europe</a>
+      <a href="/what-to-pack-for-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Cruise</a>
+      <a href="/what-to-pack-for-alaska-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Alaska Cruise</a>
+      <a href="/what-to-pack-for-business-trip.html" style="display:block;color:#6b7280;text-decoration:none;">Business Trip</a>
+    </div>
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Airline Guides</div>
+      <a href="/delta-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Delta</a>
+      <a href="/united-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">United</a>
+      <a href="/american-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">American</a>
+      <a href="/southwest-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Southwest</a>
+      <a href="/ryanair-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Ryanair</a>
+      <a href="/easyjet-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">EasyJet</a>
+      <a href="/frontier-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">Frontier</a>
+      <a href="/spirit-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">Spirit</a>
+      <a href="/airline-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">All Airline Rules</a>
+    </div>
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Tools &amp; Resources</div>
+      <a href="/will-it-fit.html" style="display:block;color:#6b7280;text-decoration:none;">Airline Bag Size Checker</a>
+      <a href="/carry-on-bag-sizes.html" style="display:block;color:#6b7280;text-decoration:none;">Bag Size Comparison</a>
+      <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="display:block;color:#6b7280;text-decoration:none;">Size in Liters</a>
+      <a href="/packing-optimization/compression-packing-cubes.html" style="display:block;color:#6b7280;text-decoration:none;">Compression Packing Cubes</a>
+      <a href="/packing-guides.html" style="display:block;color:#6b7280;text-decoration:none;">All Packing Guides</a>
+    </div>
+  </div>
+  <div style="margin-top:18px;padding-top:12px;border-top:1px solid #e5e7eb;text-align:center;">
+    <a href="/privacy-policy.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Privacy Policy</a> &middot;
+    <a href="/terms-of-service.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Terms</a> &middot;
+    <a href="/affiliate-disclosure.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Affiliate Disclosure</a>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is personal-item-only travel realistic for most people?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For short warm-weather trips, yes. For trips beyond 3-4 days, variable weather, or travelers who want outfit flexibility, personal-item-only requires real packing discipline that many travelers find more stressful than the fee it saves. It works best for experienced light packers on specific trip types."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does overhead carry-on actually cost on budget airlines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically $25-55 per segment on US budget airlines (Spirit, Frontier) and €6-40 per segment on European budget airlines (Ryanair, EasyJet), depending on route, fare class, and when you add it. Pre-booking is almost always cheaper than paying at the gate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When is checking a bag cheaper than carry-on overhead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On some routes and fare classes, checked and overhead fees are within $5-10 of each other. For families, one shared checked bag can be cheaper than multiple individual overhead fees. On full-service US airlines, overhead carry-on is usually included free, making checked bags the only additional cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do compression cubes solve the personal-item space problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They help with organization and reduce some bulk, but they don't create space that doesn't exist. A 20L bag holds a 20L volume of clothing whether it's compressed or not — cubes just make it flatter and more organized. They're useful tools, not space multipliers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do frequent travelers actually recommend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most experienced travelers don't commit to a single strategy. They match bag tier to trip type: personal-item for short hops, overhead carry-on for standard trips, checked for longer or gear-heavy travel. The goal is minimizing total travel friction, not minimizing bag fees at all costs."
+      }
+    }
+  ]
+}
+</script>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>
