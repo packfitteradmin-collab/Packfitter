@@ -1241,4 +1241,4 @@ populateSelects();
 applyPageDefaults();
 (function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
 renderScenarioBlock();
-if (!window.PAGE_SUPPRESS_AUTO_CALC) runCalculation();
+if (window.PAGE_ENABLE_AUTO_CALC) runCalculation();
