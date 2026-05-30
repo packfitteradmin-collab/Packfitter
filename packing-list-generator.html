@@ -134,7 +134,7 @@
         <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
       </div>
     </div>
-    <a href="/#calculator">Calculator</a>
+    <a href="/#calculator">Bag Size Calculator</a>
   </div>
 </div>
 <div class="page-wrap">
@@ -212,6 +212,7 @@
         <button type="button" class="plg-chip" data-chip="international">International</button>
         <button type="button" class="plg-chip" data-chip="photography">Photography</button>
         <button type="button" class="plg-chip" data-chip="longhaul">Long-haul flight</button>
+        <button type="button" class="plg-chip" data-chip="workout">Workout / Gym</button>
       </div>
 
       <div id="plg-sub-business" class="plg-sub" style="display:none;margin-top:14px;">
@@ -411,7 +412,9 @@
     // formalwear — real-world packed liters (value × 1.15 ≈ the liters shown)
     biz_suit:8.70, dark_suit:8.70, tux:8.70, biz_pantsuit:6.96,
     cocktail_dress:2.61, gown:4.35,
-    ski_jacket:3.91, ski_pants:2.61, goggles:0.8, ski_base:0.8, tripod:0.8
+    ski_jacket:3.91, ski_pants:2.61, goggles:0.8, ski_base:0.8, tripod:0.8,
+    // workout / gym — commonly-forgotten volume people underestimate
+    workout_shorts:0.7, workout_tee:0.5
   };
 
   // Canonical item registry — each item defined ONCE; chips reference it by id.
@@ -509,6 +512,12 @@
     longhaul_kit:        { name:"Meds, snacks, toothbrush in your carry-on", vol:{type:'display'}, wow:true, affiliate:null },
     // ── Cold weather extra insulation (de-dups against a Cold-climate base) ──
     snow_insulation:     { name:"Insulated snow layer",              vol:{type:'engine',ref:'Insulated Mid Layer'}, dedupBase:true, wow:false, affiliate:null },
+    // ── Condition: Workout / gym (the volume people forget) ──
+    workout_shorts:      { name:"Workout shorts / leggings",        vol:{type:'local', ref:'workout_shorts'}, wow:false, affiliate:null },
+    workout_tee:         { name:"Moisture-wicking workout tops",    vol:{type:'local', ref:'workout_tee'}, qty:2, wow:false, affiliate:null },
+    workout_socks:       { name:"Extra athletic socks",             vol:{type:'engine',ref:'Socks'}, qty:2, wow:false, affiliate:null },
+    workout_underwear:   { name:"Extra underwear (workout)",        vol:{type:'engine',ref:'Underwear'}, qty:2, wow:false, affiliate:null },
+    workout_shoes:       { name:"Athletic shoes — add a pair in “Shoes” above", vol:{type:'display'}, wow:true, affiliate:null },
 
     // ── Conditions: Beach / water ──
     swimsuit:            { name:"Swimsuits (pack 2 — one always dry)", vol:{type:'local',ref:'swimsuit'}, qty:2, wow:true, affiliate:null },
@@ -554,7 +563,8 @@
     formal:     ["formal_accessories","stain_pen","wrinkle_release","dress_socks","foot_dress"],
     international:["plug_adapter","power_bank","esim","fee_free_card","passport_copy"],
     photography:["camera","extra_lens","spare_batteries","memory_cards","tripod","lens_cloth","power_bank"],
-    longhaul:   ["neck_pillow","eye_mask","compression_socks","earplugs","longhaul_kit","power_bank"]
+    longhaul:   ["neck_pillow","eye_mask","compression_socks","earplugs","longhaul_kit","power_bank"],
+    workout:    ["workout_shorts","workout_tee","workout_socks","workout_underwear","workout_shoes"]
   };
 
   var REGION_ADAPTER = { eu:"Region-correct plug adapter (Type C/F)", uk:"Region-correct plug adapter (Type G)", asia:"Plug adapter (check country — Asia varies)", other:"Universal / multi-region plug adapter" };
