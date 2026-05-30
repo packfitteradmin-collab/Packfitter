@@ -1237,8 +1237,20 @@ function runCalculation() {
   }
 }
 
-populateSelects();
-applyPageDefaults();
-(function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
-renderScenarioBlock();
-if (window.PAGE_ENABLE_AUTO_CALC) runCalculation();
+// Homepage calculator auto-init — gated on the calculator DOM so the engine can be
+// loaded read-only on other pages (e.g. the packing list generator) without erroring.
+if (document.getElementById("laundry")) {
+  populateSelects();
+  applyPageDefaults();
+  (function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
+  renderScenarioBlock();
+  if (window.PAGE_ENABLE_AUTO_CALC) runCalculation();
+}
+
+// Read-only engine handle for reuse by other tool pages. Does not change any logic.
+window.PackFitterEngine = {
+  buildItemList: buildItemList,
+  runEngine: runEngine,
+  SIZE_MULTIPLIER: SIZE_MULTIPLIER,
+  ITEMS: ITEMS
+};

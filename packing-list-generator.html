@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packing List Generator + Bag Size Estimate</title>
+<meta name="description" content="Generate a personalized packing list from your trip length, climate, and packing style — and see roughly how many liters and what carry-on size it needs. Free, no signup.">
+<meta property="og:title" content="Packing List Generator + Bag Size Estimate">
+<meta property="og:description" content="Generate a personalized packing list from your trip length, climate, and packing style — and see how many liters and what carry-on size it needs. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://packfitter.com/packing-list-generator.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Packing List Generator + Bag Size Estimate">
+<meta name="twitter:description" content="Build a personalized packing list and see the carry-on size it needs — free, no signup.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="canonical" href="https://packfitter.com/packing-list-generator.html">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  /* Page-local chip control for the generator's optional trip-type/condition modules.
+     No equivalent exists in site.css; scoped to this tool only. */
+  .plg-chip{display:inline-block;margin:0 6px 6px 0;padding:7px 13px;border:1px solid #d1d5db;border-radius:18px;background:#fff;color:#374151;font-size:0.85rem;line-height:1.2;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s,color .12s;}
+  .plg-chip:hover{border-color:#b8943e;}
+  .plg-chip.active{background:#1a2540;border-color:#1a2540;color:#fff;}
+  .plg-sub select{width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;}
+  @media print{ .plg-chip,#plg-modules,#plg-form,.hero-eyebrow{display:none !important;} }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the packing list generator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your trip length, climate, packing style, laundry access, and clothing size. The tool builds a personalized checklist of clothing and gear based on real clothing volumes, then estimates how many liters your list takes up and the carry-on size that fits it. It does not require a signup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What carry-on size will my packing list need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool converts your list into an estimated volume in liters and maps it to a typical carry-on range — for example, a 30–40L bag covers most 3–7 day trips for efficient packers. The estimate depends heavily on climate, shoes, and whether you do laundry, so treat it as guidance, not a guarantee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the list tell me if my bag fits a specific airline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in this tool — it estimates the carry-on size range your list needs. To check a specific bag against a specific airline's carry-on and personal-item limits, use the Airline Bag Size Checker."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div style="max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;align-items:center;gap:8px;">
+  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+    <img src="/logo-icon.png" alt="PackFitter" style="height:44px;width:auto;">
+    <div style="line-height:1.15;">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-0.01em;"><span style="color:#1a2540;">Pack</span><span style="color:#b8943e;">Fitter</span></div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.58rem;font-weight:600;color:#1a2540;letter-spacing:0.02em;">Packing Calculator &amp; Fit Tool</div>
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.6rem;font-weight:600;color:#b8943e;letter-spacing:0.04em;font-style:italic;">Plan. Pack. Fly.</div>
+      <div style="width:80px;height:1px;background:#b8943e;margin-top:2px;"></div>
+    </div>
+  </a>
+  <button class="pf-hamburger" aria-label="Menu">&#9776;</button>
+  <div class="pf-nav-bar">
+    <a href="/">Home</a>
+    <a href="/packing-list-generator.html">Packing List</a>
+    <div class="pf-nav-dd">
+      <button>What to Pack</button>
+      <div class="pf-dd-menu">
+        <span class="pf-dd-label">By Trip Length</span>
+        <a href="/what-to-pack-3-day-trip.html">3-Day Trip</a>
+        <a href="/what-to-pack-5-day-trip.html">5-Day Trip</a>
+        <a href="/what-to-pack-7-day-trip.html">7-Day Trip</a>
+        <a href="/what-to-pack-10-day-trip.html">10-Day Trip</a>
+        <a href="/what-to-pack-14-day-trip.html">14-Day Trip</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Destinations</span>
+        <a href="/what-to-pack-for-europe.html">Europe</a>
+        <a href="/what-to-pack-for-cruise.html">Cruise</a>
+        <a href="/what-to-pack-for-alaska-cruise.html">Alaska Cruise</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Alaska Cruise by Month</span>
+        <a href="/what-to-pack-for-alaska-cruise-in-may.html">May</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-june.html">June</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-july.html">July</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-august.html">August</a>
+        <a href="/what-to-pack-for-alaska-cruise-in-september.html">September</a>
+        <div class="pf-dd-divider"></div>
+        <span class="pf-dd-label">Business Travel</span>
+        <a href="/what-to-pack-for-business-trip.html">Business Trip Packing</a>
+        <a href="/one-bag-business-travel.html">Carry-On-Only Business</a>
+        <a href="/best-business-travel-backpack.html">Business Travel Backpacks</a>
+        <a href="/best-business-carry-on-luggage.html">Business Carry-On Luggage</a>
+        <div class="pf-dd-divider"></div>
+        <a href="/packing-guides.html"><strong>All Packing Guides</strong></a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Airlines</button>
+      <div class="pf-dd-menu">
+        <span class="pf-dd-label">US Airlines</span>
+              <a href="/delta-carry-on-guides.html">Delta</a>
+              <a href="/united-carry-on-guides.html">United</a>
+              <a href="/american-carry-on-guides.html">American</a>
+              <a href="/southwest-carry-on-guides.html">Southwest</a>
+              <a href="/jetblue-carry-on-guides.html">JetBlue</a>
+              <a href="/alaska-airlines-carry-on-guides.html">Alaska Airlines</a>
+              <div class="pf-dd-divider"></div>
+              <span class="pf-dd-label">Budget Airlines</span>
+              <a href="/frontier-carry-on-rules.html">Frontier</a>
+              <a href="/ryanair-carry-on-guides.html">Ryanair</a>
+              <a href="/easyjet-carry-on-guides.html">EasyJet</a>
+              <div class="pf-dd-divider"></div>
+              <span class="pf-dd-label">International</span>
+              <a href="/air-canada-carry-on-guides.html">Air Canada</a>
+              <div class="pf-dd-divider"></div>
+              <a href="/airline-carry-on-rules.html"><strong>All Airline Rules</strong></a>
+      </div>
+    </div>
+    <div class="pf-nav-dd">
+      <button>Bags &amp; Airline Fit</button>
+      <div class="pf-dd-menu">
+        <a href="/carry-on-bag-sizes.html">Bag Size Guide</a>
+        <a href="/bag-sizes/carry-on-luggage-size-in-liters.html">Bag Volume in Liters</a>
+        <a href="/will-it-fit.html">Airline Bag Size Checker</a>
+        <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
+      </div>
+    </div>
+    <a href="/#calculator">Calculator</a>
+  </div>
+</div>
+<div class="page-wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Free Tool — Packing List + Bag Size</div>
+    <h1>Packing List Generator <span style="color:#b8943e;">+ Bag Size Estimate</span></h1>
+    <p class="hero-note">Tell the tool about your trip and it builds a personalized packing checklist — then estimates how many liters it takes up and the carry-on size that fits. Most checklist tools stop at the list; this one also tells you what bag it needs. No signup, nothing to buy.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════ INPUTS ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Your Trip</div>
+    <div id="plg-form" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:6px;">
+      <label style="font-size:0.85rem;color:#374151;">Trip length (days)
+        <input id="plg-days" type="number" min="1" max="30" value="7" style="width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;">
+      </label>
+      <label style="font-size:0.85rem;color:#374151;">Climate
+        <select id="plg-climate" style="width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;">
+          <option value="WARM">Warm</option>
+          <option value="MILD" selected>Mild</option>
+          <option value="COLD">Cold</option>
+        </select>
+      </label>
+      <label style="font-size:0.85rem;color:#374151;">Packing style
+        <select id="plg-profile" style="width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;">
+          <option value="ultralight">Ultralight</option>
+          <option value="light">Light</option>
+          <option value="standard" selected>Standard</option>
+          <option value="heavy">Heavy</option>
+        </select>
+      </label>
+      <label style="font-size:0.85rem;color:#374151;">Laundry mid-trip?
+        <select id="plg-laundry" style="width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;">
+          <option value="NO" selected>No</option>
+          <option value="YES">Yes</option>
+        </select>
+      </label>
+      <label style="font-size:0.85rem;color:#374151;">Clothing size
+        <select id="plg-size" style="width:100%;margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;">
+          <option value="XS">XS</option><option value="S">S</option>
+          <option value="M" selected>M</option><option value="L">L</option>
+          <option value="XL">XL</option><option value="XXL">XXL</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- ── Optional trip-type / condition modules (chips) — set the trip context first ── -->
+    <div id="plg-modules" style="margin-top:18px;border-top:1px solid #eef2f7;padding-top:14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;">Trip type &amp; conditions <span style="font-weight:500;color:#9ca3af;font-size:0.8rem;">— optional. Adds the gear people forget.</span></div>
+
+      <div style="font-size:0.78rem;color:#6b7280;margin:12px 0 5px;text-transform:uppercase;letter-spacing:0.03em;">Weather</div>
+      <div data-group="weather">
+        <button type="button" class="plg-chip" data-chip="sun">&#9728; Sun</button>
+        <button type="button" class="plg-chip" data-chip="rain">&#127783; Rain</button>
+        <button type="button" class="plg-chip" data-chip="wind">&#128168; Wind</button>
+        <button type="button" class="plg-chip" data-chip="snow">&#10052; Snow</button>
+      </div>
+
+      <div style="font-size:0.78rem;color:#6b7280;margin:12px 0 5px;text-transform:uppercase;letter-spacing:0.03em;">Trip type</div>
+      <div data-group="trip">
+        <button type="button" class="plg-chip" data-chip="cruise">Cruise</button>
+        <button type="button" class="plg-chip" data-chip="city">City / Sightseeing</button>
+        <button type="button" class="plg-chip" data-chip="theme_park">Theme Park</button>
+        <button type="button" class="plg-chip" data-chip="business">Business</button>
+        <button type="button" class="plg-chip" data-chip="outdoor">Outdoor / Hiking</button>
+        <button type="button" class="plg-chip" data-chip="ski">Ski / Snow Sports</button>
+      </div>
+
+      <div style="font-size:0.78rem;color:#6b7280;margin:12px 0 5px;text-transform:uppercase;letter-spacing:0.03em;">Conditions</div>
+      <div data-group="cond">
+        <button type="button" class="plg-chip" data-chip="beach">Beach / Water</button>
+        <button type="button" class="plg-chip" data-chip="wildlife">Wildlife</button>
+        <button type="button" class="plg-chip" data-chip="formal">Formal event</button>
+        <button type="button" class="plg-chip" data-chip="international">International</button>
+        <button type="button" class="plg-chip" data-chip="photography">Photography</button>
+        <button type="button" class="plg-chip" data-chip="longhaul">Long-haul flight</button>
+      </div>
+
+      <div id="plg-sub-business" class="plg-sub" style="display:none;margin-top:14px;">
+        <div style="font-size:0.82rem;color:#374151;margin-bottom:6px;">Business attire — check what you're packing:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:0.86rem;color:#374151;">
+          <label><input type="checkbox" class="plg-garment" data-item="biz_blazer"> Blazer / sport coat</label>
+          <label><input type="checkbox" class="plg-garment" data-item="biz_suit"> Suit (jacket + trousers)</label>
+          <label><input type="checkbox" class="plg-garment" data-item="biz_pantsuit"> Pantsuit</label>
+          <label><input type="checkbox" class="plg-garment" data-item="biz_slacks_extra"> Extra slacks / skirt</label>
+        </div>
+        <div style="font-size:0.76rem;color:#9ca3af;margin-top:6px;">Dress shirts, slacks, steamer, garment folder &amp; toiletry kit are already included.</div>
+      </div>
+      <div id="plg-sub-international" class="plg-sub" style="display:none;margin-top:14px;max-width:320px;">
+        <label style="font-size:0.82rem;color:#374151;">Region (sets the right plug adapter)
+          <select id="plg-region">
+            <option value="eu">Europe — Type C/F</option>
+            <option value="uk">UK / Ireland — Type G</option>
+            <option value="asia">Asia — region varies</option>
+            <option value="other">Other / multi-region</option>
+          </select>
+        </label>
+      </div>
+      <div id="plg-sub-formal" class="plg-sub" style="display:none;margin-top:14px;">
+        <div style="font-size:0.82rem;color:#374151;margin-bottom:6px;">Formal attire — check what you're packing:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:0.86rem;color:#374151;">
+          <label><input type="checkbox" class="plg-garment" data-item="tux"> Tuxedo</label>
+          <label><input type="checkbox" class="plg-garment" data-item="dark_suit"> Dark suit</label>
+          <label><input type="checkbox" class="plg-garment" data-item="cocktail_dress"> Cocktail dress</label>
+          <label><input type="checkbox" class="plg-garment" data-item="gown"> Formal gown</label>
+        </div>
+        <div style="font-size:0.76rem;color:#9ca3af;margin-top:6px;">Accessories, stain pen &amp; wrinkle-release are already included. Add dress shoes/heels in the shoe selector.</div>
+      </div>
+    </div>
+
+    <!-- ── Adjustments (shoes + jacket/laptop) — fine-tune off the trip context above ── -->
+    <div id="plg-adjust" style="margin-top:18px;border-top:1px solid #eef2f7;padding-top:14px;">
+      <div style="font-weight:700;color:#1a2540;font-size:0.9rem;margin-bottom:8px;">Shoes you're bringing <span style="font-weight:500;color:#9ca3af;font-size:0.8rem;">— up to 3 pairs. Pair 1 is worn on travel day.</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+        <label style="font-size:0.82rem;color:#374151;">Pair 1 (worn)
+          <select id="plg-shoe-1" class="plg-shoe">
+            <option value="sneakers" selected>Sneakers</option>
+            <option value="trail">Trail shoes</option>
+            <option value="boots">Boots</option>
+            <option value="sandals">Sandals</option>
+            <option value="dress">Dress shoes</option>
+            <option value="water">Water shoes</option>
+          </select>
+        </label>
+        <label style="font-size:0.82rem;color:#374151;">Pair 2
+          <select id="plg-shoe-2" class="plg-shoe">
+            <option value="" selected>— none —</option>
+            <option value="sneakers">Sneakers</option>
+            <option value="trail">Trail shoes</option>
+            <option value="boots">Boots</option>
+            <option value="sandals">Sandals</option>
+            <option value="dress">Dress shoes</option>
+            <option value="water">Water shoes</option>
+          </select>
+        </label>
+        <label style="font-size:0.82rem;color:#374151;">Pair 3
+          <select id="plg-shoe-3" class="plg-shoe">
+            <option value="" selected>— none —</option>
+            <option value="sneakers">Sneakers</option>
+            <option value="trail">Trail shoes</option>
+            <option value="boots">Boots</option>
+            <option value="sandals">Sandals</option>
+            <option value="dress">Dress shoes</option>
+            <option value="water">Water shoes</option>
+          </select>
+        </label>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:0.88rem;color:#374151;">
+        <label><input id="plg-laptop" type="checkbox"> Bringing a laptop</label>
+        <label><input id="plg-bulky" type="checkbox"> Bulky jacket</label>
+      </div>
+      <div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Bringing a blazer or suit? Turn on <strong>Business</strong> above and pick your work attire.</div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <button id="plg-generate" class="cta-primary" style="border:none;cursor:pointer;">Generate my packing list &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ RESULTS ══════════════════════════════════════ -->
+  <div id="plg-results"></div>
+
+  <!-- ══════════════════════════════════════ HOW IT WORKS / FAQ ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">How It Works</div>
+    <h2>From trip details to a real list</h2>
+    <p>This tool uses the same packing-volume engine as the PackFitter calculator. It scales clothing counts to your trip length and laundry access, adjusts for climate and packing style, and estimates the total volume in liters — the same number that determines what bag you need. The carry-on size shown is a realistic range, not a promise: shoes, bulky layers, and skipping laundry all push it up.</p>
+    <p style="font-size:0.85rem;color:#6b7280;margin-top:8px;">Want to check a specific bag against a specific airline's limits? Use the <a href="/will-it-fit.html" style="color:#3b82f6;text-decoration:none;font-weight:600;">Airline Bag Size Checker</a>.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How does the packing list generator work?</h3>
+      <p>Enter your trip length, climate, packing style, laundry access, and clothing size. The tool builds a personalized checklist of clothing and gear based on real clothing volumes, then estimates how many liters your list takes up and the carry-on size that fits it. It does not require a signup.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What carry-on size will my packing list need?</h3>
+      <p>The tool converts your list into an estimated volume in liters and maps it to a typical carry-on range — for example, a 30–40L bag covers most 3–7 day trips for efficient packers. The estimate depends heavily on climate, shoes, and whether you do laundry, so treat it as guidance, not a guarantee.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does the list tell me if my bag fits a specific airline?</h3>
+      <p>Not in this tool — it estimates the carry-on size range your list needs. To check a specific bag against a specific airline's carry-on and personal-item limits, use the Airline Bag Size Checker.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ RELATED ══════════════════════════════════════ -->
+  <div class="section-card">
+    <div class="section-label">Related Tools &amp; Guides</div>
+    <h2>Keep planning</h2>
+    <p style="margin-top:10px;"><a href="/will-it-fit.html" style="font-weight:600;color:#3b82f6;text-decoration:none;border-bottom:1px solid #93c5fd;">Airline Bag Size Checker — does your bag fit? →</a></p>
+    <p><a href="/carry-on-bag-sizes.html" style="font-weight:600;color:#3b82f6;text-decoration:none;border-bottom:1px solid #93c5fd;">Carry-on bag sizes explained →</a></p>
+    <p><a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="font-weight:600;color:#3b82f6;text-decoration:none;border-bottom:1px solid #93c5fd;">What bag volume in liters means →</a></p>
+    <p style="margin-top:14px;"><a href="/packing-guides.html" style="font-weight:600;color:#3b82f6;text-decoration:none;border-bottom:1px solid #93c5fd;">All packing guides →</a></p>
+  </div>
+
+  <footer style="max-width:720px;margin:48px auto 0;padding:0 20px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.78rem;color:#6b7280;line-height:1.7;">
+  <div style="border-top:1px solid #e5e7eb;padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px 24px;">
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Packing Guides</div>
+      <a href="/what-to-pack-3-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">3-Day Trip</a>
+      <a href="/what-to-pack-5-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">5-Day Trip</a>
+      <a href="/what-to-pack-7-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">7-Day Trip</a>
+      <a href="/what-to-pack-10-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">10-Day Trip</a>
+      <a href="/what-to-pack-14-day-trip.html" style="display:block;color:#6b7280;text-decoration:none;">14-Day Trip</a>
+      <a href="/what-to-pack-for-europe.html" style="display:block;color:#6b7280;text-decoration:none;">Europe</a>
+      <a href="/what-to-pack-for-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Cruise</a>
+      <a href="/what-to-pack-for-alaska-cruise.html" style="display:block;color:#6b7280;text-decoration:none;">Alaska Cruise</a>
+      <a href="/what-to-pack-for-business-trip.html" style="display:block;color:#6b7280;text-decoration:none;">Business Trip</a>
+    </div>
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Airline Guides</div>
+      <a href="/delta-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Delta</a>
+      <a href="/united-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">United</a>
+      <a href="/american-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">American</a>
+      <a href="/southwest-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Southwest</a>
+      <a href="/ryanair-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">Ryanair</a>
+      <a href="/easyjet-carry-on-guides.html" style="display:block;color:#6b7280;text-decoration:none;">EasyJet</a>
+      <a href="/frontier-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">Frontier</a>
+      <a href="/spirit-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">Spirit</a>
+      <a href="/airline-carry-on-rules.html" style="display:block;color:#6b7280;text-decoration:none;">All Airline Rules</a>
+    </div>
+    <div>
+      <div style="font-weight:700;color:#1a2540;margin-bottom:6px;font-size:0.8rem;">Tools &amp; Resources</div>
+      <a href="/will-it-fit.html">Airline Bag Size Checker</a>
+      <a href="/carry-on-bag-sizes.html" style="display:block;color:#6b7280;text-decoration:none;">Bag Size Comparison</a>
+      <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="display:block;color:#6b7280;text-decoration:none;">Size in Liters</a>
+      <a href="/packing-optimization/compression-packing-cubes.html" style="display:block;color:#6b7280;text-decoration:none;">Compression Packing Cubes</a>
+      <a href="/packing-guides.html" style="display:block;color:#6b7280;text-decoration:none;">All Packing Guides</a>
+    </div>
+  </div>
+  <div style="margin-top:18px;padding-top:12px;border-top:1px solid #e5e7eb;text-align:center;">
+    <a href="/privacy-policy.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Privacy Policy</a> ·
+    <a href="/terms-of-service.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Terms</a> ·
+    <a href="/affiliate-disclosure.html" style="color:#9ca3af;text-decoration:none;margin:0 6px;">Affiliate Disclosure</a>
+  </div>
+</footer>
+
+</div>
+
+<script src="/js/calculator.js"></script>
+<script>
+(function(){
+  var E = window.PackFitterEngine;
+  var resultsEl = document.getElementById("plg-results");
+
+  // Clothing-type categories only. Non-clothing items (tech, toiletries) appear in the static
+  // "don't forget" sections below — they still count toward the volume estimate.
+  var CATEGORIES = [
+    { key:"clothing", label:"Clothing", test:function(it){ return it && it.clothing; } },
+    { key:"layers",   label:"Layers & Outerwear", test:function(it){ return it && (it.outerwear || it.softOuterwear); } },
+    { key:"footwear", label:"Footwear", test:function(it){ return it && it.shoe; } },
+    { key:"formal",   label:"Formalwear", test:function(it){ return it && it.formalwear; } }
+  ];
+
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  // ════════════════════════════════════════════════════════════════════════
+  //  MODULE SYSTEM (generator-only)
+  //  ▸ ALL generator-only volumes live in this one object. No volume defs live
+  //    anywhere else. Engine items reuse E.ITEMS data; nothing in calculator.js
+  //    (E.ITEMS / buildItemList / runEngine) is modified.
+  // ════════════════════════════════════════════════════════════════════════
+  var PACKING_MODULE_LOCAL_VOLUMES = {
+    sun_hat:0.2, sun_hoodie:0.87, rain_shell:2.0, packable_umbrella:0.3,
+    windbreaker:1.5, buff:0.2, thermal_base:0.87, gloves_hat:0.6,
+    packable_daypack:0.5, crossbody_anti_theft:1.0, modesty_layer:0.3,
+    power_strip:0.4, disposable_poncho:0.3, clip_fan:0.4, cooling_towel:0.3,
+    fanny_pack:0.6, travel_steamer:1.13, headlamp:0.2, water_filter:0.3,
+    trekking_poles:0.8, swimsuit:0.5, water_shoes:1.5, dry_bag:0.5,
+    cover_up:0.4, binoculars:0.8, plug_adapter:0.1,
+    // formalwear — real-world packed liters (value × 1.15 ≈ the liters shown)
+    biz_suit:8.70, dark_suit:8.70, tux:8.70, biz_pantsuit:6.96,
+    cocktail_dress:2.61, gown:4.35,
+    ski_jacket:3.91, ski_pants:2.61, goggles:0.8, ski_base:0.8, tripod:0.8
+  };
+
+  // Canonical item registry — each item defined ONCE; chips reference it by id.
+  //  vol.type: 'engine' (compute from E.ITEMS[ref]) | 'local' (PACKING_MODULE_LOCAL_VOLUMES[ref]) | 'display' (0 L)
+  //  dedupBase:true  → if E.ITEMS[ref] is already in the base list, omit entirely (already counted)
+  //  qty default 1.  wow flag = share-worthy "I'd have forgotten that" item.
+  //  affiliate: reserved for Phase 2 (null now → wiring products later is a data-fill, not a refactor).
+  var REG = {
+    // ── shared (referenced by several chips; shown once) ──
+    power_bank:          { name:"Power bank (10,000mAh+)",            vol:{type:'engine',ref:'Power Bank'}, wow:true,  affiliate:null },
+    rain_shell:          { name:"Packable rain shell",                vol:{type:'local', ref:'rain_shell'}, wow:true,  affiliate:null },
+    packable_daypack:    { name:"Packable daypack",                   vol:{type:'local', ref:'packable_daypack'}, wow:false, affiliate:null },
+    crossbody_anti_theft:{ name:"Crossbody anti-theft bag",           vol:{type:'local', ref:'crossbody_anti_theft'}, wow:true, affiliate:null },
+    water_bottle:        { name:"Reusable water bottle",              vol:{type:'engine',ref:'Reusable Water Bottle'}, wow:false, affiliate:null },
+    // footwear reminders only — all shoe VOLUME is owned by the shoe selector above (single source)
+    foot_dress:          { name:"Dress shoes — add a pair in “Shoes” above",     vol:{type:'display'}, wow:false, affiliate:null },
+    foot_water:          { name:"Water shoes / flip-flops — add a pair above",            vol:{type:'display'}, wow:false, affiliate:null },
+    foot_trail:          { name:"Trail shoes — add a pair above",                          vol:{type:'display'}, wow:false, affiliate:null },
+    foot_boots:          { name:"Snow boots — add a pair above (or rent at the resort)",   vol:{type:'display'}, wow:false, affiliate:null },
+    blister_care:        { name:"Blister bandages / comfort insoles", vol:{type:'display'}, wow:true,  affiliate:null },
+    lip_balm_spf:        { name:"SPF lip balm",                       vol:{type:'display'}, wow:false, affiliate:null },
+
+    // ── Weather: Sun ──
+    sunscreen:           { name:"Sunscreen / sunblock",               vol:{type:'display'}, wow:false, affiliate:null },
+    sun_hat:             { name:"Sun hat / cap",                      vol:{type:'local', ref:'sun_hat'}, wow:false, affiliate:null },
+    sunglasses:          { name:"Sunglasses",                         vol:{type:'engine',ref:'Sunglasses and Case'}, wow:false, affiliate:null },
+    sun_hoodie:          { name:"Sun hoodie / UPF long-sleeve",       vol:{type:'local', ref:'sun_hoodie'}, wow:true,  affiliate:null },
+    after_sun:           { name:"After-sun / aloe",                   vol:{type:'display'}, wow:true,  affiliate:null },
+    // ── Weather: Rain ──
+    packable_umbrella:   { name:"Packable umbrella",                  vol:{type:'local', ref:'packable_umbrella'}, wow:false, affiliate:null },
+    // ── Weather: Wind ──
+    windbreaker:         { name:"Windbreaker / shell",                vol:{type:'local', ref:'windbreaker'}, wow:false, affiliate:null },
+    buff:                { name:"Buff / neck gaiter",                 vol:{type:'local', ref:'buff'}, wow:true,  affiliate:null },
+    // ── Weather: Snow ──
+    thermal_base:        { name:"Thermal base layer",                 vol:{type:'local', ref:'thermal_base'}, wow:false, affiliate:null },
+    gloves_hat:          { name:"Gloves + warm hat",                  vol:{type:'local', ref:'gloves_hat'}, wow:false, affiliate:null },
+    hand_toe_warmers:    { name:"Hand / toe warmers",                 vol:{type:'display'}, wow:true,  affiliate:null },
+    traction_cleats:     { name:"Traction cleats (icy walks)",        vol:{type:'display'}, wow:true,  affiliate:null },
+
+    // ── Trip type: Cruise ──
+    motion_sickness:     { name:"Motion-sickness relief (bands / Dramamine)", vol:{type:'display'}, wow:true, affiliate:null },
+    cruise_lanyard:      { name:"Cruise key-card lanyard + holder",   vol:{type:'display'}, wow:true,  affiliate:null },
+    power_strip:         { name:"Power strip / multi-USB (cabins have ~1 outlet)", vol:{type:'local',ref:'power_strip'}, wow:true, affiliate:null },
+    light_layer:         { name:"Light layer (ship AC runs cold)",    vol:{type:'engine',ref:'Light Layer'}, wow:true, affiliate:null },
+    // ── Trip type: City ──
+    modesty_layer:       { name:"Modesty layer (churches / temples)", vol:{type:'local', ref:'modesty_layer'}, wow:true, affiliate:null },
+    // ── Trip type: Theme Park ──
+    disposable_poncho:   { name:"Disposable poncho",                  vol:{type:'local', ref:'disposable_poncho'}, wow:true, affiliate:null },
+    clip_fan:            { name:"Neck / clip-on fan",                 vol:{type:'local', ref:'clip_fan'}, wow:true,  affiliate:null },
+    cooling_towel:       { name:"Cooling towel",                      vol:{type:'local', ref:'cooling_towel'}, wow:true, affiliate:null },
+    anti_chafe:          { name:"Anti-chafe balm",                    vol:{type:'display'}, wow:true,  affiliate:null },
+    fanny_pack:          { name:"Fanny pack / hands-free crossbody",  vol:{type:'local', ref:'fanny_pack'}, wow:true, affiliate:null },
+    park_lanyard:        { name:"Lanyard (tickets / pins)",           vol:{type:'display'}, wow:false, affiliate:null },
+    // ── Trip type: Business ──
+    dress_shirts:        { name:"Dress shirts",                       vol:{type:'engine',ref:'Dress Shirt'}, qty:3, wow:false, affiliate:null },
+    biz_blazer:          { name:"Blazer / sport coat",                vol:{type:'engine',ref:'Blazer'}, wow:false, affiliate:null },
+    dress_slacks:        { name:"Dress slacks",                       vol:{type:'engine',ref:'Bottoms'}, qty:2, wow:false, affiliate:null },
+    dress_accessories:   { name:"Dress socks, belt, ties",           vol:{type:'display'}, wow:false, affiliate:null },
+    overcoat:            { name:"Overcoat (winter — packs big)",      vol:{type:'engine',ref:'Insulated Jacket'}, dedupBase:true, wow:true, affiliate:null },
+    travel_steamer:      { name:"Travel steamer / wrinkle spray",     vol:{type:'local', ref:'travel_steamer'}, wow:true, affiliate:null },
+    garment_folder:      { name:"Garment folder",                     vol:{type:'display'}, wow:true,  affiliate:null },
+    tech_pouch:          { name:"Tech pouch / cable organizer",       vol:{type:'display'}, wow:true,  affiliate:null },
+    rigid_toiletry:      { name:"Structured toiletry kit",            vol:{type:'engine',ref:'Hard Toiletry Kit'}, dedupBase:true, wow:false, affiliate:null },
+    // business garment toggles (user checks what they're packing)
+    biz_suit:            { name:"Suit (jacket + trousers)",           vol:{type:'local', ref:'biz_suit'}, wow:false, affiliate:null },
+    biz_pantsuit:        { name:"Pantsuit",                           vol:{type:'local', ref:'biz_pantsuit'}, wow:false, affiliate:null },
+    biz_slacks_extra:    { name:"Extra dress slacks / skirt",         vol:{type:'engine', ref:'Bottoms'}, wow:false, affiliate:null },
+    // ── Trip type: Outdoor / Hiking ──
+    hike_insulation:     { name:"Insulation layer (synthetic)",       vol:{type:'engine',ref:'Insulated Mid Layer'}, wow:false, affiliate:null },
+    headlamp:            { name:"Headlamp + spare batteries",         vol:{type:'local', ref:'headlamp'}, wow:true, affiliate:null },
+    first_aid:           { name:"First-aid + blister care",           vol:{type:'display'}, wow:true,  affiliate:null },
+    water_filter:        { name:"Water filter / purification",        vol:{type:'local', ref:'water_filter'}, wow:true, affiliate:null },
+    trekking_poles:      { name:"Trekking poles (collapsible)",       vol:{type:'local', ref:'trekking_poles'}, wow:true, affiliate:null },
+    offline_maps:        { name:"Offline maps / compass",             vol:{type:'display'}, wow:true,  affiliate:null },
+    // ── Trip type: Ski / Snow sports (skis/boots/helmet are rent-or-check, not carry-on) ──
+    ski_jacket:          { name:"Waterproof ski jacket",              vol:{type:'local', ref:'ski_jacket'}, wow:false, affiliate:null },
+    ski_pants:           { name:"Ski pants / salopettes",             vol:{type:'local', ref:'ski_pants'}, wow:false, affiliate:null },
+    goggles:             { name:"Goggles (spare lens for flat light)",vol:{type:'local', ref:'goggles'}, wow:true, affiliate:null },
+    ski_base:            { name:"Merino base-layer sets",             vol:{type:'local', ref:'ski_base'}, wow:false, affiliate:null },
+    lift_pass:           { name:"Lift-pass pocket / holder",          vol:{type:'display'}, wow:true,  affiliate:null },
+    apres:               { name:"Après-ski casual outfit",            vol:{type:'display'}, wow:false, affiliate:null },
+    ski_rentcheck:       { name:"Skis / boots / helmet — rent at resort or check (not carry-on)", vol:{type:'display'}, wow:true, affiliate:null },
+    // ── Condition: Photography ──
+    camera:              { name:"Camera body",                        vol:{type:'engine',ref:'Camera'}, wow:false, affiliate:null },
+    extra_lens:          { name:"Extra lens",                         vol:{type:'engine',ref:'Lens Case'}, wow:false, affiliate:null },
+    spare_batteries:     { name:"Spare batteries + charger",          vol:{type:'display'}, wow:true,  affiliate:null },
+    memory_cards:        { name:"Memory cards (spares)",              vol:{type:'display'}, wow:true,  affiliate:null },
+    tripod:              { name:"Travel tripod",                      vol:{type:'local', ref:'tripod'}, wow:true, affiliate:null },
+    lens_cloth:          { name:"Lens cloth / blower",                vol:{type:'display'}, wow:false, affiliate:null },
+    // ── Condition: Long-haul flight ──
+    neck_pillow:         { name:"Neck pillow",                        vol:{type:'engine',ref:'Travel Pillow'}, wow:false, affiliate:null },
+    eye_mask:            { name:"Eye mask",                           vol:{type:'display'}, wow:true,  affiliate:null },
+    compression_socks:   { name:"Compression socks",                 vol:{type:'display'}, wow:true,  affiliate:null },
+    earplugs:            { name:"Earplugs / noise-cancelling",        vol:{type:'display'}, wow:true,  affiliate:null },
+    longhaul_kit:        { name:"Meds, snacks, toothbrush in your carry-on", vol:{type:'display'}, wow:true, affiliate:null },
+    // ── Cold weather extra insulation (de-dups against a Cold-climate base) ──
+    snow_insulation:     { name:"Insulated snow layer",              vol:{type:'engine',ref:'Insulated Mid Layer'}, dedupBase:true, wow:false, affiliate:null },
+
+    // ── Conditions: Beach / water ──
+    swimsuit:            { name:"Swimsuits (pack 2 — one always dry)", vol:{type:'local',ref:'swimsuit'}, qty:2, wow:true, affiliate:null },
+    dry_bag:             { name:"Dry bag (phone / valuables)",        vol:{type:'local', ref:'dry_bag'}, wow:true, affiliate:null },
+    phone_pouch:         { name:"Waterproof phone pouch (test seal at home)", vol:{type:'display'}, wow:true, affiliate:null },
+    quick_dry_towel:     { name:"Quick-dry towel",                    vol:{type:'engine',ref:'Travel Towel'}, wow:false, affiliate:null },
+    cover_up:            { name:"Cover-up / rash guard",              vol:{type:'local', ref:'cover_up'}, wow:false, affiliate:null },
+    reef_sunscreen:      { name:"Reef-safe sunscreen",                vol:{type:'display'}, wow:true,  affiliate:null },
+    // ── Conditions: Wildlife ──
+    binoculars:          { name:"Binoculars (8x+)",                   vol:{type:'local', ref:'binoculars'}, wow:true, affiliate:null },
+    neutral_layer:       { name:"Neutral-color layer",               vol:{type:'display'}, wow:false, affiliate:null },
+    insect_repellent:    { name:"Insect repellent / bug spray",      vol:{type:'display'}, wow:true,  affiliate:null },
+    // ── Conditions: Formal event (garment toggles — user checks what they're packing) ──
+    tux:                 { name:"Tuxedo",                             vol:{type:'local', ref:'tux'}, wow:false, affiliate:null },
+    dark_suit:           { name:"Dark suit",                          vol:{type:'local', ref:'dark_suit'}, wow:false, affiliate:null },
+    cocktail_dress:      { name:"Cocktail dress",                     vol:{type:'local', ref:'cocktail_dress'}, wow:false, affiliate:null },
+    gown:                { name:"Formal gown",                        vol:{type:'local', ref:'gown'}, wow:false, affiliate:null },
+    formal_accessories:  { name:"Accessories (jewelry / tie / clutch)", vol:{type:'display'}, wow:true, affiliate:null },
+    stain_pen:           { name:"Stain-remover pen",                  vol:{type:'display'}, wow:true,  affiliate:null },
+    wrinkle_release:     { name:"Wrinkle-release spray",              vol:{type:'display'}, wow:true,  affiliate:null },
+    dress_socks:         { name:"Dress socks",                        vol:{type:'display'}, wow:false, affiliate:null },
+    // ── Conditions: International ──
+    plug_adapter:        { name:"Region-correct plug adapter",        vol:{type:'local', ref:'plug_adapter'}, wow:true, affiliate:null },
+    esim:                { name:"eSIM / local data plan",             vol:{type:'display'}, wow:true,  affiliate:null },
+    fee_free_card:       { name:"Fee-free card (no FX fees)",         vol:{type:'display'}, wow:true,  affiliate:null },
+    passport_copy:       { name:"Passport copy (separate from passport)", vol:{type:'display'}, wow:false, affiliate:null }
+  };
+
+  // Chip → ordered item ids. Shared items repeated across chips are de-duped at resolve time.
+  var CHIP_ITEMS = {
+    sun:        ["sunscreen","sun_hat","sunglasses","sun_hoodie","lip_balm_spf","after_sun"],
+    rain:       ["rain_shell","packable_umbrella"],
+    wind:       ["windbreaker","buff"],
+    snow:       ["snow_insulation","thermal_base","gloves_hat","hand_toe_warmers","traction_cleats","lip_balm_spf","foot_boots"],
+    cruise:     ["motion_sickness","cruise_lanyard","packable_daypack","power_strip","light_layer"],
+    city:       ["crossbody_anti_theft","packable_daypack","water_bottle","modesty_layer","blister_care","power_bank"],
+    theme_park: ["power_bank","disposable_poncho","clip_fan","cooling_towel","anti_chafe","fanny_pack","park_lanyard","blister_care","water_bottle"],
+    business:   ["dress_shirts","dress_slacks","dress_accessories","travel_steamer","garment_folder","tech_pouch","rigid_toiletry","foot_dress"],
+    outdoor:    ["packable_daypack","rain_shell","hike_insulation","headlamp","first_aid","water_bottle","water_filter","trekking_poles","offline_maps","foot_trail"],
+    ski:        ["ski_jacket","ski_pants","goggles","ski_base","buff","gloves_hat","hand_toe_warmers","lift_pass","apres","ski_rentcheck","foot_boots"],
+    beach:      ["swimsuit","dry_bag","phone_pouch","quick_dry_towel","cover_up","reef_sunscreen","foot_water"],
+    wildlife:   ["binoculars","neutral_layer","power_bank","insect_repellent"],
+    formal:     ["formal_accessories","stain_pen","wrinkle_release","dress_socks","foot_dress"],
+    international:["plug_adapter","power_bank","esim","fee_free_card","passport_copy"],
+    photography:["camera","extra_lens","spare_batteries","memory_cards","tripod","lens_cloth","power_bank"],
+    longhaul:   ["neck_pillow","eye_mask","compression_socks","earplugs","longhaul_kit","power_bank"]
+  };
+
+  var REGION_ADAPTER = { eu:"Region-correct plug adapter (Type C/F)", uk:"Region-correct plug adapter (Type G)", asia:"Plug adapter (check country — Asia varies)", other:"Universal / multi-region plug adapter" };
+
+  function activeChips(){
+    var a=[], els=document.querySelectorAll(".plg-chip.active");
+    for (var i=0;i<els.length;i++){ a.push(els[i].getAttribute("data-chip")); }
+    return a;
+  }
+
+  // Raw packed volume (pre ×1.15) for one engine item, reusing E.ITEMS data and the
+  // engine's own formula. Water bottle excluded to match the base list's handling.
+  function engineRawVol(refName){
+    var it = E.ITEMS[refName];
+    if (!it) return 0;
+    if (it.waterBottle) return 0;
+    var ms = it.clothing ? curMSize : 1.00;
+    return it.baseVolume * ms * it.cFactor * it.gTax;
+  }
+  var curMSize = 1.0; // set per-generate from clothing size
+
+  // Footwear is owned entirely by the shoe selector (single source of all shoe volume).
+  // Each type maps to an engine item's volume (reused, not modified) or a local value.
+  var SHOE_TYPES = {
+    sneakers:{ label:"Sneakers",    type:'engine', ref:'Shoes' },
+    trail:   { label:"Trail shoes", type:'engine', ref:'Shoes' },
+    boots:   { label:"Boots",       type:'engine', ref:'Boots' },
+    sandals: { label:"Sandals",     type:'engine', ref:'Sandals' },
+    dress:   { label:"Dress shoes", type:'engine', ref:'Dress Shoes' },
+    water:   { label:"Water shoes", type:'local',  ref:'water_shoes' }
+  };
+  function shoeRawVol(t){
+    var d = SHOE_TYPES[t]; if (!d) return 0;
+    if (d.type === 'local') return PACKING_MODULE_LOCAL_VOLUMES[d.ref] || 0;
+    // Engine shoe items: use baseVolume × cFactor but OMIT the shoe geometry tax (gTax).
+    // For a pair of shoes the global ×1.15 packing-slack factor already covers their dead space;
+    // applying gTax on top double-counts it and over-states pairs (sneakers ~9L → a truer ~7.5L).
+    // Generator-only; the shared engine / homepage calculator are unchanged.
+    var it = E.ITEMS[d.ref]; if (!it) return 0;
+    var ms = it.clothing ? curMSize : 1.00;
+    return it.baseVolume * ms * it.cFactor;
+  }
+
+  // Resolve active chips → { items:[{id,name,liters,wow}], rawVol }, de-duped, base-aware.
+  // Each formal/business garment toggle belongs to a parent chip; only counts when that chip is on.
+  var GARMENT_CHIP = { biz_blazer:'business', biz_suit:'business', biz_pantsuit:'business', biz_slacks_extra:'business',
+                       tux:'formal', dark_suit:'formal', cocktail_dress:'formal', gown:'formal' };
+
+  function resolveModules(chips, baseNames){
+    var seen = {}, seenRef = {}, out = [], rawTotal = 0;
+    var region = (document.getElementById("plg-region")||{}).value || "eu";
+    var chipList = chips.slice();
+
+    // Build the ordered item-id list from the active chips.
+    var ids = [];
+    for (var c=0;c<chipList.length;c++){
+      var base = CHIP_ITEMS[chipList[c]];
+      if (base){ for (var b=0;b<base.length;b++){ ids.push(base[b]); } }
+    }
+    // Append the garments the user checked, but only if their parent chip is active.
+    var gboxes = document.querySelectorAll(".plg-garment");
+    for (var gi=0; gi<gboxes.length; gi++){
+      if (!gboxes[gi].checked) continue;
+      var gid = gboxes[gi].getAttribute("data-item");
+      if (chipList.indexOf(GARMENT_CHIP[gid]) !== -1){ ids.push(gid); }
+    }
+
+    for (var i=0;i<ids.length;i++){
+      var id = ids[i];
+      if (seen[id]) continue;
+      var def = REG[id]; if (!def) continue;
+      // base-aware de-dup: item already in the engine's base list → skip (already counted/shown)
+      if (def.dedupBase && def.vol.type==='engine' && baseNames[def.vol.ref]) { seen[id]=true; continue; }
+      // singular-ref de-dup: a one-of engine item already emitted under another chip → count once
+      if (def.singular && def.vol.type==='engine' && seenRef[def.vol.ref]) { seen[id]=true; continue; }
+      seen[id] = true;
+      if (def.singular && def.vol.type==='engine') { seenRef[def.vol.ref] = true; }
+      var qty = def.qty || 1;
+      var raw = def.vol.type==='engine' ? engineRawVol(def.vol.ref)*qty
+              : def.vol.type==='local' ? (PACKING_MODULE_LOCAL_VOLUMES[def.vol.ref]||0)*qty
+              : 0;
+      var displayName = def.name;
+      if (id === 'plug_adapter'){ displayName = REGION_ADAPTER[region] || def.name; }
+      rawTotal += raw;
+      out.push({ id:id, name:displayName, qty:qty, raw:raw, liters:Math.round(raw*1.15), wow:!!def.wow, display:(def.vol.type==='display') });
+    }
+    return { items: out, rawVol: rawTotal };
+  }
+
+  function sizeAdvice(L){
+    if (L < 18) return "Comfortably fits a personal item or small daypack.";
+    if (L < 28) return "A compact carry-on (or a roomy personal item) covers this.";
+    if (L < 38) return "A standard 30–40L carry-on is the right range for this list.";
+    if (L < 45) return "Large-carry-on territory (40–45L) — doable as carry-on for efficient packers, but near the top of the range.";
+    return "This is beyond a typical carry-on. Consider trimming the list, doing laundry, or planning to check a bag.";
+  }
+
+  function gather(){
+    var days = parseInt(document.getElementById("plg-days").value, 10);
+    if (isNaN(days) || days < 1) days = 1;
+    if (days > 30) days = 30;
+    var shoes = [];
+    ["plg-shoe-1","plg-shoe-2","plg-shoe-3"].forEach(function(id){
+      var el = document.getElementById(id); var v = el ? el.value : "";
+      if (v && SHOE_TYPES[v]) shoes.push(v);
+    });
+    return {
+      days: days,
+      climate: document.getElementById("plg-climate").value,
+      profile: document.getElementById("plg-profile").value,
+      laundry: document.getElementById("plg-laundry").value,
+      size: document.getElementById("plg-size").value,
+      laptop: document.getElementById("plg-laptop").checked,
+      shoes: shoes,
+      bulky: document.getElementById("plg-bulky").checked
+    };
+  }
+
+  function generate(){
+    if (!E || typeof E.buildItemList !== "function") {
+      resultsEl.innerHTML = '<div class="section-card"><p>Sorry — the packing engine could not load. Please refresh the page.</p></div>';
+      return;
+    }
+    var g = gather();
+    var mSize = E.SIZE_MULTIPLIER[g.size] || 1.0;
+    var blazerMode = "none"; // blazer/suit handled by the Business attire control (single source)
+    // Footwear is owned by the selector, so the engine is called with an empty shoe list.
+    var entries = E.buildItemList(g.profile, g.days, g.climate, g.laundry, mSize, g.laptop, [], g.bulky, blazerMode);
+    curMSize = mSize;
+
+    // Names of engine items already present in the base list (for module base-aware de-dup).
+    var baseNames = {};
+    for (var bn=0; bn<entries.length; bn++){ baseNames[entries[bn].name] = true; }
+
+    // Resolve optional trip-type/condition chips into de-duped module items + their added volume.
+    var chips = activeChips();
+    var modules = resolveModules(chips, baseNames);
+    var moduleRaw = modules.rawVol;
+    var moduleL = Math.round(moduleRaw * 1.15);
+
+    // ── Footwear (selector-owned). Pair 1 worn on travel day by default; pairs 2–3 packed. ──
+    var footwear = [];
+    for (var sp=0; sp<g.shoes.length; sp++){
+      footwear.push({ slot:sp, type:g.shoes[sp], label:SHOE_TYPES[g.shoes[sp]].label, raw:shoeRawVol(g.shoes[sp]), worn:(sp===0) });
+    }
+
+    function packedVol(e){
+      if (!e.item) return 0;
+      return e.item.baseVolume * e.mSize * e.item.cFactor * e.item.gTax * e.qty;
+    }
+    // Engine worn NON-shoe items (the cold jacket) get a wear toggle; shoes are handled by the selector.
+    var wearItems = [];
+    for (var i=0;i<entries.length;i++){ var de=E.ITEMS[entries[i].name]; if (entries[i].worn && !(de&&de.shoe)) wearItems.push(i); }
+    var wearing = {}; // engine idx -> true if worn (jacket defaults to packed)
+    // Edit state: items the user removed from the generated list (live-subtracted from the estimate).
+    var removedNames = {};      // engine item name -> true
+    var removedModuleIds = {};  // module id -> true
+    function computeBaseRaw(){
+      var v = 0;
+      for (var k=0;k<entries.length;k++){
+        var e = entries[k];
+        var def = E.ITEMS[e.name];
+        if (def && def.waterBottle) continue;
+        if (def && def.shoe) continue; // footwear owned by the selector, not the engine
+        if (removedNames[e.name]) continue;
+        if (e.worn){ if (!wearing[k]) v += packedVol(e); }
+        else { v += e.volume; }
+      }
+      // footwear: worn pairs (only pair 1 defaults worn) contribute 0 unless toggled to packed
+      for (var f=0; f<footwear.length; f++){ if (footwear[f].removed) continue; if (!footwear[f].worn) v += footwear[f].raw; }
+      return v;
+    }
+    function moduleRawLive(){
+      var v = 0;
+      for (var m=0;m<modules.items.length;m++){ var it=modules.items[m]; if (it.display) continue; if (removedModuleIds[it.id]) continue; v += it.raw; }
+      return v;
+    }
+    // Base packed (after wear toggles) and trip-module additions are summed separately so the
+    // breakdown stays explainable: Base + additions = Total. Displayed totals add up exactly.
+    function baseLiters(){ return Math.round(computeBaseRaw() * 1.15); }
+    var baseL = baseLiters();
+    var liters = baseL + moduleL;
+
+    // aggregate engine clothing/layer/formal items by name (footwear excluded — selector owns it)
+    var byCat = {};
+    CATEGORIES.forEach(function(c){ byCat[c.key] = []; });
+    var seen = {};
+    for (var j=0;j<entries.length;j++){
+      var e = entries[j];
+      var def2 = E.ITEMS[e.name];
+      if (def2 && def2.shoe) continue; // footwear owned by the selector
+      var catKey = null;
+      for (var c=0;c<CATEGORIES.length;c++){ if (CATEGORIES[c].test(def2)) { catKey = CATEGORIES[c].key; break; } }
+      if (catKey === null) continue; // non-clothing items appear in static sections below
+      if (seen[e.name] !== undefined) { byCat[seen[e.name].cat][seen[e.name].idx].qty += e.qty; continue; }
+      var idx = byCat[catKey].length;
+      byCat[catKey].push({ name:e.name, qty:e.qty });
+      seen[e.name] = { cat:catKey, idx:idx };
+    }
+
+    // row + section helpers (every item row is removable; copy/print read the live DOM)
+    function row(text, rm){
+      return '<div class="plg-li" style="display:flex;align-items:center;gap:6px;border-bottom:1px solid #f3f4f6;">'
+           + '<label style="flex:1;display:flex;align-items:center;gap:8px;padding:5px 0;font-size:0.9rem;color:#374151;cursor:pointer;"><input type="checkbox" style="margin:0;"><span class="plg-li-text">' + text + '</span></label>'
+           + '<button type="button" class="plg-rm" data-rm="' + rm + '" title="Remove" aria-label="Remove" style="border:none;background:none;color:#cbd5e1;cursor:pointer;font-size:1.05rem;line-height:1;padding:2px 6px;">&times;</button>'
+           + '</div>';
+    }
+    function sec(label, rowsHtml, opts){
+      opts = opts || {};
+      var style = opts.box ? 'margin-bottom:14px;padding:12px 14px;background:#faf7ef;border:1px solid #ece3cb;border-radius:8px;' : 'margin-bottom:14px;';
+      var sub = opts.sub ? '<div style="font-size:0.78rem;color:#9ca3af;margin-bottom:8px;">' + esc(opts.sub) + '</div>' : '';
+      var note = opts.note ? '<p style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">' + esc(opts.note) + '</p>' : '';
+      return '<div class="plg-sec" style="' + style + '"><div class="plg-sec-h" style="font-weight:700;color:#1a2540;font-size:0.9rem;margin-bottom:6px;">' + esc(label) + '</div>' + sub + rowsHtml + note + '</div>';
+    }
+
+    var html = '';
+    html += '<div class="section-card">';
+    html += '<div class="section-label">Your Estimate</div>';
+    html += '<div class="answer-box"><div class="answer-yes">Your packing list is about <span id="plg-liters">' + liters + '</span> L.</div>';
+    html += '<div id="plg-breakdown" style="font-size:0.84rem;color:#374151;margin:6px 0 2px;' + (moduleL>0?'':'display:none;') + '">Base packed <strong id="plg-base-l">' + baseL + '</strong> L &nbsp;+&nbsp; trip additions <strong id="plg-add-l">+' + moduleL + '</strong> L &nbsp;=&nbsp; <strong id="plg-total-l">' + liters + '</strong> L</div>';
+    html += '<div class="answer-caveat"><span id="plg-advice">' + esc(sizeAdvice(liters)) + '</span> This counts everything as packed — an estimate from real clothing volumes; actual packed size varies with how you pack.</div></div>';
+
+    // Wearing-on-travel-day toggles: footwear pair 1 + any worn jacket (volume controls)
+    var wearRows = '';
+    if (footwear.length){
+      wearRows += '<label style="display:block;padding:3px 0;"><input type="checkbox" class="plg-wear" data-wear="foot:0"' + (footwear[0].worn?' checked':'') + ' style="margin-right:8px;">' + esc(footwear[0].label) + ' (−' + Math.round(footwear[0].raw*1.15) + 'L if worn)</label>';
+    }
+    for (var w=0;w<wearItems.length;w++){
+      var wi = wearItems[w]; var we = entries[wi];
+      wearRows += '<label style="display:block;padding:3px 0;"><input type="checkbox" class="plg-wear" data-wear="jacket:' + wi + '"' + (wearing[wi]?' checked':'') + ' style="margin-right:8px;">' + esc(we.name) + ' (−' + Math.round(packedVol(we)*1.15) + 'L if worn)</label>';
+    }
+    if (wearRows){
+      html += '<div style="margin-top:12px;font-size:0.85rem;color:#374151;">';
+      html += '<div style="font-weight:700;color:#1a2540;margin-bottom:4px;">Wearing on travel day?</div>';
+      html += '<div style="font-size:0.8rem;color:#9ca3af;margin-bottom:6px;">Checked items are worn on travel day and not counted. Uncheck to pack an item instead.</div>';
+      html += wearRows + '</div>';
+    }
+    html += '<p style="font-size:0.85rem;color:#6b7280;margin-top:10px;">Next: <a href="/will-it-fit.html" style="color:#3b82f6;text-decoration:none;font-weight:600;">check a specific bag against your airline →</a></p>';
+    html += '</div>';
+
+    html += '<div class="section-card">';
+    html += '<div class="section-label">Your Packing List</div>';
+    html += '<h2 style="margin-bottom:4px;">' + g.days + '-day list · ' + esc(g.climate.charAt(0)+g.climate.slice(1).toLowerCase()) + ' climate</h2>';
+    html += '<p style="font-size:0.82rem;color:#9ca3af;margin-bottom:14px;">Tick items off as you pack, remove anything you don’t need (×), or add your own below. Counts assume ' + (g.laundry==="YES" ? "laundry mid-trip" : "no laundry") + '.</p>';
+
+    html += '<div id="plg-list">';
+
+    CATEGORIES.forEach(function(c){
+      if (c.key === 'footwear') return; // selector owns footwear
+      var items = byCat[c.key];
+      if (!items.length) return;
+      var rows = '';
+      items.forEach(function(it){ rows += row(esc(it.name) + (it.qty>1 ? '  &times; ' + it.qty : ''), 'name:' + esc(it.name)); });
+      html += sec(c.label, rows);
+    });
+
+    if (footwear.length){
+      var frows = '';
+      footwear.forEach(function(p){ frows += row(esc(p.label) + (p.slot===0 ? ' <span style="color:#9ca3af;">(worn on travel day)</span>' : ''), 'foot:' + p.slot); });
+      html += sec('Footwear', frows);
+    }
+
+    if (modules.items.length){
+      var mrows = '';
+      modules.items.forEach(function(it){ mrows += row(esc(it.name) + (it.qty>1 ? '  &times; ' + it.qty : ''), it.display ? 'none' : ('mod:' + it.id)); });
+      html += sec('Trip-Specific Items', mrows, { box:true, sub:'Based on the trip type & conditions you picked — the gear people most often forget.' });
+    }
+
+    function staticSec(label, items, note){
+      if(!items.length) return;
+      var rows = '';
+      items.forEach(function(it){ rows += row(esc(it), 'none'); });
+      html += sec(label, rows, { note:note });
+    }
+    staticSec("Documents & Travel Essentials", ["Passport / ID","Boarding pass","Wallet / cards","Travel insurance info","Emergency contacts","Hotel confirmations","Transportation confirmations"]);
+    var tech = ["Phone","Phone charger","Charging cable"];
+    if (g.laptop){ tech = tech.concat(["Laptop","Laptop charger"]); }
+    tech = tech.concat(["Power bank (optional)","Travel adapter (optional)","Headphones (optional)"]);
+    staticSec("Tech Essentials", tech);
+    staticSec("Health & Toiletries", ["Toothbrush","Toothpaste","Deodorant","Shampoo / soap","Razor","Sunscreen","Prescription medications","Contact lenses / solution"], "Your packed volume already includes a toiletry kit — these are the items inside it. Carry-on liquids must be 100 ml / 3.4 oz or less, in a clear bag.");
+    var CLIM = { WARM:["Sunglasses","Hat"], COLD:["Hat","Gloves","Scarf"], MILD:[] };
+    staticSec("Climate Extras", CLIM[g.climate] || []);
+
+    html += '<div class="plg-sec" id="plg-custom-sec" style="margin-bottom:14px;display:none;"><div class="plg-sec-h" style="font-weight:700;color:#1a2540;font-size:0.9rem;margin-bottom:6px;">Your Additions</div><div id="plg-custom-rows"></div></div>';
+
+    html += '</div>'; // /#plg-list
+
+    html += '<div style="display:flex;gap:8px;margin-top:6px;">';
+    html += '<input id="plg-add-input" type="text" placeholder="Add your own item…" maxlength="80" style="flex:1;padding:9px;border:1px solid #d1d5db;border-radius:6px;font-size:0.9rem;">';
+    html += '<button id="plg-add-btn" type="button" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:9px 16px;">Add</button>';
+    html += '</div>';
+
+    html += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">';
+    html += '<button id="plg-copy" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:10px 18px;">Copy list</button>';
+    html += '<button id="plg-print" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:10px 18px;background:#475569;">Print / Save as PDF</button>';
+    html += '</div>';
+    html += '<p id="plg-copymsg" style="font-size:0.8rem;color:#16a34a;margin-top:8px;display:none;">List copied to clipboard.</p>';
+    html += '</div>';
+
+    resultsEl.innerHTML = html;
+
+    // live recompute (wear toggles + removals)
+    var litersEl = document.getElementById("plg-liters");
+    var adviceEl = document.getElementById("plg-advice");
+    var baseLEl  = document.getElementById("plg-base-l");
+    var addLEl   = document.getElementById("plg-add-l");
+    var totalLEl = document.getElementById("plg-total-l");
+    var breakdownEl = document.getElementById("plg-breakdown");
+    var currentLiters = liters;
+    function recompute(){
+      var bL = Math.round(computeBaseRaw() * 1.15);
+      var mL = Math.round(moduleRawLive() * 1.15);
+      currentLiters = bL + mL;
+      if (baseLEl)  baseLEl.textContent  = bL;
+      if (addLEl)   addLEl.textContent   = '+' + mL;
+      if (totalLEl) totalLEl.textContent = currentLiters;
+      if (breakdownEl) breakdownEl.style.display = (mL > 0) ? '' : 'none';
+      if (litersEl) litersEl.textContent = currentLiters;
+      if (adviceEl) adviceEl.textContent = sizeAdvice(currentLiters);
+    }
+
+    var wearBoxes = document.querySelectorAll(".plg-wear");
+    for (var b=0;b<wearBoxes.length;b++){
+      wearBoxes[b].addEventListener("change", function(ev){
+        var ref = ev.target.getAttribute("data-wear").split(":");
+        if (ref[0]==="foot"){ footwear[parseInt(ref[1],10)].worn = ev.target.checked; }
+        else { wearing[parseInt(ref[1],10)] = ev.target.checked; }
+        recompute();
+      });
+    }
+
+    var listRoot = document.getElementById("plg-list");
+    if (listRoot) listRoot.addEventListener("click", function(ev){
+      var btn = ev.target.closest ? ev.target.closest(".plg-rm") : null;
+      if (!btn) return;
+      var rm = btn.getAttribute("data-rm");
+      if (rm && rm.indexOf("name:")===0){ removedNames[rm.slice(5)] = true; recompute(); }
+      else if (rm && rm.indexOf("foot:")===0){ footwear[parseInt(rm.slice(5),10)].removed = true; recompute(); }
+      else if (rm && rm.indexOf("mod:")===0){ removedModuleIds[rm.slice(4)] = true; recompute(); }
+      var li = btn.closest(".plg-li"); if (li && li.parentNode) li.parentNode.removeChild(li);
+    });
+
+    var addInput = document.getElementById("plg-add-input");
+    var addBtn = document.getElementById("plg-add-btn");
+    function addCustom(){
+      var val = (addInput.value || "").trim(); if (!val) return;
+      var cs = document.getElementById("plg-custom-sec");
+      var rows = document.getElementById("plg-custom-rows");
+      var tmp = document.createElement("div");
+      tmp.innerHTML = row(esc(val), 'none');
+      rows.appendChild(tmp.firstChild);
+      cs.style.display = '';
+      addInput.value = '';
+      addInput.focus();
+    }
+    if (addBtn) addBtn.addEventListener("click", addCustom);
+    if (addInput) addInput.addEventListener("keydown", function(ev){ if (ev.key === "Enter"){ ev.preventDefault(); addCustom(); } });
+
+    function buildCopyText(){
+      var t = "", root = document.getElementById("plg-list");
+      if (!root) return t;
+      var secs = root.querySelectorAll(".plg-sec");
+      for (var s=0;s<secs.length;s++){
+        var texts = secs[s].querySelectorAll(".plg-li-text");
+        if (!texts.length) continue;
+        var h = secs[s].querySelector(".plg-sec-h");
+        if (h) t += h.textContent + "\n";
+        for (var x=0;x<texts.length;x++){ t += "  [ ] " + texts[x].textContent + "\n"; }
+        t += "\n";
+      }
+      return t;
+    }
+    var copyBtn = document.getElementById("plg-copy");
+    if (copyBtn) copyBtn.addEventListener("click", function(){
+      var out = g.days + "-day packing list (~" + currentLiters + "L)\n\n" + buildCopyText();
+      function done(){ var m=document.getElementById("plg-copymsg"); if(m){ m.style.display="block"; setTimeout(function(){m.style.display="none";},2500);} }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out).then(done, done);
+      } else {
+        var ta=document.createElement("textarea"); ta.value=out; document.body.appendChild(ta); ta.select();
+        try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); done();
+      }
+    });
+    var printBtn = document.getElementById("plg-print");
+    if (printBtn) printBtn.addEventListener("click", function(){ window.print(); });
+  }
+
+  // Trip types reveal their own sub-controls (and suggest a default) without hiding base inputs.
+  var laptopSuggested = false;
+  function syncSubControls(){
+    var on = {}; activeChips().forEach(function(c){ on[c]=true; });
+    var map = { "plg-sub-international":on.international, "plg-sub-formal":on.formal, "plg-sub-business":on.business };
+    for (var id in map){ var el=document.getElementById(id); if (el) el.style.display = map[id] ? "block" : "none"; }
+    // Gentle suggestion: turning Business on once pre-checks the laptop (user can uncheck).
+    if (on.business && !laptopSuggested){
+      var lp = document.getElementById("plg-laptop");
+      if (lp && !lp.checked){ lp.checked = true; }
+      laptopSuggested = true;
+    }
+  }
+
+  // Chip toggles re-run the generator live.
+  var chipEls = document.querySelectorAll(".plg-chip");
+  for (var ch=0; ch<chipEls.length; ch++){
+    chipEls[ch].addEventListener("click", function(){
+      this.classList.toggle("active");
+      syncSubControls();
+      generate();
+    });
+  }
+  // Sub-controls + every base/adjustment input re-run the generator on change.
+  ["plg-region",
+   "plg-days","plg-climate","plg-profile","plg-laundry","plg-size",
+   "plg-shoe-1","plg-shoe-2","plg-shoe-3","plg-laptop","plg-bulky"].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var evt = (el.tagName === "INPUT" && (el.type === "number" || el.type === "text")) ? "input" : "change";
+    el.addEventListener(evt, generate);
+  });
+  // Garment toggles (Business / Formal) re-run the generator.
+  var garmentBoxes = document.querySelectorAll(".plg-garment");
+  for (var gb=0; gb<garmentBoxes.length; gb++){ garmentBoxes[gb].addEventListener("change", generate); }
+
+  var genBtn = document.getElementById("plg-generate");
+  if (genBtn) genBtn.addEventListener("click", generate);
+  // Generate once on load so the page has content immediately.
+  syncSubControls();
+  generate();
+})();
+</script>
+</body>
+</html>
