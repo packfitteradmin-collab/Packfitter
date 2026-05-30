@@ -850,8 +850,10 @@
     html += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">';
     html += '<button id="plg-copy" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:10px 18px;">Copy list</button>';
     html += '<button id="plg-print" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:10px 18px;background:#475569;">Print / Save as PDF</button>';
+    html += '<button id="plg-share" class="cta-primary" style="border:none;cursor:pointer;font-size:0.85rem;padding:10px 18px;background:#0d9488;">Copy share link</button>';
     html += '</div>';
     html += '<p id="plg-copymsg" style="font-size:0.8rem;color:#16a34a;margin-top:8px;display:none;">List copied to clipboard.</p>';
+    html += '<p id="plg-sharemsg" style="font-size:0.8rem;color:#16a34a;margin-top:8px;display:none;">Share link copied — anyone who opens it sees this same trip setup.</p>';
     html += '</div>';
 
     resultsEl.innerHTML = html;
@@ -940,6 +942,84 @@
     });
     var printBtn = document.getElementById("plg-print");
     if (printBtn) printBtn.addEventListener("click", function(){ window.print(); });
+
+    var shareBtn = document.getElementById("plg-share");
+    if (shareBtn) shareBtn.addEventListener("click", function(){
+      var url = buildShareURL();
+      function done(){ var m=document.getElementById("plg-sharemsg"); if(m){ m.style.display="block"; setTimeout(function(){m.style.display="none";},3000);} }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, done);
+      } else {
+        var ta=document.createElement("textarea"); ta.value=url; document.body.appendChild(ta); ta.select();
+        try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); done();
+      }
+    });
+  }
+
+  // ── Share link: encode ONLY non-personal trip settings into URL params. ──
+  // Custom "add your own" items are never encoded (privacy). Recipients open the
+  // same configured tool; nothing is stored server-side.
+  function buildShareURL(){
+    var g = gather();
+    var p = [];
+    p.push("d=" + g.days);
+    p.push("c=" + encodeURIComponent(g.climate));
+    p.push("pr=" + encodeURIComponent(g.profile));
+    p.push("l=" + encodeURIComponent(g.laundry));
+    p.push("sz=" + encodeURIComponent(g.size));
+    if (g.shoes.length) p.push("sh=" + g.shoes.join(","));
+    if (g.laptop) p.push("lap=1");
+    if (g.bulky) p.push("blk=1");
+    var chips = activeChips();
+    if (chips.length) p.push("ch=" + chips.join(","));
+    var garments = [];
+    var gb = document.querySelectorAll(".plg-garment");
+    for (var i=0;i<gb.length;i++){ if (gb[i].checked) garments.push(gb[i].getAttribute("data-item")); }
+    if (garments.length) p.push("gm=" + garments.join(","));
+    var region = document.getElementById("plg-region");
+    if (region && chips.indexOf("international")!==-1) p.push("rg=" + encodeURIComponent(region.value));
+    var base = location.origin + location.pathname;
+    return base + "?" + p.join("&");
+  }
+
+  // ── Restore trip settings from the URL on load (before the first generate()). ──
+  function applyStateFromURL(){
+    var q = location.search; if (!q || q.length < 2) return false;
+    var params = {};
+    q.substring(1).split("&").forEach(function(kv){
+      var i = kv.indexOf("="); if (i<0) return;
+      params[kv.substring(0,i)] = decodeURIComponent(kv.substring(i+1).replace(/\+/g," "));
+    });
+    function setVal(id, v){ var el=document.getElementById(id); if (el && v!=null && v!=="") el.value = v; }
+    if (params.d && /^\d+$/.test(params.d)) setVal("plg-days", params.d);
+    if (params.c) setVal("plg-climate", params.c);
+    if (params.pr) setVal("plg-profile", params.pr);
+    if (params.l) setVal("plg-laundry", params.l);
+    if (params.sz) setVal("plg-size", params.sz);
+    if (params.rg) setVal("plg-region", params.rg);
+    if (params.sh){
+      var shoes = params.sh.split(",");
+      ["plg-shoe-1","plg-shoe-2","plg-shoe-3"].forEach(function(id,idx){
+        var el=document.getElementById(id);
+        if (el){ el.value = (shoes[idx] && SHOE_TYPES[shoes[idx]]) ? shoes[idx] : ""; }
+      });
+    }
+    var lap=document.getElementById("plg-laptop"); if (lap) lap.checked = (params.lap==="1");
+    var blk=document.getElementById("plg-bulky"); if (blk) blk.checked = (params.blk==="1");
+    if (params.ch){
+      var want = params.ch.split(",");
+      var chipEls = document.querySelectorAll(".plg-chip");
+      for (var i=0;i<chipEls.length;i++){
+        var on = want.indexOf(chipEls[i].getAttribute("data-chip")) !== -1;
+        chipEls[i].classList.toggle("active", on);
+      }
+    }
+    if (params.gm){
+      var gwant = params.gm.split(",");
+      var gb = document.querySelectorAll(".plg-garment");
+      for (var j=0;j<gb.length;j++){ gb[j].checked = gwant.indexOf(gb[j].getAttribute("data-item")) !== -1; }
+    }
+    return true;
   }
 
   // Trip types reveal their own sub-controls (and suggest a default) without hiding base inputs.
@@ -980,6 +1060,8 @@
 
   var genBtn = document.getElementById("plg-generate");
   if (genBtn) genBtn.addEventListener("click", generate);
+  // If opened via a share link, restore those settings first.
+  applyStateFromURL();
   // Generate once on load so the page has content immediately.
   syncSubControls();
   generate();
