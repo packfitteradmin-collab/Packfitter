@@ -1104,6 +1104,19 @@ function runCalculation() {
   rangesEl.innerHTML     = rangesHTML;
   rangesEl.style.display = "";
 
+  // 6b. Bridge: Quick Packing Calculator -> Complete Packing List Generator
+  // Inserted once, right after the bag recommendation and before the reduction tips.
+  if (!document.getElementById("plgBridge")) {
+    var plgBridge = document.createElement("div");
+    plgBridge.id = "plgBridge";
+    plgBridge.className = "plg-bridge";
+    plgBridge.innerHTML =
+      '<div class="plg-bridge-title">Need the exact packing list?</div>' +
+      '<p class="plg-bridge-text">This estimate tells you <strong>how much space</strong> you’ll need. The <strong>Complete Packing List Generator</strong> tells you <strong>exactly what to pack</strong>.</p>' +
+      '<a href="/packing-list-generator.html" class="cta-primary plg-bridge-btn">Build my packing list →</a>';
+    rangesEl.parentNode.insertBefore(plgBridge, rangesEl.nextSibling);
+  }
+
   // 7. Optimization Suggestions
   const suggestions = buildOptimizationSuggestions(r.vtotal, inputs);
   const sugBox      = document.getElementById("suggestionsBox");

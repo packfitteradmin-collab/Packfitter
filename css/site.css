@@ -144,6 +144,10 @@
   .opt-suggestions li { font-size: 0.88rem; color: #431407; padding: 4px 0; border-bottom: 1px solid #fed7aa; line-height: 1.4; }
   .opt-suggestions li:last-child { border-bottom: none; }
   .opt-suggestions li::before { content: "\2192  "; color: #ea580c; font-weight: 700; }
+  .plg-bridge { background: #f3f6fc; border: 1px solid #d7e0f0; border-left: 3px solid #1a2540; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+  .plg-bridge-title { font-size: 0.92rem; font-weight: 700; color: #1a2540; margin-bottom: 4px; }
+  .plg-bridge-text { font-size: 0.86rem; color: #555; line-height: 1.5; margin: 0 0 10px 0; }
+  .plg-bridge-btn { margin-top: 0; padding: 10px 18px; font-size: 0.9rem; }
   .pack-categories { border-top: 1px solid #eee; padding-top: 14px; margin-top: 14px; }
   .pack-categories-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 10px; }
   .pack-cat-row { display: flex; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; align-items: baseline; }
