@@ -616,6 +616,42 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     /* ── Guidance ── */
     html += '<p style="font-size:0.82rem;color:#9ca3af;margin:0;font-style:italic;">Packed dimensions determine fit at the gate. Soft-sided bags may compress slightly; rigid bags must fit as-is. Enforcement varies by airport and gate staff.</p>';
 
+    /* ── Contextual product recommendation (result-aware; tool-first, one max) ──
+       Keys off the verdict already computed above. Does not change checker logic. */
+    var coMaxOver = Math.max(toIn(hVal) - airline.coL, toIn(wVal) - airline.coW, toIn(dVal) - airline.coH);
+    var rec = null;
+    if (!coFits) {
+      if (coMaxOver <= 2.0) {
+        rec = { name: "Bagsmart Compression Packing Cubes",
+                desc: "Your bag is only just over " + airline.name + "'s carry-on limit. On a soft bag, compression cubes cut packed volume 20–30% and can bring a slightly-bulging bag back within limits.",
+                url: "https://amzn.to/3OrdqYe" };
+      } else if (piFits) {
+        rec = { name: "Osprey Farpoint 40",
+                desc: "Your bag works as a personal item but is over " + airline.name + "'s carry-on limit. Want overhead-bin space? This 40L carry-on (22 × 14 × 9 in) fits most major airlines.",
+                url: "https://amzn.to/42jJu3j" };
+      } else {
+        rec = { name: "Osprey Farpoint 40",
+                desc: "Your bag is over " + airline.name + "'s carry-on and personal-item limits. A reliable 40L carry-on that fits most major airlines (22 × 14 × 9 in).",
+                url: "https://amzn.to/42jJu3j" };
+      }
+    } else if (airline.personalItem && !piFits) {
+      rec = { name: "Cabin Max Metz 20L",
+              desc: "Your bag clears " + airline.name + "'s carry-on limit. Need a separate personal item that fits under the seat? The Metz 20L is sized to slide under most airline seats.",
+              url: "https://amzn.to/4vIhmV0" };
+    } else if (airline.weightKg > 0) {
+      rec = { name: "Travel Inspira Digital Luggage Scale",
+              desc: "Your bag fits on size — but " + airline.name + " enforces a " + airline.weightKg + " kg (" + airline.weightLbs + " lb) limit. Weigh it at home to avoid a gate surprise.",
+              url: "https://amzn.to/4g5a9sM" };
+    }
+    if (rec) {
+      html += '<div class="product-inline" style="margin-top:16px;">';
+      html += '<div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#b8943e;margin-bottom:6px;">Helpful next step</div>';
+      html += '<div class="product-inline-name">' + rec.name + '</div>';
+      html += '<div class="product-inline-desc">' + rec.desc + '</div>';
+      html += '<div class="product-inline-links"><a href="' + rec.url + '" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon &rarr;</a></div>';
+      html += '</div>';
+    }
+
     var el = document.getElementById("fitResult");
     el.style.display = "block";
     el.innerHTML = html;

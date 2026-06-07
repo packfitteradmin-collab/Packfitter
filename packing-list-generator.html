@@ -787,6 +787,11 @@
     html += '<div id="plg-breakdown" style="font-size:0.84rem;color:#374151;margin:6px 0 2px;' + (moduleL>0?'':'display:none;') + '">Base packed <strong id="plg-base-l">' + baseL + '</strong> L &nbsp;+&nbsp; trip additions <strong id="plg-add-l">+' + moduleL + '</strong> L &nbsp;=&nbsp; <strong id="plg-total-l">' + liters + '</strong> L</div>';
     html += '<div class="answer-caveat"><span id="plg-advice">' + esc(sizeAdvice(liters)) + '</span> This counts everything as packed — an estimate from real clothing volumes; actual packed size varies with how you pack.</div></div>';
 
+    /* Optional packing-cubes tip — additive, after the answer box, before the list. Framed as a tip, not a shop. */
+    html += '<div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:8px;padding:10px 14px;margin:0 0 16px;">';
+    html += '<p style="font-size:0.85rem;color:#475569;margin:0;line-height:1.5;"><strong>Packing tip:</strong> Compression packing cubes can reduce clothing bulk and make it easier to fit your list into a carry-on. <a href="https://amzn.to/3OrdqYe" target="_blank" rel="nofollow sponsored noopener" style="color:#3b82f6;text-decoration:none;font-weight:600;">View compression packing cubes &rarr;</a></p>';
+    html += '</div>';
+
     // Wearing-on-travel-day toggles: footwear pair 1 + any worn jacket (volume controls)
     var wearRows = '';
     if (footwear.length){
