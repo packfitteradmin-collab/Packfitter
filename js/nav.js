@@ -1,3 +1,24 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Google Analytics 4 — SITE-WIDE INSTALL POINT.
+   This is the single canonical location for analytics. nav.js loads on all
+   pages, so the tag here covers the whole site. Do NOT add gtag anywhere else
+   (avoid double-counting). To change/remove analytics, edit only this block.
+   ────────────────────────────────────────────────────────────────────────── */
+(function(){
+  if (window.__pfGA4Loaded) return;            // guard against double-load
+  window.__pfGA4Loaded = true;
+  var GA_ID = "G-8JC7E0G83R";
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+})();
+
 (function(){
   document.querySelectorAll('.pf-nav-dd > button').forEach(function(btn){
     btn.addEventListener('click',function(e){
