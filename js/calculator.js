@@ -1113,7 +1113,7 @@ function runCalculation() {
     plgBridge.innerHTML =
       '<div class="plg-bridge-title">Need the exact packing list?</div>' +
       '<p class="plg-bridge-text">This estimate tells you <strong>how much space</strong> you’ll need. The <strong>Complete Packing List Generator</strong> tells you <strong>exactly what to pack</strong>.</p>' +
-      '<a href="/packing-list-generator.html" class="cta-primary plg-bridge-btn">Build my packing list →</a>';
+      '<a href="/packing-list-generator.html" class="cta-primary plg-bridge-btn" onclick="window.pfTrack&&window.pfTrack(\'bridge_clicked\')">Build my packing list →</a>';
     rangesEl.parentNode.insertBefore(plgBridge, rangesEl.nextSibling);
   }
 
@@ -1247,6 +1247,13 @@ function runCalculation() {
       checkedBagContainer.style.display = "none";
     }
   }
+
+  // GA4: quick_calculator_run — once per page, user-initiated runs only
+  // (the on-load auto-calc on preset pages is skipped via __pfCalcInitDone).
+  if (window.__pfCalcInitDone && !window.__pfQcrFired) {
+    window.__pfQcrFired = true;
+    if (window.pfTrack) window.pfTrack('quick_calculator_run');
+  }
 }
 
 // Homepage calculator auto-init — gated on the calculator DOM so the engine can be
@@ -1257,6 +1264,7 @@ if (document.getElementById("laundry")) {
   (function() { var el = document.getElementById("laundry"); if (!el.value) el.value = "NO"; })();
   renderScenarioBlock();
   if (window.PAGE_ENABLE_AUTO_CALC) runCalculation();
+  window.__pfCalcInitDone = true;   // any runCalculation after this point is user-initiated
 }
 
 // Read-only engine handle for reuse by other tool pages. Does not change any logic.

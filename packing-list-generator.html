@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complete Packing List Generator + Bag Size Estimate</title>
+<title>Complete Packing List Generator — Free Item-by-Item Packing List + Bag Size</title>
 <meta name="description" content="Generate a personalized packing list from your trip length, climate, and packing style — and see roughly how many liters and what carry-on size it needs. Free, no signup.">
-<meta property="og:title" content="Complete Packing List Generator + Bag Size Estimate">
+<meta property="og:title" content="Complete Packing List Generator — Free Item-by-Item Packing List + Bag Size">
 <meta property="og:description" content="Generate a personalized packing list from your trip length, climate, and packing style — and see how many liters and what carry-on size it needs. Free, no signup.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://packfitter.com/packing-list-generator.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Complete Packing List Generator + Bag Size Estimate">
+<meta name="twitter:title" content="Complete Packing List Generator — Free Item-by-Item Packing List + Bag Size">
 <meta name="twitter:description" content="Build a personalized packing list and see the carry-on size it needs — free, no signup.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="canonical" href="https://packfitter.com/packing-list-generator.html">
@@ -868,6 +868,13 @@
 
     resultsEl.innerHTML = html;
 
+    // GA4: generator_completed — once per page, user-driven (re)generations only
+    // (skips the on-load auto-generate via __pfGenInitDone).
+    if (window.__pfGenInitDone && !window.__pfGenCompletedFired) {
+      window.__pfGenCompletedFired = true;
+      if (window.pfTrack) window.pfTrack('generator_completed');
+    }
+
     // live recompute (wear toggles + removals)
     var litersEl = document.getElementById("plg-liters");
     var adviceEl = document.getElementById("plg-advice");
@@ -1075,6 +1082,9 @@
   // Generate once on load so the page has content immediately.
   syncSubControls();
   generate();
+  // GA4: generator_opened (once on load). After this, generate() calls are user-driven.
+  window.__pfGenInitDone = true;
+  if (window.pfTrack) window.pfTrack('generator_opened');
 })();
 </script>
 </body>

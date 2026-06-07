@@ -19,6 +19,12 @@
   gtag('config', GA_ID);
 })();
 
+/* Lightweight GA4 event helper. Tool pages call window.pfTrack('event_name').
+   Safe no-op if analytics is blocked/unavailable. See PACKFITTER-ANALYTICS-INSTALL-NOTE.md. */
+window.pfTrack = function(name, params){
+  try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch(e){}
+};
+
 (function(){
   document.querySelectorAll('.pf-nav-dd > button').forEach(function(btn){
     btn.addEventListener('click',function(e){

@@ -619,6 +619,11 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     var el = document.getElementById("fitResult");
     el.style.display = "block";
     el.innerHTML = html;
+    // GA4: airline_checker_used — once per page, on a successful check.
+    if (!window.__pfCheckerFired) {
+      window.__pfCheckerFired = true;
+      if (window.pfTrack) window.pfTrack('airline_checker_used');
+    }
   };
 })();
 </script>
