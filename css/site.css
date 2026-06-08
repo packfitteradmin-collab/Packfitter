@@ -495,3 +495,11 @@
   .dim-main { display: block; font-weight: 600; }
   .dim-secondary { display: block; font-size: 0.78rem; color: #888; font-weight: 400; margin-top: 2px; line-height: 1.35; }
   .dim-inline { white-space: nowrap; }
+
+/* Header brand: larger logo + non-wrapping 3-line wordmark on desktop
+   (mobile keeps the inline 44px logo and its natural 3-line stack) */
+@media (min-width: 768px) {
+  a[href="/"] { flex-shrink: 0; }
+  a[href="/"] img[alt="PackFitter"] { height: 58px !important; }
+  a[href="/"] > div { white-space: nowrap; }
+}
