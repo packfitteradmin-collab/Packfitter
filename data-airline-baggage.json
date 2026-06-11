@@ -1,0 +1,219 @@
+[
+ {
+  "g": "US major",
+  "name": "American Airlines",
+  "co_in": "22 × 14 × 9 in",
+  "co_cm": "55.9 × 35.6 × 22.9 cm",
+  "cow": "No limit",
+  "pi_in": "18 × 14 × 8 in",
+  "pi_cm": "45 × 35 × 20 cm",
+  "chk": "50 lb (23 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US major",
+  "name": "Delta Air Lines",
+  "co_in": "22 × 14 × 9 in",
+  "co_cm": "55.9 × 35.6 × 22.9 cm",
+  "cow": "No limit",
+  "pi_in": "Under-seat*",
+  "pi_cm": "no published size",
+  "pi_est": true,
+  "chk": "50 lb (23 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US major",
+  "name": "United Airlines",
+  "co_in": "22 × 14 × 9 in",
+  "co_cm": "55.9 × 35.6 × 22.9 cm",
+  "cow": "No limit",
+  "pi_in": "17 × 10 × 9 in",
+  "pi_cm": "43 × 25 × 22 cm",
+  "chk": "50 lb (23 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US major",
+  "name": "Alaska Airlines",
+  "co_in": "22 × 14 × 9 in",
+  "co_cm": "55.9 × 35.6 × 22.9 cm",
+  "cow": "No limit",
+  "pi_in": "~17 × 13 × 8 in*",
+  "pi_cm": "no published size",
+  "pi_est": true,
+  "chk": "50 lb (23 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US major",
+  "name": "JetBlue",
+  "co_in": "22 × 14 × 9 in",
+  "co_cm": "55.9 × 35.6 × 22.9 cm",
+  "cow": "No limit",
+  "pi_in": "17 × 13 × 8 in",
+  "pi_cm": "43 × 33 × 20 cm",
+  "chk": "50 lb (23 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US major",
+  "name": "Southwest Airlines",
+  "co_in": "24 × 16 × 10 in",
+  "co_cm": "61 × 40.6 × 25.4 cm",
+  "cow": "No limit",
+  "pi_in": "~18.5 × 8.5 × 13.5 in*",
+  "pi_cm": "no published size",
+  "pi_est": true,
+  "chk": "50 lb (23 kg) · 62 in (now paid on most fares)"
+ },
+ {
+  "g": "US budget",
+  "name": "Frontier Airlines",
+  "co_in": "24 × 16 × 10 in",
+  "co_cm": "61 × 40.6 × 25.4 cm",
+  "cow": "35 lb (16 kg)",
+  "pi_in": "18 × 14 × 8 in",
+  "pi_cm": "45 × 35 × 20 cm",
+  "chk": "40 lb (18 kg) · 62 in (158 cm)"
+ },
+ {
+  "g": "US budget",
+  "name": "Spirit Airlines",
+  "co_in": "—",
+  "co_cm": "ceased operations May 2026",
+  "cow": "—",
+  "pi_in": "—",
+  "pi_cm": "—",
+  "pi_est": false,
+  "chk": "Airline no longer operating",
+  "ceased": true
+ },
+ {
+  "g": "International",
+  "name": "Air Canada",
+  "metric": true,
+  "co_in": "21.7 × 15.7 × 9.1 in",
+  "co_cm": "55 × 40 × 23 cm",
+  "cow": "No limit",
+  "pi_in": "17 × 13 × 6 in",
+  "pi_cm": "43 × 33 × 16 cm",
+  "chk": "50 lb (23 kg) · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "Ryanair",
+  "metric": true,
+  "co_in": "21.7 × 15.7 × 7.9 in",
+  "co_cm": "55 × 40 × 20 cm",
+  "cow": "10 kg (priority)",
+  "pi_in": "15.7 × 11.8 × 7.9 in",
+  "pi_cm": "40 × 30 × 20 cm",
+  "chk": "Purchased: 10 / 20 kg tiers"
+ },
+ {
+  "g": "International",
+  "name": "EasyJet",
+  "metric": true,
+  "co_in": "22 × 17.7 × 9.8 in",
+  "co_cm": "56 × 45 × 25 cm (large, paid)",
+  "cow": "15 kg",
+  "pi_in": "17.7 × 14.2 × 7.9 in",
+  "pi_cm": "45 × 36 × 20 cm (free)",
+  "chk": "Purchased: 15 / 23 kg tiers"
+ },
+ {
+  "g": "International",
+  "name": "British Airways",
+  "metric": true,
+  "co_in": "22 × 17.7 × 9.8 in",
+  "co_cm": "56 × 45 × 25 cm",
+  "cow": "23 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 90 × 75 × 43 cm"
+ },
+ {
+  "g": "International",
+  "name": "Lufthansa",
+  "metric": true,
+  "co_in": "21.7 × 15.7 × 9.1 in",
+  "co_cm": "55 × 40 × 23 cm",
+  "cow": "8 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "Air France",
+  "metric": true,
+  "co_in": "21.7 × 13.8 × 9.8 in",
+  "co_cm": "55 × 35 × 25 cm",
+  "cow": "12 kg (combined)",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "KLM",
+  "metric": true,
+  "co_in": "21.7 × 13.8 × 9.8 in",
+  "co_cm": "55 × 35 × 25 cm",
+  "cow": "12 kg (combined)",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "Turkish Airlines",
+  "metric": true,
+  "co_in": "21.7 × 15.7 × 9.1 in",
+  "co_cm": "55 × 40 × 23 cm",
+  "cow": "8 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "Emirates",
+  "metric": true,
+  "co_in": "21.7 × 15 × 7.9 in",
+  "co_cm": "55 × 38 × 20 cm",
+  "cow": "7 kg",
+  "pi_in": "17.7 × 13.8 × 7.9 in",
+  "pi_cm": "45 × 35 × 20 cm",
+  "chk": "Varies by fare (≈ 30 kg)"
+ },
+ {
+  "g": "International",
+  "name": "Singapore Airlines",
+  "metric": true,
+  "co_in": "≤ 115 cm total",
+  "co_cm": "55 × 38 × 20 cm",
+  "cow": "7 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "Varies by fare (≈ 25–30 kg)"
+ },
+ {
+  "g": "International",
+  "name": "Cathay Pacific",
+  "metric": true,
+  "co_in": "22 × 14.2 × 9.1 in",
+  "co_cm": "56 × 36 × 23 cm",
+  "cow": "7 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ },
+ {
+  "g": "International",
+  "name": "Qantas",
+  "metric": true,
+  "co_in": "22 × 14.2 × 9.1 in",
+  "co_cm": "56 × 36 × 23 cm",
+  "cow": "7 kg",
+  "pi_in": "16 × 12 × 6 in",
+  "pi_cm": "40 × 30 × 15 cm",
+  "chk": "23 kg · 158 cm (62 in)"
+ }
+]

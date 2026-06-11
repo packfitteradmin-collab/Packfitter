@@ -207,7 +207,7 @@
     <div class="product-card">
       <div class="product-card-eyebrow">Free personal item option</div>
       <div class="product-card-title">Cabin Max Metz Stowaway 20L Travel Bag</div>
-      <div class="product-card-desc">External dimensions of 40 × 25 × 20 cm (16 × 10 × 8 in) — fits within Ryanair's 40 × 30 × 20 cm personal item limit on paper. All three dimensions are at or under the published limit. A 20L bag designed specifically for strict airline personal item sizers. Avoid overstuffing — packing beyond the bag's natural shape can push dimensions past the sizer.</div>
+      <div class="product-card-desc">External dimensions of 40 × 30 × 20 cm (15.7 × 11.8 × 7.9 in) — fits within Ryanair's 40 × 30 × 20 cm personal item limit on paper. All three dimensions are at or under the published limit. A 20L bag designed specifically for strict airline personal item sizers. Avoid overstuffing — packing beyond the bag's natural shape can push dimensions past the sizer.</div>
       <a href="https://amzn.to/4vIhmV0" target="_blank" rel="nofollow sponsored noopener" class="affiliate-btn">Check price on Amazon →</a>
     </div>
 
@@ -235,7 +235,7 @@
     <h2>Personal Item Rules</h2>
     <p>Every Ryanair fare includes one free personal item that must fit under the seat in front of you. The size limit is <strong>40 × 30 × 20 cm (15.7 × 11.8 × 7.9 in)</strong>.</p>
     <p>In practice, this fits small backpacks, laptop bags, handbags, and slim daypack-style bags. The 20 cm (7.9 in) depth is the dimension that catches most people — structured bags or overpacked bags often exceed it. Soft-sided bags with compressible frames have the best chance of passing the sizer.</p>
-    <p>The current official personal item size is 40 × 30 × 20 cm. Some older sources may still reference 40 × 25 × 20 cm (15.7 × 9.8 × 7.9 in) — this was the previous limit. Always follow the current published dimensions when choosing a bag.</p>
+    <p>The current official personal item size is 40 × 30 × 20 cm. Some older sources may still reference 40 × 30 × 20 cm (15.7 × 9.8 × 7.9 in) — this was the previous limit. Always follow the current published dimensions when choosing a bag.</p>
     <p>If your bag doesn't fit the personal item sizer, it will be reclassified as a cabin bag — which requires priority boarding. Without priority, you'll be charged a gate fee.</p>
   </div>
 
@@ -417,6 +417,7 @@
     var unit = document.getElementById('dcUnit').value;
     var el = document.getElementById('dcResult');
     if (h === 0 || w === 0 || d === 0) { el.innerHTML = 'Enter all three dimensions.'; return; }
+    if (window.pfTrack) window.pfTrack('unit_converted');
     var ch, cw, cd, outUnit;
     if (unit === 'cm') {
       ch = (h / 2.54).toFixed(1); cw = (w / 2.54).toFixed(1); cd = (d / 2.54).toFixed(1); outUnit = 'inches';
@@ -511,7 +512,7 @@
   <div class="section-card">
     <div class="section-label">Notes</div>
     <h2>About This Information</h2>
-    <p>Ryanair's bag policy is based on their official published rules as of April 2026. Current Ryanair policy lists the personal item size as 40 × 30 × 20 cm. Some older sources may still reference 40 × 25 × 20 cm (15.7 × 9.8 × 7.9 in). Enforcement can vary slightly by airport and staff, but Ryanair is consistently one of the strictest airlines for bag compliance. Prices for add-ons vary by route, season, and purchase timing.</p>
+    <p>Ryanair's bag policy is based on their official published rules as of April 2026. Current Ryanair policy lists the personal item size as 40 × 30 × 20 cm. Some older sources may still reference 40 × 30 × 20 cm (15.7 × 9.8 × 7.9 in). Enforcement can vary slightly by airport and staff, but Ryanair is consistently one of the strictest airlines for bag compliance. Prices for add-ons vary by route, season, and purchase timing.</p>
   </div>
 
 </div><!-- /page-wrap -->

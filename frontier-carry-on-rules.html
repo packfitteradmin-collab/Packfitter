@@ -198,7 +198,7 @@
     <div class="section-label">Free Bag</div>
     <h2>Personal Item Rules</h2>
     <p>Every Frontier fare includes one free personal item that must fit under the seat in front of you. The size limit is <strong>18 × 14 × 8 in</strong> (45 × 35 × 20 cm).</p>
-    <p>This is more generous than ultra-low-cost European carriers like Ryanair (40 × 30 × 20 cm (15.7 × 11.8 × 7.9 in)) but smaller than the overhead bin allowance on legacy U.S. airlines. In practice, most standard backpacks, laptop bags, and purses fit within this limit. The 8-inch (20 cm) depth is usually the dimension that catches overpacked bags.</p>
+    <p>This is more generous than ultra-low-cost European carriers like Ryanair (40 × 30 × 20 cm) but smaller than the overhead bin allowance on legacy U.S. airlines. In practice, most standard backpacks, laptop bags, and purses fit within this limit. The 8-inch (20 cm) depth is usually the dimension that catches overpacked bags.</p>
     <p>If your bag doesn't fit under the seat, it will be reclassified as a carry-on — which requires a paid add-on. Without the add-on, you'll be charged a gate fee that is significantly higher than pre-purchasing online.</p>
   </div>
 
@@ -362,6 +362,7 @@
     var unit = document.getElementById('dcUnit').value;
     var el = document.getElementById('dcResult');
     if (h === 0 || w === 0 || d === 0) { el.innerHTML = 'Enter all three dimensions.'; return; }
+    if (window.pfTrack) window.pfTrack('unit_converted');
     var ch, cw, cd, outUnit;
     if (unit === 'in') {
       ch = (h * 2.54).toFixed(1); cw = (w * 2.54).toFixed(1); cd = (d * 2.54).toFixed(1); outUnit = 'cm';

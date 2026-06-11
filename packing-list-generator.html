@@ -427,7 +427,7 @@
     power_bank:          { name:"Power bank (10,000mAh+)",            vol:{type:'engine',ref:'Power Bank'}, wow:true,  affiliate:null },
     rain_shell:          { name:"Packable rain shell",                vol:{type:'local', ref:'rain_shell'}, wow:true,  affiliate:null },
     packable_daypack:    { name:"Packable daypack",                   vol:{type:'local', ref:'packable_daypack'}, wow:false, affiliate:null },
-    crossbody_anti_theft:{ name:"Crossbody anti-theft bag",           vol:{type:'local', ref:'crossbody_anti_theft'}, wow:true, affiliate:null },
+    crossbody_anti_theft:{ name:"Day pack / sling / hip pack",        vol:{type:'local', ref:'crossbody_anti_theft'}, wow:true, affiliate:null },
     water_bottle:        { name:"Reusable water bottle",              vol:{type:'engine',ref:'Reusable Water Bottle'}, wow:false, affiliate:null },
     // footwear reminders only — all shoe VOLUME is owned by the shoe selector above (single source)
     foot_dress:          { name:"Dress shoes — add a pair in “Shoes” above",     vol:{type:'display'}, wow:false, affiliate:null },
@@ -553,7 +553,7 @@
     wind:       ["windbreaker","buff"],
     snow:       ["snow_insulation","thermal_base","gloves_hat","hand_toe_warmers","traction_cleats","lip_balm_spf","foot_boots"],
     cruise:     ["motion_sickness","cruise_lanyard","packable_daypack","power_strip","light_layer"],
-    city:       ["crossbody_anti_theft","packable_daypack","water_bottle","modesty_layer","blister_care","power_bank"],
+    city:       ["crossbody_anti_theft","water_bottle","modesty_layer","blister_care","power_bank"],
     theme_park: ["power_bank","disposable_poncho","clip_fan","cooling_towel","anti_chafe","fanny_pack","park_lanyard","blister_care","water_bottle"],
     business:   ["dress_shirts","dress_slacks","dress_accessories","travel_steamer","garment_folder","tech_pouch","rigid_toiletry","foot_dress"],
     outdoor:    ["packable_daypack","rain_shell","hike_insulation","headlamp","first_aid","water_bottle","water_filter","trekking_poles","offline_maps","foot_trail"],
@@ -953,6 +953,7 @@
     }
     var copyBtn = document.getElementById("plg-copy");
     if (copyBtn) copyBtn.addEventListener("click", function(){
+      if (window.pfTrack) window.pfTrack('list_copied');
       var out = g.days + "-day packing list (~" + currentLiters + "L)\n\n" + buildCopyText();
       function done(){ var m=document.getElementById("plg-copymsg"); if(m){ m.style.display="block"; setTimeout(function(){m.style.display="none";},2500);} }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -963,10 +964,11 @@
       }
     });
     var printBtn = document.getElementById("plg-print");
-    if (printBtn) printBtn.addEventListener("click", function(){ window.print(); });
+    if (printBtn) printBtn.addEventListener("click", function(){ if (window.pfTrack) window.pfTrack('list_printed'); window.print(); });
 
     var shareBtn = document.getElementById("plg-share");
     if (shareBtn) shareBtn.addEventListener("click", function(){
+      if (window.pfTrack) window.pfTrack('share_link_copied');
       var url = buildShareURL();
       function done(){ var m=document.getElementById("plg-sharemsg"); if(m){ m.style.display="block"; setTimeout(function(){m.style.display="none";},3000);} }
       if (navigator.clipboard && navigator.clipboard.writeText) {

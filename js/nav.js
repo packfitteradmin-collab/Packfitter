@@ -70,3 +70,18 @@ window.pfTrack = function(name, params){
     });
   }
 })();
+
+/* Sitewide tool CTA tracking. One delegated listener fires a GA4 event when a
+   visitor clicks through to one of the three tools, so the reference-page ->
+   tool funnel (e.g. airline rules page -> Bag Checker) is measurable on every
+   page without editing each one. Safe no-op if pfTrack is unavailable. */
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a || !window.pfTrack) return;
+    var href = a.getAttribute('href') || '';
+    if(/will-it-fit\.html/.test(href))            window.pfTrack('bag_checker_cta_click');
+    else if(/packing-list-generator\.html/.test(href)) window.pfTrack('generator_cta_click');
+    else if(/(^|\/)(index\.html)?#calculator/.test(href)) window.pfTrack('quick_calc_cta_click');
+  }, true);
+})();
