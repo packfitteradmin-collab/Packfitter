@@ -15,7 +15,7 @@
 window.PF_AIRLINES = [
   {
     "name": "American Airlines",
-    "group": "US major",
+    "group": "us-major",
     "coL": 22,
     "coW": 14,
     "coH": 9,
@@ -40,7 +40,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Delta Air Lines",
-    "group": "US major",
+    "group": "us-major",
     "coL": 22,
     "coW": 14,
     "coH": 9,
@@ -65,7 +65,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "United Airlines",
-    "group": "US major",
+    "group": "us-major",
     "coL": 22,
     "coW": 14,
     "coH": 9,
@@ -90,7 +90,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Southwest Airlines",
-    "group": "US major",
+    "group": "us-major",
     "coL": 24,
     "coW": 16,
     "coH": 10,
@@ -115,7 +115,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "JetBlue",
-    "group": "US major",
+    "group": "us-major",
     "coL": 22,
     "coW": 14,
     "coH": 9,
@@ -140,7 +140,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Alaska Airlines",
-    "group": "US major",
+    "group": "us-major",
     "coL": 22,
     "coW": 14,
     "coH": 9,
@@ -165,7 +165,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Frontier Airlines",
-    "group": "US budget",
+    "group": "us-ulcc",
     "coL": 24,
     "coW": 16,
     "coH": 10,
@@ -190,7 +190,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Air Canada",
-    "group": "International",
+    "group": "canada",
     "coL": 21.7,
     "coW": 15.7,
     "coH": 9.1,
@@ -215,7 +215,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "British Airways",
-    "group": "International",
+    "group": "eu-full",
     "coL": 22,
     "coW": 17.7,
     "coH": 9.8,
@@ -240,7 +240,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Lufthansa",
-    "group": "International",
+    "group": "eu-full",
     "coL": 21.7,
     "coW": 15.7,
     "coH": 9.1,
@@ -265,7 +265,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Air France",
-    "group": "International",
+    "group": "eu-full",
     "coL": 21.7,
     "coW": 13.8,
     "coH": 9.8,
@@ -290,7 +290,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Emirates",
-    "group": "International",
+    "group": "gulf",
     "coL": 21.7,
     "coW": 15,
     "coH": 7.9,
@@ -315,7 +315,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Singapore Airlines",
-    "group": "International",
+    "group": "apac",
     "coL": 21.7,
     "coW": 15,
     "coH": 7.9,
@@ -340,7 +340,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Cathay Pacific",
-    "group": "International",
+    "group": "apac",
     "coL": 22,
     "coW": 14.2,
     "coH": 9.1,
@@ -365,7 +365,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Ryanair",
-    "group": "International",
+    "group": "eu-lcc",
     "coL": 21.7,
     "coW": 15.7,
     "coH": 7.9,
@@ -390,7 +390,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Qantas",
-    "group": "International",
+    "group": "apac",
     "coL": 22,
     "coW": 14.2,
     "coH": 9.1,
@@ -415,7 +415,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "KLM",
-    "group": "International",
+    "group": "eu-full",
     "coL": 21.7,
     "coW": 13.8,
     "coH": 9.8,
@@ -440,7 +440,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Turkish Airlines",
-    "group": "International",
+    "group": "eu-full",
     "coL": 21.7,
     "coW": 15.7,
     "coH": 9.1,
@@ -465,7 +465,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "EasyJet",
-    "group": "International",
+    "group": "eu-lcc",
     "coL": 22,
     "coW": 17.7,
     "coH": 9.8,
@@ -490,7 +490,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Spirit Airlines",
-    "group": "US budget",
+    "group": "us-ulcc",
     "coL": null,
     "coW": null,
     "coH": null,
@@ -515,7 +515,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Qatar Airways",
-    "group": "Gulf",
+    "group": "gulf",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -540,7 +540,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Etihad Airways",
-    "group": "Gulf",
+    "group": "gulf",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -565,7 +565,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Aer Lingus",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -590,7 +590,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Vueling",
-    "group": "Europe (LCC)",
+    "group": "eu-lcc",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -615,7 +615,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Norwegian",
-    "group": "Europe (LCC)",
+    "group": "eu-lcc",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -640,7 +640,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Eurowings",
-    "group": "Europe (LCC)",
+    "group": "eu-lcc",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -665,7 +665,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Virgin Atlantic",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -690,7 +690,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Iberia",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -715,7 +715,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "SWISS",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -740,7 +740,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "SAS",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -765,7 +765,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Finnair",
-    "group": "Europe",
+    "group": "eu-full",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -790,7 +790,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Wizz Air",
-    "group": "Europe (LCC)",
+    "group": "eu-lcc",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -815,7 +815,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "ANA",
-    "group": "Asia",
+    "group": "apac",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -840,7 +840,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Japan Airlines",
-    "group": "Asia",
+    "group": "apac",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -865,7 +865,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Korean Air",
-    "group": "Asia",
+    "group": "apac",
     "nativeUnit": "cm",
     "personalItem": true,
     "ceased": false,
@@ -890,7 +890,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Hawaiian Airlines",
-    "group": "US major",
+    "group": "us-major",
     "nativeUnit": "in",
     "personalItem": true,
     "ceased": false,
@@ -915,7 +915,7 @@ window.PF_AIRLINES = [
   },
   {
     "name": "Allegiant Air",
-    "group": "US budget",
+    "group": "us-ulcc",
     "nativeUnit": "in",
     "personalItem": true,
     "ceased": false,
