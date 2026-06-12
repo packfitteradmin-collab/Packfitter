@@ -444,6 +444,7 @@ window.PAGE_CLUSTER = "COMPRESSION_REQUIRED";
 window.PAGE_IS_BAG_SPECIFIC = false;
 window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when the bag is packed. Packed geometry is the carry-on constraint at the gate.";
 </script>
+<script src="/js/airline-data.js"></script>
 <script src="/js/calculator.js"></script>
 
 <!-- ═══ DIMENSION FIT CHECKER ENGINE ═══ -->
@@ -591,14 +592,20 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     if (airline.personalItem) {
       html += '<div style="margin-bottom:18px;">';
       html += '<p style="font-weight:700;font-size:0.95rem;color:#1a2540;margin-bottom:8px;">Personal Item Fit — ' + airline.name + '</p>';
-      html += '<p style="margin-bottom:10px;">' + (piFits ? resultBadge("FITS", "#15803d") : resultBadge("DOES NOT FIT", "#dc2626")) + '</p>';
+      html += '<p style="margin-bottom:10px;">' + (airline.piEst
+        ? (piFits ? resultBadge("LIKELY FITS", "#15803d") : resultBadge("LIKELY TOO BIG", "#dc2626"))
+        : (piFits ? resultBadge("FITS", "#15803d") : resultBadge("DOES NOT FIT", "#dc2626"))) + '</p>';
       html += '<table style="width:100%;border-collapse:collapse;font-size:0.88rem;margin-bottom:6px;">';
       html += '<tr style="background:#f3f4f6;"><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Dim</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Your Bag</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Limit</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;"></th></tr>';
       html += dimRow("Height", uH, piLimH, tblUnit);
       html += dimRow("Width",  uW, piLimW, tblUnit);
       html += dimRow("Depth",  uD, piLimD, tblUnit);
       html += '</table>';
-      html += '<p style="font-size:0.8rem;color:#6b7280;margin:0;">Personal-item limit: ' + fmt(airline.piL) + ' × ' + fmt(airline.piW) + ' × ' + fmt(airline.piH) + ' in (' + fmt(airline.piLcm) + ' × ' + fmt(airline.piWcm) + ' × ' + fmt(airline.piHcm) + ' cm)</p>';
+      if (airline.piEst) {
+        html += '<p style="font-size:0.8rem;color:#6b7280;margin:0;">' + airline.name + ' doesn\'t publish a personal-item size — the rule is it must fit under the seat. This uses the industry-standard ' + fmt(airline.piL) + ' × ' + fmt(airline.piW) + ' × ' + fmt(airline.piH) + ' in (' + fmt(airline.piLcm) + ' × ' + fmt(airline.piWcm) + ' × ' + fmt(airline.piHcm) + ' cm) as a guide, not an official limit.</p>';
+      } else {
+        html += '<p style="font-size:0.8rem;color:#6b7280;margin:0;">Personal-item limit: ' + fmt(airline.piL) + ' × ' + fmt(airline.piW) + ' × ' + fmt(airline.piH) + ' in (' + fmt(airline.piLcm) + ' × ' + fmt(airline.piWcm) + ' × ' + fmt(airline.piHcm) + ' cm)</p>';
+      }
       html += '</div>';
     }
 

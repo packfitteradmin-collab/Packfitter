@@ -24,28 +24,9 @@ const BAGS = [
   { name:"Checked Suitcase",   category:"suitcase-checked", capacity:100, efficiency:0.90, effectiveCapacity:90.00, bagWeight:4.80, weightLimit:23, type:"hardshell" },
 ];
 
-const AIRLINES = [
-  // piL/piW/piH = personal-item max dimensions (inches); piLcm/piWcm/piHcm = same in cm
-  { name:"American Airlines",   coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:35.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"Delta Air Lines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:35.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"United Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:10.0, piH:9.0,  piLcm:43.0, piWcm:25.0, piHcm:22.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit on domestic routes" },
-  { name:"Southwest Airlines",  coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, piL:16.25,piW:13.5,piH:8.0,  piLcm:41.0, piWcm:34.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit. Checked bags no longer free as of 2025 (fees apply on most fares)" },
-  { name:"JetBlue",             coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:13.0, piH:8.0,  piLcm:43.0, piWcm:33.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
-  { name:"Alaska Airlines",     coL:22.0, coW:14.0, coH:9.0, coLcm:55.9, coWcm:35.6, coHcm:22.9, piL:17.0, piW:13.0, piH:8.0,  piLcm:43.0, piWcm:33.0, piHcm:20.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No official weight limit enforced" },
-  { name:"Frontier Airlines",   coL:24.0, coW:16.0, coH:10.0,coLcm:61.0, coWcm:40.6, coHcm:25.4, piL:18.0, piW:14.0, piH:8.0,  piLcm:46.0, piWcm:35.0, piHcm:20.0, weightKg:16, weightLbs:35,  personalItem:true, note:"Carry-on max 35 lb; carry-on fee applies unless bundled fare" },
-  { name:"Air Canada",          coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, piL:17.0, piW:13.0, piH:6.0,  piLcm:43.0, piWcm:33.0, piHcm:16.0, weightKg:0,  weightLbs:0,   personalItem:true, note:"No carry-on weight limit (must be liftable unassisted)" },
-  { name:"British Airways",     coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:23, weightLbs:50.7,personalItem:true, note:"Generous weight limit; dimensions strictly enforced" },
-  { name:"Lufthansa",           coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, piL:16.0, piW:12.0, piH:5.9,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Weight limit strictly enforced at gate" },
-  { name:"Air France",          coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"One additional personal item permitted" },
-  { name:"Emirates",            coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, piL:15.0, piW:12.0, piH:6.0,  piLcm:38.0, piWcm:30.0, piHcm:15.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Strictly enforced; all cabin bags combined under 7kg" },
-  { name:"Singapore Airlines",  coL:21.7, coW:15.0, coH:7.9, coLcm:55.0, coWcm:38.0, coHcm:20.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Combined weight of all cabin bags must not exceed 7kg" },
-  { name:"Cathay Pacific",      coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Weight limit strictly enforced at boarding" },
-  { name:"Ryanair",             coL:21.7, coW:15.7, coH:7.9, coLcm:55.0, coWcm:40.0, coHcm:20.0, piL:15.7, piW:11.8, piH:7.9,  piLcm:40.0, piWcm:30.0, piHcm:20.0, weightKg:10, weightLbs:22,  personalItem:true, note:"Priority boarding required for full-size cabin bag" },
-  { name:"Qantas",              coL:22.0, coW:14.2, coH:9.1, coLcm:56.0, coWcm:36.0, coHcm:23.0, piL:18.0, piW:14.0, piH:8.0,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:7,  weightLbs:15.4,personalItem:true, note:"Personal item included within total weight allowance" },
-  { name:"KLM",                 coL:21.7, coW:13.8, coH:9.8, coLcm:55.0, coWcm:35.0, coHcm:25.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:12, weightLbs:26.5,personalItem:true, note:"Hand luggage and personal item combined under 12kg" },
-  { name:"Turkish Airlines",    coL:21.7, coW:15.7, coH:9.1, coLcm:55.0, coWcm:40.0, coHcm:23.0, piL:16.0, piW:12.0, piH:6.0,  piLcm:40.0, piWcm:30.0, piHcm:15.0, weightKg:8,  weightLbs:17.6,personalItem:true, note:"Economy class standard; enforced at check-in" },
-  { name:"EasyJet",             coL:22.0, coW:17.7, coH:9.8, coLcm:56.0, coWcm:45.0, coHcm:25.0, piL:17.7, piW:14.2, piH:7.9,  piLcm:45.0, piWcm:36.0, piHcm:20.0, weightKg:15, weightLbs:33.1,personalItem:true, note:"Large cabin bag requires reserved overhead bin fee" },
-];
+// AIRLINES now comes from the canonical single source (js/airline-data.js → window.PF_AIRLINES).
+// Ceased carriers (e.g. Spirit) are excluded from the live tool. Do NOT hardcode airline dims here again.
+const AIRLINES = (window.PF_AIRLINES || []).filter(function(a){ return !a.ceased; });
 
 const ITEMS = {
   "Tops":              { baseVolume:1.10, weight:0.15, cFactor:0.85, gTax:1.00, rigid:false, clothing:true },
@@ -1157,11 +1138,13 @@ function runCalculation() {
     airlineNoteEl.innerHTML = tightNote;
   } else if (isPIprimary && airline) {
     const a = airline;
-    let piAirlineNote = "<strong>" + a.name + " personal item limit:</strong> ";
-    if (a.piL) {
-      piAirlineNote += a.piL + " × " + a.piW + " × " + a.piH + " in (" + a.piLcm + " × " + a.piWcm + " × " + a.piHcm + " cm).";
+    let piAirlineNote;
+    if (a.piEst) {
+      piAirlineNote = "<strong>" + a.name + " personal item:</strong> No published size — must fit under the seat. Using the industry-standard " + a.piL + " × " + a.piW + " × " + a.piH + " in (" + a.piLcm + " × " + a.piWcm + " × " + a.piHcm + " cm) as a guide.";
+    } else if (a.piL) {
+      piAirlineNote = "<strong>" + a.name + " personal item limit:</strong> " + a.piL + " × " + a.piW + " × " + a.piH + " in (" + a.piLcm + " × " + a.piWcm + " × " + a.piHcm + " cm).";
     } else {
-      piAirlineNote += "No specific dimensions published — generally must fit under the seat in front of you.";
+      piAirlineNote = "<strong>" + a.name + " personal item limit:</strong> No specific dimensions published — generally must fit under the seat in front of you.";
     }
     if (a.note) { piAirlineNote += " " + a.note + "."; }
     airlineNoteEl.innerHTML = piAirlineNote;
