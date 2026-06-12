@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://packfitter.com/sitemap.xml
+Sitemap: https://packfitter.com/sitemap-core.xml
+Sitemap: https://packfitter.com/sitemap-guides.xml
