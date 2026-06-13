@@ -199,11 +199,12 @@
       gap:0; background:#fff; border:1px solid #e5e7eb; border-radius:8px;
       padding:8px 0; margin-top:8px; }
     .pf-nav-bar.pf-nav-open { display:flex; }
-    .pf-nav-bar > a, .pf-nav-dd > button { padding:10px 18px; width:100%; text-align:left; }
+    .pf-nav-bar > a, .pf-nav-dd > button { padding:10px 18px; width:100%; text-align:left;
+      white-space:normal; overflow-wrap:anywhere; box-sizing:border-box; }
     .pf-nav-dd { width:100%; }
     .pf-dd-menu { position:static; box-shadow:none; border:none; border-radius:0;
-      padding:0 0 0 18px; margin-top:0; }
-    .pf-dd-menu a { padding:8px 18px; }
+      padding:0 0 0 18px; margin-top:0; min-width:0; }
+    .pf-dd-menu a { padding:8px 18px; white-space:normal; overflow-wrap:anywhere; box-sizing:border-box; }
   }
   .affiliate-btn { display: inline-block; background: #f97316; color: #fff; font-size: 0.85rem; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: background 0.15s ease; }
   .affiliate-btn:hover { background: #ea580c; }
