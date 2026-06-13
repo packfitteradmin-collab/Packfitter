@@ -70,7 +70,14 @@
   <button class="pf-hamburger" aria-label="Menu">&#9776;</button>
   <div class="pf-nav-bar">
     <a href="/" class="pf-nav-active">Home</a>
-    <a href="/packing-list-generator.html">Complete Packing List Generator</a>
+    <div class="pf-nav-dd">
+      <button>Tools</button>
+      <div class="pf-dd-menu">
+        <a href="/#calculator">Quick Packing Calculator</a>
+        <a href="/packing-list-generator.html">Complete Packing List Generator</a>
+        <a href="/will-it-fit.html">Airline Bag Size Checker</a>
+      </div>
+    </div>
     <div class="pf-nav-dd">
       <button>What to Pack</button>
       <div class="pf-dd-menu">
@@ -129,7 +136,6 @@
       <div class="pf-dd-menu">
         <a href="/carry-on-bag-sizes.html">Bag Size Guide</a>
         <a href="/bag-sizes/carry-on-luggage-size-in-liters.html">Bag Volume in Liters</a>
-        <a href="/will-it-fit.html">Airline Bag Size Checker</a>
         <a href="/airline-data.html">Airline Carry-On Size Database</a>
         <div class="pf-dd-divider"></div>
         <span class="pf-dd-label">More Calculators</span>
@@ -141,7 +147,6 @@
         <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
       </div>
     </div>
-    <a href="#calculator">Quick Packing Calculator</a>
   </div>
 </div>
 <div class="page-wrap">
@@ -193,49 +198,6 @@
   </div>
 
 <!-- ══════════════════════════════════════
-       EMAIL CAPTURE (optional — Kit HTML form, no scripts/cookies)
-  ══════════════════════════════════════ -->
-  <div class="section-card" style="text-align:center;">
-    <div class="section-label" style="color:#b8943e;">Stay in the loop</div>
-    <h2>New PackFitter tools are coming</h2>
-    <p style="max-width:460px;margin:0 auto;">We're building more free packing tools. Want to know when they launch? Drop your email — that's it.</p>
-    <form action="https://app.kit.com/forms/9534076/subscriptions" method="post" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:440px;margin:16px auto 0;">
-      <input type="email" name="email_address" required placeholder="you@email.com" aria-label="Email address" style="flex:1 1 220px;min-width:180px;padding:11px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;">
-      <button type="submit" class="cta-primary" style="border:none;cursor:pointer;margin-top:0;padding:11px 22px;">Keep me posted</button>
-    </form>
-    <p style="font-size:0.78rem;color:#9ca3af;margin-top:12px;">Optional — the tools are always free and never require an account. By subscribing you agree to receive occasional emails about new PackFitter tools; we'll never share your address, and you can unsubscribe anytime. See our <a href="/privacy-policy.html" style="color:#9ca3af;text-decoration:underline;">Privacy Policy</a>.</p>
-  </div>
-
-  <div class="section-card">
-    <div class="section-label">More from PackFitter</div>
-    <h2>Guides &amp; References</h2>
-    <div class="hp-capability-grid">
-      <a href="/packing-guides.html" class="hp-capability-card">
-        <div class="hp-capability-title">Trip Packing Guides</div>
-        <div class="hp-capability-desc">What to pack for 3 to 14 days, Europe, cruises, and Alaska — with volume targets for each.</div>
-        <div class="hp-capability-cue">Browse guides &rarr;</div>
-      </a>
-      <a href="/airline-carry-on-rules.html" class="hp-capability-card">
-        <div class="hp-capability-title">Airline Carry-On Rules</div>
-        <div class="hp-capability-desc">Size and weight limits for Delta, United, American, Southwest, Ryanair, EasyJet, and more.</div>
-        <div class="hp-capability-cue">Compare airlines &rarr;</div>
-      </a>
-      <a href="/carry-on-bag-sizes.html" class="hp-capability-card">
-        <div class="hp-capability-title">Bag Size Comparisons</div>
-        <div class="hp-capability-desc">See what 25L to 50L actually holds — and which sizes fit your airline's overhead bins.</div>
-        <div class="hp-capability-cue">Compare sizes &rarr;</div>
-      </a>
-      <a href="/packing-optimization/compression-packing-cubes.html" class="hp-capability-card">
-        <div class="hp-capability-title">Packing Optimization</div>
-        <div class="hp-capability-desc">How compression cubes, rolling, and smart layering can save 20–30% of your packing volume.</div>
-        <div class="hp-capability-cue">Learn more &rarr;</div>
-      </a>
-    </div>
-  </div>
-
-  <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
-
-  <!-- ══════════════════════════════════════
        2. FULL CALCULATOR
   ══════════════════════════════════════ -->
   <section id="calculator" class="section-card">
@@ -417,6 +379,50 @@
       </div>
     </div>
   </section>
+
+  <!-- ══════════════════════════════════════
+       EMAIL CAPTURE (after the tool — Kit HTML form, no scripts/cookies)
+  ══════════════════════════════════════ -->
+  <div class="section-card" style="text-align:center;">
+    <div class="section-label" style="color:#b8943e;">Stay gate-ready</div>
+    <h2>Never get surprised at the gate</h2>
+    <p style="max-width:480px;margin:0 auto;">Airlines change their carry-on and personal-item limits more often than you'd expect. Drop your email and we'll send the occasional heads-up when major airlines update their rules — plus genuinely useful packing tips. Free, no account.</p>
+    <form action="https://app.kit.com/forms/9534076/subscriptions" method="post" onsubmit="if(window.pfTrack)window.pfTrack('email_capture',{source:'homepage'});" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:440px;margin:16px auto 0;">
+      <input type="hidden" name="fields[source]" value="homepage">
+      <input type="email" name="email_address" required placeholder="you@email.com" aria-label="Email address" style="flex:1 1 220px;min-width:180px;padding:11px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;">
+      <button type="submit" class="cta-primary" style="border:none;cursor:pointer;margin-top:0;padding:11px 22px;">Keep me posted</button>
+    </form>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:12px;">Free, no account required. By subscribing you agree to receive occasional emails from PackFitter (airline rule updates &amp; packing tips); we'll never share your address, and you can unsubscribe anytime. See our <a href="/privacy-policy.html" style="color:#9ca3af;text-decoration:underline;">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">More from PackFitter</div>
+    <h2>Guides &amp; References</h2>
+    <div class="hp-capability-grid">
+      <a href="/packing-guides.html" class="hp-capability-card">
+        <div class="hp-capability-title">Trip Packing Guides</div>
+        <div class="hp-capability-desc">What to pack for 3 to 14 days, Europe, cruises, and Alaska — with volume targets for each.</div>
+        <div class="hp-capability-cue">Browse guides &rarr;</div>
+      </a>
+      <a href="/airline-carry-on-rules.html" class="hp-capability-card">
+        <div class="hp-capability-title">Airline Carry-On Rules</div>
+        <div class="hp-capability-desc">Size and weight limits for Delta, United, American, Southwest, Ryanair, EasyJet, and more.</div>
+        <div class="hp-capability-cue">Compare airlines &rarr;</div>
+      </a>
+      <a href="/carry-on-bag-sizes.html" class="hp-capability-card">
+        <div class="hp-capability-title">Bag Size Comparisons</div>
+        <div class="hp-capability-desc">See what 25L to 50L actually holds — and which sizes fit your airline's overhead bins.</div>
+        <div class="hp-capability-cue">Compare sizes &rarr;</div>
+      </a>
+      <a href="/packing-optimization/compression-packing-cubes.html" class="hp-capability-card">
+        <div class="hp-capability-title">Packing Optimization</div>
+        <div class="hp-capability-desc">How compression cubes, rolling, and smart layering can save 20–30% of your packing volume.</div>
+        <div class="hp-capability-cue">Learn more &rarr;</div>
+      </a>
+    </div>
+  </div>
+
+  <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0;">
 
   <!-- ══════════════════════════════════════
        3. HOW IT WORKS

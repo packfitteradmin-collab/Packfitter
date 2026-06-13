@@ -40,22 +40,16 @@ window.pfTrack = function(name, params){
   });
   var ham=document.querySelector('.pf-hamburger');
   var nav=document.querySelector('.pf-nav-bar');
-  /* Group the desktop nav into two rows: tag the three direct tool links and
-     insert a flex line-break before the first dropdown. CSS (>=641px) handles
-     ordering/separators; mobile hamburger menu is unaffected. */
+  /* Nav v3 (Tools dropdown): bar is Home + 4 dropdowns and fits one row.
+     Tag Home so CSS (>=641px) drops its left separator. The old forced
+     two-row line-break is no longer inserted (only one row now). */
   if(nav){
     Array.prototype.forEach.call(nav.children,function(el){
       if(el.tagName==='A'){
         var t=(el.textContent||'').trim();
         if(t==='Home') el.classList.add('pf-n-home');
-        else if(/Quick Packing Calculator/.test(t)) el.classList.add('pf-n-calc');
-        else if(/Complete Packing List Generator/.test(t)) el.classList.add('pf-n-gen');
       }
     });
-    if(!nav.querySelector('.pf-nav-break')){
-      var _fd=nav.querySelector('.pf-nav-dd');
-      if(_fd){ var _b=document.createElement('div'); _b.className='pf-nav-break'; nav.insertBefore(_b,_fd); }
-    }
   }
   if(ham&&nav){
     ham.addEventListener('click',function(e){
