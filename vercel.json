@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/carry-on-weight-calculator.html",
+      "destination": "/packing-weight-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/checked-bag-weight-calculator.html",
+      "destination": "/packing-weight-calculator.html",
+      "permanent": true
+    }
+  ]
+}

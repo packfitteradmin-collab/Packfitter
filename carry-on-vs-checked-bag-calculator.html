@@ -23,7 +23,7 @@
       "name": "How does this luggage strategy calculator work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You enter your airline type, trip length, climate, packing style, traveler count, priority, laundry access, and trip mobility. The calculator recommends a luggage strategy — personal-item-only, carry-on, or checked bag — along with a realistic fee range, packing pressure rating, mobility assessment, sizer risk, recommended bag capacity, and a tradeoff warning. It does not use live airline pricing. Fee ranges are estimates based on typical published rates."
+        "text": "You enter your airline type, trip length, climate, packing style, traveler count, priority, laundry access, and trip mobility. The calculator recommends a luggage strategy — personal-item-only, carry-on, or checked bag — along with a realistic fee range, packing pressure rating, mobility assessment, sizer risk, recommended bag capacity, and a tradeoff warning. It computes a cost estimate from the bag fees you enter for your airline &mdash; it does not guess or store airline pricing."
       }
     },
     {
@@ -31,7 +31,7 @@
       "name": "Are the fee estimates in this calculator exact?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Airline baggage fees change frequently and vary by fare class, route, booking method, loyalty status, and credit card perks. The ranges shown are realistic approximations based on typical published fees as of 2025-2026. Always check your specific airline's current fees before booking."
+        "text": "No. Airline baggage fees change frequently and vary by fare class, route, booking method, loyalty status, and credit card perks. The estimate uses the fees you enter for your airline, so it is only as accurate as those numbers. Always check your airline's current fees before booking."
       }
     },
     {
@@ -150,9 +150,7 @@
         <a href="/airline-data.html">Airline Carry-On Size Database</a>
         <div class="pf-dd-divider"></div>
         <span class="pf-dd-label">More Calculators</span>
-        <a href="/carry-on-weight-calculator.html">Carry-On Weight Calculator</a>
-        <a href="/checked-bag-weight-calculator.html">Checked Bag Weight Calculator</a>
-        <a href="/packing-weight-calculator.html">Packing Weight Calculator</a>
+        <a href="/packing-weight-calculator.html">Luggage Weight Calculator</a>
         <a href="/carry-on-vs-checked-bag-calculator.html">Carry-On vs Checked Bag Calculator</a>
         <div class="pf-dd-divider"></div>
         <a href="/packing-optimization/compression-packing-cubes.html">Compression Packing Cubes</a>
@@ -245,6 +243,21 @@
     </div>
   </div>
 
+  <div style="margin-top:16px;padding-top:16px;border-top:1px solid #eee;">
+    <label style="display:block;font-size:0.78rem;font-weight:600;color:#555;margin-bottom:6px;">Your airline's bag fees (optional &mdash; for a cost estimate)</label>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;">
+      <div>
+        <label style="display:block;font-size:0.72rem;color:#777;margin-bottom:4px;">Checked-bag fee, one way ($)</label>
+        <input id="calc-checked-fee" type="number" min="0" step="1" placeholder="e.g. 45" style="width:100%;padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.88rem;">
+      </div>
+      <div>
+        <label style="display:block;font-size:0.72rem;color:#777;margin-bottom:4px;">Carry-on / overhead fee, one way ($)</label>
+        <input id="calc-carryon-fee" type="number" min="0" step="1" placeholder="0 if free" style="width:100%;padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:0.88rem;">
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:#9ca3af;margin-top:8px;">Enter the fees your airline actually charges (find them on your airline's site or our <a href="/airline-carry-on-rules.html" style="color:#2563eb;">airline rules pages</a>). Leave blank to skip the cost estimate &mdash; we don't guess airline fees.</p>
+  </div>
+
   <div style="text-align:center;margin-top:20px;">
     <button id="calc-btn" class="cta-primary" style="cursor:pointer;border:none;">Find my best strategy &rarr;</button>
   </div>
@@ -262,7 +275,7 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
       <div style="background:#f0f7f0;border-radius:8px;padding:12px 14px;">
-        <div style="font-weight:700;color:#1a2540;font-size:0.82rem;">Estimated Fee Range</div>
+        <div style="font-weight:700;color:#1a2540;font-size:0.82rem;">Estimated Cost</div>
         <div id="result-fee" style="color:#374151;font-size:0.95rem;font-weight:700;margin-top:4px;"></div>
         <div id="result-fee-note" style="color:#9ca3af;font-size:0.72rem;margin-top:2px;">Per person, round trip</div>
       </div>
@@ -317,7 +330,7 @@
     </p>
   </div>
 
-  <p style="font-size:0.72rem;color:#9ca3af;text-align:center;margin-top:8px;">Fee estimates are approximate ranges based on typical 2025&ndash;2026 published rates. Actual fees vary by airline, route, fare class, booking method, and loyalty status. Always verify with your airline before booking.</p>
+  <p style="font-size:0.72rem;color:#9ca3af;text-align:center;margin-top:8px;">The cost figure is calculated from the fees you enter for your airline &mdash; we don't store or guess airline pricing. Always verify current fees with your airline before booking.</p>
 </div>
 
 <!-- EDITORIAL: HOW TO READ RESULTS -->
@@ -331,7 +344,7 @@
 <div class="section-card">
   <h2>Why Carry-On Is Not Always Cheaper</h2>
   <p>On US full-service airlines like Delta, United, and American, overhead carry-on is included in most fares. Carry-on is genuinely free here, making it the obvious default for straightforward trips.</p>
-  <p>But on budget airlines &mdash; Frontier, Ryanair, EasyJet &mdash; overhead access is a paid add-on. Overhead carry-on fees often run $30&ndash;55 each way, which means the round-trip cost can approach or exceed checked bag fees. On some routes, checking a bag is actually cheaper than paying for overhead access. Learn more about <a href="/how-strict-are-budget-airline-sizers.html" style="color:#2563eb;">how budget airline fee structures work</a>.</p>
+  <p>But on budget airlines &mdash; Frontier, Ryanair, EasyJet &mdash; overhead access is a paid add-on. Overhead access is a paid add-on, so the round-trip cost can approach or exceed checked bag fees. On some routes, checking a bag is actually cheaper than paying for overhead access. Learn more about <a href="/how-strict-are-budget-airline-sizers.html" style="color:#2563eb;">how budget airline fee structures work</a>.</p>
   <p>For families, the math shifts further. Two or three overhead carry-on fees can exceed the cost of one shared checked bag. When traveling with kids, a single checked suitcase often makes more financial sense than individual carry-ons for everyone.</p>
 </div>
 
@@ -351,14 +364,14 @@
   <p><strong>Cold weather</strong> creates volume that carry-on bags struggle with. Layers, sweaters, fleece, rain gear, and boots can fill a 40L bag on their own. Carry-on-only for winter trips requires aggressive compression, laundry, and willingness to limit outerwear &mdash; constraints many travelers don&rsquo;t want.</p>
   <p><strong>Family travel</strong> changes the economics. One checked bag shared among family members is often cheaper than paying overhead carry-on fees for each person. It also eliminates the stress of fitting multiple bags in overhead bins during boarding.</p>
   <p><strong>Trip length</strong> matters. Carry-on works well for 3&ndash;7 day trips in moderate climates. Beyond a week without laundry access, most travelers will either pack a tight carry-on with outfit repetition or use a checked bag with more variety. Both approaches are valid. For a deeper comparison, see <a href="/carry-on-vs-checked-bag-costs.html" style="color:#2563eb;">the full cost and logistics breakdown</a>.</p>
-  <p><strong>Stress reduction</strong> has value. For travelers who find packing anxiety, boarding competition, and sizer enforcement stressful, the $35 each way for a checked bag buys genuine peace of mind. This is a legitimate reason, not laziness.</p>
+  <p><strong>Stress reduction</strong> has value. For travelers who find packing anxiety, boarding competition, and sizer enforcement stressful, the checked-bag fee buys genuine peace of mind. This is a legitimate reason, not laziness.</p>
 </div>
 
 <!-- EDITORIAL: BUDGET AIRLINE FEE TRAPS -->
 <div class="section-card">
   <h2>Budget Airline Fee Traps</h2>
   <p>Budget airlines profit from bag fees, and their pricing is designed to nudge you toward spending more than you planned.</p>
-  <p><strong>Gate fees are brutal.</strong> If you show up at the gate with a bag that doesn&rsquo;t fit the sizer and you haven&rsquo;t pre-paid for overhead access, the fee can be $50&ndash;75 &mdash; more than if you had simply checked a bag during booking. Pre-planning eliminates this trap entirely. Understand <a href="/why-carry-on-bags-fail-airline-sizers.html" style="color:#2563eb;">why bags fail sizer checks</a> before you fly.</p>
+  <p><strong>Gate fees are brutal.</strong> If you show up at the gate with a bag that doesn&rsquo;t fit the sizer and you haven&rsquo;t pre-paid for overhead access, the gate fee is much higher than pre-booking &mdash; often more than if you had simply checked a bag during booking. Pre-planning eliminates this trap entirely. Understand <a href="/why-carry-on-bags-fail-airline-sizers.html" style="color:#2563eb;">why bags fail sizer checks</a> before you fly.</p>
   <p><strong>Bundles can be cheaper.</strong> Budget airline bundles that include overhead access, seat selection, and priority boarding sometimes cost less than buying overhead access alone. Check the bundle math on every booking.</p>
   <p><strong>Free tier limits are strict.</strong> Ryanair&rsquo;s free small bag must fit 40 &times; 30 &times; 20 cm (15.7 &times; 11.8 &times; 7.9 in). Frontier&rsquo;s personal item must fit 18 &times; 14 &times; 8 in (45.7 &times; 35.6 &times; 20.3 cm). These are physical sizers, not guidelines. Overpacked bags get flagged. See the <a href="/best-bag-setup-for-budget-airlines.html" style="color:#2563eb;">best bag setup for budget airlines</a>.</p>
 </div>
@@ -433,10 +446,10 @@
   <h2>Frequently Asked Questions</h2>
 
   <h3 style="font-size:0.95rem;margin-top:16px;">How does this luggage strategy calculator work?</h3>
-  <p>You enter your airline type, trip length, climate, packing style, traveler count, priority, laundry access, and trip mobility. The calculator recommends a luggage strategy &mdash; personal-item-only, carry-on, or checked bag &mdash; along with a realistic fee range, packing pressure rating, mobility assessment, sizer risk, recommended bag capacity, and a tradeoff warning. It does not use live airline pricing. Fee ranges are estimates based on typical published rates.</p>
+  <p>You enter your airline type, trip length, climate, packing style, traveler count, priority, laundry access, and trip mobility. The calculator recommends a luggage strategy &mdash; personal-item-only, carry-on, or checked bag &mdash; along with a realistic fee range, packing pressure rating, mobility assessment, sizer risk, recommended bag capacity, and a tradeoff warning. It computes a cost estimate from the bag fees you enter for your airline &mdash; it does not guess or store airline pricing.</p>
 
   <h3 style="font-size:0.95rem;margin-top:16px;">Are the fee estimates in this calculator exact?</h3>
-  <p>No. Airline baggage fees change frequently and vary by fare class, route, booking method, loyalty status, and credit card perks. The ranges shown are realistic approximations based on typical published fees as of 2025&ndash;2026. Always check your specific airline&rsquo;s current fees before booking.</p>
+  <p>No. Airline baggage fees change frequently and vary by fare class, route, booking method, loyalty status, and credit card perks. The estimate uses the fees you enter for your airline, so it is only as accurate as those numbers. Always check your airline's current fees before booking.</p>
 
   <h3 style="font-size:0.95rem;margin-top:16px;">Why does the calculator sometimes recommend checking a bag?</h3>
   <p>Because checking a bag is sometimes the smarter choice. Cold-weather trips, family travel, long trips without laundry, and heavy packers all create situations where carry-on constraints cause more stress and cost than the checked bag fee. The calculator considers your actual trip context rather than defaulting to carry-on ideology.</p>
@@ -459,9 +472,7 @@
     <a href="/airline-carry-on-rules.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Airline Carry-On Rules &mdash; Dimensions, fees, and policies across major airlines</a>
     <a href="/backpack-vs-roller-for-europe.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Backpack vs Roller for Europe &mdash; Mobility, comfort, and airline tradeoffs</a>
     <a href="/best-personal-item-bag-for-budget-airlines.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Best Personal Item Bags &mdash; Bags that actually pass budget airline sizer checks</a>
-    <a href="/carry-on-weight-calculator.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Carry-On Weight Calculator &mdash; Estimate packed bag weight and check airline weight limits</a>
-    <a href="/packing-weight-calculator.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Packing Weight Calculator &mdash; All bag types including checked, with overweight fee warnings</a>
-    <a href="/checked-bag-weight-calculator.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Checked Bag Weight Calculator &mdash; Overweight fee warnings and split-bag economics for checked luggage</a>
+    <a href="/packing-weight-calculator.html" style="display:block;padding:10px 14px;background:#f9fafb;border-radius:8px;color:#2563eb;text-decoration:none;font-size:0.9rem;">Luggage Weight Calculator &mdash; All bag types including checked, with overweight fee warnings</a>
   </div>
 </div>
 
@@ -507,9 +518,7 @@
       <a href="/carry-on-bag-sizes.html" style="display:block;color:#6b7280;text-decoration:none;">Bag Size Comparison</a>
       <a href="/bag-sizes/carry-on-luggage-size-in-liters.html" style="display:block;color:#6b7280;text-decoration:none;">Size in Liters</a>
       <a href="/airline-data.html" style="display:block;color:#6b7280;text-decoration:none;">Airline Carry-On Size Database</a>
-      <a href="/carry-on-weight-calculator.html" style="display:block;color:#6b7280;text-decoration:none;">Carry-On Weight Calculator</a>
-      <a href="/checked-bag-weight-calculator.html" style="display:block;color:#6b7280;text-decoration:none;">Checked Bag Weight Calculator</a>
-      <a href="/packing-weight-calculator.html" style="display:block;color:#6b7280;text-decoration:none;">Packing Weight Calculator</a>
+      <a href="/packing-weight-calculator.html" style="display:block;color:#6b7280;text-decoration:none;">Luggage Weight Calculator</a>
       <a href="/carry-on-vs-checked-bag-calculator.html" style="display:block;color:#6b7280;text-decoration:none;">Carry-On vs Checked Bag Calculator</a>
       <a href="/packing-optimization/compression-packing-cubes.html" style="display:block;color:#6b7280;text-decoration:none;">Compression Packing Cubes</a>
       <a href="/packing-guides.html" style="display:block;color:#6b7280;text-decoration:none;">All Packing Guides</a>
@@ -524,10 +533,11 @@
 
 <script>
 (function(){
-  function getStrategy(airline, trip, climate, style, travelers, priority, laundry, mobility) {
+  function getStrategy(airline, trip, climate, style, travelers, priority, laundry, mobility, checkedFee, carryOnFee) {
     var tCount = parseInt(travelers) || 1;
+    checkedFee = parseFloat(checkedFee); if (isNaN(checkedFee) || checkedFee < 0) checkedFee = null;
+    carryOnFee = parseFloat(carryOnFee); if (isNaN(carryOnFee) || carryOnFee < 0) carryOnFee = null;
 
-    // Effective bulk — how much packing volume this trip demands per person
     var bulk = 0;
     if (trip === 'short') bulk += 1;
     else if (trip === 'medium') bulk += 2;
@@ -536,13 +546,10 @@
     else if (climate === 'cold') bulk += 2;
     if (style === 'average') bulk += 1;
     else if (style === 'comfort') bulk += 2;
-
-    // Laundry adjusts effective bulk on longer trips
     if (laundry === 'easy' && (trip === 'medium' || trip === 'long')) bulk -= 1;
     if (laundry === 'none' && trip === 'long') bulk += 1;
     if (bulk < 0) bulk = 0;
 
-    // Flags
     var costPri = priority === 'cost';
     var stressPri = priority === 'stress';
     var mobilityPri = priority === 'mobility';
@@ -555,28 +562,25 @@
     var lowMobility = mobility === 'one-hotel';
     var multiGroup = tCount >= 3;
 
-    var strategy, fee, feeNote, capacity, why, warning, pressure, mobLevel, sizerRisk, reality;
+    var strategy, capacity, why, warning, pressure, mobLevel, sizerRisk, reality;
+    var bagType = 'free', shared = false;
     var product = null;
 
-    // ======== PERSONAL-ITEM-ONLY ========
-    // Very narrow: low bulk, solo, disciplined, cost/mobility, not US full-service
     if (bulk <= 1 && tCount === 1 && style !== 'comfort' && (costPri || mobilityPri) && !isUsFull) {
       strategy = 'Personal-item-only';
-      fee = '$0'; feeNote = 'No bag fees';
+      bagType = 'free';
       capacity = '18–20L personal item';
-      why = 'Short, warm trip — a disciplined packer can fit everything in a personal-item bag, eliminating bag fees entirely.';
-      warning = 'A personal-item bag holds roughly 2–3 outfits and basics. If you need more space at the gate, the upgrade fee is steep.';
+      why = 'Short, warm trip — a disciplined packer can fit everything in a personal-item bag, which carries no bag fee on any airline.';
+      warning = 'A personal-item bag holds roughly 2–3 outfits and basics. If you need more space at the gate, upgrading is costly.';
       pressure = bulk === 0 ? 'Comfortable' : 'Tight';
       mobLevel = 'Excellent';
       sizerRisk = isEuBudget ? 'Moderate' : 'Low';
       reality = 'Experienced light packers often use this approach for weekend trips. It works well when you genuinely need very little — but most travelers underestimate what they want to bring.';
       product = { name: 'Cabin Max Metz (20L)', desc: 'Sized for budget airline personal-item sizers. Rectangular profile, soft-sided, under-seat design.', url: 'https://amzn.to/4vIhmV0' };
     }
-
-    // ======== US FULL-SERVICE: low bulk solo → free carry-on ========
     else if (bulk <= 1 && tCount === 1 && isUsFull && (costPri || mobilityPri) && style !== 'comfort') {
       strategy = 'Carry-on backpack (free overhead)';
-      fee = '$0'; feeNote = 'Included in fare';
+      bagType = 'free';
       capacity = highMobility ? '30–35L carry-on backpack' : '35–40L carry-on backpack';
       why = 'Overhead carry-on is free on US full-service airlines. No reason to squeeze into a personal item when the overhead bin is included.';
       warning = 'Basic Economy fares on some carriers restrict you to a personal item. Verify before you pack.';
@@ -584,38 +588,20 @@
       reality = 'On US full-service airlines, the carry-on backpack is the default for experienced solo travelers. Simple, free, no drama.';
       product = { name: 'Osprey Farpoint 40 (40L)', desc: 'Popular carry-on backpack. Meets US airline overhead limits. Clamshell opening, hip belt.', url: 'https://amzn.to/42jJu3j' };
     }
-
-    // ======== SHARED CHECKED BAG: 3+ travelers on budget airlines ========
     else if (multiGroup && isBudget && !mobilityPri) {
       strategy = 'Shared checked bag + personal items';
-      var overheadTotal = tCount * 35;
-      var overheadHigh = tCount * 55;
-      fee = isEuBudget ? '$30–$75 total' : '$35–$80 total';
-      feeNote = 'For the group, round trip';
+      bagType = 'checked'; shared = true;
       capacity = tCount >= 4 ? 'Shared 65–80L checked suitcase' : 'Shared 55–70L checked suitcase';
-      why = 'With ' + tCount + ' travelers on a budget airline, per-person overhead fees would total $' + overheadTotal + '–$' + overheadHigh + ' round trip. One shared checked bag typically costs $35–80 total — significantly less. Each person carries a free personal item for essentials.';
+      why = 'With ' + tCount + ' travelers on a budget airline, paying overhead fees for each person adds up fast. One shared checked bag is usually cheaper, and each person still carries a free personal item for essentials. Enter your airline’s fees above to compare the two.';
       warning = 'Everyone waits at baggage claim, and a delayed bag hits the whole group. Keep a change of clothes in each personal item as backup.';
       pressure = 'Comfortable'; mobLevel = 'Moderate'; sizerRisk = 'Low';
-      reality = 'Experienced group travelers on budget airlines almost always share a checked bag rather than paying overhead fees for each person. The math makes it obvious.';
+      reality = 'Experienced group travelers on budget airlines almost always share a checked bag rather than paying overhead fees for each person. The math usually makes it obvious.';
       product = { name: 'Travelpro Maxlite 5 Spinner (46L)', desc: 'Lightweight roller. Works as checked or carry-on. Organized compartments.', url: 'https://amzn.to/3Ou1OU8' };
     }
-
-    // ======== CHECKED BAG: high packing pressure ========
-    else if (
-      bulk >= 6 || spacePri ||
-      (style === 'comfort' && climate === 'cold') ||
-      (trip === 'long' && climate === 'cold' && laundry !== 'easy') ||
-      (multiGroup && bulk >= 4) ||
-      (stressPri && bulk >= 4)
-    ) {
-      var isShared = tCount >= 3;
-      strategy = isShared ? 'Shared checked bag strategy' : 'Checked bag';
-      feeNote = isShared ? 'For the group, round trip' : 'Per person, round trip';
-      if (isUsFull) fee = isShared ? '$30–$70 total' : '$30–$70';
-      else if (airline === 'us-budget') fee = isShared ? '$35–$80 total' : '$35–$80';
-      else if (isEuBudget) fee = isShared ? '$30–$75 total' : '$30–$75';
-      else fee = '$0–$50';
-
+    else if ( bulk >= 6 || spacePri || (style === 'comfort' && climate === 'cold') || (trip === 'long' && climate === 'cold' && laundry !== 'easy') || (multiGroup && bulk >= 4) || (stressPri && bulk >= 4) ) {
+      shared = tCount >= 3;
+      strategy = shared ? 'Shared checked bag strategy' : 'Checked bag';
+      bagType = 'checked';
       var reasons = [];
       if (climate === 'cold') reasons.push('cold weather');
       if (trip === 'long') reasons.push('trip length');
@@ -627,28 +613,21 @@
       if (reasons.length) why += ' — ' + reasons.join(', ') + ' —';
       why += ' creates more packing volume than carry-on comfortably handles.';
       if (isIntl) why += ' Most international long-haul fares include at least one checked bag.';
-      else if (isShared) why += ' A shared checked bag costs far less than per-person overhead fees.';
+      else if (shared) why += ' A shared checked bag usually costs less than per-person overhead fees.';
       else why += ' Checking a bag eliminates packing pressure and sizer anxiety.';
-
-      capacity = isShared ? 'Shared 60–70L checked suitcase' : '45–65L checked suitcase';
+      capacity = shared ? 'Shared 60–70L checked suitcase' : '45–65L checked suitcase';
       warning = 'Checked bags add 15–30 minutes at baggage claim. For tight connections, pack essentials in a personal item.';
-      if (isShared) warning += ' Coordinate what goes in the shared bag versus personal items.';
+      if (shared) warning += ' Coordinate what goes in the shared bag versus personal items.';
       pressure = 'Comfortable'; mobLevel = highMobility ? 'Limited' : 'Moderate'; sizerRisk = 'Low';
-
       if (stressPri) reality = 'Experienced travelers check a bag when the trip demands it. Sometimes the smartest move is paying the fee and traveling relaxed.';
-      else if (isShared) reality = 'Groups that try to carry on individually often stress at boarding. One shared checked bag is what experienced group travelers default to.';
+      else if (shared) reality = 'Groups that try to carry on individually often stress at boarding. One shared checked bag is what experienced group travelers default to.';
       else if (climate === 'cold') reality = 'Cold-weather carry-on-only demands aggressive compression and outfit repetition. Checking a bag is the practical, normal choice.';
       else reality = 'At this packing volume, experienced travelers check a bag rather than fighting carry-on limits. Practical, not defeat.';
-
       product = { name: 'Travelpro Maxlite 5 Spinner (46L)', desc: 'Lightweight roller. Works as checked or carry-on. Organized compartments.', url: 'https://amzn.to/3Ou1OU8' };
     }
-
-    // ======== CARRY-ON STRATEGIES ========
     else {
-      feeNote = 'Per person, round trip';
       var wantBackpack = mobilityPri || highMobility || (tCount === 1 && style === 'light');
       var wantRoller = stressPri || style === 'comfort' || (lowMobility && !mobilityPri) || (tCount >= 2 && !highMobility && !mobilityPri);
-
       if (wantBackpack && (!wantRoller || highMobility)) {
         strategy = 'Carry-on backpack + personal item';
         if (bulk <= 2) capacity = '30–35L carry-on backpack';
@@ -662,55 +641,49 @@
         mobLevel = lowMobility ? 'Good' : 'Moderate';
         product = { name: 'Travelpro Maxlite 5 Spinner (46L)', desc: 'Lightweight roller. Works as carry-on. Smooth wheels, organized compartments.', url: 'https://amzn.to/3Ou1OU8' };
       }
-
-      // Fee + why + warning by airline
       if (isUsFull) {
-        fee = '$0';
+        bagType = 'free';
         why = 'Overhead carry-on is free on US full-service airlines. Your trip fits within carry-on limits, making this the straightforward default.';
         warning = 'Basic Economy fares on some carriers may restrict overhead access. Verify your fare class before packing.';
         sizerRisk = 'Low';
       } else if (airline === 'us-budget') {
         if (costPri && bulk <= 1 && tCount === 1) {
-          strategy = 'Personal-item-only'; fee = '$0'; feeNote = 'No bag fees';
+          strategy = 'Personal-item-only'; bagType = 'free';
           capacity = '18–20L personal item'; mobLevel = 'Excellent';
-          why = 'Budget airline overhead fees run $35–55 each way. Your trip is light enough to fit in a personal item, avoiding fees entirely.';
-          warning = 'Budget airline sizers are strict. If your bag does not fit, gate fees can reach $50–75. Measure your packed bag before you fly.';
+          why = 'Budget airlines charge for overhead access. Your trip is light enough to fit in a personal item, avoiding the fee entirely.';
+          warning = 'Budget airline sizers are strict. If your bag does not fit, the gate fee is much higher than pre-booking. Measure your packed bag before you fly.';
           sizerRisk = 'Moderate';
           product = { name: 'Cabin Max Metz (20L)', desc: 'Sized for budget airline personal-item sizers. Rectangular profile, soft-sided.', url: 'https://amzn.to/4vIhmV0' };
         } else {
-          fee = '$35–$70';
-          why = 'Overhead access on US budget airlines typically costs $35–55 per leg when pre-booked. Your trip needs more space than a personal item provides.';
+          bagType = 'carryon';
+          why = 'Overhead access on US budget airlines is a paid add-on, cheapest when pre-booked. Your trip needs more space than a personal item provides.';
           warning = 'Pre-book your bag fee online — gate prices are significantly higher. Check bundle pricing too.';
           sizerRisk = style === 'comfort' ? 'Moderate' : 'Low';
         }
       } else if (isEuBudget) {
         if (costPri && bulk <= 1 && tCount === 1) {
-          strategy = 'Personal-item-only'; fee = '$0'; feeNote = 'No bag fees';
+          strategy = 'Personal-item-only'; bagType = 'free';
           capacity = '18–20L personal item'; mobLevel = 'Excellent';
-          why = 'European budget airlines charge for overhead access. Your trip is light enough to avoid all fees by packing into a personal-item bag.';
+          why = 'European budget airlines charge for overhead access. Your trip is light enough to avoid the fee by packing into a personal-item bag.';
           warning = 'European budget airline sizers are actively enforced. Measure your packed bag against the exact limit before flying.';
           sizerRisk = 'High';
           product = { name: 'Cabin Max Metz (20L)', desc: 'Sized for budget airline personal-item sizers. Rectangular profile, soft-sided.', url: 'https://amzn.to/4vIhmV0' };
         } else {
-          fee = '$30–$65';
+          bagType = 'carryon';
           why = 'European budget airlines charge for overhead access. Your trip needs more than a personal item, so paid carry-on is the realistic choice.';
           warning = 'Overhead fees on European budget airlines often approach checked bag fees. Compare both on your specific route.';
           sizerRisk = bulk >= 4 || style === 'comfort' ? 'High' : 'Moderate';
         }
       } else {
-        fee = '$0';
+        bagType = 'free';
         why = 'International long-haul flights typically include overhead carry-on. Your trip fits within carry-on limits.';
         warning = 'If your route includes a budget airline connection, that leg may charge separately for overhead. Check each segment.';
         sizerRisk = 'Low';
       }
-
-      // Packing pressure
       if (strategy === 'Personal-item-only') pressure = bulk <= 0 ? 'Comfortable' : 'Tight';
       else if (bulk <= 2) pressure = 'Comfortable';
       else if (bulk <= 4) pressure = 'Tight';
       else pressure = 'Aggressive';
-
-      // Reality
       if (strategy === 'Personal-item-only') {
         reality = 'This can work — but only with genuine packing discipline. Most travelers who think they can do personal-item-only end up wishing they had more space.';
       } else if (highMobility) {
@@ -724,19 +697,34 @@
       }
     }
 
-    // Defaults
     if (!sizerRisk) sizerRisk = 'Low';
     if (!pressure) pressure = 'Comfortable';
     if (!mobLevel) mobLevel = 'Good';
-    if (!feeNote) feeNote = 'Per person, round trip';
     if (!reality) reality = '';
+
+    var fee, feeNote;
+    if (bagType === 'free') {
+      fee = 'Free'; feeNote = 'No bag fee for this strategy';
+    } else {
+      var relFee = (bagType === 'checked') ? checkedFee : carryOnFee;
+      var label = (bagType === 'checked') ? 'checked-bag' : 'carry-on';
+      if (relFee === null) {
+        fee = 'Add your ' + label + ' fee above'; feeNote = 'We don’t guess airline fees';
+      } else if (relFee === 0) {
+        fee = 'Free'; feeNote = 'You entered $0 for this bag';
+      } else {
+        var bags = shared ? 1 : tCount;
+        var total = relFee * 2 * bags;
+        fee = '$' + total;
+        feeNote = (shared ? 'For the group, round trip' : (tCount > 1 ? 'For ' + tCount + ' travelers, round trip' : 'Per person, round trip')) + ' — from your $' + relFee + ' one-way ' + label + ' fee';
+      }
+    }
 
     return { strategy: strategy, fee: fee, feeNote: feeNote, capacity: capacity, why: why, warning: warning, pressure: pressure, mobLevel: mobLevel, sizerRisk: sizerRisk, reality: reality, product: product };
   }
 
   var btn = document.getElementById('calc-btn');
   var results = document.getElementById('calc-results');
-
   btn.addEventListener('click', function() {
     var r = getStrategy(
       document.getElementById('calc-airline').value,
@@ -746,9 +734,10 @@
       document.getElementById('calc-travelers').value,
       document.getElementById('calc-priority').value,
       document.getElementById('calc-laundry').value,
-      document.getElementById('calc-mobility').value
+      document.getElementById('calc-mobility').value,
+      document.getElementById('calc-checked-fee').value,
+      document.getElementById('calc-carryon-fee').value
     );
-
     document.getElementById('result-strategy').textContent = r.strategy;
     document.getElementById('result-fee').textContent = r.fee;
     document.getElementById('result-fee-note').textContent = r.feeNote;
@@ -758,23 +747,10 @@
     document.getElementById('result-pressure').textContent = r.pressure;
     document.getElementById('result-mobility-level').textContent = r.mobLevel;
     document.getElementById('result-sizer').textContent = r.sizerRisk;
-
-    // Reality block
     var realityWrap = document.getElementById('result-reality-wrap');
-    if (r.reality) {
-      document.getElementById('result-reality').textContent = r.reality;
-      realityWrap.style.display = 'block';
-    } else { realityWrap.style.display = 'none'; }
-
-    // Product
+    if (r.reality) { document.getElementById('result-reality').textContent = r.reality; realityWrap.style.display = 'block'; } else { realityWrap.style.display = 'none'; }
     var prodEl = document.getElementById('result-product');
-    if (r.product) {
-      document.getElementById('result-product-name').textContent = r.product.name;
-      document.getElementById('result-product-desc').textContent = r.product.desc;
-      document.getElementById('result-product-link').href = r.product.url;
-      prodEl.style.display = 'block';
-    } else { prodEl.style.display = 'none'; }
-
+    if (r.product) { document.getElementById('result-product-name').textContent = r.product.name; document.getElementById('result-product-desc').textContent = r.product.desc; document.getElementById('result-product-link').href = r.product.url; prodEl.style.display = 'block'; } else { prodEl.style.display = 'none'; }
     results.style.display = 'block';
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
