@@ -58,7 +58,7 @@ window.PF_AIRLINES = [
     "personalItem": true,
     "piEst": true,
     "checked": "50 lb (23 kg) · 62 in (158 cm)",
-    "note": "No official weight limit on domestic routes",
+    "note": "No official weight limit on domestic routes. Delta does not publish a personal-item size — must fit under the seat (piEst).",
     "ceased": false,
     "nativeUnit": "in",
     "verified": "2026-06"
@@ -108,7 +108,7 @@ window.PF_AIRLINES = [
     "personalItem": true,
     "piEst": true,
     "checked": "50 lb (23 kg) · 62 in (now paid on most fares)",
-    "note": "No official weight limit. Checked bags no longer free as of 2025 (fees apply on most fares)",
+    "note": "No official weight limit. Checked bags no longer free as of 2025 (fees apply on most fares). Southwest does not publish a personal-item size — must fit under the seat (piEst).",
     "ceased": false,
     "nativeUnit": "in",
     "verified": "2026-06"
@@ -158,7 +158,7 @@ window.PF_AIRLINES = [
     "personalItem": true,
     "piEst": true,
     "checked": "50 lb (23 kg) · 62 in (158 cm)",
-    "note": "No official weight limit enforced",
+    "note": "No official weight limit enforced. Alaska does not publish a personal-item size — must fit under the seat (piEst).",
     "ceased": false,
     "nativeUnit": "in",
     "verified": "2026-06"
@@ -823,7 +823,7 @@ window.PF_AIRLINES = [
     "weightLbs": 22,
     "piEst": true,
     "checked": null,
-    "note": "International: 10kg total incl. one personal item. No separate published personal-item size.",
+    "note": "International: 10kg total incl. one personal item. No separate published personal-item size (piEst). UPCOMING 2026-07-01: ANA introduces a published personal-item size 40×30×20 cm — flip piEst→false and set PI to 40×30×20 then.",
     "verified": "2026-06-11",
     "coLcm": 55,
     "coWcm": 40,
