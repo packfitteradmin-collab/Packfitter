@@ -505,30 +505,47 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
   function liters(hCm, wCm, dCm) { return parseFloat(((hCm * wCm * dCm) / 1000).toFixed(1)); }
   function cuIn(hIn, wIn, dIn)    { return parseFloat((hIn * wIn * dIn).toFixed(1)); }
 
-  function dimCompare(userH, userW, userD, limH, limW, limD) {
-    /* Sort both sets descending so largest-to-largest comparison */
-    var u = [userH, userW, userD].sort(function(a,b){return b-a;});
-    var l = [limH,  limW,  limD].sort(function(a,b){return b-a;});
-    var over = [];
-    for (var i = 0; i < 3; i++) {
-      if (u[i] > l[i] + 0.05) over.push({ user: u[i], limit: l[i], idx: i });
-    }
-    return over;
+  /* Three states (FITS / CLOSE FIT / DOES NOT FIT). Evaluated against the airline's
+     NATIVE published dimension converted to precise cm, with a uniform 1 cm tolerance,
+     so a bag gets the same verdict whether entered in inches or cm. Rotation allowed. */
+  var FIT_EPS = 0.05, FIT_BAND = 1.0;   /* cm: float-safety epsilon; close-fit band */
+  function navCm(airline, type) {
+    var nat = airline.nativeUnit;
+    if (type === "co") return (nat === "in") ? [airline.coL*2.54, airline.coW*2.54, airline.coH*2.54] : [airline.coLcm, airline.coWcm, airline.coHcm];
+    return (nat === "in") ? [airline.piL*2.54, airline.piW*2.54, airline.piH*2.54] : [airline.piLcm, airline.piWcm, airline.piHcm];
   }
+  function classifyFit(bagHcm, bagWcm, bagDcm, airline, type) {
+    var u = [bagHcm, bagWcm, bagDcm].slice().sort(function(a,b){return b-a;});
+    var l = navCm(airline, type).slice().sort(function(a,b){return b-a;});
+    var anyFail = false, anyClose = false;
+    for (var i = 0; i < 3; i++) { var o = u[i] - l[i];
+      if (o > FIT_BAND + 1e-9) anyFail = true; else if (o > FIT_EPS) anyClose = true; }
+    return anyFail ? "fail" : (anyClose ? "close" : "fits");
+  }
+
+  function dimState(bagCm, limitCm) {
+    var o = bagCm - limitCm;
+    return o > FIT_BAND + 1e-9 ? "fail" : (o > FIT_EPS ? "close" : "fits");
+  }
+  function stateIcon(s){ return s === "fits" ? "✅" : (s === "close" ? "⚠️" : "❌"); }
+  function stateColor(s){ return s === "fits" ? "#15803d" : (s === "close" ? "#b45309" : "#dc2626"); }
 
   function resultBadge(label, color) {
     return '<span style="display:inline-block;padding:6px 16px;border-radius:6px;font-weight:700;font-size:0.9rem;color:#fff;background:' + color + ';">' + label + '</span>';
   }
+  function badgeFor(state, kind) {
+    if (state === "fits")  return resultBadge(kind === "piEst" ? "LIKELY FITS" : "FITS", "#15803d");
+    if (state === "close") return resultBadge(kind === "piEst" ? "CLOSE — LIKELY" : "CLOSE FIT", "#b45309");
+    return resultBadge(kind === "piEst" ? "LIKELY TOO BIG" : "DOES NOT FIT", "#dc2626");
+  }
 
-  function dimRow(label, userVal, limitVal, unitStr) {
-    var pass = userVal <= limitVal + 0.05;
-    var icon = pass ? "✅" : "❌";
-    var color = pass ? "#15803d" : "#dc2626";
+  function dimRow(label, userDisp, limitDisp, unitStr, state) {
+    var color = stateColor(state);
     return '<tr>' +
       '<td style="padding:6px 10px;font-size:0.88rem;">' + label + '</td>' +
-      '<td style="padding:6px 10px;font-size:0.88rem;font-weight:600;">' + fmt(userVal) + ' ' + unitStr + '</td>' +
-      '<td style="padding:6px 10px;font-size:0.88rem;">' + fmt(limitVal) + ' ' + unitStr + '</td>' +
-      '<td style="padding:6px 10px;font-size:0.88rem;color:' + color + ';">' + icon + '</td>' +
+      '<td style="padding:6px 10px;font-size:0.88rem;font-weight:600;">' + fmt(userDisp) + ' ' + unitStr + '</td>' +
+      '<td style="padding:6px 10px;font-size:0.88rem;">' + fmt(limitDisp) + ' ' + unitStr + '</td>' +
+      '<td style="padding:6px 10px;font-size:0.88rem;color:' + color + ';">' + stateIcon(state) + '</td>' +
     '</tr>';
   }
 
@@ -555,13 +572,14 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     var volL  = liters(hCm, wCm, dCm);
     var volCi = cuIn(hIn, wIn, dIn);
 
-    /* Carry-on comparison (always in inches internally) */
-    var coOver = dimCompare(hIn, wIn, dIn, airline.coL, airline.coW, airline.coH);
-    var coFits = coOver.length === 0;
-
-    /* Personal-item comparison */
-    var piOver = dimCompare(hIn, wIn, dIn, airline.piL, airline.piW, airline.piH);
-    var piFits = piOver.length === 0;
+    /* Fit verdict — evaluated in each airline's NATIVE published unit (three states) */
+    var hCu = toCm(hVal), wCu = toCm(wVal), dCu = toCm(dVal);  /* unrounded cm */
+    var nat = airline.nativeUnit;
+    var coState = classifyFit(hCu, wCu, dCu, airline, "co");
+    var piState = classifyFit(hCu, wCu, dCu, airline, "pi");
+    var coFits = coState === "fits";   /* for the product recs below */
+    var piFits = piState === "fits";
+    var anyClose = (coState === "close") || (airline.personalItem && piState === "close");
 
     /* Pick display unit for the comparison table */
     var tblUnit = currentUnit;
@@ -585,15 +603,22 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     html += '<p style="font-size:0.82rem;color:#777;margin:4px 0 0;">Dimensions entered: ' + fmt(hIn) + ' × ' + fmt(wIn) + ' × ' + fmt(dIn) + ' in (' + fmt(hCm) + ' × ' + fmt(wCm) + ' × ' + fmt(dCm) + ' cm)</p>';
     html += '</div>';
 
+    /* ── Close-fit notice ── */
+    if (anyClose) {
+      html += '<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px 14px;margin-bottom:18px;">';
+      html += '<p style="font-size:0.85rem;color:#92400e;margin:0;"><strong>Close fit.</strong> Your bag slightly exceeds ' + airline.name + '&rsquo;s published dimensions — within about 1&nbsp;cm. Airline conversions, manufacturer specs, and packed-bag measurements are often rounded or approximate, so this is a close call, not a guaranteed fit. Measure your packed bag and don&rsquo;t overstuff it.</p>';
+      html += '</div>';
+    }
+
     /* ── Carry-on result ── */
     html += '<div style="margin-bottom:18px;">';
     html += '<p style="font-weight:700;font-size:0.95rem;color:#1a2540;margin-bottom:8px;">Carry-On Fit — ' + airline.name + '</p>';
-    html += '<p style="margin-bottom:10px;">' + (coFits ? resultBadge("FITS", "#15803d") : resultBadge("DOES NOT FIT", "#dc2626")) + '</p>';
+    html += '<p style="margin-bottom:10px;">' + badgeFor(coState, "co") + '</p>';
     html += '<table style="width:100%;border-collapse:collapse;font-size:0.88rem;margin-bottom:6px;">';
     html += '<tr style="background:#f3f4f6;"><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Dim</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Your Bag</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Limit</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;"></th></tr>';
-    html += dimRow("Height", uH, coLimH, tblUnit);
-    html += dimRow("Width",  uW, coLimW, tblUnit);
-    html += dimRow("Depth",  uD, coLimD, tblUnit);
+    html += dimRow("Height", uH, coLimH, tblUnit, dimState(hCu, nat === "in" ? airline.coL*2.54 : airline.coLcm));
+    html += dimRow("Width",  uW, coLimW, tblUnit, dimState(wCu, nat === "in" ? airline.coW*2.54 : airline.coWcm));
+    html += dimRow("Depth",  uD, coLimD, tblUnit, dimState(dCu, nat === "in" ? airline.coH*2.54 : airline.coHcm));
     html += '</table>';
     html += '<p style="font-size:0.8rem;color:#6b7280;margin:0;">Carry-on limit: ' + fmt(airline.coL) + ' × ' + fmt(airline.coW) + ' × ' + fmt(airline.coH) + ' in (' + fmt(airline.coLcm) + ' × ' + fmt(airline.coWcm) + ' × ' + fmt(airline.coHcm) + ' cm)</p>';
     html += '</div>';
@@ -602,14 +627,12 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     if (airline.personalItem) {
       html += '<div style="margin-bottom:18px;">';
       html += '<p style="font-weight:700;font-size:0.95rem;color:#1a2540;margin-bottom:8px;">Personal Item Fit — ' + airline.name + '</p>';
-      html += '<p style="margin-bottom:10px;">' + (airline.piEst
-        ? (piFits ? resultBadge("LIKELY FITS", "#15803d") : resultBadge("LIKELY TOO BIG", "#dc2626"))
-        : (piFits ? resultBadge("FITS", "#15803d") : resultBadge("DOES NOT FIT", "#dc2626"))) + '</p>';
+      html += '<p style="margin-bottom:10px;">' + badgeFor(piState, airline.piEst ? "piEst" : "pi") + '</p>';
       html += '<table style="width:100%;border-collapse:collapse;font-size:0.88rem;margin-bottom:6px;">';
       html += '<tr style="background:#f3f4f6;"><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Dim</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Your Bag</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;">Limit</th><th style="padding:6px 10px;text-align:left;font-size:0.82rem;"></th></tr>';
-      html += dimRow("Height", uH, piLimH, tblUnit);
-      html += dimRow("Width",  uW, piLimW, tblUnit);
-      html += dimRow("Depth",  uD, piLimD, tblUnit);
+      html += dimRow("Height", uH, piLimH, tblUnit, dimState(hCu, nat === "in" ? airline.piL*2.54 : airline.piLcm));
+      html += dimRow("Width",  uW, piLimW, tblUnit, dimState(wCu, nat === "in" ? airline.piW*2.54 : airline.piWcm));
+      html += dimRow("Depth",  uD, piLimD, tblUnit, dimState(dCu, nat === "in" ? airline.piH*2.54 : airline.piHcm));
       html += '</table>';
       if (airline.piEst) {
         html += '<p style="font-size:0.8rem;color:#6b7280;margin:0;">' + airline.name + ' doesn\'t publish a personal-item size — the rule is it must fit under the seat. This uses the industry-standard ' + fmt(airline.piL) + ' × ' + fmt(airline.piW) + ' × ' + fmt(airline.piH) + ' in (' + fmt(airline.piLcm) + ' × ' + fmt(airline.piWcm) + ' × ' + fmt(airline.piHcm) + ' cm) as a guide, not an official limit.</p>';
@@ -631,7 +654,14 @@ window.AIRLINE_NOTE_TEXT = "Carry-on limits apply to external dimensions when th
     }
 
     /* ── Guidance ── */
-    html += '<p style="font-size:0.82rem;color:#9ca3af;margin:0;font-style:italic;">Packed dimensions determine fit at the gate. Soft-sided bags may compress slightly; rigid bags must fit as-is. Enforcement varies by airport and gate staff.</p>';
+    html += '<p style="font-size:0.82rem;color:#9ca3af;margin:0 0 12px;font-style:italic;">We compare the dimensions you enter against each airline&rsquo;s officially published figures (not rounded display conversions). This shows how your stated bag measures up to the airline&rsquo;s stated limit — it isn&rsquo;t a prediction of what a gate agent will do.</p>';
+    html += '<details style="font-size:0.82rem;"><summary style="cursor:pointer;color:#6b7280;font-weight:600;">How PackFitter evaluates bag fit</summary>';
+    html += '<div style="color:#6b7280;line-height:1.55;margin-top:8px;">';
+    html += '<p style="margin:0 0 6px;"><strong style="color:#15803d;">FITS</strong> — Your bag is within the airline&rsquo;s published dimensions.</p>';
+    html += '<p style="margin:0 0 6px;"><strong style="color:#b45309;">CLOSE FIT</strong> — Your bag slightly exceeds the published dimensions (within about 1&nbsp;cm). Airline measurements, manufacturer specifications, and real-world bag measurements are often rounded or approximate.</p>';
+    html += '<p style="margin:0 0 8px;"><strong style="color:#dc2626;">DOES NOT FIT</strong> — Your bag clearly exceeds the airline&rsquo;s published dimensions.</p>';
+    html += '<p style="margin:0;font-size:0.8rem;"><strong>A bag&rsquo;s listed dimensions are not always its packed dimensions.</strong> Soft bags can expand when full; hard-sided luggage cannot compress. A bag that fits when lightly packed may exceed airline limits when overfilled.</p>';
+    html += '</div></details>';
 
     /* ── Contextual product recommendation (result-aware; tool-first, one max) ──
        Keys off the verdict already computed above. Does not change checker logic. */
