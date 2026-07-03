@@ -1,41 +1,25 @@
 /* ──────────────────────────────────────────────────────────────────────────
-   Google Analytics 4 — SITE-WIDE INSTALL POINT.
-   This is the single canonical location for analytics. nav.js loads on all
-   pages, so the tag here covers the whole site. Do NOT add gtag anywhere else
-   (avoid double-counting). To change/remove analytics, edit only this block.
-   ────────────────────────────────────────────────────────────────────────── */
+   Vercel Web Analytics — SITE-WIDE INSTALL POINT.
+   Privacy-friendly & cookieless: no cookies, no personal data — so NO consent
+   banner is required. nav.js loads on every page, so this covers the whole site.
+   Requires "Web Analytics" enabled in the Vercel project dashboard; Vercel then
+   serves the script at /_vercel/insights/script.js. To change/remove analytics,
+   edit only this block. Do NOT add a second analytics tag elsewhere. */
 (function(){
-  if (window.__pfGA4Loaded) return;            // guard against double-load
-  window.__pfGA4Loaded = true;
-  var GA_ID = "G-8JC7E0G83R";
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  window.gtag = gtag;
-
-  /* Consent Mode v2 (GDPR-strict). Everything DENIED by default — GA4 sends only
-     cookieless/modeled pings until the visitor opts in via the banner below.
-     Honor any saved choice before GA loads. */
-  gtag('consent','default',{
-    ad_storage:'denied',
-    ad_user_data:'denied',
-    ad_personalization:'denied',
-    analytics_storage:'denied',
-    wait_for_update:500
-  });
-  try { if (localStorage.getItem('pf_consent')==='granted') gtag('consent','update',{analytics_storage:'granted'}); } catch(e){}
-
+  if (window.__pfVALoaded) return;             // guard against double-load
+  window.__pfVALoaded = true;
+  window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
   var s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  s.defer = true;
+  s.src = "/_vercel/insights/script.js";
   document.head.appendChild(s);
-  gtag('js', new Date());
-  gtag('config', GA_ID);
 })();
 
-/* Cookie consent banner (GDPR-strict opt-in). Shows once until the visitor
-   chooses; choice persisted in localStorage as pf_consent = granted|denied.
-   On Accept we flip Consent Mode analytics_storage to granted. */
+/* Cookie consent banner DISABLED — switched to Vercel Web Analytics, which is
+   cookieless and sets no tracking cookies, so no consent banner is required.
+   The block below is left inert (early return) to keep the diff minimal. */
 (function(){
+  return;
   var KEY='pf_consent', choice=null;
   try { choice=localStorage.getItem(KEY); } catch(e){}
   if (choice==='granted' || choice==='denied') return;   // already decided
@@ -69,10 +53,10 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 
-/* Lightweight GA4 event helper. Tool pages call window.pfTrack('event_name').
-   Safe no-op if analytics is blocked/unavailable. See PACKFITTER-ANALYTICS-INSTALL-NOTE.md. */
+/* Lightweight event helper. Tool pages call window.pfTrack('event_name').
+   Routes to Vercel Web Analytics custom events. Safe no-op if unavailable. */
 window.pfTrack = function(name, params){
-  try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch(e){}
+  try { if (typeof window.va === 'function') window.va('event', { name: name, data: params || {} }); } catch(e){}
 };
 
 (function(){
