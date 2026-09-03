@@ -9,6 +9,11 @@
       "source": "/checked-bag-weight-calculator.html",
       "destination": "/packing-weight-calculator.html",
       "permanent": true
+    },
+    {
+      "source": "/tarantula-archery-full-length-armguard.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
